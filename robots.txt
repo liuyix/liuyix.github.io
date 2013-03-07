@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://liuyix.github.com/sitemap.xml 
