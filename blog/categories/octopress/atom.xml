@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Liuyix]]></title>
-  <link href="http://liuyix.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: octopress | Liuyix]]></title>
+  <link href="http://liuyix.github.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://liuyix.github.com/"/>
   <updated>2013-03-07T23:49:07+08:00</updated>
   <id>http://liuyix.github.com/</id>
@@ -18,13 +18,13 @@
     <link href="http://liuyix.github.com/blog/2013/03/07/hello-octpress/"/>
     <updated>2013-03-07T18:45:00+08:00</updated>
     <id>http://liuyix.github.com/blog/2013/03/07/hello-octpress</id>
-    <content type="html"><![CDATA[<p><img src="http://liuyix.github.com/images/octopress-logo.png" title="" /></p>
+    <content type="html"><![CDATA[<p><img src="/images/octopress-logo.png" title="" ></p>
 
 <h2 id="octopress">初识Octopress</h2>
 
-<p>忙里偷闲，折腾下Octopress～</p>
+<p>忙里偷闲，折腾下Octopress～
 <blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages.</p><footer><strong>http://octopress.org</strong></footer></blockquote>
-<p>Octopress说白了就是一个可以使用markdown<sup id="fnref:markdown"><a href="#fn:markdown" rel="footnote">1</a></sup>写博客的静态网页生成后端。而且还可以利用<a href="http://pages.github.com/" title="github pages">github pages</a>做自己的博客。<br />
+Octopress说白了就是一个可以使用markdown<sup id="fnref:markdown"><a href="#fn:markdown" rel="footnote">1</a></sup>写博客的静态网页生成后端。而且还可以利用<a href="http://pages.github.com/" title="github pages">github pages</a>做自己的博客。<br />
 使用了一段时间的Wordpress写博客，然后写着写着就没有然后了。没有坚持下来的原因很大一部分是因为自己，当然(很喜欢这个“当然”)Wordpress不爽体验也是一个原因。这促使我考虑Wordpress的替代方案。</p>
 
 <h3 id="wordpressoctopress">[吐槽]从Wordpress转移到Octopress的原因</h3>
@@ -34,11 +34,7 @@
 
 <h4 id="emacs">不能很方便的(在emacs里)写博客</h4>
 
-<p><span class="pullquote-right" data-pullquote="Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。">
-程序员优点之一就是 <em>“懒”</em> ，自然写博客也懒得离开编辑器在网页上码字，而且网页上码字体验远不如顺手的编辑器，还必须要联网，最让人受不了的就是手要离开键盘，用 <em>鼠标</em> 来进行各种操作！（Windows用户你不会理解的…）。<br />
-Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。
-使用Wordpress的这段时间里，我一直在不停的探索如何更高效更舒服的：从最初的网页上的编辑器插件，到搜索各种Linux,Windows客户端( <a href="http://sns.juziyue.com" title="菊子曰的网站">菊子曰</a>是这一时期的终点，使用上很适合非程序员，但不幸的是只有Windows版本), 最终遇到了org2blog——使用emacs org-mode来写博客。经过我持续不懈的折腾，Wordpress这个诟病基本被我解决掉了。<br />
-</span></p>
+<p>Surround your pullquote like this {" text to be quoted "}</p>
 
 <h5 id="octopress-side">Octopress Side</h5>
 
