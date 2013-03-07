@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Liuyix]]></title>
   <link href="http://liuyix.github.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://liuyix.github.com/"/>
-  <updated>2013-03-08T00:01:28+08:00</updated>
+  <updated>2013-03-08T00:25:57+08:00</updated>
   <id>http://liuyix.github.com/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[期待 Octopress 2.1]]></title>
+    <link href="http://liuyix.github.com/blog/2013/03/08/qi-dai-octopress-2-dot-1/"/>
+    <updated>2013-03-08T00:11:00+08:00</updated>
+    <id>http://liuyix.github.com/blog/2013/03/08/qi-dai-octopress-2-dot-1</id>
+    <content type="html"><![CDATA[<p>想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。</p>
+
+<p>搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个<a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">疑问</a>了，作者给予了回答，大意是太臃肿没必要，然社区群众们呼声很高，Octopress计划在2.1版本中支持jQuery!  </p>
+
+<p><blockquote><p>…Eventually I decided to add jQuery because that is what the community wants and it makes it easier for folks to work with javascript on Octopress. …</p><footer><strong>imathis, author of Octopress</strong> <cite><a href='https://github.com/imathis/octopress/issues/637#issuecomment-6565847'>github.com/imathis/octopress/&hellip;</a></cite></footer></blockquote></p>
+
+<p>很期待新版本的Octopress!!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello Octopress!]]></title>
