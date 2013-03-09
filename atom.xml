@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-03-09T19:03:41+08:00</updated>
+  <updated>2013-03-09T19:05:19+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -142,7 +142,7 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
 <img src="http://liuyix.org/images/android-system-architecture.jpg" /></p>
 
 <center>图0-1 Android系统架构图</center>
-<p>图0-1是Android系统架构图。大多数程序位于最上层的Java Application层。Android通过把系统划分为几个层次从而使得开发者可以使用平台无关的Java语言进行Android应用开发，不必关心程序实际的硬件环境。 Google不仅为开发者提供了SDK开发套件，为了能让开发者使用C/C++编写的本地化的共享库，利用编译后的共享库更高效的完成计算密集型的操作来提高应用的性能，或者移植重用已有的C/C++组件，提高开发效率，Android 1.5之后，又推出了NDK（Native Development Kit）。有了NDK，开发者能够在Android平台上使用JNI(Java Native Interface)技术，实现应用程序中调用本地二进制共享库。 由于Android系统不同于以往的JNI使用环境而是在嵌入式硬件环境下，Android NDK提供了一套交叉编译工具链,和构建程序的工具方便开发者在桌面环境下编译目标平台的二进制共享库。 目前NDK提供了对ARMv5TE,ARMv7-A,x86和MIPS指令集平台的支持，同时在本地接口的支持上，目前以下本地接口支持</p>
+<p>大多数程序位于最上层的Java Application层。Android通过把系统划分为几个层次从而使得开发者可以使用平台无关的Java语言进行Android应用开发，不必关心程序实际的硬件环境。 Google不仅为开发者提供了SDK开发套件，为了能让开发者使用C/C++编写的本地化的共享库，利用编译后的共享库更高效的完成计算密集型的操作来提高应用的性能，或者移植重用已有的C/C++组件，提高开发效率，Android 1.5之后，又推出了NDK（Native Development Kit）。有了NDK，开发者能够在Android平台上使用JNI(Java Native Interface)技术，实现应用程序中调用本地二进制共享库。 由于Android系统不同于以往的JNI使用环境而是在嵌入式硬件环境下，Android NDK提供了一套交叉编译工具链,和构建程序的工具方便开发者在桌面环境下编译目标平台的二进制共享库。 目前NDK提供了对ARMv5TE,ARMv7-A,x86和MIPS指令集平台的支持，同时在本地接口的支持上，目前以下本地接口支持:  </p>
 
 <ul>
   <li>libc </li>
@@ -156,9 +156,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   <li>JNI头文件接口 </li>
 </ul>
 
-<p>由上面的介绍，我们可以知道，实际上NDK开发是以JNI技术为基础的，因此要求开发者必须要掌握基本的JNI技术，这样才能进行有效的NDK开发。  </p>
-
-<h2 id="jni">JNI技术简介</h2>
+<p>由上面的介绍，我们可以知道，实际上NDK开发是以JNI技术为基础的，因此要求开发者必须要掌握基本的JNI技术，这样才能进行有效的NDK开发。<br />
+<!--more-->
+## JNI技术简介</p>
 
 <p>JNI（Java Native Interface）是Java SDK 1.1时正式推出的，目的是为不同JVM实现间提供一个标准接口，从而使Java应用可以使用本地二进制共享库，扩充了原有JVM的能力，同时Java程序仍然无需再次编译就可以运行在其他平台上，即保持了平台独立性又能使用平台相关的本地共享库提升性能。在Java开发中的位置如下图所示。JNI作为连接平台独立的Java层(以下简称Java层)与与平台相关的本地环境(以下简称Native层)之间的桥梁。 </p>
 
