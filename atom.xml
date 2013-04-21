@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-04-21T17:41:57+08:00</updated>
+  <updated>2013-04-21T17:48:34+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -108,6 +108,8 @@
 
 <p>吐槽Wordpress各种不爽之前，先声明这不是技术上的比较，也不是产品上的优劣比较，我只是从个人需求的角度说一下Wordpress不适合写技术博客，也可以说不能快速的书写有质量的文章。 
 简单的说Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。  </p>
+
+<!--more-->
 
 <h4 id="emacs">不能很方便的(在emacs里)写博客</h4>
 
