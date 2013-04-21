@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: android - Liuyix</title>
+  <title>《程序员的自我修养》小结 - Liuyix</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Category: android">
+  <meta name="description" content="应用开发程序员面向的是软件用户;系统程序员面向的是程序员。
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.org/blog/categories/android/">
+  <link rel="canonical" href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
@@ -77,36 +78,96 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Android</h1>
+    
+      <h1 class="entry-title">《程序员的自我修养》小结</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-09T21:05:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br />
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。  </p>
 
-  
-  <h2>2012</h2>
+<h2 id="os">OS存在于每一个程序之中</h2>
 
-<article>
-  
-<h1><a href="/blog/2012/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a></h1>
-<time datetime="2012-07-31T08:00:00+08:00" pubdate><span class='month'>Jul</span> <span class='day'>31</span> <span class='year'>2012</span></time>
+<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br />
+其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br />
+参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/android/'>android</a></span>
-</footer>
+<p><img src="/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
 
-
-</article>
-
+<p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-09T21:05:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/my-customize-octopress/" title="Previous Post: Customize Octopress">&laquo; Customize Octopress</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -126,6 +187,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/my-customize-octopress/">Customize Octopress</a>
       </li>
     
@@ -137,19 +202,11 @@
         <a href="/blog/2013/hello-octopress/">Hello Octopress!</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/pkm-tools-on-linux-recommendation/">我的PKM——Linux下的个人知识管理(PKM)之工具推荐</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (1)</a></li><li><a href='/blog/categories/life'>life (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/pkm'>pkm (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
 </section>
 
 
@@ -175,7 +232,10 @@
       var disqus_shortname = 'liuyix';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://liuyix.org/blog/2013/advanced-linkers-and-loaders/';
+        var disqus_url = 'http://liuyix.org/blog/2013/advanced-linkers-and-loaders/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

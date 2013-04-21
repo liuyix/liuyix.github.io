@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="表格boarder的修复 参考: 链接
-只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 sass/custom/_styles.scss 里面了就出效果了。 markdown interpreter换成了kramdown 因为默认的不支持footnote，所以直接换成了 &hellip;">
+只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 sass/custom/_styles.scss 里面了就出效果了。 markdown interpreter换成了kramdown 因为默认的不支持footnote， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,21 +100,22 @@
 
 <time datetime="2013-03-08T22:27:00+08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
         
-         | <a href="#disqus_thread">Comments</a>
-        
       </p>
     
   </header>
 
 
-<div class="entry-content"><h3 id="boarder">表格boarder的修复</h3>
+<div class="entry-content"><!-- * Toc -->
+<!-- {:toc} -->
+
+<h3 id="boarder">表格boarder的修复</h3>
 
 <p>参考: <a href="'http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/'">链接</a><br />
 只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 <code>sass/custom/_styles.scss</code> 里面了就出效果了。</p>
 
 <h3 id="markdown-interpreterkramdown">markdown interpreter换成了kramdown</h3>
 
-<p>因为默认的不支持footnote，所以直接换成了 <a href="http://kramdown.rubyforge.org">kramdown</a></p>
+<p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
 
 <h3 id="page">404 page</h3>
 
@@ -131,11 +132,12 @@
 <h3 id="stylesheet">stylesheet小幅改动</h3>
 
 <h4 id="awkward-ul-ol">awkward ul ol</h4>
+
 <p><a href="https://github.com/imathis/octopress/issues/417">issue417</a>
 在 <code>sass/custom/_styles.scss</code> 里修改</p>
 
 <h4 id="footnote">footnote</h4>
-<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合<a href="http://kramdown.rubyforge.org">kramdown</a>正好适合</p>
+<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
 
 </div>
 
@@ -183,15 +185,11 @@
         <a class="basic-alignment left" href="/blog/2013/expecting-octopress-2-dot-1/" title="Previous Post: 期待 Octopress 2.1">&laquo; 期待 Octopress 2.1</a>
       
       
+        <a class="basic-alignment right" href="/blog/2013/advanced-linkers-and-loaders/" title="Next Post: 《程序员的自我修养》小结">《程序员的自我修养》小结 &raquo;</a>
+      
     </p>
   </footer>
 </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
 
 </div>
 
@@ -211,6 +209,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/my-customize-octopress/">Customize Octopress</a>
       </li>
     
@@ -222,19 +224,11 @@
         <a href="/blog/2013/hello-octopress/">Hello Octopress!</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/pkm-tools-on-linux-recommendation/">我的PKM——Linux下的个人知识管理(PKM)之工具推荐</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (1)</a></li><li><a href='/blog/categories/life'>life (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/pkm'>pkm (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
 </section>
 
 
@@ -255,22 +249,6 @@
 
 </footer>
   
-
-<script type="text/javascript">
-      var disqus_shortname = 'liuyix';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://liuyix.org/blog/2013/my-customize-octopress/';
-        var disqus_url = 'http://liuyix.org/blog/2013/my-customize-octopress/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 

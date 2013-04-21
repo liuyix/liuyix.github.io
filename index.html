@@ -9,8 +9,8 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="表格boarder的修复 参考: 链接
-只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 sass/custom/_styles.scss 里面了就出效果了。 markdown interpreter换成了kramdown 因为默认的不支持footnote，所以直接换成了 &hellip;">
+  <meta name="description" content="应用开发程序员面向的是软件用户;系统程序员面向的是程序员。
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,55 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-09T21:05:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/advanced-linkers-and-loaders/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br />
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。  </p>
+
+<h2 id="os">OS存在于每一个程序之中</h2>
+
+<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br />
+其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br />
+参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
+
+<p><img src="/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
+
+<p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/my-customize-octopress/">Customize Octopress</a></h1>
     
     
@@ -103,21 +152,22 @@
 
 <time datetime="2013-03-08T22:27:00+08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
         
-         | <a href="/blog/2013/my-customize-octopress/#disqus_thread">Comments</a>
-        
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h3 id="boarder">表格boarder的修复</h3>
+  <div class="entry-content"><!-- * Toc -->
+<!-- {:toc} -->
+
+<h3 id="boarder">表格boarder的修复</h3>
 
 <p>参考: <a href="'http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/'">链接</a><br />
 只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 <code>sass/custom/_styles.scss</code> 里面了就出效果了。</p>
 
 <h3 id="markdown-interpreterkramdown">markdown interpreter换成了kramdown</h3>
 
-<p>因为默认的不支持footnote，所以直接换成了 <a href="http://kramdown.rubyforge.org">kramdown</a></p>
+<p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
 
 <h3 id="page">404 page</h3>
 
@@ -134,11 +184,12 @@
 <h3 id="stylesheet">stylesheet小幅改动</h3>
 
 <h4 id="awkward-ul-ol">awkward ul ol</h4>
+
 <p><a href="https://github.com/imathis/octopress/issues/417">issue417</a>
 在 <code>sass/custom/_styles.scss</code> 里修改</p>
 
 <h4 id="footnote">footnote</h4>
-<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合<a href="http://kramdown.rubyforge.org">kramdown</a>正好适合</p>
+<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
 
 </div>
   
@@ -285,113 +336,6 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-31T08:00:00+08:00" pubdate data-updated="true">Jul 31<span>st</span>, 2012</time>
-        
-         | <a href="/blog/2012/android-ndk-and-jni-introduction/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="ndk">NDK简介</h2>
-
-<p>Android<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。<br />
-<img src="/images/android-system-architecture.jpg" /></p>
-
-<center>图0-1 Android系统架构图</center>
-<p>大多数程序位于最上层的Java Application层。Android通过把系统划分为几个层次从而使得开发者可以使用平台无关的Java语言进行Android应用开发，不必关心程序实际的硬件环境。 Google不仅为开发者提供了SDK开发套件，为了能让开发者使用C/C++编写的本地化的共享库，利用编译后的共享库更高效的完成计算密集型的操作来提高应用的性能，或者移植重用已有的C/C++组件，提高开发效率，Android 1.5之后，又推出了NDK（Native Development Kit）。有了NDK，开发者能够在Android平台上使用JNI(Java Native Interface)技术，实现应用程序中调用本地二进制共享库。 由于Android系统不同于以往的JNI使用环境而是在嵌入式硬件环境下，Android NDK提供了一套交叉编译工具链,和构建程序的工具方便开发者在桌面环境下编译目标平台的二进制共享库。 目前NDK提供了对ARMv5TE,ARMv7-A,x86和MIPS指令集平台的支持，同时在本地接口的支持上，目前以下本地接口支持:  </p>
-
-<ul>
-  <li>libc </li>
-  <li>libm </li>
-  <li>libz </li>
-  <li>liblog </li>
-  <li>OpenGL ES 1.1 and OpenGL ES 2.0 (3D graphics libraries) headers </li>
-  <li>libjnigraphics (Pixel buffer access) header (Android 2.2 以上可用). </li>
-  <li>C++头文件的一个子集 </li>
-  <li>Android native应用API接口 </li>
-  <li>JNI头文件接口 </li>
-</ul>
-
-<p>由上面的介绍，我们可以知道，实际上NDK开发是以JNI技术为基础的，因此要求开发者必须要掌握基本的JNI技术，这样才能进行有效的NDK开发。<br />
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/android-ndk-and-jni-introduction/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/pkm-tools-on-linux-recommendation/">我的PKM——Linux下的个人知识管理(PKM)之工具推荐</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-19T18:58:49+08:00" pubdate data-updated="true">May 19<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/pkm-tools-on-linux-recommendation/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>个人知识管理（以下简称pkm）内容上，国内有影响力的博客以及一些国产的软件都集中于windows平台，很少有关注linux平台。对于linux控来说，有些小遗憾。</p>
-
-<p>本文的主要目的就是分享一下我在Linux上实践pkm的一点心得。介绍我目前使用的工具和一些平时收集的策略。由于自己也是刚刚接触实践pkm，因此不免会有内容不全面、不到位的情况，请各看家轻拍转。</p>
-
-<p>我理解的pkm的大致的几个过程：收集、积累、检索应用与分享。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/pkm-tools-on-linux-recommendation/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -414,6 +358,10 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/my-customize-octopress/">Customize Octopress</a>
       </li>
     
@@ -425,19 +373,11 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
         <a href="/blog/2013/hello-octopress/">Hello Octopress!</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/pkm-tools-on-linux-recommendation/">我的PKM——Linux下的个人知识管理(PKM)之工具推荐</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (1)</a></li><li><a href='/blog/categories/life'>life (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/pkm'>pkm (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
 </section>
 
 
