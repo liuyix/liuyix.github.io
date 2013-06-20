@@ -1,0 +1,22 @@
+---
+layout: page
+title: "404 Oops..."
+footer: true
+---
+<blockquote><p>Sorry，由于从Wordpress迁移到Octopress，您访问的可能是以前的文章，以前的文章请访问<a href="http://old.liuyix.com/archives" target="_blank">old.liuyix.com</a></p>
+<footer>
+liuyix
+</footer>
+</blockquote>
+<iframe scrolling='no' frameborder='0' src='http://yibo.iyiyun.com/js/yibo404' width='640' height='495' style="display:block;"></iframe>
+
+<strong>下列文章你也许会感兴趣</strong>
+<div id="blog-archives">
+{% for post in site.posts limit: 10 %}
+<article>
+  {% include archive_post.html %}
+</article>
+{% endfor %}
+</div>
+
+

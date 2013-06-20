@@ -1,0 +1,60 @@
+---
+comments: true
+published: false
+date: 2011-04-28 13:25:37
+layout: post
+slug: vim-tutorial-1
+title: VIM学习资料总结——VIM自学系列一
+wordpress_id: 217
+categories:
+- Techs
+- 未分类
+tags:
+- easy
+- vim
+- 教程
+- 资料
+---
+
+![vim](http://www.vim.org/images/vim_header.gif)
+
+前言：一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。
+Q：为什么要学习这么古老的编辑工具，是否真的有意义？
+A：一个coder也是一个“打字员”，最常用的就是文本编辑功能，而在所有的文本编辑器中，最为强大的就是VIM/Emacs两个流派，聪明的coder都是懒惰的，熟练使用了一种“神器”，就会在coding中变得更懒——换句话也是更高效。更多信息请参考：[为何 Emacs 和 Vim 被称为两大神器(via LinuxTOY)](http://linuxtoy.org/archives/why-emacs-vim-good.html)
+Q：VIM/Emacs，我该学习哪个？
+A:关于二者究竟哪个更胜一筹的争论已经长达几十年，到目前依旧没有定论，从中可以说明熟练掌握哪一个，效果是相当的。因此不要把时间浪费在选择上，而是要花在耐心的学习上。
+我没有用过emacs，这里简单说一下二者的差别。（皆来自于网络）<!-- more -->
+
+
+
+	
+  * **定位上**：emacs是一个伪装成编辑器的OS，VIM则是专注与如何高效的文本编辑以及程序的编写
+
+	
+  * **学习难度**：二者都很难，VIM学习曲线陡峭但短时间即可掌握，Emacs则学习曲线平缓但需要长时间的学习
+
+
+Q：我应该怎样学习vim？
+A：动手操作是最关键的，一边看着教程一边跟着操作，如果用心几天的时间你就会爱上它的。
+下面列出一些我自学时搜集的优秀的网上的vim教学资源，**有先后顺序**。<!-- more -->
+
+
+
+	
+  1. 下载安装vim，同时下载安装vim中文manual。vim/emacs的帮助文档是目前我见到的最为完善的帮助文档，今后的学习会越来越依靠它的。Vim中文文档地址：[http://sourceforge.net/projects/vimcdoc/](http://sourceforge.net/projects/vimcdoc/)
+
+	
+  2. 安装好后，首先要看的vim内置的简短的30分钟教程——Linux用户：在terminal下面输入vimtutor进入;Windows用户打开vim，单击下ESC键，然后输入”:help tutor“(注意help前面有一个冒号)
+
+	
+  3. 网络上比较好的入门教程是<A Byte of VIM>。这本书是英文的，前面的基本介绍部分有中文翻译版本。如果英语没啥问题的，推荐完整的看一遍，收获是巨大的，如果英语不好，看的很费劲，那么就看前几章的翻译版本吧。[英文版地址](http://www.swaroopch.com/notes/Vim_en:Table_of_Contents)||[中文版地址](http://www.swaroopch.com/notes/Vim_zh-cn:%E7%9B%AE%E5%BD%95)
+
+	
+  4. 前面的基本教程看完之后，就是配置vimrc以及安装插件了。这方面的材料我推荐的是：[vi/vim使用进阶｜Easwy](http://easwy.com/blog/archives/advanced-vim-skills-catalog/)主要的内容是vim的配置以及插件的介绍
+
+	
+  5. 另外网络上流传甚广的一个vimrc，是国外的网友制作，内容很全，但是要有取舍，看一看还是有收获的。[地址](http://amix.dk/vim/vimrc.html)
+
+
+看过了这些材料之后，应该说算是入门了，最翔实的是内容还是在vim manual里面，要想继续的提高就该选择的看一看自己需要的、感兴趣的部分，同时[vim tips wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)也是一个很不错的地方。
+Good Luck!

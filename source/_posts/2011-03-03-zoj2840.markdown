@@ -1,0 +1,161 @@
+---
+comments: true
+published: false
+date: 2011-03-03 21:57:08
+layout: post
+slug: zoj2840
+title: ZOJ2840——File Searching 解题总结
+wordpress_id: 48
+categories:
+- Techs
+tags:
+- string
+- zoj
+---
+
+思路比较简单，但是很容易WA的一道题。必须要考虑到所有的情况。
+
+
+
+
+我解决的一个大致思路是：
+
+
+
+
+1.以*为界将查询串分为2个子串。例如abc*de，则分为abc,de 2个子串——在此表示为[*前字符串][*后字符串]
+
+
+
+
+2.遍历所有文件名，对每个文件名进行匹配判断。具体匹配方法如下：
+
+
+
+
+2.1匹配前子串：调用C++ STL中string的find([*前字符串])函数，若返回位置为0则继续2.2操作，否则判为不匹配
+
+
+
+
+2.2判断[*后字符串是否为空]：若为空，直接匹配成功，否则进行2.3
+
+
+
+
+2.3匹配后子串：对string类型文件名字符串以及[*后字符串]调用reverse([文件名字符串])，之后仿照2.1方法，对逆序后的字符串调用find([*字符串])，若返回位置为0，则匹配成功。否则匹配不成功
+
+
+
+
+3.对匹配的文件名进行输出
+
+
+
+
+
+** 易错点：**
+
+
+
+
+本题对格式的要求是一个小小的陷阱（如果像我一样不仔细，就会出现PE），需要额外注意。
+
+
+
+
+下面是具体的实现代码：
+
+
+
+<!-- more -->
+
+[cpp]
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<string> files;
+string strsep = ", ";
+string str_notfound = "FILE NOT FOUND";
+
+bool is_match_query(string file,string query){
+	//定位*的位置
+	string filetmp = file;
+	int pos_star = query.find('*');
+	//截取*前后的2个字符串
+	string str_part1 = query.substr(0,pos_star);
+	string str_part2 = query.substr(pos_star+1,query.length() - pos_star);
+
+	/* 在file中定位：如果在字符串file中匹配前一个字符串，同时在匹配前一个字符串后
+	 * 的位置开始匹配后一个字符串则匹配成功。===>这种方法有纰漏！！
+	 * 漏洞实例：abcdef  ab*cde -->匹配成功
+	 *
+	 * 应该是从后往前找
+	 * */
+	if((file.length() >= str_part1.length() + str_part2.length())  && filetmp.find(str_part1) == 0){
+		if(str_part2 == "")
+			return true;
+		else{
+			reverse(str_part2.begin(),str_part2.end());
+			reverse(filetmp.begin(),filetmp.end());
+			if(filetmp.find(str_part2) == 0)
+				return true;
+		}
+	}
+	return false;
+
+}
+
+
+string find(string str){
+	string query_result = "";
+	bool matched = false;
+
+	vector<string>::iterator itr = files.begin();
+	for(;itr!=files.end();++itr){
+		if(is_match_query(*itr,str)){
+			if(matched == false)
+				matched = true;
+			else if(matched == true){
+				query_result += strsep;
+			}
+			query_result += *itr;
+		}
+	}
+	if(query_result == "")
+		return str_notfound;
+	else return query_result;
+}
+
+int main(){
+
+	int n,m,i,j;
+	string str;
+	int cases = 0;
+
+	while(cin>>n){
+		if(cases != 0)
+			cout << endl;
+		++cases;
+		files.clear();
+		m = i = j = 0;
+		str = "";
+		for(i=0;i<n;++i){
+			cin>>str;
+			files.push_back(str);
+		}
+		cin >> m;
+		for(i=0;i<m;++i){
+			cin >> str;
+			cout<<find(str)<<endl;
+		}
+
+
+	}
+	return 0;
+}
+[/cpp] 

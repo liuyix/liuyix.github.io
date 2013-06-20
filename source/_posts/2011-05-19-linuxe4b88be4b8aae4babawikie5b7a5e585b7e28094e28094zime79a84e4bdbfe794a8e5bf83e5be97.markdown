@@ -1,0 +1,325 @@
+---
+comments: true
+published: false
+date: 2011-05-19 14:55:33
+layout: post
+slug: linux%e4%b8%8b%e4%b8%aa%e4%ba%bawiki%e5%b7%a5%e5%85%b7%e2%80%94%e2%80%94zim%e7%9a%84%e4%bd%bf%e7%94%a8%e5%bf%83%e5%be%97
+title: Linux下个人Wiki工具——Zim的使用心得
+wordpress_id: 281
+categories:
+- Linux
+tags:
+- linux
+- pkm
+- 软件
+---
+
+什么是个人wiki？
+
+个人知识管理中“信息存储”和“信息整理”的一种有效手段。
+
+信息繁多的时代，个人知识整理的强大工具。构建一个属于自己的本地Wikipedia。
+<!-- more -->
+
+
+# 安装Zim
+
+
+
+
+
+	
+  1. 添加Zim源：[bash]sudo add-apt-repository ppa:jaap.karssenberg/zim[/bash]
+
+	
+  2. [bash]sudo apt-get update[/bash]
+
+	
+  3. [bash]sudo apt-get install zim[/bash]
+
+
+
+
+Zim入门
+
+Zim的入门详细内容可以参考Zim的帮助，里面讲解的很不错。这里这做一个简单的介绍。可以参考_Usage:Getting Started_
+
+
+## Zim相关元素：Notebook、Namespace
+
+
+Notebook:一个notebook相当于一个特定wiki的根目录，是某一内容的集合。比如一个日记本算作一个notebook，一个读书笔记算作一个notebook，一个工作计划算作一个notebook，等等。
+
+Namespace:一个notebook都有一个首页。namespace相当于超链接，链接到另一个page。例如一个读书笔记的note，每本书一个二级页面，之后每章一个三级页面。页面之间可以通过namespace联系。
+
+
+## Zim文字编辑
+
+
+建议掌握zim常用的快捷键和一些根据wiki语法而来的自动格式化方法。
+
+
+
+
+
+
+
+
+功能名称
+
+
+快捷键/格式化方法
+
+
+备注
+
+
+
+
+
+
+1级标题到5级标题
+
+
+<Ctrl>1...<Ctrl>5
+
+
+可选中文字也可整行格式化
+
+
+
+
+
+
+加粗
+
+
+<Ctrl>b
+
+
+b:bold
+
+
+
+
+
+
+斜体
+
+
+<Ctrl>i
+
+
+i:italic
+
+
+
+
+
+
+高亮
+
+
+<Ctrl>u
+
+
+u:underline
+
+
+
+
+
+
+删除线
+
+
+<Ctrl>k
+
+
+k:kill
+
+
+
+
+
+
+撤销操作
+
+
+<Ctrl>z
+
+
+
+
+
+
+
+
+redo(重做)
+
+
+<Ctrl>y
+
+
+
+
+
+
+
+
+插入时间
+
+
+<Ctrl>d
+
+
+d:date
+
+
+
+
+
+
+以当前日期创建页面
+
+
+<Alt>d
+
+
+
+
+
+
+
+
+建立namespace
+
+
+<Ctrl>l
+
+
+在提示栏中输入namespace名称以及显示的文本，可以使用多级namespace
+
+以冒号作为划分
+
+
+
+
+
+
+项目编号
+
+
+在行首键入*<space>(或者<tab>)
+
+
+
+
+
+
+
+
+项目编号缩进
+
+
+项目编号后面若干<tab>
+
+
+
+
+
+
+
+
+添加tag
+
+
+@[tag名称]
+
+
+
+
+
+
+
+
+建立namespace
+
+
+:[namespace名]--绝对链接[上级namespace]:[namespace名]--相对链接
+
+
+此方法为文本自动格式化产生page的方法。也可以建立后使用<Ctrl>l修改
+
+
+
+
+
+
+
+# Zim扩展
+
+
+Zim除了可以建立wiki页面之外，还可以通过扩展支持许多其他强大的功能。其中包括：
+
+
+
+	
+  * 日历：可以以当前的日期建立一个多级的页面，比如在2011-5-19使用<Alt>d建立了2011-->5月-->19日的三级页面
+
+	
+  * 图形编辑器：这是我最喜欢的一个功能，使用一种简单的脚本语言dot，生成图形。此功能实际使用的是开源的图形绘制工具Graphviz。（这也算是我的意外收获，以后再也不用鼠标艰难的画图了! :-)）下面是几个不错的例子。
+![cluster](http://www.graphviz.org/Gallery/directed/cluster.png)
+![datastruct](http://www.graphviz.org/Gallery/directed/datastruct.png)
+![graphviz-snapshot](http://www.graphviz.org/Gallery/directed/traffic_lights.png)
+
+	
+  * 使用gnuplot绘制各种复杂的图表。以下是一例：
+![gnuplot-snapshot-1](http://gnuplot.sourceforge.net/demo_4.2/surface2.1.png)
+![gnuplot-snapshot-1](http://gnuplot.sourceforge.net/demo_4.4/showcase_plot.3.png)
+
+	
+  * 还有同样强大的LaTex公式编辑器
+
+	
+  * 图形化链接关系图
+
+	
+  * 本身集成了Bazzar版本控制系统，这是zim的核心功能之一，因此可以保存notebook的所有改动！:-D
+
+	
+  * 特殊符号编辑器：可以用来插入特殊符号
+
+	
+  * more...
+
+
+从以上的介绍可以看出，借助扩展zim可以使用比其本身强大N倍的大型开源绘图工具（gnuplot,graphviz）绘制各种专业的图表图像。（也非常感谢这些扩展，让我知道了这么多的开源绘图工具！）
+
+关于扩展的安装
+
+扩展依赖于其他程序，比如gnuplot,graphviz，你可以在“首选项”的“插件”中启用，当然有些依赖程序没有的话，可以通过apt安装，再次不赘述了。
+
+
+
+
+# 使用Zim写日记
+
+
+zim本身集成了日历功能，因此在上面可以很轻松的写日记。使用<Alt>d轻松创建。
+
+
+
+
+# 使用zim做pkm
+
+
+刚刚接触zim，这部分经验较少，以后再完善。
+
+
+
+
+# 使用zim做gtd
+
+
+详细内容可以参考自带的manual，"Usage:Getting Things "稍候补充中译版本。

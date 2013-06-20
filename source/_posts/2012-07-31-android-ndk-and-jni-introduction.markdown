@@ -1,0 +1,749 @@
+---
+comments: true
+published: false
+date: 2012-07-31 00:00:00
+layout: post
+slug: android-ndk-and-jni-introduction
+title: Android平台上的JNI技术介绍
+categories:
+- android
+tags:
+- jni
+- ndk
+---
+## NDK简介
+
+Android是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。  
+
+![http://liuyix.com/wordpress/wp-content/uploads/2012/07/wpid-android-system-architecture.jpg](http://liuyix.com/wordpress/wp-content/uploads/2012/07/wpid-android-system-architecture.jpg)  
+
+-->图0-1 Android系统架构图 <--  
+图0-1是Android系统架构图。大多数程序位于最上层的Java Application层。Android通过把系统划分为几个层次从而使得开发者可以使用平台无关的Java语言进行Android应用开发，不必关心程序实际的硬件环境。 Google不仅为开发者提供了SDK开发套件，为了能让开发者使用C/C++编写的本地化的共享库，利用编译后的共享库更高效的完成计算密集型的操作来提高应用的性能，或者移植重用已有的C/C++组件，提高开发效率，Android 1.5之后，又推出了NDK（Native Development Kit）。有了NDK，开发者能够在Android平台上使用JNI(Java Native Interface)技术，实现应用程序中调用本地二进制共享库。 由于Android系统不同于以往的JNI使用环境而是在嵌入式硬件环境下，Android NDK提供了一套交叉编译工具链,和构建程序的工具方便开发者在桌面环境下编译目标平台的二进制共享库。 目前NDK提供了对ARMv5TE,ARMv7-A,x86和MIPS指令集平台的支持，同时在本地接口的支持上，目前以下本地接口支持  
+
+* libc 
+* libm 
+* libz 
+* liblog 
+* OpenGL ES 1.1 and OpenGL ES 2.0 (3D graphics libraries) headers 
+* libjnigraphics (Pixel buffer access) header (Android 2.2 以上可用). 
+* C++头文件的一个子集 
+* Android native应用API接口 
+* JNI头文件接口 
+
+由上面的介绍，我们可以知道，实际上NDK开发是以JNI技术为基础的，因此要求开发者必须要掌握基本的JNI技术，这样才能进行有效的NDK开发。  
+
+## JNI技术简介
+
+JNI（Java Native Interface）是Java SDK 1.1时正式推出的，目的是为不同JVM实现间提供一个标准接口，从而使Java应用可以使用本地二进制共享库，扩充了原有JVM的能力，同时Java程序仍然无需再次编译就可以运行在其他平台上，即保持了平台独立性又能使用平台相关的本地共享库提升性能。在Java开发中的位置如下图所示。JNI作为连接平台独立的Java层(以下简称Java层)与与平台相关的本地环境(以下简称Native层)之间的桥梁。 
+
+![http://liuyix.com/wordpress/wp-content/uploads/2012/07/wpid-role-of-jni-intro.gif](http://liuyix.com/wordpress/wp-content/uploads/2012/07/wpid-role-of-jni-intro.gif)
+
+<center> 图1-1 JNI在Java开发中的位置 <center>
+
+实际上在Android内部就大量的使用了JNI技术，尤其是在Libraries层和Framework层。 
+
+## 何时使用Android NDK
+
+Google在其文档提到了NDK不能让大多数应用获益,其增加的复杂度远大于获得的性能的代价。Google建议当需要做大量的cpu密集同时少量存储操作或者重用C/C++代码时可以考虑使用NDK。 本文的余下部分将具体介绍Android平台下通过NDK的支持的如何进行JNI的开发。 
+
+## Hello,NDK
+
+本节通过一个简单的例子，介绍NDK开发流程以及JNI的基本使用。 笔者假定你已经下载了NDK，且有Android SDK开发的经验。 在NDK开发包中就有若干的NDK示例。其中 `hello-jni` 是一个简单的实例。该实例从native层传递字符串到java层，并显示在界面上。（你可以在Eclipse里选择 **新建Anroid项目** ,之后选择 “Create project from existing source”，并定位到NDK目录中的 **Sample/hello-jni** ,这样就可以将示例代码导入到Eclipse中。） HelloJni的Java代码如下： 
+
+```java 
+    package com.example.hellojni;
+    import android.app.Activity;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.TextView;
+    import android.os.Bundle;
+    import android.view.View.OnClickListener;
+    
+    public class HelloJni extends Activity
+    {
+        /** Called when the activity is first created. */
+        @Override
+        public void onCreate(Bundle savedInstanceState)
+        {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.main);
+            Button btn = (Button)findViewById(R.id.btn);
+            final TextView txtv = (TextView)findViewById(R.id.txtv);
+            btn.setOnClickListener(new OnClickListener() {
+    
+                @Override
+                public void onClick(View v) {
+                    txtv.setText(stringFromJNI());//调用native函数
+    
+                }
+            });
+        }
+    
+        /* A native method that is implemented by the
+         * 'hello-jni' native library, which is packaged
+         * with this application.
+         * 声明含有native关键词的函数，就可以在类中使用了。
+         */
+        public native String  stringFromJNI();
+    
+        /* 
+         * 该函数并没有在共享库中实现，但是仍然可以声明。
+         * 没有实现的native函数也可以在类中声明，native方法仅在首次调用时才开始搜索。
+         * 若没有找到该方法，会抛出java.lang.UnsatisfiedLinkError异常
+         */
+        public native String  unimplementedStringFromJNI();
+    
+        /* this is used to load the 'hello-jni' library on application
+         * startup. The library has already been unpacked into
+         * /data/data/com.example.HelloJni/lib/libhello-jni.so at
+         * installation time by the package manager.
+         * 使用静态方式再创建类时就载入共享库，该共享库（后面会介绍）在程序安装后
+         * 位于/data/data/com.example.HelloJni/lib/libhello-jni.so
+         */
+        static {
+            System.loadLibrary("hello-jni");
+        }
+    }
+```
+
+Java代码中调用native函数很简单。大致分为以下几步： 
+
+  * 调用=System.loadLibrary=方法载入共享库 
+  * 声明native方法 
+  * 调用native方法 
+
+JNI的使用的一个关键点是 1) 如何找到共享库 2)如何将Java代码中的声明的native方法和实际的C/C++共享库中的代码相关联，即JNI函数注册。 第一个问题可以交给NDK构建工具 `ndk-build` 解决:通常是将编译好的so共享库放在 `libs/armeabi/libXXX.so` 之后会有更详细的介绍。第二个问题可以将在第二节中系统讲述，现在我们只简单的说一下如何做。 
+
+### 利用javah生成目标头文件
+
+简易实用的方法是通过利用Java提供的 `javah` 工具生成和声明的native函数对应的头文件。具体操作是如下：   
+
+  1. 命令行进入到你的项目目录中 
+  2. 确认你的android项目的java代码已经编译，如果存在 `bin/` 目录，应该是编译好的。 
+  3. 确认你的android项目目录中存在 `jni` 子目录，如果没有则创建一个（我们现在使用的自带的实例代码，因此可以）。 
+  4. 在项目根目录下执行命令： `javah -jni com.example.hellojni.HelloJNI -classpath bin/classes -o jni/hello-jni.h` **确认javah所在路径已经在的$PATH路径下**
+  5. 若上一命令执行成功，则会在 `jni` 目录下生成一个名为 `my_jni_header.h` 的头文件。 
+
+### 编写C/C++共享库代码
+
+上一步骤我们得到了与Java源文件对应的头文件，因此只要编写 `my_jni_header.c` ，实现头文件里面的声明的源代码。生成的内容如下： 
+    
+    /* DO NOT EDIT THIS FILE - it is machine generated */
+    #include <jni.h>
+    /* Header for class com_example_hellojni_HelloJni */
+    
+    #ifndef _Included_com_example_hellojni_HelloJni
+    #define _Included_com_example_hellojni_HelloJni
+    #ifdef __cplusplus
+    extern "C" {
+    #endif
+    /*
+     * Class:     com_example_hellojni_HelloJni
+     * Method:    stringFromJNI
+     * Signature: ()Ljava/lang/String;
+     */
+    JNIEXPORT jstring JNICALL Java_com_example_hellojni_HelloJni_stringFromJNI
+      (JNIEnv *, jobject);
+    
+    /*
+     * Class:     com_example_hellojni_HelloJni
+     * Method:    unimplementedStringFromJNI
+     * Signature: ()Ljava/lang/String;
+     */
+    JNIEXPORT jstring JNICALL Java_com_example_hellojni_HelloJni_unimplementedStringFromJNI
+      (JNIEnv *, jobject);
+    
+    #ifdef __cplusplus
+    }
+    #endif
+    #endif
+
+可以看到生成的头文件中的函数和示例项目 `hello-jni` 中的 `hello-jni.c` 正好对应。据此也可知我们生成的头文件是正确的。 `hello-jni.c` 源代码如下： 
+    
+    #include <string.h>
+    #include <jni.h>
+    #include <stdio.h>
+    
+    /* This is a trivial JNI example where we use a native method
+     * to return a new VM String. See the corresponding Java source
+     * file located at:
+     *
+     *   apps/samples/hello-jni/project/src/com/example/HelloJni/HelloJni.java
+     */
+    jstring
+    Java_com_example_hellojni_HelloJni_stringFromJNI( JNIEnv* env,
+                                                      jobject thiz )
+    {
+        char msg[100];
+        sprintf(msg,"Hello from JNI.");
+        return (*env)->NewStringUTF(env, msg);
+    }
+
+### 使用NDK提供的工具编译生成共享库
+
+经过以上两步，我们已经得到了C/C++共享库的源代码，现在需要使用交叉编译工具将其编译成目标机器上的二进制共享库。NDK工具提供了一个简单的构建系统，开发者之需要编写 `Android.mk` ，之后在项目根目录下执行命令 `ndk-build` 就可以完成交叉编译过程。 
+    
+    LOCAL_PATH := $(call my-dir)
+    
+    include $(CLEAR_VARS)
+    
+    LOCAL_MODULE    := hello-jni
+    LOCAL_SRC_FILES := hello-jni2.c
+    
+    include $(BUILD_SHARED_LIBRARY)
+
+`Android.mk` 可以看作是小型的makefile，关于 `Android.mk` 的更多细节，限于篇幅，这里不做详细介绍请参考NDK自带文档，里面有完整的介绍。 输出的信息类似下面： 
+    
+    Gdbserver      : [arm-linux-androideabi-4.4.3] libs/armeabi/gdbserver
+    Gdbsetup       : libs/armeabi/gdb.setup
+    Compile thumb  : hello-jni <= hello-jni.c
+    SharedLibrary  : libhello-jni.so
+    Install        : libhello-jni.so => libs/armeabi/libhello-jni.so
+
+上面的信息告诉我们生成好的so文件路径为 `libs/armeabi/libhello-jni.so` 。至此一个简单的NDK程序的已经制作完成。 总结一下大致过程是： 
+
+  * 编写好Java源文件，使用静态代码段载入共享库，并声明native函数。之后编译android项目 
+  * 使用 `javah` 工具生成头文件 
+  * 根据头文件编写native函数 
+  * 利用 `ndk-build` 完成共享库的编译 
+
+## native函数的动态注册方法
+
+上一节我们通过一个简单的实例，对NDK开发有了一个感性的认识。但是你也许会发现Java层上声明的native函数与native上面的实现之间的关联是通过javah生成头文件完成的，这个方法显得很笨拙。 实际上这种静态注册的方法是通过函数名（ `Java_com_example_hellojni_HelloJni_stringFromJNI` ）来建立联系。这种做法有诸多弊端： 
+
+  * 名字很长，没有可读性。 
+  * 每个声明了native函数的类都要生成一个对应的头文件，对于真实的应用程序，类文件很多时不现实。 
+  * 每次载入都需要查询native函数，效率低。 
+
+Android内部实现上，在使用JNI时很显然并没有这样做，它采用了更加规范的 `动态注册` 的方法进行两个层次上的关联。 
+
+### 动态注册版Hello-Jni
+
+以下代码是上面的 `hell-jni.c` 的动态注册版，代码中使用的是自定义的native函数名称。 
+    
+    #include <string.h>
+    #include <jni.h>
+    #include <stdio.h>
+    
+    jstring getHelloString();
+    
+    static JNINativeMethod gMethods[] = {
+        {
+        "stringFromJNI",
+        "()Ljava/lang/String;",
+        (void *)getHelloString
+        }
+    };
+    
+    static int nMethods = 1;
+    static JNIEnv *env = NULL;
+    
+    jstring getHelloString()
+    {
+        char msg[100];
+        sprintf(msg,"Hello from JNI.");
+        return (*env)->NewStringUTF(env, msg);
+    }
+    
+    jint JNI_OnLoad(JavaVM *vm,void *reserved){
+    
+        jint result = -1;
+        jclass clz = NULL;
+        if ((*vm)->GetEnv(vm,(void**) &env, JNI_VERSION_1_4) != JNI_OK){
+            return -1;
+        }
+        clz = (*env)->FindClass(env,"com/example/hellojni/HelloJni");
+        if((*env)->RegisterNatives(env,clz,gMethods,nMethods) < 0) {
+            return -1;
+        }
+        return JNI_VERSION_1_4;//根据JNI规范，JNI_OnLoad必须返回版本号常量否则出错。
+    }
+
+根据Java的官方文档1，当VM载入共享库时，会寻找 `jint JNI_OnLoad(JavaVM *vm, void *reserved)` 函数，如果存在则再载入共享库之后调用该函数。因此我们可以在该函数中完成native函数的注册工作。 `JNI_OnLoad` 函数的参数有两个，最主要就是 `JavaVM` 结构。 `JavaVM` 是存储VM信息的数据结构。更多信息将在后面讲到，这里我们只需要知道，通过JavaVM指针我们可以得到另一个JNI核心结构—— `JNIEnv` , `JNIEnv` 代表了整个JNI环境的数据结构，实际是一个函数表,其中存储了JNI的各种相关操作的函数指针，后文会详细介绍，在这里我们只需要知道在JNIEnv结构有以下的方法，通过调用就可以实现动态注册。 
+
+  * `jclass FindClass(JNIEnv *env, const char *name)` 传入JNIEnv指针和类名称返回代表这个类的结构2
+  * `jint RegisterNatives(JNIEnv *env, jclass clazz,const JNINativeMethod *methods, jint nMethods)` 注册native函数的函数3
+
+### JNINativeMethod结构
+
+`RegisterNatives` 用来注册一组native函数，其中使用到了 `JNINativeMethod` 结构，具体定义如下3： 
+    
+    typedef struct { 
+    
+        char *name; //Java代码中声明的native函数的名称
+    
+        char *signature; //对应Java代码层native函数的签名，下面会介绍
+    
+        void *fnPtr; //共享库中函数指针
+    
+    } JNINativeMethod; 
+    
+
+这里就涉及到了 **函数签名**
+
+#### 函数签名
+
+Java允许函数重载，因此在注册时就要具体区分出来，否则会出现混乱，因而这里就要使用一种方法将每个Java中的方法标上唯一的标记。这种方法就是 **函数签名** 。函数签名应该属于JVM内部的规范，不具有可读性。规定4如下： 
+
+类型标识Java类型
+
+Z
+boolean
+
+B
+byte
+
+C
+char
+
+S
+short
+
+I
+int
+
+J
+long
+
+F
+float
+
+D
+double
+
+L/java/lang/String;
+String
+
+[I
+int[]
+
+[L/java/lang/object;
+Object[]
+
+V
+void
+ 表1 类型标示对应表  
+
+每个函数签名大致格式 `(<参数签名>)返回值类型签名` 引用类型的参数签名形式为 `L<包名>`
+
+Java函数函数签名
+
+String f()
+()L/java/lang/String;
+
+void f(String s,AClass cls,long l)
+(L/java/lang/String;L/com/example/AClass;J)V
+
+String f(byte[])
+([B)V
+ 表2 一些签名示例 函数看起来很难懂，我们可以利用 `javap` 工具查看类中的函数签名那个信息，具体用法： 
+
+  1. 命令行转到 `$PROJECT/bin/classes` 下（$PROJECT代表Android程序项目根目录，并假定java文件已经编译好，存在bin目录） 
+  2. 执行命令 `javap -s com.example.helljni.HelloJni` 其中 `com.example.hellojni.HelloJni` 是类的完整名称 
+ 
+### 小结
+
+这一节中，通过动态注册版的hello-jni代码示例，简要介绍如何在JNI中实现更灵活的动态注册方法关联Java层中native函数和Native层中的实现函数。JNI规范中规定VM在载入共享库之后，要调用 `JNI_OnLoad` 函数，一般可以在共享库中实现该方法并完成动态注册。 初步接触了 `JavaVM` 结构和 `JNIEnv` 结构，并了解了 `JNIEnv` 的两个“函数成员” `FindClass` 和 `registerNatives` 。之后还看到了JNI中保存关联信息的 `JNINativeMethod` 结构以及了解了Java的 **函数签名** 。 
+
+## 两个世界的数据互换
+
+Java层和Native层之间如同两个说着不同语言的国家一样，如果要互相交流就必须要懂得对方的语言。在Native层中是如何表示Java层的数据类型呢？ 
+
+### 基本数据类型和引用数据类型
+
+Java数据类型Native层数据类型符号属性(unsigned/signed)长度(bit)
+
+boolean
+jboolean
+unsigned
+8
+
+byte
+jbyte
+unsigned
+8
+
+char
+jchar
+unsigned
+16
+
+short
+jshort
+signed
+16
+
+int
+jint
+signed
+32
+
+long
+jlong
+signed
+64
+
+float
+jfloat
+signed
+32
+
+double
+jdouble
+signed
+64
+ 表3 基本数据类型转换表  
+
+Java引用类型Native类型
+
+所有object
+jobject
+
+java.lang.Class
+jclass
+
+java.lang.String
+jstring
+
+Object[]
+jobjectArray
+
+boolean[]
+jbooleanArray
+
+byte[]
+jbyteArray
+
+char[]
+jcharArray
+
+short[]
+jshortArray
+
+int[]
+jintArray
+
+long[]
+jlongArray
+
+float[]
+jfloatArray
+
+double[]
+jdoubleArray
+
+java.lang.Throwable
+jthrowable
+ 表4 引用数据类型转换表 Native层中将除String以外的类都作为 `jobject` 处理，对于数组类型，只有基本数据类型的数组是单独表示，其他类型的都以 `jobjectArray` 类型存储。 
+
+### JavaVM
+
+[http://java.sun.com/docs/books/jni/html/functions.html](http://java.sun.com/docs/books/jni/html/functions.html) JavaVM指针指向了一个代表整个VM的实例，同时对所有native线程都有效。主要有以下几个接口可以使用5： 
+
+  * `DestroyJavaVM` 卸载整个VM实例 
+  * `AttachCurrentThread` 将当前的native线程attach到VM实例中，当线程加入到VM线程后，该线程就可以调用诸如访问Java对象、调用Java方法等JNI函数 
+  * `DetachCurrentThread` 与 `AttachCurrentThread` 相反 
+  * `GetEnv` 既可以用来检查当前线程是否已经attach到VM实例，还可以得到当前线程的JNIEnv结构。 
+
+### JNIEnv
+
+JNIEnv接口包含了JNI的主要功能的函数接口，注意JNIEnv是与线程相关的结构，JNIEnv接口实际是指向内部的一个函数集合，要在Native层操纵某个具体的类，或者调用方法，则需要 `JNIEnv` 。在native函数的动态注册方法这一节就使用 `JNIEnv` 的函数进行了native函数的注册。 `JNIEnv` 是指向一个函数表的指针的指针。 其具体定义如下6
+    
+    typedef const struct JNINativeInterface *JNIEnv; 
+    const struct JNINativeInterface ... = {
+    
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        GetVersion,
+    
+        DefineClass,
+        FindClass,
+    
+        FromReflectedMethod,
+        FromReflectedField,
+        ToReflectedMethod,
+    
+        GetSuperclass,
+        IsAssignableFrom,
+    
+        ToReflectedField,
+        ....//还有很多，这里略去
+    };
+    
+
+ 
+
+下图是 `JNIEnv` 的一个简单图示7
+
+![http://liuyix.com/wordpress/wp-content/uploads/2012/07/wpid-jnienv.gif](http://liuyix.com/wordpress/wp-content/uploads/2012/07/wpid-jnienv.gif)
+
+ 
+
+JNIEnv能提供的功能非常多，大体可以分为以下几类5： 
+
+  * 取得JavaVM实例 
+  * Java对象实例的操作 
+    * 成员访问 
+    * 方法调用 
+ 
+  * 静态成员的访问 
+  * String操作 
+  * Object操作 
+  * Array操作 
+  * Native方法的注册，前文介绍过。 
+  * Global Reference & Local Reference 
+  * 提供VM版本信息 
+  * JNI的Exception 
+  * 对Java反射的支持 
+ 
+
+限于篇幅，在此无法一一讲解用法。仅说明较常用的几个。更多详细信息请参考Sun出版的JNI开发者指南（[地址](http://java.sun.com/docs/books/jni/)） 
+
+ 
+
+#### 通过JNIEnv在Native层对Java对象进行访问和调用
+
+ 
+
+通过JNIEnv提供的以下方法就可以调用对象的方法 
+
+  
+    
+    //调用对象方法的函数原型
+    NativeType Call<type>Method(JNIEnv *env, jobject obj,jmethodID methodID, ...);
+    NativeType Call<type>MethodA(JNIEnv *env, jobject obj,jmethodID methodID, jvalue *args);
+    NativeType Call<type>MethodV(JNIEnv *env, jobject obj,jmethodID methodID, va_list args);
+    //对对象成员操作的函数原型
+    NativeType Get<type>Field(JNIEnv *env, jobject obj,jfieldID fieldID);
+    void Set<type>Field(JNIEnv *env, jobject obj, jfieldID fieldID,NativeType value);
+    //取得methodID,fieldId的函数原型
+    jmethodID GetMethodID(JNIEnv *env, jclass clazz,const char *name, const char *sig);
+    jfieldID GetFieldID(JNIEnv *env, jclass clazz,const char *name, const char *sig);
+    
+
+ 
+
+前三个函数为一组调用对象方法的函数，区别仅在于传递参数的方式不同。其中 `NativeType` 表示Java方法返回值对应的Native类型，具体转换见表3,表4。 `<type>` 是 `Void` / `Boolean` / `Int` / `Long` / `Object` 等Java基本数据类型。调用这一组函数时，既需要传递对象的信息，还要传递方法的标识以及Java类中的方法的参数。 `jobject` 变量既可以通过在Native层中调用 `CallObjectMethod` 得到，也可以通过后面提到的创建对象实例得到。 `methodId` 则可以通过 `GetMethodID` 取得。 `jclass` 参数可以由前文提到的 `env->FindClass` 函数取得。 类似地，还有 `CallStatic<type>Method` 、 `GetStatic<type>Field` 、 `SetStatic<type>Field` 在此不再赘述。 
+
+ 
+
+ 
+
+### jstring
+
+ 
+
+由于String特别常用，且存在比较复杂的编码问题，JNI特意将String类作为一个独立的Native层中的数据类型jstring处理。同其他Object操作类似，jstring也是通过 `JNIEnv` 来管理的。主要的操作函数有： 
+
+  
+    
+    jstring NewString(JNIEnv *env, const jchar *unicodeChars,jsize len);
+    void ReleaseStringChars(JNIEnv *env, jstring string,const jchar *chars);
+    const jchar * GetStringChars(JNIEnv *env, jstring string,jboolean *isCopy);
+    jsize GetStringLength(JNIEnv *env, jstring string);
+    
+    jstring NewStringUTF(JNIEnv *env, const char *bytes);
+    void ReleaseStringUTFChars(JNIEnv *env, jstring string,const char *utf);
+    const char * GetStringUTFChars(JNIEnv *env, jstring string,jboolean *isCopy);
+    jsize GetStringUTFLength(JNIEnv *env, jstring string);
+    
+
+ 
+
+函数的功能可以从名称大致了解到，其中 `New` 开头的都是将JNI中将String按照编码分为两种，一种是Unicode编码（UTF-16），一种是UTF-8编码 需要注意的是Native层中并没有垃圾自动回收机制，因此申请字符串资源，用完之后要进行释放操作，否则会引起内存泄露。 使用过程中还要注意：Unicode字符串不是“0结尾”的，因此不要依赖 `\u0000` 进行字符串的操作。 常见的错误还包括调用 `NewStringUTF` 传入的参数 `bytes` 必须是 `Modified UTF-8` 格式的，否则会出现乱码。8
+
+ 
+
+ 
+
+### jarray
+
+ 
+
+Native层可以通过操作jarray数据来处理Java层的数组类型。JNI中将基本类型Java数组和引用类型数组分开处理。 下面是几个Java数组的例子。 
+
+  
+    
+    int[] iarr; //基本类型数组
+    float[] farr;//基本类型数组
+    Object[] oarr;//引用类型数组，数组元素是Object
+    int[][] arr2;//引用类型数组，数组元素是 int[]
+    
+
+ 
+
+ 
+
+ 
+
+### 基本类型数组的操作
+
+ 
+
+下表是基本类型数组操作的函数小结 
+
+JNI函数描述
+
+Get<Type>ArrayRegion
+将基本类型数组的数据复制到预先申请好的C数组中或者反方向操作操作
+
+Set<Type>ArrayRegion
+
+Get<Type>ArrayElements
+获得/释放指向基本类型数组的数据的指针
+
+Release<Type>ArrayElements
+
+GetArrayLength
+返回数组的长度
+
+New<Type>Array
+新建一个指定长度的数组
+
+GetPrimitiveArrayCritical
+获得/释放指向基本类型数据的指针
+
+ReleasePrimitiveArrayCritical
+ 表5 基本数据类型数组的操作函数 
+
+ 
+
+ 
+
+### 引用类型数组的操作
+
+ 
+
+下面以一个简单的代码片段作为说明9。假设某段Java代码中声明了以下的native函数 
+
+  
+    
+    native int[][] get2DArray(int size);//返回 int[size][size]大小的二维数组
+    
+
+ 
+
+Native层可以用以下代码实现 
+
+  
+    
+    jobjectArray get2DArray(jint size){
+         jobjectArray result;
+         int i;
+         jclass intArrCls = (*env)->FindClass(env, "[I");
+         if (intArrCls == NULL) {
+             return NULL; /* exception thrown */
+         }
+         result = (*env)->NewObjectArray(env, size, intArrCls,
+                                         NULL);
+         if (result == NULL) {
+             return NULL; /* out of memory error thrown 可能遇到空间不足*/
+         }
+         for (i = 0; i < size; i++) {
+             jint tmp[256];  /* make sure it is large enough! */
+             int j;
+             jintArray iarr = (*env)->NewIntArray(env, size);
+             if (iarr == NULL) {
+                 return NULL; /* out of memory error thrown */
+             }
+             for (j = 0; j < size; j++) {
+                 tmp[j] = i + j;
+             }
+             (*env)->SetIntArrayRegion(env, iarr, 0, size, tmp);
+             (*env)->SetObjectArrayElement(env, result, i, iarr);
+             (*env)->DeleteLocalRef(env, iarr);
+         }
+         return result;
+    }
+    
+
+ 
+
+上述代码展示了 `NewObjectArray` 、 `NewIntArray` 、 `SetObjectArrayElement` 、 `SetIntArrayRegion` 等函数的用法，代码可读性很高，这里不做进一步解释。 
+
+ 
+
+ 
+
+## 垃圾回收管理
+
+ 
+
+Java作为高级语言，具有垃圾自动回收管理机制，内存管理相对轻松。而C/C++则没有这样的机制，因此在Native层对象实例可能被垃圾回收。这里就涉及到了JNI的对象引用的管理。 JNI支持三种引用类型—— `LocalReference` /  `GlobalReference` / `WeakGlobalReference` ，每一种引用类型的生命周期是不同的。 大多数JNI函数使用的是 **LocalReference** ,即在函数中调用的"New"操作返回的都是对象的 `LocalReference` 。 `LocalReference` 只在函数执行代码范围内有效，只要JNI函数一返回，引用就会被释放。相对地， `GlobalReference` 可以在多个函数之间共享，直到开发者自己调用释放函数才会被垃圾回收。另一方面 `WeakGlobalReference` 则具有 **引用缓存** 功能——一方面它可以像 `GlobalReference` 一样跨函数共享引用，另一方面它不会阻碍引用的垃圾回收过程。但JNI文档中建议开发者使用 `GlobalReference` 和 `LocalReference` 替代 `WeakGlobalReference` ,因为该引用随时都可能会被垃圾回收，即使是在调用了 `IsSameObject` 判定引用有效之后仍然可能会失效10。 有关引用的操作有 
+
+  
+    
+    //GlobalReference
+    jobject NewGlobalRef(JNIEnv *env, jobject obj);
+    void DeleteGlobalRef(JNIEnv *env, jobject globalRef);
+    //LocalReference
+    void DeleteLocalRef(JNIEnv *env, jobject localRef);
+    jobject NewLocalRef(JNIEnv *env, jobject ref);
+    //WeakLocalReference
+    jweak NewWeakGlobalRef(JNIEnv *env, jobject obj);
+    void DeleteWeakGlobalRef(JNIEnv *env, jweak obj);
+    //通用的引用操作
+    jobject AllocObject(JNIEnv *env, jclass clazz);
+    jobject NewObject(JNIEnv *env, jclass clazz,jmethodID methodID, ...);
+    jclass GetObjectClass(JNIEnv *env, jobject obj);
+    jobjectRefType GetObjectRefType(JNIEnv* env, jobject obj);
+    jboolean IsSameObject(JNIEnv *env, jobject ref1,jobject ref2);
+    
+
+ 
+
+更多信息请参考官方文档（[地址](http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#global_local))和JNI开发者指南([地址](http://java.sun.com/docs/books/jni/html/refs.html)) 
+
+ 
+
+ 
+
+## 总结
+
+ 
+
+本文大致介绍了Android NDK的相关技术以及NDK的基础——JNI的使用，其中简述了NDK的开发流程、函数注册的两种方式、JNI技术的基本内容，其中包括了Java层和Native层之间的数据转换和互操作方法。不难发现，JNI技术扩展了原有Java技术的能力。 
+
+## Footnotes: 
+
+1 Java Native Interface Specification [http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/invocation.html](http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/invocation.html)
+
+  
+
+2 [http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#wp16027](http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#wp16027)
+
+  
+
+3 [http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#wp17734](http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#wp17734)
+
+  
+
+4 深入理解Android：卷I pp28-29 
+
+  
+
+5 Java Native Interface: Programmer's Guide and Specification [http://java.sun.com/docs/books/jni/html/functions.html](http://java.sun.com/docs/books/jni/html/functions.html)
+
+  
+
+6 JNIEnv定义 [http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#wp23720](http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#wp23720)
+
+  
+
+7 [http://java.sun.com/docs/books/jni/html/objtypes.html#5190](http://java.sun.com/docs/books/jni/html/objtypes.html#5190)
+
+  
+
+8 Android Developers JNI Tips [http://developer.android.com/guide/practices/design/jni.html#UTF\_8\_and\_UTF\_16\_strings](http://developer.android.com/guide/practices/design/jni.html#UTF_8_and_UTF_16_strings)
+
+  
+
+9 代码改编自The Java Native Interface Programmer's Guide and Specification [http://java.sun.com/docs/books/jni/html/objtypes.html#27791](http://java.sun.com/docs/books/jni/html/objtypes.html#27791)
+
+  
+
+10 [http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#weak](http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/functions.html#weak)
+
+ 
