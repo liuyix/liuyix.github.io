@@ -19,19 +19,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders/">
+  <link rel="canonical" href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <script src="/javascripts/footnote.js" type="text/javascript"></script>-->
 
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -108,13 +109,13 @@
   </header>
 
 
-<div class="entry-content"><p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br />
-应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。  </p>
+<div class="entry-content"><p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
 
-<h2 id="os">OS存在于每一个程序之中</h2>
+<h2>OS存在于每一个程序之中</h2>
 
-<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br />
-其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br />
+<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br/>
+其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
 参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
 
 <p><img src="/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>

@@ -19,19 +19,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.org/blog/2013/my-customize-octopress/">
+  <link rel="canonical" href="http://liuyix.org/blog/2013/my-customize-octopress">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <script src="/javascripts/footnote.js" type="text/javascript"></script>-->
 
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -107,39 +108,42 @@
 
 
 <div class="entry-content"><!-- * Toc -->
+
+
 <!-- {:toc} -->
 
-<h3 id="boarder">表格boarder的修复</h3>
 
-<p>参考: <a href="'http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/'">链接</a><br />
+<h3>表格boarder的修复</h3>
+
+<p>参考: <a href="" title="http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/">链接</a><br/>
 只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 <code>sass/custom/_styles.scss</code> 里面了就出效果了。</p>
 
-<h3 id="markdown-interpreterkramdown">markdown interpreter换成了kramdown</h3>
+<h3>markdown interpreter换成了kramdown</h3>
 
 <p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
 
-<h3 id="page">404 page</h3>
+<h3>404 page</h3>
 
 <p>在source下面建立404.html</p>
 
-<h3 id="sidebar">自定义sidebar</h3>
+<h3>自定义sidebar</h3>
 
 <p>这个教程里就有</p>
 
-<h3 id="category-list">category-list</h3>
+<h3>category-list</h3>
 
 <p>TODO</p>
 
-<h3 id="stylesheet">stylesheet小幅改动</h3>
+<h3>stylesheet小幅改动</h3>
 
-<h4 id="awkward-ul-ol">awkward ul ol</h4>
+<h4>awkward ul ol</h4>
 
 <p><a href="https://github.com/imathis/octopress/issues/417">issue417</a>
 在 <code>sass/custom/_styles.scss</code> 里修改</p>
 
-<h4 id="footnote">footnote</h4>
-<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
+<h4>footnote</h4>
 
+<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
 </div>
 
 

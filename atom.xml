@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-04-21T17:48:34+08:00</updated>
+  <updated>2013-06-21T12:13:04+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -18,13 +18,13 @@
     <link href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders/"/>
     <updated>2013-04-09T21:05:00+08:00</updated>
     <id>http://liuyix.org/blog/2013/advanced-linkers-and-loaders</id>
-    <content type="html"><![CDATA[<p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br />
-应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。  </p>
+    <content type="html"><![CDATA[<p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
 
-<h2 id="os">OS存在于每一个程序之中</h2>
+<h2>OS存在于每一个程序之中</h2>
 
-<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br />
-其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br />
+<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br/>
+其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
 参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
 
 <p><img src="http://liuyix.org/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
@@ -39,39 +39,42 @@
     <updated>2013-03-08T22:27:00+08:00</updated>
     <id>http://liuyix.org/blog/2013/my-customize-octopress</id>
     <content type="html"><![CDATA[<!-- * Toc -->
+
+
 <!-- {:toc} -->
 
-<h3 id="boarder">表格boarder的修复</h3>
 
-<p>参考: <a href="'http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/'">链接</a><br />
+<h3>表格boarder的修复</h3>
+
+<p>参考: <a href="" title="http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/">链接</a><br/>
 只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 <code>sass/custom/_styles.scss</code> 里面了就出效果了。</p>
 
-<h3 id="markdown-interpreterkramdown">markdown interpreter换成了kramdown</h3>
+<h3>markdown interpreter换成了kramdown</h3>
 
 <p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
 
-<h3 id="page">404 page</h3>
+<h3>404 page</h3>
 
 <p>在source下面建立404.html</p>
 
-<h3 id="sidebar">自定义sidebar</h3>
+<h3>自定义sidebar</h3>
 
 <p>这个教程里就有</p>
 
-<h3 id="category-list">category-list</h3>
+<h3>category-list</h3>
 
 <p>TODO</p>
 
-<h3 id="stylesheet">stylesheet小幅改动</h3>
+<h3>stylesheet小幅改动</h3>
 
-<h4 id="awkward-ul-ol">awkward ul ol</h4>
+<h4>awkward ul ol</h4>
 
 <p><a href="https://github.com/imathis/octopress/issues/417">issue417</a>
 在 <code>sass/custom/_styles.scss</code> 里修改</p>
 
-<h4 id="footnote">footnote</h4>
-<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
+<h4>footnote</h4>
 
+<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
 ]]></content>
   </entry>
   
@@ -82,9 +85,10 @@
     <id>http://liuyix.org/blog/2013/expecting-octopress-2-dot-1</id>
     <content type="html"><![CDATA[<p>想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。</p>
 
-<p>搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个<a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">疑问</a>了，作者给予了回答，大意是太臃肿没必要，然社区群众们呼声很高，Octopress计划在2.1版本中支持jQuery!  </p>
+<p>搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个<a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">疑问</a>了，作者给予了回答，大意是太臃肿没必要，然社区群众们呼声很高，Octopress计划在2.1版本中支持jQuery!</p>
 
-<blockquote><p>&#8230;Eventually I decided to add jQuery because that is what the community wants and it makes it easier for folks to work with javascript on Octopress. &#8230;</p><footer><strong>imathis, author of Octopress</strong> <cite><a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">github.com/imathis/octopress/&hellip;</a></cite></footer></blockquote>
+<blockquote><p>&#8230;Eventually I decided to add jQuery because that is what the community wants and it makes it easier for folks to work with javascript on Octopress. &#8230;</p><footer><strong>imathis, author of Octopress</strong> <cite><a href='https://github.com/imathis/octopress/issues/637#issuecomment-6565847'>github.com/imathis/octopress/&hellip;</a></cite></footer></blockquote>
+
 
 <p>很期待新版本的Octopress!!</p>
 ]]></content>
@@ -95,65 +99,69 @@
     <link href="http://liuyix.org/blog/2013/hello-octopress/"/>
     <updated>2013-03-07T18:45:00+08:00</updated>
     <id>http://liuyix.org/blog/2013/hello-octopress</id>
-    <content type="html"><![CDATA[<p><img src="http://liuyix.org/images/octopress-logo.png" title="" /></p>
+    <content type="html"><![CDATA[<p><img src="http://liuyix.org/images/octopress-logo.png" title="" ></p>
 
-<h2 id="octopress">初识Octopress</h2>
+<h2>初识Octopress</h2>
 
 <p>忙里偷闲，折腾下Octopress～</p>
+
 <blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages.</p><footer><strong>http://octopress.org</strong></footer></blockquote>
-<p>Octopress说白了就是一个可以使用markdown<sup id="fnref:markdown"><a href="#fn:markdown" rel="footnote">1</a></sup>写博客的静态网页生成后端。而且还可以利用<a href="http://pages.github.com/" title="github pages">github pages</a>做自己的博客。<br />
+
+
+<p>Octopress说白了就是一个可以使用markdown<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>写博客的静态网页生成后端。而且还可以利用<a href="http://pages.github.com/" title="github pages">github pages</a>做自己的博客。<br/>
 使用了一段时间的Wordpress写博客，然后写着写着就没有然后了。没有坚持下来的原因很大一部分是因为自己，当然(很喜欢这个“当然”)Wordpress不爽体验也是一个原因。这促使我考虑Wordpress的替代方案。</p>
 
-<h3 id="wordpressoctopress">[吐槽]从Wordpress转移到Octopress的原因</h3>
+<h3>[吐槽]从Wordpress转移到Octopress的原因</h3>
 
-<p>吐槽Wordpress各种不爽之前，先声明这不是技术上的比较，也不是产品上的优劣比较，我只是从个人需求的角度说一下Wordpress不适合写技术博客，也可以说不能快速的书写有质量的文章。 
-简单的说Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。  </p>
+<p>吐槽Wordpress各种不爽之前，先声明这不是技术上的比较，也不是产品上的优劣比较，我只是从个人需求的角度说一下Wordpress不适合写技术博客，也可以说不能快速的书写有质量的文章。
+简单的说Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。</p>
 
 <!--more-->
 
-<h4 id="emacs">不能很方便的(在emacs里)写博客</h4>
 
-<p><span class="pullquote-right" data-pullquote="Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。">
-程序员优点之一就是 <em>“懒”</em> ，自然写博客也懒得离开编辑器在网页上码字，而且网页上码字体验远不如顺手的编辑器，还必须要联网，最让人受不了的就是手要离开键盘，用 <em>鼠标</em> 来进行各种操作！（Windows用户你不会理解的…）。<br />
+<h4>不能很方便的(在emacs里)写博客</h4>
+
+<p><span class='pullquote-right' data-pullquote='Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。'>
+程序员优点之一就是 <em>“懒”</em> ，自然写博客也懒得离开编辑器在网页上码字，而且网页上码字体验远不如顺手的编辑器，还必须要联网，最让人受不了的就是手要离开键盘，用 <em>鼠标</em> 来进行各种操作！（Windows用户你不会理解的&hellip;）。<br/>
 Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。
-使用Wordpress的这段时间里，我一直在不停的探索如何更高效更舒服的：从最初的网页上的编辑器插件，到搜索各种Linux,Windows客户端( <a href="http://sns.juziyue.com" title="菊子曰的网站">菊子曰</a>是这一时期的终点，使用上很适合非程序员，但不幸的是只有Windows版本), 最终遇到了org2blog——使用emacs org-mode来写博客。经过我持续不懈的折腾，Wordpress这个诟病基本被我解决掉了。<br />
+使用Wordpress的这段时间里，我一直在不停的探索如何更高效更舒服的：从最初的网页上的编辑器插件，到搜索各种Linux,Windows客户端( <a href="http://sns.juziyue.com" title="菊子曰的网站">菊子曰</a>是这一时期的终点，使用上很适合非程序员，但不幸的是只有Windows版本), 最终遇到了org2blog——使用emacs org-mode来写博客。经过我持续不懈的折腾，Wordpress这个诟病基本被我解决掉了。<br/>
 </span></p>
 
-<h5 id="octopress-side">Octopress Side</h5>
+<h5>Octopress Side</h5>
 
-<p>Octopress前端支持markdown类的语法，和org-mode相比，同样适合编写格式化的文档，语法相似，更加精简。更欢乐的是markdown文本非常具有可读性（这也是markdown的设计哲学）。<br />
+<p>Octopress前端支持markdown类的语法，和org-mode相比，同样适合编写格式化的文档，语法相似，更加精简。更欢乐的是markdown文本非常具有可读性（这也是markdown的设计哲学）。<br/>
 不仅如此，依托于github，博客文章还具有云端 <em>增量备份</em> 的功能。这点和Wordpress不同，Wordpress上写好的内容用以HTML方式存入MySQL数据库，虽然也有备份的功能，可本地化特点的缺失，<em>需要离开编辑器操作</em> 实在是个鸡肋。
 写作之后的同步操作也无需离开编辑器，几条命令就搞定网站！</p>
 
-<h4 id="section">需要购买主机</h4>
+<h4>需要购买主机</h4>
 
 <p>这是使用Wordpress写博客首先需要操心的事。搭建需要花钱买主机停放你的站点，虽然成本不高，但也不是无成本的。我目前的消费水平还不足以为了一个每天只有不到100IP的小站点购买VPS，需要精打细算——不仅要选择哪家主机划算，还要花折腾主机，还时不时地担心自己或者服务商或者同IP的莫个站点被GFW墙掉。总之一个字“累”！</p>
 
-<h5 id="octopress-side-1">Octopress Side</h5>
+<h5>Octopress Side</h5>
 
 <p>首先是免费，其次还不如管访问延时等主机相关的问题了。还记得曾有一段时间为了优化访问，花了很多精力在减少插件、优化插件、压缩网页上。虽然建站的很多东西，again, 和写博客是无关的。相比之下，Octopress实际最后就是静态的网页而非动态网站，所以不需要进行优化。</p>
 
-<h4 id="section-1">博客的配置相对复杂</h4>
+<h4>博客的配置相对复杂</h4>
 
-<p>玩过Wordpress的人都明白平时最常折腾的就是插件和主题，还有Wordpress的升级。<br />
-对于只想简简单单写技术博客，写日记，发牢骚的人来说，这些也是额外需要费心思的地方，而且没点时间和技术，博客还会显得丑陋不堪，缺乏美感。 </p>
+<p>玩过Wordpress的人都明白平时最常折腾的就是插件和主题，还有Wordpress的升级。<br/>
+对于只想简简单单写技术博客，写日记，发牢骚的人来说，这些也是额外需要费心思的地方，而且没点时间和技术，博客还会显得丑陋不堪，缺乏美感。</p>
 
-<h5 id="octopress-side-2">Octopress Side</h5>
+<h5>Octopress Side</h5>
 
-<p>认识Octopress就是在一次搜索时看到一个技术博客，那个博客让我眼前一亮——简洁、大方，没有大多数Wordpress博客给人的花哨之感，很对程序员的胃口，仔细读了那个博客，才知道除了Wordpress还有一个叫Octopress的东东。<br />
-Octopress在界面上完成度很高，可以说不需要任何修改，其简约之美也足以媲美大多数的Wordpress主题。于是可以更加专注于内容。  </p>
+<p>认识Octopress就是在一次搜索时看到一个技术博客，那个博客让我眼前一亮——简洁、大方，没有大多数Wordpress博客给人的花哨之感，很对程序员的胃口，仔细读了那个博客，才知道除了Wordpress还有一个叫Octopress的东东。<br/>
+Octopress在界面上完成度很高，可以说不需要任何修改，其简约之美也足以媲美大多数的Wordpress主题。于是可以更加专注于内容。</p>
 
 <p>第一次写Octopress，各种不熟练，花了好久。就先写到这里，有时间再写下自己的配置过程。</p>
 
 <hr />
-
 <div class="footnotes">
-  <ol>
-    <li id="fn:markdown">
-      <p>[http://en.wikipedia.org/wiki/Markdown]<a href="#fnref:markdown" rel="reference">&#8617;</a></p>
-    </li>
-  </ol>
+<hr/>
+<ol>
+<li id="fn:1">
+<p>[http://en.wikipedia.org/wiki/Markdown]<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+</ol>
 </div>
+
 ]]></content>
   </entry>
   
