@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>《程序员的自我修养》小结 - Liuyix</title>
+  <title>Ubuntu下手动安装Eclipse CDT - Liuyix</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="应用开发程序员面向的是软件用户;系统程序员面向的是程序员。
-应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统 &hellip;">
+  <meta name="description" content="这篇文章期望的读者是谁？ Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写 希望达到的目标？ 增加一点linux基础知识的认识（严格说是ubuntu的目录结构）
+练习常用的linux命令（在本文中使用到了解压缩、文件夹的移动、创建符号连接） &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders">
+  <link rel="canonical" href="http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
@@ -84,7 +84,7 @@
   
   <header>
     
-      <h1 class="entry-title">《程序员的自我修养》小结</h1>
+      <h1 class="entry-title">Ubuntu下手动安装Eclipse CDT</h1>
     
     
       <p class="meta">
@@ -100,7 +100,7 @@
   
 
 
-<time datetime="2013-04-09T21:05:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+<time datetime="2011-04-11T21:06:09+08:00" pubdate data-updated="true">Apr 11<span>th</span>, 2011</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -109,18 +109,86 @@
   </header>
 
 
-<div class="entry-content"><p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
-应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
+<div class="entry-content"><h2>这篇文章期望的读者是谁？</h2>
 
-<h2>OS存在于每一个程序之中</h2>
+<p>Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写</p>
 
-<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br/>
-其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
-参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
+<h2>希望达到的目标？</h2>
 
-<p><img src="/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
+<ul>
+<li><p>增加一点linux基础知识的认识（严格说是ubuntu的目录结构）</p></li>
+<li><p>练习常用的linux命令（在本文中使用到了解压缩、文件夹的移动、创建符号连接）</p></li>
+<li><p>初步了解Linux Desktop Entry的写法</p></li>
+</ul>
 
-<p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
+
+<!-- more -->
+
+
+<h2>正题</h2>
+
+<ol>
+<li><p> 在Eclipse CDT官网下载Linux-32bit的安装包，比如下载到你的主目录下</p></li>
+<li><p> 终端下进入你下载的安装包的路径（如上文的主目录:~）</p></li>
+<li><p> <strong>解压缩</strong>下载的压缩包:[bash]tar -zxvf eclipse-cpp-helios-SR2-linux-gtk.tar.gz[/bash]</p></li>
+<li><p> 将文件夹所有内容移动到<strong><code>/usr/local/lib</code></strong>该位置相当于Windows里的Program Files文件夹，用于放置本地程序，注意此处必须使用root权限[bash]sudo mv eclipse /usr/local/lib[/bash]</p></li>
+<li><p> 在<strong><code>/usr/local/bin</code></strong>下创建eclipse启动程序的符号链接（符号链接相当于快捷方式），便于在终端里调用启动[bash]sudo ln -s /usr/local/lib/eclipse/eclipse /usr/local/bin[/bash]</p></li>
+<li><p> 创建Linux Desktop Entry:就是将Eclipse CDT添加到Ubuntu程序菜单中[bash]sudo gedit /usr/share/applications/cdt-eclipse.desktop[/bash]</p></li>
+</ol>
+
+
+<p>该条命令的含义：在<code>/usr/share/applications/</code>目录下创建一个名为cdt-eclipse.desktop文件，该路径用于放置你看到的程序菜单中的所有程序，有兴趣可以用nautilus浏览</p>
+
+<ol>
+<li> 在弹出的gedit中写入以下内容</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[Desktop Entry]
+</span><span class='line'>Name=Eclipse-CDT
+</span><span class='line'>GenericName[zh_CN]=Eclipse的C/C++环境
+</span><span class='line'>GenericName=Eclipse with CDT
+</span><span class='line'>Comment=Eclipse C/C++ IDE
+</span><span class='line'>Exec=eclipse
+</span><span class='line'>Terminal=false
+</span><span class='line'>Icon=cdt-eclipse
+</span><span class='line'>Type=Application
+</span><span class='line'>Categories=Development;IDE;[/text]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>简单说明:<br/>
+[Name]菜单项显示的名称<br/>
+[GenericName]应用程序的通用名称<br/>
+[GenericName[zh_CN]]国际化显示，当本地编码与之相符则显示相应的内容<br/>
+[Exec]调用的命令<br/>
+[Terminal]布尔值，若为真则是“在终端下运行”[Icon]表示相应的图标文件名称（图标文件在附件中）<br/>
+[Type]Desktop Entry文件的类型，Application表示该Desktop Entry文件指向了一个应用程序<br/>
+[Categories]该项只有在&#8221;Type&#8221;是&#8221;Application&#8221;时才有效。该项表示相关应用程序在菜单中显示的类别。</p>
+
+<ol>
+<li> 图标文件的处理：系统会自动依次在以下几个目录中查找<code>$HOME/.icons--&gt;$XDG_DATA_DIRS/icons --&gt;/usr/share/pixmaps</code>，因此将图标放入到<code>/usr/share/pixmaps/</code>目录中以便所有用户都可以使用到</li>
+</ol>
+
+
+<p>到这里就算是大功告成了，希望你通过实际的操作，能更加熟悉linux的环境！</p>
+
+<p><strong>附件</strong>（此附件包含图标以及desktop文件）<a href="http://u.115.com/file/f9e78679f9">下载链接</a></p>
+
+<h2>参考链接</h2>
+
+<p><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-dtef/index.html">Linux Desktop Entry 文件深入解析</a></p>
+
+<p><a href="http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html">Icon Theme Specification</a></p>
 </div>
 
 
@@ -143,8 +211,14 @@
   
 
 
-<time datetime="2013-04-09T21:05:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+<time datetime="2011-04-11T21:06:09+08:00" pubdate data-updated="true">Apr 11<span>th</span>, 2011</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
 
 
     </p>
@@ -158,10 +232,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/my-customize-octopress/" title="Previous Post: Customize Octopress">&laquo; Customize Octopress</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/android-root/" title="Next Post: Android Root Guide">Android Root Guide &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/hello-octopress/" title="Next Post: Hello Octopress!">Hello Octopress! &raquo;</a>
       
     </p>
   </footer>
@@ -241,8 +313,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://liuyix.org/blog/2013/advanced-linkers-and-loaders/';
-        var disqus_url = 'http://liuyix.org/blog/2013/advanced-linkers-and-loaders/';
+        var disqus_identifier = 'http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu/';
+        var disqus_url = 'http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu/';
         var disqus_script = 'embed.js';
       
     (function () {

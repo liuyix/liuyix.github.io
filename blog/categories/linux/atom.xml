@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | Liuyix]]></title>
+  <link href="http://liuyix.org/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2013-07-14T22:25:15+08:00</updated>
+  <id>http://liuyix.org/</id>
+  <author>
+    <name><![CDATA[liuyix]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu下手动安装Eclipse CDT]]></title>
+    <link href="http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu/"/>
+    <updated>2011-04-11T21:06:09+08:00</updated>
+    <id>http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu</id>
+    <content type="html"><![CDATA[<h2>这篇文章期望的读者是谁？</h2>
+
+<p>Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写</p>
+
+<h2>希望达到的目标？</h2>
+
+<ul>
+<li><p>增加一点linux基础知识的认识（严格说是ubuntu的目录结构）</p></li>
+<li><p>练习常用的linux命令（在本文中使用到了解压缩、文件夹的移动、创建符号连接）</p></li>
+<li><p>初步了解Linux Desktop Entry的写法</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>正题</h2>
+
+<ol>
+<li><p> 在Eclipse CDT官网下载Linux-32bit的安装包，比如下载到你的主目录下</p></li>
+<li><p> 终端下进入你下载的安装包的路径（如上文的主目录:~）</p></li>
+<li><p> <strong>解压缩</strong>下载的压缩包:[bash]tar -zxvf eclipse-cpp-helios-SR2-linux-gtk.tar.gz[/bash]</p></li>
+<li><p> 将文件夹所有内容移动到<strong><code>/usr/local/lib</code></strong>该位置相当于Windows里的Program Files文件夹，用于放置本地程序，注意此处必须使用root权限[bash]sudo mv eclipse /usr/local/lib[/bash]</p></li>
+<li><p> 在<strong><code>/usr/local/bin</code></strong>下创建eclipse启动程序的符号链接（符号链接相当于快捷方式），便于在终端里调用启动[bash]sudo ln -s /usr/local/lib/eclipse/eclipse /usr/local/bin[/bash]</p></li>
+<li><p> 创建Linux Desktop Entry:就是将Eclipse CDT添加到Ubuntu程序菜单中[bash]sudo gedit /usr/share/applications/cdt-eclipse.desktop[/bash]</p></li>
+</ol>
+
+
+<p>该条命令的含义：在<code>/usr/share/applications/</code>目录下创建一个名为cdt-eclipse.desktop文件，该路径用于放置你看到的程序菜单中的所有程序，有兴趣可以用nautilus浏览</p>
+
+<ol>
+<li> 在弹出的gedit中写入以下内容</li>
+</ol>
+
+
+<p><code>
+[Desktop Entry]
+Name=Eclipse-CDT
+GenericName[zh_CN]=Eclipse的C/C++环境
+GenericName=Eclipse with CDT
+Comment=Eclipse C/C++ IDE
+Exec=eclipse
+Terminal=false
+Icon=cdt-eclipse
+Type=Application
+Categories=Development;IDE;[/text]
+</code></p>
+
+<p>简单说明:<br/>
+[Name]菜单项显示的名称<br/>
+[GenericName]应用程序的通用名称<br/>
+[GenericName[zh_CN]]国际化显示，当本地编码与之相符则显示相应的内容<br/>
+[Exec]调用的命令<br/>
+[Terminal]布尔值，若为真则是“在终端下运行”[Icon]表示相应的图标文件名称（图标文件在附件中）<br/>
+[Type]Desktop Entry文件的类型，Application表示该Desktop Entry文件指向了一个应用程序<br/>
+[Categories]该项只有在"Type"是"Application"时才有效。该项表示相关应用程序在菜单中显示的类别。</p>
+
+<ol>
+<li> 图标文件的处理：系统会自动依次在以下几个目录中查找<code>$HOME/.icons--&gt;$XDG_DATA_DIRS/icons --&gt;/usr/share/pixmaps</code>，因此将图标放入到<code>/usr/share/pixmaps/</code>目录中以便所有用户都可以使用到</li>
+</ol>
+
+
+<p>到这里就算是大功告成了，希望你通过实际的操作，能更加熟悉linux的环境！</p>
+
+<p><strong>附件</strong>（此附件包含图标以及desktop文件）<a href="http://u.115.com/file/f9e78679f9">下载链接</a></p>
+
+<h2>参考链接</h2>
+
+<p><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-dtef/index.html">Linux Desktop Entry 文件深入解析</a></p>
+
+<p><a href="http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html">Icon Theme Specification</a></p>
+]]></content>
+  </entry>
+  
+</feed>
