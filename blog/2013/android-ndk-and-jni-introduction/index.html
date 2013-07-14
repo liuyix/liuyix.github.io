@@ -1,28 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Liuyix]]></title>
-  <link href="http://liuyix.org/atom.xml" rel="self"/>
-  <link href="http://liuyix.org/"/>
-  <updated>2013-07-14T22:01:17+08:00</updated>
-  <id>http://liuyix.org/</id>
-  <author>
-    <name><![CDATA[liuyix]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Android平台上的JNI技术介绍 - Liuyix</title>
+  <meta name="author" content="liuyix">
 
   
-  <entry>
-    <title type="html"><![CDATA[Android平台上的JNI技术介绍]]></title>
-    <link href="http://liuyix.org/blog/2013/android-ndk-and-jni-introduction/"/>
-    <updated>2013-07-15T06:00:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/android-ndk-and-jni-introduction</id>
-    <content type="html"><![CDATA[<h2>NDK简介</h2>
+  <meta name="description" content="NDK简介 Android是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。 图0-1 Android系统架构图 图0-1是Android系统架构图。大多数程序位于最上层的Java Application层。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.org/blog/2013/android-ndk-and-jni-introduction">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Liuyix</a></h1>
+  
+    <h2>Just another coder.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Android平台上的JNI技术介绍</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-15T06:00:00+08:00" pubdate data-updated="true">Jul 15<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>NDK简介</h2>
 
 <p>Android是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。</p>
 
-<p><img src="http://liuyix.org/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
+<p><img src="/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
 
 <center>图0-1 Android系统架构图</center>
 
@@ -48,7 +138,7 @@
 
 <p>JNI（Java Native Interface）是Java SDK 1.1时正式推出的，目的是为不同JVM实现间提供一个标准接口，从而使Java应用可以使用本地二进制共享库，扩充了原有JVM的能力，同时Java程序仍然无需再次编译就可以运行在其他平台上，即保持了平台独立性又能使用平台相关的本地共享库提升性能。在Java开发中的位置如下图所示。JNI作为连接平台独立的Java层(以下简称Java层)与与平台相关的本地环境(以下简称Native层)之间的桥梁。</p>
 
-<p><img src="http://liuyix.org/images/role-of-jni-intro.gif" alt="/images/role-of-jni-intro.gif" /></p>
+<p><img src="/images/role-of-jni-intro.gif" alt="/images/role-of-jni-intro.gif" /></p>
 
 <p>图1-1 JNI在Java开发中的位置</p>
 
@@ -845,7 +935,7 @@
 
 <p>下图是 <code>JNIEnv</code> 的一个简单图示<sup id="fnref:7"><a href="#fn:7" rel="footnote">7</a></sup></p>
 
-<p><img src="http://liuyix.org/images/jnienv.gif" alt="/images/jnienv.gif" /></p>
+<p><img src="/images/jnienv.gif" alt="/images/jnienv.gif" /></p>
 
 <p>JNIEnv能提供的功能非常多，大体可以分为以下几类5：</p>
 
@@ -1144,170 +1234,150 @@
 </ol>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Android Root Guide]]></title>
-    <link href="http://liuyix.org/blog/2013/android-root/"/>
-    <updated>2013-07-14T19:14:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/android-root</id>
-    <content type="html"><![CDATA[<h2>Root</h2>
-
-<p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[《程序员的自我修养》小结]]></title>
-    <link href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders/"/>
-    <updated>2013-04-09T21:05:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/advanced-linkers-and-loaders</id>
-    <content type="html"><![CDATA[<p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
-应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
-
-<h2>OS存在于每一个程序之中</h2>
-
-<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br/>
-其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
-参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
-
-<p><img src="http://liuyix.org/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
-
-<p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Customize Octopress]]></title>
-    <link href="http://liuyix.org/blog/2013/my-customize-octopress/"/>
-    <updated>2013-03-08T22:27:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/my-customize-octopress</id>
-    <content type="html"><![CDATA[<!-- * Toc -->
-
-
-<!-- {:toc} -->
-
-
-<h3>表格boarder的修复</h3>
-
-<p>参考: <a href="" title="http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/">链接</a><br/>
-只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 <code>sass/custom/_styles.scss</code> 里面了就出效果了。</p>
-
-<h3>markdown interpreter换成了kramdown</h3>
-
-<p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
-
-<h3>404 page</h3>
-
-<p>在source下面建立404.html</p>
-
-<h3>自定义sidebar</h3>
-
-<p>这个教程里就有</p>
-
-<h3>category-list</h3>
-
-<p>TODO</p>
-
-<h3>stylesheet小幅改动</h3>
-
-<h4>awkward ul ol</h4>
-
-<p><a href="https://github.com/imathis/octopress/issues/417">issue417</a>
-在 <code>sass/custom/_styles.scss</code> 里修改</p>
-
-<h4>footnote</h4>
-
-<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[期待 Octopress 2.1]]></title>
-    <link href="http://liuyix.org/blog/2013/expecting-octopress-2-dot-1/"/>
-    <updated>2013-03-08T00:11:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/expecting-octopress-2-dot-1</id>
-    <content type="html"><![CDATA[<p>想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。</p>
-
-<p>搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个<a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">疑问</a>了，作者给予了回答，大意是太臃肿没必要，然社区群众们呼声很高，Octopress计划在2.1版本中支持jQuery!</p>
-
-<blockquote><p>&#8230;Eventually I decided to add jQuery because that is what the community wants and it makes it easier for folks to work with javascript on Octopress. &#8230;</p><footer><strong>imathis, author of Octopress</strong> <cite><a href='https://github.com/imathis/octopress/issues/637#issuecomment-6565847'>github.com/imathis/octopress/&hellip;</a></cite></footer></blockquote>
-
-
-<p>很期待新版本的Octopress!!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="http://liuyix.org/blog/2013/hello-octopress/"/>
-    <updated>2013-03-07T18:45:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/hello-octopress</id>
-    <content type="html"><![CDATA[<p><img src="http://liuyix.org/images/octopress-logo.png" title="" ></p>
-
-<h2>初识Octopress</h2>
-
-<p>忙里偷闲，折腾下Octopress～</p>
-
-<blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages.</p><footer><strong>http://octopress.org</strong></footer></blockquote>
-
-
-<p>Octopress说白了就是一个可以使用markdown<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>写博客的静态网页生成后端。而且还可以利用<a href="http://pages.github.com/" title="github pages">github pages</a>做自己的博客。<br/>
-使用了一段时间的Wordpress写博客，然后写着写着就没有然后了。没有坚持下来的原因很大一部分是因为自己，当然(很喜欢这个“当然”)Wordpress不爽体验也是一个原因。这促使我考虑Wordpress的替代方案。</p>
-
-<h3>[吐槽]从Wordpress转移到Octopress的原因</h3>
-
-<p>吐槽Wordpress各种不爽之前，先声明这不是技术上的比较，也不是产品上的优劣比较，我只是从个人需求的角度说一下Wordpress不适合写技术博客，也可以说不能快速的书写有质量的文章。
-简单的说Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。</p>
-
-<!--more-->
-
-
-<h4>不能很方便的(在emacs里)写博客</h4>
-
-<p><span class='pullquote-right' data-pullquote='Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。'>
-程序员优点之一就是 <em>“懒”</em> ，自然写博客也懒得离开编辑器在网页上码字，而且网页上码字体验远不如顺手的编辑器，还必须要联网，最让人受不了的就是手要离开键盘，用 <em>鼠标</em> 来进行各种操作！（Windows用户你不会理解的&hellip;）。<br/>
-Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。
-使用Wordpress的这段时间里，我一直在不停的探索如何更高效更舒服的：从最初的网页上的编辑器插件，到搜索各种Linux,Windows客户端( <a href="http://sns.juziyue.com" title="菊子曰的网站">菊子曰</a>是这一时期的终点，使用上很适合非程序员，但不幸的是只有Windows版本), 最终遇到了org2blog——使用emacs org-mode来写博客。经过我持续不懈的折腾，Wordpress这个诟病基本被我解决掉了。<br/>
-</span></p>
-
-<h5>Octopress Side</h5>
-
-<p>Octopress前端支持markdown类的语法，和org-mode相比，同样适合编写格式化的文档，语法相似，更加精简。更欢乐的是markdown文本非常具有可读性（这也是markdown的设计哲学）。<br/>
-不仅如此，依托于github，博客文章还具有云端 <em>增量备份</em> 的功能。这点和Wordpress不同，Wordpress上写好的内容用以HTML方式存入MySQL数据库，虽然也有备份的功能，可本地化特点的缺失，<em>需要离开编辑器操作</em> 实在是个鸡肋。
-写作之后的同步操作也无需离开编辑器，几条命令就搞定网站！</p>
-
-<h4>需要购买主机</h4>
-
-<p>这是使用Wordpress写博客首先需要操心的事。搭建需要花钱买主机停放你的站点，虽然成本不高，但也不是无成本的。我目前的消费水平还不足以为了一个每天只有不到100IP的小站点购买VPS，需要精打细算——不仅要选择哪家主机划算，还要花折腾主机，还时不时地担心自己或者服务商或者同IP的莫个站点被GFW墙掉。总之一个字“累”！</p>
-
-<h5>Octopress Side</h5>
-
-<p>首先是免费，其次还不如管访问延时等主机相关的问题了。还记得曾有一段时间为了优化访问，花了很多精力在减少插件、优化插件、压缩网页上。虽然建站的很多东西，again, 和写博客是无关的。相比之下，Octopress实际最后就是静态的网页而非动态网站，所以不需要进行优化。</p>
-
-<h4>博客的配置相对复杂</h4>
-
-<p>玩过Wordpress的人都明白平时最常折腾的就是插件和主题，还有Wordpress的升级。<br/>
-对于只想简简单单写技术博客，写日记，发牢骚的人来说，这些也是额外需要费心思的地方，而且没点时间和技术，博客还会显得丑陋不堪，缺乏美感。</p>
-
-<h5>Octopress Side</h5>
-
-<p>认识Octopress就是在一次搜索时看到一个技术博客，那个博客让我眼前一亮——简洁、大方，没有大多数Wordpress博客给人的花哨之感，很对程序员的胃口，仔细读了那个博客，才知道除了Wordpress还有一个叫Octopress的东东。<br/>
-Octopress在界面上完成度很高，可以说不需要任何修改，其简约之美也足以媲美大多数的Wordpress主题。于是可以更加专注于内容。</p>
-
-<p>第一次写Octopress，各种不熟练，花了好久。就先写到这里，有时间再写下自己的配置过程。</p>
-
-<hr />
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn:1">
-<p>[http://en.wikipedia.org/wiki/Markdown]<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
-</ol>
 </div>
 
-]]></content>
-  </entry>
+
+  <footer>
+    <p class="meta">
+      
   
-</feed>
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-15T06:00:00+08:00" pubdate data-updated="true">Jul 15<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>android</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/android-root/" title="Previous Post: Android Root Guide">&laquo; Android Root Guide</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>CS Master Candidate, BIT</br>Insterest: CSArch, Linux, Android </p>
+  <h3><strong>Do something to prove yourself!</strong></h3>
+  
+  <center>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/android-root/">Android Root Guide</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/my-customize-octopress/">Customize Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/expecting-octopress-2-dot-1/">期待 Octopress 2.1</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'liuyix';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://liuyix.org/blog/2013/android-ndk-and-jni-introduction/';
+        var disqus_url = 'http://liuyix.org/blog/2013/android-ndk-and-jni-introduction/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
