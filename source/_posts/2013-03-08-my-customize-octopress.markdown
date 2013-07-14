@@ -19,6 +19,11 @@ published: true
 
 因为默认的不支持footnote，所以直接换成了[kramdown]
 
+#### Update 2013-07-14
+
+octopress升级到了2.0, 新的`rdiscount`支持了footnote特性，因此又换回了`rdiscount`
+
+
 ### 404 page
 
 在source下面建立404.html
