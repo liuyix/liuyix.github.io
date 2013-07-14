@@ -44,6 +44,8 @@ JNI（Java Native Interface）是Java SDK 1.1时正式推出的，目的是为�
 
 实际上在Android内部就大量的使用了JNI技术，尤其是在Libraries层和Framework层。 
 
+<!--more-->
+
 ## 何时使用Android NDK
 
 Google在其文档提到了NDK不能让大多数应用获益,其增加的复杂度远大于获得的性能的代价。Google建议当需要做大量的cpu密集同时少量存储操作或者重用C/C++代码时可以考虑使用NDK。 本文的余下部分将具体介绍Android平台下通过NDK的支持的如何进行JNI的开发。 
