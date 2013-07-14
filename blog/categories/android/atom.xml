@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-07-14T22:01:17+08:00</updated>
+  <updated>2013-07-14T22:04:02+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -53,6 +53,9 @@
 <p>图1-1 JNI在Java开发中的位置</p>
 
 <p>实际上在Android内部就大量的使用了JNI技术，尤其是在Libraries层和Framework层。</p>
+
+<!--more-->
+
 
 <h2>何时使用Android NDK</h2>
 
