@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-07-14T22:25:15+08:00</updated>
+  <updated>2013-07-14T22:44:00+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -32,6 +32,10 @@
 <h3>markdown interpreter换成了kramdown</h3>
 
 <p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
+
+<h4>Update 2013-07-14</h4>
+
+<p>octopress升级到了2.0, 新的<code>rdiscount</code>支持了footnote特性，因此又换回了<code>rdiscount</code></p>
 
 <h3>404 page</h3>
 

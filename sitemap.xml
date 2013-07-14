@@ -2,7 +2,7 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu/</loc>
-        <lastmod>2013-07-14T22:23:32+08:00</lastmod>
+        <lastmod>2013-07-14T22:29:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.org/blog/2013/hello-octopress/</loc>
@@ -14,7 +14,7 @@
     </url>
     <url>
         <loc>http://liuyix.org/blog/2013/my-customize-octopress/</loc>
-        <lastmod>2013-07-14T19:11:27+08:00</lastmod>
+        <lastmod>2013-07-14T22:33:13+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.org/blog/2013/advanced-linkers-and-loaders/</loc>
@@ -30,7 +30,7 @@
     </url>
     <url>
         <loc>http://liuyix.org/blog/archives/</loc>
-        <lastmod>2013-07-14T22:23:32+08:00</lastmod>
+        <lastmod>2013-07-14T22:33:13+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.org/404.html</loc>
@@ -46,7 +46,7 @@
     </url>
     <url>
         <loc>http://liuyix.org/pkm-tools-on-linux-recommendation/</loc>
-        <lastmod>2013-07-14T22:23:32+08:00</lastmod>
+        <lastmod>2013-07-14T22:33:13+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.org/robots.txt</loc>
@@ -58,6 +58,6 @@
     </url>
     <url>
         <loc>http://liuyix.org/</loc>
-        <lastmod>2013-07-14T22:23:32+08:00</lastmod>
+        <lastmod>2013-07-14T22:33:13+08:00</lastmod>
     </url>
 </urlset>

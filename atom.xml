@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-07-14T22:25:15+08:00</updated>
+  <updated>2013-07-14T22:44:00+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -1201,6 +1201,10 @@
 
 <p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
 
+<h4>Update 2013-07-14</h4>
+
+<p>octopress升级到了2.0, 新的<code>rdiscount</code>支持了footnote特性，因此又换回了<code>rdiscount</code></p>
+
 <h3>404 page</h3>
 
 <p>在source下面建立404.html</p>
@@ -1339,14 +1343,14 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
 <ol>
 <li><p> 在Eclipse CDT官网下载Linux-32bit的安装包，比如下载到你的主目录下</p></li>
 <li><p> 终端下进入你下载的安装包的路径（如上文的主目录:~）</p></li>
-<li><p> <strong>解压缩</strong>下载的压缩包:[bash]tar -zxvf eclipse-cpp-helios-SR2-linux-gtk.tar.gz[/bash]</p></li>
-<li><p> 将文件夹所有内容移动到<strong><code>/usr/local/lib</code></strong>该位置相当于Windows里的Program Files文件夹，用于放置本地程序，注意此处必须使用root权限[bash]sudo mv eclipse /usr/local/lib[/bash]</p></li>
-<li><p> 在<strong><code>/usr/local/bin</code></strong>下创建eclipse启动程序的符号链接（符号链接相当于快捷方式），便于在终端里调用启动[bash]sudo ln -s /usr/local/lib/eclipse/eclipse /usr/local/bin[/bash]</p></li>
-<li><p> 创建Linux Desktop Entry:就是将Eclipse CDT添加到Ubuntu程序菜单中[bash]sudo gedit /usr/share/applications/cdt-eclipse.desktop[/bash]</p></li>
+<li><p> <strong>解压缩</strong>下载的压缩包: <code>tar -zxvf eclipse-cpp-helios-SR2-linux-gtk.tar.gz</code></p></li>
+<li><p> 将文件夹所有内容移动到<strong><code>/usr/local/lib</code></strong>该位置相当于Windows里的Program Files文件夹，用于放置本地程序，注意此处必须使用root权限<code>sudo mv eclipse /usr/local/lib</code></p></li>
+<li><p> 在<code>/usr/local/bin</code>下创建eclipse启动程序的符号链接（符号链接相当于快捷方式），便于在终端里调用启动<code>sudo ln -s /usr/local/lib/eclipse/eclipse /usr/local/bin</code></p></li>
+<li><p> 创建Linux Desktop Entry:就是将Eclipse CDT添加到Ubuntu程序菜单中<code>sudo gedit /usr/share/applications/cdt-eclipse.desktop</code></p></li>
 </ol>
 
 
-<p>该条命令的含义：在<code>/usr/share/applications/</code>目录下创建一个名为cdt-eclipse.desktop文件，该路径用于放置你看到的程序菜单中的所有程序，有兴趣可以用nautilus浏览</p>
+<p>该条命令的含义：在<code>/usr/share/applications/</code>目录下创建一个名为cdt-eclipse.desktop文件，该路径用于放置你看到的程序菜单中的所有程序，有兴趣可以用文件浏览器浏览</p>
 
 <ol>
 <li> 在弹出的gedit中写入以下内容</li>
@@ -1389,15 +1393,19 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
 </ol>
 
 
+<hr />
+
 <p>到这里就算是大功告成了，希望你通过实际的操作，能更加熟悉linux的环境！</p>
 
 <p><strong>附件</strong>（此附件包含图标以及desktop文件）<a href="http://u.115.com/file/f9e78679f9">下载链接</a></p>
 
 <h2>参考链接</h2>
 
-<p><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-dtef/index.html">Linux Desktop Entry 文件深入解析</a></p>
+<ul>
+<li><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-dtef/index.html">Linux Desktop Entry 文件深入解析</a></li>
+<li><a href="http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html">Icon Theme Specification</a></li>
+</ul>
 
-<p><a href="http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html">Icon Theme Specification</a></p>
 ]]></content>
   </entry>
   
