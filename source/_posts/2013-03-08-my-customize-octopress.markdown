@@ -1,14 +1,38 @@
 ---
 layout: post
-title: "Customize Octopress"
+title: "Octopress修改记录"
 date: 2013-03-08 22:27
 comments: false
 categories: [octopress]
 published: true
 ---
 
-<!-- * Toc -->
-<!-- {:toc} -->
+### Octopress
+
+Reference: [Clone Your Octopress to Blog From Two Places](http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/)
+
+`$octopress` 代表的是 `git clone -b source git@github.com:username/username.github.com.git octopress`
+
+octopress有2个branch—— `source` 和 `master`   
+
+`master` 是jekyll生成后的静态网站源码，**位置在_deploy目录**  
+`source` 是 octopress源码，是*octopress*根目录   
+
+#### Blog流程
+
+`cd $octopress && rake generate`
+
+1. 更新octopress源码(目的是要保存markdown源文件)
+    + `git add <modified file>`
+    + `git commit -am 'some comment'`
+    + git push origin **source**
+2. 生成后的网站源码部署
+    + `rake deploy`
+    
+### 多个电脑上编写octopress博客
+
+可能很多人会像我一样有这样的需求：工作地点和家里都想要更新下自己的blog，还有有时会在自己的台式机和笔记本上更新blog，这时你就会遇到我现在的问题： *怎么在多个电脑上部署octopress环境*
+
 
 ### 表格boarder的修复
 
