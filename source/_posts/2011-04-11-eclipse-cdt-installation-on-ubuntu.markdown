@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-04-11 13:06:09
 layout: post
 slug: eclipse-cdt-installation-on-ubuntu
@@ -9,22 +9,16 @@ wordpress_id: 139
 categories:
 - Linux
 tags:
-- desktop-entry
-- linux
 - ubuntu
 ---
 
-# 这篇文章期望的读者是谁？
+## 这篇文章期望的读者是谁？
 
 
 Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写
 
 
-# 希望达到的目标？
-
-
-
-
+## 希望达到的目标？
 
 	
   * 增加一点linux基础知识的认识（严格说是ubuntu的目录结构）
@@ -36,14 +30,9 @@ Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣
   * 初步了解Linux Desktop Entry的写法
 
 
+<!-- more -->
 
-
-# 正题
-
-
-
-
-
+## 正题
 	
   1. 在Eclipse CDT官网下载Linux-32bit的安装包，比如下载到你的主目录下
 
@@ -65,7 +54,10 @@ Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣
 该条命令的含义：在`/usr/share/applications/`目录下创建一个名为cdt-eclipse.desktop文件，该路径用于放置你看到的程序菜单中的所有程序，有兴趣可以用nautilus浏览
 
 	
-  7. 在弹出的gedit中写入以下内容<!-- more -->[text][Desktop Entry]
+  7. 在弹出的gedit中写入以下内容
+
+```
+[Desktop Entry]
 Name=Eclipse-CDT
 GenericName[zh_CN]=Eclipse的C/C++环境
 GenericName=Eclipse with CDT
@@ -75,15 +67,16 @@ Terminal=false
 Icon=cdt-eclipse
 Type=Application
 Categories=Development;IDE;[/text]
+```
 
-简单说明:
-[Name]菜单项显示的名称
-[GenericName]应用程序的通用名称
-[GenericName[zh_CN]]国际化显示，当本地编码与之相符则显示相应的内容
-[Exec]调用的命令
-[Terminal]布尔值，若为真则是“在终端下运行”[Icon]表示相应的图标文件名称（图标文件在附件中）
-[Type]Desktop Entry文件的类型，Application表示该Desktop Entry文件指向了一个应用程序
-[Categories]该项只有在"Type"是"Application"时才有效。该项表示相关应用程序在菜单中显示的类别。
+简单说明:  
+[Name]菜单项显示的名称  
+[GenericName]应用程序的通用名称  
+[GenericName[zh_CN]]国际化显示，当本地编码与之相符则显示相应的内容  
+[Exec]调用的命令  
+[Terminal]布尔值，若为真则是“在终端下运行”[Icon]表示相应的图标文件名称（图标文件在附件中）  
+[Type]Desktop Entry文件的类型，Application表示该Desktop Entry文件指向了一个应用程序  
+[Categories]该项只有在"Type"是"Application"时才有效。该项表示相关应用程序在菜单中显示的类别。  
 
 	
   8. 图标文件的处理：系统会自动依次在以下几个目录中查找`$HOME/.icons-->$XDG_DATA_DIRS/icons -->/usr/share/pixmaps`，因此将图标放入到`/usr/share/pixmaps/`目录中以便所有用户都可以使用到
@@ -102,7 +95,7 @@ Categories=Development;IDE;[/text]
 
 
 
-# 参考链接
+## 参考链接
 
 
 
