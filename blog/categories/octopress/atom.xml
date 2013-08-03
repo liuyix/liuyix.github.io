@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-07-14T22:44:00+08:00</updated>
+  <updated>2013-08-04T01:44:27+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -14,15 +14,46 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Customize Octopress]]></title>
+    <title type="html"><![CDATA[Octopress修改记录]]></title>
     <link href="http://liuyix.org/blog/2013/my-customize-octopress/"/>
     <updated>2013-03-08T22:27:00+08:00</updated>
     <id>http://liuyix.org/blog/2013/my-customize-octopress</id>
-    <content type="html"><![CDATA[<!-- * Toc -->
+    <content type="html"><![CDATA[<h3>Octopress</h3>
+
+<p>Reference: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></p>
+
+<p><code>$octopress</code> 代表的是 <code>git clone -b source git@github.com:username/username.github.com.git octopress</code></p>
+
+<p>octopress有2个branch—— <code>source</code> 和 <code>master</code></p>
+
+<p><code>master</code> 是jekyll生成后的静态网站源码，<strong>位置在_deploy目录</strong><br/>
+<code>source</code> 是 octopress源码，是<em>octopress</em>根目录</p>
+
+<h4>Blog流程</h4>
+
+<p><code>cd $octopress &amp;&amp; rake generate</code></p>
+
+<ol>
+<li>更新octopress源码(目的是要保存markdown源文件)
+
+<ul>
+<li><code>git add &lt;modified file&gt;</code></li>
+<li><code>git commit -am 'some comment'</code></li>
+<li>git push origin <strong>source</strong></li>
+</ul>
+</li>
+<li>生成后的网站源码部署
+
+<ul>
+<li><code>rake deploy</code></li>
+</ul>
+</li>
+</ol>
 
 
-<!-- {:toc} -->
+<h3>多个电脑上编写octopress博客</h3>
 
+<p>可能很多人会像我一样有这样的需求：工作地点和家里都想要更新下自己的blog，还有有时会在自己的台式机和笔记本上更新blog，这时你就会遇到我现在的问题： <em>怎么在多个电脑上部署octopress环境</em></p>
 
 <h3>表格boarder的修复</h3>
 

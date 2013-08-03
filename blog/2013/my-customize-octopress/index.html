@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Customize Octopress - Liuyix</title>
+  <title>Octopress修改记录 - Liuyix</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="表格boarder的修复 参考: 链接
-只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 sass/custom/_styles.scss 里面了就出效果了。 markdown interpreter换成了kramdown 因为默认的不支持footnote， &hellip;">
+  <meta name="description" content="Octopress Reference: Clone Your Octopress to Blog From Two Places $octopress 代表的是 git clone -b source git@github.com:username/username.github.com.git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,7 +83,7 @@
   
   <header>
     
-      <h1 class="entry-title">Customize Octopress</h1>
+      <h1 class="entry-title">Octopress修改记录</h1>
     
     
       <p class="meta">
@@ -107,11 +106,42 @@
   </header>
 
 
-<div class="entry-content"><!-- * Toc -->
+<div class="entry-content"><h3>Octopress</h3>
+
+<p>Reference: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></p>
+
+<p><code>$octopress</code> 代表的是 <code>git clone -b source git@github.com:username/username.github.com.git octopress</code></p>
+
+<p>octopress有2个branch—— <code>source</code> 和 <code>master</code></p>
+
+<p><code>master</code> 是jekyll生成后的静态网站源码，<strong>位置在_deploy目录</strong><br/>
+<code>source</code> 是 octopress源码，是<em>octopress</em>根目录</p>
+
+<h4>Blog流程</h4>
+
+<p><code>cd $octopress &amp;&amp; rake generate</code></p>
+
+<ol>
+<li>更新octopress源码(目的是要保存markdown源文件)
+
+<ul>
+<li><code>git add &lt;modified file&gt;</code></li>
+<li><code>git commit -am 'some comment'</code></li>
+<li>git push origin <strong>source</strong></li>
+</ul>
+</li>
+<li>生成后的网站源码部署
+
+<ul>
+<li><code>rake deploy</code></li>
+</ul>
+</li>
+</ol>
 
 
-<!-- {:toc} -->
+<h3>多个电脑上编写octopress博客</h3>
 
+<p>可能很多人会像我一样有这样的需求：工作地点和家里都想要更新下自己的blog，还有有时会在自己的台式机和笔记本上更新blog，这时你就会遇到我现在的问题： <em>怎么在多个电脑上部署octopress环境</em></p>
 
 <h3>表格boarder的修复</h3>
 
@@ -218,11 +248,15 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/android-4-dot-3-selinux/">Android 4.3新特性——SElinux简介</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/android-root/">Android Root Guide</a>
+        <a href="/blog/2013/android-root/">Android Root 那些事</a>
       </li>
     
       <li class="post">
@@ -230,18 +264,14 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2013/my-customize-octopress/">Customize Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/expecting-octopress-2-dot-1/">期待 Octopress 2.1</a>
+        <a href="/blog/2013/my-customize-octopress/">Octopress修改记录</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (1)</a></li><li><a href='/blog/categories/linux'>Linux (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (3)</a></li><li><a href='/blog/categories/linux'>Linux (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
 </section>
 
 

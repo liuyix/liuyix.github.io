@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-07-14T22:44:00+08:00</updated>
+  <updated>2013-08-04T01:44:27+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,130 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Android 4.3新特性——SElinux简介 ]]></title>
+    <link href="http://liuyix.org/blog/2013/android-4-dot-3-selinux/"/>
+    <updated>2013-07-28T00:32:00+08:00</updated>
+    <id>http://liuyix.org/blog/2013/android-4-dot-3-selinux</id>
+    <content type="html"><![CDATA[<p>New Jelly Bean &mdash; Android 4.3于7月底发布，这次整体上变化不是很大，所以还是叫Jelly Bean。不过在底层，Android在安全上实际增强了不少，Android 4.3开始集成SELinux, 系统的安全性(<em>潜力</em>)提高了一个档次。</p>
+
+<p>New Jelly Bean, New JB，Android 4.3指的都是Google新发布的Android 4.3系统，代号依旧是Jelly Bean</p>
+
+<h2>The End of Root?</h2>
+
+<p><strong>Absolutely NO!!</strong></p>
+
+<ol>
+<li>SELinux 目前（从长远看也很可能）是 <em>permissive</em> 模式，即不会拒绝而只是记录<em>违规</em>事件；而不是最严格的 <em>enforce</em> 模式——只要违反规则就会denial，因为普通消费者能遇到的应用和情形会非常复杂，如果使用该模式会出现更多的问题，同时也会给用户束缚自由的感觉（如同厂商卖给你手机的同时给你规定好了“你只可以xxxx而不能xxxx”，不管你是不是这样觉得，我反正是这么觉得）。这也就意味着使用漏洞提权的方法获得root权限依旧可行，只要SELinux使用的是<code>permissive</code>模式。</li>
+<li>即使SELinux设置为<code>enforce</code>模式，也不会是root的末日。我们还可以通过<em>线刷</em>的方法刷入修改的或者其他的定制ROM方法获取Root权限。这样做的前提是手机厂商不锁bootloader（从而给用户自由刷机的权利）。谷歌的Nexus系列就是不锁bootloader——可以使用<code>fastboot oem unlock</code> 解锁，之后就可以用<code>fastboot</code>随意的修改定制手机ROM。
+而三星手机没有强硬的采取严格的手段锁bootloader，可以用Samsung的<em>官方</em>刷机工具Odin<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>刷机，一样可以实现不锁bootloader的效果——随意修改定制手机。其他厂商就不太了解了。</li>
+</ol>
+
+
+<h4>New challenge for Root</h4>
+
+<p>New Jelly Bean给root确实增加一些阻碍，这其中包括：增加了nosuid选项的system分区以及root用户的capabilities的限制。所以两位手机root的大神chainfire和koush在New JB上都采用了新的 <em>daemon</em> 模式。</p>
+
+<!--more-->
+
+
+<h2>SELinux带来了什么？</h2>
+
+<p>极大的增强了Android系统的安全性潜力，SELinux机制实际效用依赖于<code>selinux policy</code>等SELinux的设定。SELinux的加入为Android进入更高安全性和保密性的团体和企业中提供了很大的便利，Android在企业市场有了更多的想象空间。<br/>
+试举一栗子：涉密企业项目的成员移动设备定制化安全服务——可以由Android安全服务公司负责定制ROM，根据项目或者企业需求加入定制化的SELinux策略。好吧，Android移动安全领域的门槛又矮了一截子。</p>
+
+<h2>Android SELinux一窥</h2>
+
+<p>Google写的SELinux Guide（<a href="https://source.android.com/devices/tech/security/se-linux.html">here</a>）对部署和设置SELinux提出了指导性的概括。 <br/>
+SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要使用相应的Android内核。</p>
+
+<h3>SELinux 编译和部署</h3>
+
+<ol>
+<li><p>下载源代码至<code>&lt;root&gt;/device/manufacturer/device-name/sepolicy</code>：</p>
+
+<ul>
+<li>包含SELinux的内核： <a href="https://android.googlesource.com/kernel/common/">https://android.googlesource.com/kernel/common/</a></li>
+<li>编译时需要提供的SELinux配置文件: <a href="https://android.googlesource.com/platform/external/sepolicy/">https://android.googlesource.com/platform/external/sepolicy/</a></li>
+</ul>
+</li>
+<li><p>修改BoardConfig.mk</p></li>
+</ol>
+
+
+<p>```bash</p>
+
+<p>BOARD_SEPOLICY_DIRS := \</p>
+
+<pre><code>    &lt;root&gt;/device/manufacturer/device-name/sepolicy
+</code></pre>
+
+<p>BOARD_SEPOLICY_UNION := \</p>
+
+<pre><code>    genfs_contexts \ 
+    file_contexts \ 
+    sepolicy.te 
+</code></pre>
+
+<p>```</p>
+
+<ol>
+<li>重新编译内核</li>
+</ol>
+
+
+<h3>SELinux定制流程(via Google)</h3>
+
+<blockquote><ul>
+<li><p>SELinux uses a whitelist approach, meaning it grants special privileges based upon role. Because the default policy provided by Android is so permissive, OEMs have great leeway in strengthening it. Here is how we recommend proceeding:</p></li>
+<li><p>Use the latest Android kernel.</p></li>
+<li>Adopt the principle of least privilege.</li>
+<li>Address only your own additions to Android. The default policy works with the Android Open Source Project codebase automatically.</li>
+<li>Compartmentalize software components into modules that conduct singular tasks.</li>
+<li>Create SELinux policies that isolate those tasks from unrelated functions.</li>
+<li>Put those policies in *.te files (the extension for SELinux policy source files) within the <root>/device/manufacturer/device-name/sepolicy directory.</li>
+<li>Release your SELinux implementation in permissive mode first.</li>
+<li>Analyze results and refine policy settings.</li>
+</ul>
+</blockquote>
+
+<h2>More about SELinux for Android</h2>
+
+<p>本节大部分信息都是从<a href="http://selinuxproject.org/page/SEAndroid">SEAndroid Wiki</a>上获取.</p>
+
+<p>Android 4.3 采用的是SEAndroid<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，但是做了相当的精简和改变，其中没有以下部分<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>：</p>
+
+<ul>
+<li>SELinux管理API以及附带的示例程序 (The new device admin APIs for managing the SELinux functionality and the SEAdmin sample device admin app for using those APIs.)</li>
+<li>除了 <code>a restricted form of its sefinfo support for labeling apps</code> 以外，没有任何MAC机制的中间件。</li>
+<li>没有 <code>auditd</code> ,<em>也就是说Android 4.3并没有一个收集SELinux审计log的daemon程序</em> （The audit daemon (auditd) for collecting SELinux audit denials and writing them to /data/misc/audit/audit.log. )</li>
+<li>采用和SEAndroid不同的策略，<em>fully permissive and unconfined</em> (Our sample policy configuration (Android 4.3 and AOSP master have diverged from our policy, replacing it with a policy that is fully permissive and unconfined).
+)</li>
+<li>没有重载SELinux策略上的优化，重载策略还需要重启daemon(Some improvements to how policy reloading is handled, particularly avoiding the need to restart daemons.)</li>
+<li>对于多用户目录没有合适的安全标签（<code>security label</code>)</li>
+</ul>
+
+
+<p>所以如果想使用<em>完整版</em>的SEAndroid需要去下载使用独立的<a href="https://bitbucket.org/seandroid">SEAndroid</a></p>
+
+<hr />
+
+<p>未完待续&hellip;</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>有关Odin的XDA论坛地址：<a href="http://forum.xda-developers.com/showthread.php?t=2189539">http://forum.xda-developers.com/showthread.php?t=2189539</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p>SELinux项目地址：<a href="https://bitbucket.org/seandroid">https://bitbucket.org/seandroid</a><a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p><a href="http://selinuxproject.org/page/SEAndroid#Merge_Status">http://selinuxproject.org/page/SEAndroid#Merge_Status</a><a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Android平台上的JNI技术介绍]]></title>
@@ -930,6 +1054,41 @@ jboolean IsSameObject(JNIEnv *env, jobject ref1,jobject ref2);
 </ol>
 </div>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android Root 那些事]]></title>
+    <link href="http://liuyix.org/blog/2013/android-root/"/>
+    <updated>2013-07-14T19:14:00+08:00</updated>
+    <id>http://liuyix.org/blog/2013/android-root</id>
+    <content type="html"><![CDATA[<h2>Root</h2>
+
+<p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
+
+<h2>获得Root的几个思路</h2>
+
+<ul>
+<li>利用Android内核漏洞(实际上也是Linux的漏洞)进行提权</li>
+<li>使用<code>fastboot</code> 或者厂商提供的刷机工具(比如三星的 <em>Odin</em> )刷入修改的Kernel或者第三方的Recovery，再刷入root程序</li>
+</ul>
+
+
+<h2>Root文件</h2>
+
+<ul>
+<li>su</li>
+<li>root权限管理应用: 如常用的Superuser.apk/SuperSU.apk</li>
+</ul>
+
+
+<h2>Opensourced Superuser</h2>
+
+<p>Android Hack界大神Koush写了被广泛使用的Root管理软件: <a href="https://play.google.com/store/apps/details?id=com.noshufou.android.su&amp;hl=en">Superuser</a>
+Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<a href="https://github.com/koush/Superuser">https://github.com/koush/Superuser</a><br/>
+阅读代码我们就可以了解Android的Root管理应用以及su原理以及如何实现的。</p>
+
+<p>未完待续&hellip;</p>
 ]]></content>
   </entry>
   

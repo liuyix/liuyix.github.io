@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Android 4.3新特性——SElinux简介  - Liuyix</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="New Jelly Bean &mdash; Android 4.3于7月底发布，这次整体上变化不是很大，所以还是叫Jelly Bean。不过在底层，Android在安全上实际增强了不少，Android 4.3开始集成SELinux, 系统的安全性(潜力)提高了一个档次。 New Jelly &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.org/blog/2013/android-4-dot-3-selinux">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Liuyix</a></h1>
+  
+    <h2>Just another coder.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Android 4.3新特性——SElinux简介</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-28T00:32:00+08:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>New Jelly Bean &mdash; Android 4.3于7月底发布，这次整体上变化不是很大，所以还是叫Jelly Bean。不过在底层，Android在安全上实际增强了不少，Android 4.3开始集成SELinux, 系统的安全性(<em>潜力</em>)提高了一个档次。</p>
+
+<p>New Jelly Bean, New JB，Android 4.3指的都是Google新发布的Android 4.3系统，代号依旧是Jelly Bean</p>
+
+<h2>The End of Root?</h2>
+
+<p><strong>Absolutely NO!!</strong></p>
+
+<ol>
+<li>SELinux 目前（从长远看也很可能）是 <em>permissive</em> 模式，即不会拒绝而只是记录<em>违规</em>事件；而不是最严格的 <em>enforce</em> 模式——只要违反规则就会denial，因为普通消费者能遇到的应用和情形会非常复杂，如果使用该模式会出现更多的问题，同时也会给用户束缚自由的感觉（如同厂商卖给你手机的同时给你规定好了“你只可以xxxx而不能xxxx”，不管你是不是这样觉得，我反正是这么觉得）。这也就意味着使用漏洞提权的方法获得root权限依旧可行，只要SELinux使用的是<code>permissive</code>模式。</li>
+<li>即使SELinux设置为<code>enforce</code>模式，也不会是root的末日。我们还可以通过<em>线刷</em>的方法刷入修改的或者其他的定制ROM方法获取Root权限。这样做的前提是手机厂商不锁bootloader（从而给用户自由刷机的权利）。谷歌的Nexus系列就是不锁bootloader——可以使用<code>fastboot oem unlock</code> 解锁，之后就可以用<code>fastboot</code>随意的修改定制手机ROM。
+而三星手机没有强硬的采取严格的手段锁bootloader，可以用Samsung的<em>官方</em>刷机工具Odin<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>刷机，一样可以实现不锁bootloader的效果——随意修改定制手机。其他厂商就不太了解了。</li>
+</ol>
+
+
+<h4>New challenge for Root</h4>
+
+<p>New Jelly Bean给root确实增加一些阻碍，这其中包括：增加了nosuid选项的system分区以及root用户的capabilities的限制。所以两位手机root的大神chainfire和koush在New JB上都采用了新的 <em>daemon</em> 模式。</p>
+
+<!--more-->
+
+
+<h2>SELinux带来了什么？</h2>
+
+<p>极大的增强了Android系统的安全性潜力，SELinux机制实际效用依赖于<code>selinux policy</code>等SELinux的设定。SELinux的加入为Android进入更高安全性和保密性的团体和企业中提供了很大的便利，Android在企业市场有了更多的想象空间。<br/>
+试举一栗子：涉密企业项目的成员移动设备定制化安全服务——可以由Android安全服务公司负责定制ROM，根据项目或者企业需求加入定制化的SELinux策略。好吧，Android移动安全领域的门槛又矮了一截子。</p>
+
+<h2>Android SELinux一窥</h2>
+
+<p>Google写的SELinux Guide（<a href="https://source.android.com/devices/tech/security/se-linux.html">here</a>）对部署和设置SELinux提出了指导性的概括。 <br/>
+SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要使用相应的Android内核。</p>
+
+<h3>SELinux 编译和部署</h3>
+
+<ol>
+<li><p>下载源代码至<code>&lt;root&gt;/device/manufacturer/device-name/sepolicy</code>：</p>
+
+<ul>
+<li>包含SELinux的内核： <a href="https://android.googlesource.com/kernel/common/">https://android.googlesource.com/kernel/common/</a></li>
+<li>编译时需要提供的SELinux配置文件: <a href="https://android.googlesource.com/platform/external/sepolicy/">https://android.googlesource.com/platform/external/sepolicy/</a></li>
+</ul>
+</li>
+<li><p>修改BoardConfig.mk</p></li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>BOARD_SEPOLICY_DIRS :<span class="o">=</span> <span class="se">\</span>
+</span><span class='line'>        &lt;root&gt;/device/manufacturer/device-name/sepolicy
+</span><span class='line'>
+</span><span class='line'>BOARD_SEPOLICY_UNION :<span class="o">=</span> <span class="se">\</span>
+</span><span class='line'>        genfs_contexts <span class="se">\ </span>
+</span><span class='line'>        file_contexts <span class="se">\ </span>
+</span><span class='line'>        sepolicy.te
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>重新编译内核</li>
+</ol>
+
+
+<h3>SELinux定制流程(via Google)</h3>
+
+<blockquote><ul>
+<li><p>SELinux uses a whitelist approach, meaning it grants special privileges based upon role. Because the default policy provided by Android is so permissive, OEMs have great leeway in strengthening it. Here is how we recommend proceeding:</p></li>
+<li><p>Use the latest Android kernel.</p></li>
+<li>Adopt the principle of least privilege.</li>
+<li>Address only your own additions to Android. The default policy works with the Android Open Source Project codebase automatically.</li>
+<li>Compartmentalize software components into modules that conduct singular tasks.</li>
+<li>Create SELinux policies that isolate those tasks from unrelated functions.</li>
+<li>Put those policies in *.te files (the extension for SELinux policy source files) within the <root>/device/manufacturer/device-name/sepolicy directory.</li>
+<li>Release your SELinux implementation in permissive mode first.</li>
+<li>Analyze results and refine policy settings.</li>
+</ul>
+</blockquote>
+
+<h2>More about SELinux for Android</h2>
+
+<p>本节大部分信息都是从<a href="http://selinuxproject.org/page/SEAndroid">SEAndroid Wiki</a>上获取.</p>
+
+<p>Android 4.3 采用的是SEAndroid<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，但是做了相当的精简和改变，其中没有以下部分<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>：</p>
+
+<ul>
+<li>SELinux管理API以及附带的示例程序 (The new device admin APIs for managing the SELinux functionality and the SEAdmin sample device admin app for using those APIs.)</li>
+<li>除了 <code>a restricted form of its sefinfo support for labeling apps</code> 以外，没有任何MAC机制的中间件。</li>
+<li>没有 <code>auditd</code> ,<em>也就是说Android 4.3并没有一个收集SELinux审计log的daemon程序</em> （The audit daemon (auditd) for collecting SELinux audit denials and writing them to /data/misc/audit/audit.log. )</li>
+<li>采用和SEAndroid不同的策略，<em>fully permissive and unconfined</em> (Our sample policy configuration (Android 4.3 and AOSP master have diverged from our policy, replacing it with a policy that is fully permissive and unconfined).
+)</li>
+<li>没有重载SELinux策略上的优化，重载策略还需要重启daemon(Some improvements to how policy reloading is handled, particularly avoiding the need to restart daemons.)</li>
+<li>对于多用户目录没有合适的安全标签（<code>security label</code>)</li>
+</ul>
+
+
+<p>所以如果想使用<em>完整版</em>的SEAndroid需要去下载使用独立的<a href="https://bitbucket.org/seandroid">SEAndroid</a></p>
+
+<hr />
+
+<p>未完待续&hellip;</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>有关Odin的XDA论坛地址：<a href="http://forum.xda-developers.com/showthread.php?t=2189539">http://forum.xda-developers.com/showthread.php?t=2189539</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p>SELinux项目地址：<a href="https://bitbucket.org/seandroid">https://bitbucket.org/seandroid</a><a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p><a href="http://selinuxproject.org/page/SEAndroid#Merge_Status">http://selinuxproject.org/page/SEAndroid#Merge_Status</a><a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-28T00:32:00+08:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>android</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/android-ndk-and-jni-introduction/" title="Previous Post: Android平台上的JNI技术介绍">&laquo; Android平台上的JNI技术介绍</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>CS Master Candidate, BIT</br>Insterest: CSArch, Linux, Android </p>
+  <h3><strong>Do something to prove yourself!</strong></h3>
+  
+  <center>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/android-4-dot-3-selinux/">Android 4.3新特性——SElinux简介</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/android-root/">Android Root 那些事</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/my-customize-octopress/">Octopress修改记录</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (3)</a></li><li><a href='/blog/categories/linux'>Linux (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'liuyix';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://liuyix.org/blog/2013/android-4-dot-3-selinux/';
+        var disqus_url = 'http://liuyix.org/blog/2013/android-4-dot-3-selinux/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
