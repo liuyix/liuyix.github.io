@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.github.io/atom.xml" rel="self"/>
   <link href="http://liuyix.github.io/"/>
-  <updated>2013-08-10T00:36:56+08:00</updated>
+  <updated>2013-08-10T00:42:46+08:00</updated>
   <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -47,15 +47,6 @@
 <hr />
 
 <p>让我的感觉印象深刻的是这个项目是由python编写，但是项目的部署非常不错，只有一个可执行文件，没有任何其他依赖。这个之后研究下 :&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[linux_file_io]]></title>
-    <link href="http://liuyix.github.io/blog/2013/linux-file-io/"/>
-    <updated>2013-08-09T00:05:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/linux-file-io</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
