@@ -9,8 +9,8 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="许久没写了，上一篇水文教程。 需要的工具： goagent
+youtube-dl goagent教程就不上了，这个是翻墙的基本知识。:-P 使用youtube-dl下载youtube视频 事先声明, Windows平台的我没有试过。按照说明需要安装python 2.6以上的版本才能运行。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-09T23:59:00+08:00" pubdate data-updated="true">Aug 9<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/youtube-download-with-subtitle/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>许久没写了，上一篇水文教程。</p></blockquote>
+
+<p>需要的工具：</p>
+
+<ul>
+<li><a href="https://code.google.com/p/goagent/">goagent</a></li>
+<li><a href="http://rg3.github.io/youtube-dl/download.html">youtube-dl</a></li>
+</ul>
+
+
+<p>goagent教程就不上了，这个是翻墙的基本知识。:-P</p>
+
+<h3>使用youtube-dl下载youtube视频</h3>
+
+<p>事先声明, Windows平台的我没有试过。按照说明需要安装python 2.6以上的版本才能运行。<br/>
+然后先用浏览器翻墙看一下复制你要下载的youtube的链接，比如 <a href="http://www.youtube.com/watch?v=9bZkp7q19f0">http://www.youtube.com/watch?v=9bZkp7q19f0</a><br/>
+然后进入命令行，输入</p>
+
+<ol>
+<li>此步骤可选，若想选择下载的格式和大小，则可以先列出可下载的格式列表，使用命令： <code>./youtube-dl --write-sub --proxy 'http://127.0.0.1:8087' --list-formats http://www.youtube.com/watch?v=OPethpwuYEk</code></li>
+<li>若执行了(1)则此步骤中可以指定<code>--format 22</code>, 即<code>./youtube-dl --write-sub --proxy 'http://127.0.0.1:8087' --format 22 http://www.youtube.com/watch?v=OPethpwuYEk</code></li>
+</ol>
+
+
+<p>几分钟之后就会下载好选择的视频(文件名称默认为解析出的视频名称)</p>
+
+<hr />
+
+<p>让我的感觉印象深刻的是这个项目是由python编写，但是项目的部署非常不错，只有一个可执行文件，没有任何其他依赖。这个之后研究下 :&ndash;)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -656,6 +722,10 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/linux-file-io/">Linux_file_io</a>
       </li>
     
@@ -669,10 +739,6 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
     
       <li class="post">
         <a href="/blog/2013/android-root/">Android Root 那些事</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a>
       </li>
     
   </ul>
