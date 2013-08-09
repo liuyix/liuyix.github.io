@@ -1,67 +1,71 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu/</loc>
+        <loc>http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu/</loc>
         <lastmod>2013-07-26T22:41:29+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/2013/hello-octopress/</loc>
+        <loc>http://liuyix.github.io/blog/2013/hello-octopress/</loc>
         <lastmod>2013-07-26T22:41:29+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/2013/expecting-octopress-2-dot-1/</loc>
+        <loc>http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1/</loc>
         <lastmod>2013-07-26T22:41:29+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/2013/my-customize-octopress/</loc>
+        <loc>http://liuyix.github.io/blog/2013/my-customize-octopress/</loc>
         <lastmod>2013-07-26T22:41:29+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/2013/advanced-linkers-and-loaders/</loc>
+        <loc>http://liuyix.github.io/blog/2013/advanced-linkers-and-loaders/</loc>
         <lastmod>2013-07-26T22:41:29+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/2013/android-root/</loc>
+        <loc>http://liuyix.github.io/blog/2013/android-root/</loc>
         <lastmod>2013-08-04T01:43:13+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/2013/android-ndk-and-jni-introduction/</loc>
+        <loc>http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction/</loc>
         <lastmod>2013-07-26T22:41:29+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/2013/android-4-dot-3-selinux/</loc>
+        <loc>http://liuyix.github.io/blog/2013/android-4-dot-3-selinux/</loc>
         <lastmod>2013-08-04T01:43:44+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/archives/</loc>
-        <lastmod>2013-08-04T01:43:44+08:00</lastmod>
+        <loc>http://liuyix.github.io/blog/2013/linux-file-io/</loc>
+        <lastmod>2013-08-09T23:54:38+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/404.html</loc>
+        <loc>http://liuyix.github.io/blog/archives/</loc>
+        <lastmod>2013-08-09T23:54:38+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/404.html</loc>
         <lastmod>2013-07-26T22:41:29+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/robots.txt</loc>
+        <loc>http://liuyix.github.io/robots.txt</loc>
         <lastmod>2013-07-26T22:41:30+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/pkm-tools-on-linux-recommendation/index.markdown.bak</loc>
+        <loc>http://liuyix.github.io/pkm-tools-on-linux-recommendation/index.markdown.bak</loc>
         <lastmod>2013-07-26T22:41:30+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/pkm-tools-on-linux-recommendation/</loc>
-        <lastmod>2013-08-04T01:43:44+08:00</lastmod>
+        <loc>http://liuyix.github.io/pkm-tools-on-linux-recommendation/</loc>
+        <lastmod>2013-08-09T23:54:38+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/</loc>
-        <lastmod>2013-08-04T01:43:44+08:00</lastmod>
+        <loc>http://liuyix.github.io/</loc>
+        <lastmod>2013-08-09T23:54:38+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/my-vimrc/</loc>
+        <loc>http://liuyix.github.io/my-vimrc/</loc>
         <lastmod>2013-07-26T22:41:30+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/splash2-benchmark/</loc>
+        <loc>http://liuyix.github.io/splash2-benchmark/</loc>
         <lastmod>2013-07-26T22:41:30+08:00</lastmod>
     </url>
 </urlset>

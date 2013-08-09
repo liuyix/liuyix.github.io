@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: octopress | Liuyix]]></title>
-  <link href="http://liuyix.org/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://liuyix.org/"/>
-  <updated>2013-08-04T01:44:27+08:00</updated>
-  <id>http://liuyix.org/</id>
+  <link href="http://liuyix.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2013-08-09T23:56:42+08:00</updated>
+  <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress修改记录]]></title>
-    <link href="http://liuyix.org/blog/2013/my-customize-octopress/"/>
+    <link href="http://liuyix.github.io/blog/2013/my-customize-octopress/"/>
     <updated>2013-03-08T22:27:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/my-customize-octopress</id>
+    <id>http://liuyix.github.io/blog/2013/my-customize-octopress</id>
     <content type="html"><![CDATA[<h3>Octopress</h3>
 
 <p>Reference: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></p>
@@ -95,9 +95,9 @@
   
   <entry>
     <title type="html"><![CDATA[期待 Octopress 2.1]]></title>
-    <link href="http://liuyix.org/blog/2013/expecting-octopress-2-dot-1/"/>
+    <link href="http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1/"/>
     <updated>2013-03-08T00:11:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/expecting-octopress-2-dot-1</id>
+    <id>http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1</id>
     <content type="html"><![CDATA[<p>想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。</p>
 
 <p>搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个<a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">疑问</a>了，作者给予了回答，大意是太臃肿没必要，然社区群众们呼声很高，Octopress计划在2.1版本中支持jQuery!</p>
@@ -110,9 +110,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="http://liuyix.org/blog/2013/hello-octopress/"/>
+    <link href="http://liuyix.github.io/blog/2013/hello-octopress/"/>
     <updated>2013-03-07T18:45:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/hello-octopress</id>
+    <id>http://liuyix.github.io/blog/2013/hello-octopress</id>
     <content type="html"><![CDATA[<p><img src="/images/octopress-logo.png" title="" ></p>
 
 <h2>初识Octopress</h2>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Liuyix]]></title>
-  <link href="http://liuyix.org/atom.xml" rel="self"/>
-  <link href="http://liuyix.org/"/>
-  <updated>2013-08-04T01:44:27+08:00</updated>
-  <id>http://liuyix.org/</id>
+  <link href="http://liuyix.github.io/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2013-08-09T23:56:42+08:00</updated>
+  <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -14,10 +14,19 @@
 
   
   <entry>
+    <title type="html"><![CDATA[linux_file_io]]></title>
+    <link href="http://liuyix.github.io/blog/2013/linux-file-io/"/>
+    <updated>2013-08-09T00:05:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2013/linux-file-io</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Android 4.3新特性——SElinux简介 ]]></title>
-    <link href="http://liuyix.org/blog/2013/android-4-dot-3-selinux/"/>
+    <link href="http://liuyix.github.io/blog/2013/android-4-dot-3-selinux/"/>
     <updated>2013-07-28T00:32:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/android-4-dot-3-selinux</id>
+    <id>http://liuyix.github.io/blog/2013/android-4-dot-3-selinux</id>
     <content type="html"><![CDATA[<p>New Jelly Bean &mdash; Android 4.3于7月底发布，这次整体上变化不是很大，所以还是叫Jelly Bean。不过在底层，Android在安全上实际增强了不少，Android 4.3开始集成SELinux, 系统的安全性(<em>潜力</em>)提高了一个档次。</p>
 
 <p>New Jelly Bean, New JB，Android 4.3指的都是Google新发布的Android 4.3系统，代号依旧是Jelly Bean</p>
@@ -140,14 +149,14 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
   
   <entry>
     <title type="html"><![CDATA[Android平台上的JNI技术介绍]]></title>
-    <link href="http://liuyix.org/blog/2013/android-ndk-and-jni-introduction/"/>
+    <link href="http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction/"/>
     <updated>2013-07-15T06:00:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/android-ndk-and-jni-introduction</id>
+    <id>http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction</id>
     <content type="html"><![CDATA[<h2>NDK简介</h2>
 
 <p>Android是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。</p>
 
-<p><img src="http://liuyix.org/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
+<p><img src="http://liuyix.github.io/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
 
 <center>图0-1 Android系统架构图</center>
 
@@ -173,7 +182,7 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 
 <p>JNI（Java Native Interface）是Java SDK 1.1时正式推出的，目的是为不同JVM实现间提供一个标准接口，从而使Java应用可以使用本地二进制共享库，扩充了原有JVM的能力，同时Java程序仍然无需再次编译就可以运行在其他平台上，即保持了平台独立性又能使用平台相关的本地共享库提升性能。在Java开发中的位置如下图所示。JNI作为连接平台独立的Java层(以下简称Java层)与与平台相关的本地环境(以下简称Native层)之间的桥梁。</p>
 
-<p><img src="http://liuyix.org/images/role-of-jni-intro.gif" alt="/images/role-of-jni-intro.gif" /></p>
+<p><img src="http://liuyix.github.io/images/role-of-jni-intro.gif" alt="/images/role-of-jni-intro.gif" /></p>
 
 <p>图1-1 JNI在Java开发中的位置</p>
 
@@ -973,7 +982,7 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 
 <p>下图是 <code>JNIEnv</code> 的一个简单图示<sup id="fnref:7"><a href="#fn:7" rel="footnote">7</a></sup></p>
 
-<p><img src="http://liuyix.org/images/jnienv.gif" alt="/images/jnienv.gif" /></p>
+<p><img src="http://liuyix.github.io/images/jnienv.gif" alt="/images/jnienv.gif" /></p>
 
 <p>JNIEnv能提供的功能非常多，大体可以分为以下几类5：</p>
 
@@ -1277,9 +1286,9 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
   
   <entry>
     <title type="html"><![CDATA[Android Root 那些事]]></title>
-    <link href="http://liuyix.org/blog/2013/android-root/"/>
+    <link href="http://liuyix.github.io/blog/2013/android-root/"/>
     <updated>2013-07-14T19:14:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/android-root</id>
+    <id>http://liuyix.github.io/blog/2013/android-root</id>
     <content type="html"><![CDATA[<h2>Root</h2>
 
 <p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
@@ -1312,9 +1321,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[《程序员的自我修养》小结]]></title>
-    <link href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders/"/>
+    <link href="http://liuyix.github.io/blog/2013/advanced-linkers-and-loaders/"/>
     <updated>2013-04-09T21:05:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/advanced-linkers-and-loaders</id>
+    <id>http://liuyix.github.io/blog/2013/advanced-linkers-and-loaders</id>
     <content type="html"><![CDATA[<p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
 应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
 
@@ -1324,7 +1333,7 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
 其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
 参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
 
-<p><img src="http://liuyix.org/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
+<p><img src="http://liuyix.github.io/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
 
 <p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
 ]]></content>
@@ -1332,9 +1341,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[Octopress修改记录]]></title>
-    <link href="http://liuyix.org/blog/2013/my-customize-octopress/"/>
+    <link href="http://liuyix.github.io/blog/2013/my-customize-octopress/"/>
     <updated>2013-03-08T22:27:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/my-customize-octopress</id>
+    <id>http://liuyix.github.io/blog/2013/my-customize-octopress</id>
     <content type="html"><![CDATA[<h3>Octopress</h3>
 
 <p>Reference: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></p>
@@ -1412,9 +1421,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[期待 Octopress 2.1]]></title>
-    <link href="http://liuyix.org/blog/2013/expecting-octopress-2-dot-1/"/>
+    <link href="http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1/"/>
     <updated>2013-03-08T00:11:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/expecting-octopress-2-dot-1</id>
+    <id>http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1</id>
     <content type="html"><![CDATA[<p>想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。</p>
 
 <p>搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个<a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">疑问</a>了，作者给予了回答，大意是太臃肿没必要，然社区群众们呼声很高，Octopress计划在2.1版本中支持jQuery!</p>
@@ -1428,10 +1437,10 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="http://liuyix.org/blog/2013/hello-octopress/"/>
+    <link href="http://liuyix.github.io/blog/2013/hello-octopress/"/>
     <updated>2013-03-07T18:45:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/hello-octopress</id>
-    <content type="html"><![CDATA[<p><img src="http://liuyix.org/images/octopress-logo.png" title="" ></p>
+    <id>http://liuyix.github.io/blog/2013/hello-octopress</id>
+    <content type="html"><![CDATA[<p><img src="http://liuyix.github.io/images/octopress-logo.png" title="" ></p>
 
 <h2>初识Octopress</h2>
 
@@ -1499,9 +1508,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   
   <entry>
     <title type="html"><![CDATA[Ubuntu下手动安装Eclipse CDT]]></title>
-    <link href="http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu/"/>
+    <link href="http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu/"/>
     <updated>2011-04-11T21:06:09+08:00</updated>
-    <id>http://liuyix.org/blog/2011/eclipse-cdt-installation-on-ubuntu</id>
+    <id>http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu</id>
     <content type="html"><![CDATA[<h2>这篇文章期望的读者是谁？</h2>
 
 <p>Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写</p>
