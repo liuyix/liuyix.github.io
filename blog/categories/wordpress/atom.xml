@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Wordpress | Liuyix]]></title>
+  <link href="http://liuyix.github.io/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2013-09-28T14:51:41+08:00</updated>
+  <id>http://liuyix.github.io/</id>
+  <author>
+    <name><![CDATA[liuyix]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress排版——中文首行缩进和行间距修改的实现]]></title>
+    <link href="http://liuyix.github.io/blog/2011/wordpress-modification/"/>
+    <updated>2011-04-21T17:46:24+08:00</updated>
+    <id>http://liuyix.github.io/blog/2011/wordpress-modification</id>
+    <content type="html"><![CDATA[<p>Wordpress没有考虑到中文书写的首行缩进的习惯，因此要实现这个功能可以采用修改主题style.css来实现，如果你的主题不常更改的化，这一方法应该说可以一劳永逸。
+总体思路：进入Appearance&mdash;>Editor&mdash;>选择style.css
+找到类似</p>
+
+<p>```php
+p {</p>
+
+<pre><code>padding: 0 0 0.5em;
+line-height:1.5em;
+text-indent: 2em;
+</code></pre>
+
+<p>}
+```</p>
+
+<p><strong>注意</strong>：不一定是一模一样的，根据主题的不同，一定会有所变化的，但目的都是一样就是找到的<p>的style模板。
+找到之后，在大括号(&ldquo;{"和&rdquo;}&ldquo;之间)加入<code>text-indent: 2em;</code>就可以实现首行缩进的功能。要修改行间距就修改<code>line-height</code>的属性值，1em代表一个字的大小，1.5em表示是1.5倍的行距，修改之后保存即可！</p>
+
+<p>其他的修改排版类的修改同样是这个原理，都是修改style.css中的相关部分。</p>
+]]></content>
+  </entry>
+  
+</feed>

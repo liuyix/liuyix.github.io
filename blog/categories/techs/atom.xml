@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Techs | Liuyix]]></title>
+  <link href="http://liuyix.github.io/blog/categories/techs/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2013-09-28T14:51:41+08:00</updated>
+  <id>http://liuyix.github.io/</id>
+  <author>
+    <name><![CDATA[liuyix]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[一个简单的python小程序————使用douban API通过ISBN查询书籍信息]]></title>
+    <link href="http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api/"/>
+    <updated>2012-03-11T07:52:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api</id>
+    <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
+
+<ul>
+<li>命令行的解析</li>
+<li>文件的读写</li>
+<li>XML解析</li>
+<li>http连接</li>
+<li>多线程</li>
+</ul>
+
+
+<p>短短不到200行的程序就可以做到这些，可以算是python的推广广告吧，哈哈</p>
+
+<script src="https://gist.github.com/liuyix/6738920.js"></script>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Eclipse下配置NDK开发环境小结]]></title>
+    <link href="http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration/"/>
+    <updated>2012-03-11T06:11:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration</id>
+    <content type="html"><![CDATA[<p>分享下最近几周我的一些NDK开发经验和心得。</p>
+
+<p>Eclipse配置NDK环境，主要完成的功能使能调用Android NDK提供的工具链编译用C/C++源代码写好的共享库或者可执行的应用程序。由于我的工作需要的基本是完全native程序的编写，因此这里介绍的方法 <strong>更适合编译Android下的本地应用程序或者共享库</strong></p>
+
+<p>本文提供的方法皆非原创，在这里感谢原创作者的分享。</p>
+
+<h2>NDK环境配置之前</h2>
+
+<p>Eclipse需要事先安装好 <strong>CDT</strong> ，本文在Ubuntu平台上测试可用。</p>
+
+<h2>最简单有效的方法————创建新的Builder</h2>
+
+<p>本方法是在Eclipse中调用NDK提供的 <code>ndk-build</code> 命令进行编译。综合这几周的开发，感觉还是这个方法是最靠谱的。因为你只需要编写一个Android.mk，无需考虑依赖关系，同时也最大程度的遵循了google提供的NDK build方法。</p>
+
+<h3>具体配置步骤</h3>
+
+<ul>
+<li><p>新建一个C++ Project</p></li>
+<li><p>进入到这个project的 <strong>Propertities</strong> 选项中</p></li>
+<li><p><strong>Builders</strong> 一栏 –> <strong>New</strong> –> <strong>Program</strong></p></li>
+<li><p>参考下面这张图进行配置，几个重要的地方：</p>
+
+<ul>
+<li><p><strong>Location</strong> 填入 <code>$NDK_HOME</code> /ndk-build 其中 <code>$NDK_BUILD</code> 是NDK安装的根目录</p></li>
+<li><p><strong>Working Directory</strong> 填入当前project的位置，可以通过选择 <strong>Browse Workspace…</strong> 选择</p></li>
+<li><p>可选步骤： <strong>Arguments</strong> 中写下需要传给ndk-build的参数</p></li>
+<li><p>如果要实现 <em>auto-build</em> 可以在 <strong>Refresh</strong> 和 <strong>Build Options</strong> 中进行配置，我个人觉得auto-build对开发没有实际作用，因此这里就不介绍了。</p></li>
+</ul>
+</li>
+</ul>
+
+
+<p>简单几步就可以编译共享库了，够简单吧</p>
+
+<h2>参考链接</h2>
+
+<p><a href="http://mobilepearls.com/labs/ndk-builder-in-eclipse/">Setting up Automatic NDK Builds in Eclipse</a></p>
+
+<h2>其他方法</h2>
+
+<p>这里还有一种我试验可用的方法，但是配置起来实在麻烦，适合移植已有程序或者开发大型项目时完全定制编译过程中使用。这里只给出出处，有兴趣的同学可以看看。</p>
+
+<ul>
+<li><a href="http://www.srombauts.fr/2011/03/06/standalone-toolchain/">http://www.srombauts.fr/2011/03/06/standalone-toolchain/</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[译]初次参与开源软件项目的六个忠告]]></title>
+    <link href="http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/"/>
+    <updated>2012-03-11T06:00:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn</id>
+    <content type="html"><![CDATA[<p>原文链接：<a href="http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source">http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source</a></p>
+
+<p>开源项目是一种好的释放自己的热情(&ldquo;geek out&rdquo;?)和做自己喜爱的事情的方式。有一个自己参与的开源项目可以使你的工作做起来更加快乐和满足，也会使你保持良好的编程水平，也会经常给你带来其他机遇。许多人不知道从何出入手向开源项目贡献自己的力量。以下是接触参与开源项目的六个简单的忠告。</p>
+
+<h2>参与到平时使用的开源软件的项目之中(言外之意是不要鲁莽的参与到你不使用或者不了解的开源项目中)</h2>
+
+<p>这一条很明显，但是记得不要尝试参与到你不使用或者你一无所知的项目中去。给你平时使用的，你也许愿意投入贡献的开源软件列一张清单。别忘了还有你使用的开源类库、开源模块也可以考虑投入贡献，记得参与到一个有许多开发者使用的开源项目有更多的益处。你使用框架吗、文件转换工具、图形类库或者一般开源软件需要使用的构建工具吗，或者一个新功能？以上这些都是你第一次参与开源项目的首选。</p>
+
+<h2>Do What You Love 做你真正感兴趣的部分</h2>
+
+<p>记得要找一个你 <strong>真正</strong> 感兴趣的部分做出你的贡献。比如说你对解析器情有独钟，那么一个编译器项目就不是第一次参与的项目首选。也许可以考虑一个webserver项目或者构建工具项目中的解析配置文件模块。</p>
+
+<h2>掌握开源软件中常用的工具</h2>
+
+<p>对于每个开源项目，版本控制系统、bug追踪系统、patch提交系统，有自己的代码规范，feature request，问题排查系统(user troubleshooting issues)以及构建工具和开发者讨论社区，这些都会有所差异。因此你应该花些时间学习熟悉这个项目使用的工具。一些常识，例如不该在开发者邮件列表里询问如何使用SVN;不该在用户论坛里提交bug，这些都该知道。认真阅读开发文档，学习使用上述的工具不仅可以节省大家的时间也会提高你所做的贡献被接受的可能。</p>
+
+<h2>观察了解项目的人际圈子</h2>
+
+<p>除了认真考虑技术，了解项目中的社交圈子也很重要。你该知道哪些人是核心开发人员(core maintainer)，这些核心开发者是如何与他人交流的，在开发社区中哪些人更活跃，他们为项目制定了那些规则。对于新的贡献者，有些项目会很开放和热心帮助，而有些项目则不大友好。记得要多在邮件列表、IRC或者其他开发者交流渠道上花时间观察，熟悉项目开发的交流氛围。 也许你认为开发者社区的交流互动不很重要，但是这却是成为一个成功的贡献者还是沮丧的离开的差异所在。回忆器我第一次尝试贡献开源项目时，我想改善一个音乐播放器程序的播放列表格式，因为这个音乐播放器程序在命令行下指定播放列表时，它不支持所有可用的格式。由于我的歌曲文件名字超出了Linux内核支持的命令行参数的字符上限，因此我没有办法将所有的音乐放入播放列表中。于是我在邮件列表中发了封邮件询问开发组他们是否考虑支持新的播放列表格式。于是立即引起了一场争论。当我第二天查看邮件列表时，我看到了上百个回复，一些人表示支持，一些人说现在的已有格式已经很好，还有些人问道这是哪来的新人。于是整个事情由回应问题变成了争论。 我当时犯的错误就是没有足够了解项目的社交圈。查看下邮件列表的存档，你才会发现有些项目只对一小撮核心贡献者开放，而对大多数人尤其是那些连一个bugfix都没提交过的人一点都不理会的。因此这就引出了我要谈到的下一条也是最重要的一条忠告——从小处入手</p>
+
+<h2>从小处入手</h2>
+
+<p>从小处入手有两方面含义，一是小的贡献，二是规模小的项目。提交一些小的bugfix或者实现一个简单的feature可以帮助你提高社区中的声望，同时也会使你熟悉项目中的提交流程。这两个方面都灰是你的补丁被接受的可能性大大提高。 一个规模小的项目中，你的贡献会更富有成效，因为熟悉提交流程和工具链会更快，你还能和核心开发者有更好的沟通。一个只有一个维护者的项目，提交一个bugfix补丁通常和邮寄一封附有diff文件和问题描述信息的邮件给维护者一样简单。</p>
+
+<h2>开始自己的开源项目</h2>
+
+<p>开始接触开源项目的一个最简单的方法就是建立自己的开源项目。写一个firefox插件、一个wordpress插件或者一个emacs mode都是不错的想法，既可以快速写就，通常还会赢得不少用户的肯定。 不过在你创建自己的项目之前，记得一定要好好查查，确保你的工作没有人在做。你也许会惊喜的发现有许多项目只需要一点点关注就会使这些项目变得更有价值。</p>
+
+<p>以上就是6条初次参与开源软件项目的忠告。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[域名邮件不再被spam——SPF记录设置]]></title>
+    <link href="http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain/"/>
+    <updated>2012-02-26T00:26:17+08:00</updated>
+    <id>http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain</id>
+    <content type="html"><![CDATA[<p>一直使用的是QQ提供的<a href="http://domain.mail.qq.com/">域名邮箱</a>功能，很不错。本文旨在教你如何设置SPF记录防止自己域名的邮件被标记为spam。</p>
+
+<h2>什么是SPF记录</h2>
+
+<p>参考wiki：<a href="http://en.wikipedia.org/wiki/Sender_Policy_Framework">http://en.wikipedia.org/wiki/Sender_Policy_Framework</a></p>
+
+<p>SPF是<strong>Sender Policy Framework</strong>的简称，是一种email验证系统，旨在通过检测email proofing，验证发送者IP地址的方法来杜绝垃圾邮件的方法。</p>
+
+<blockquote><p>接收邮件方会首先检查域名的SPF记录，来确定发件人的IP地址是否被包含在SPF记录里面，如果在，就认为是一封正确的邮件，否则会认为是一封伪造的邮件进行退回。</p></blockquote>
+
+<h2>设置过程</h2>
+
+<p>本文以DNSPod为例展示QQ域名邮箱的SPF设置过程。</p>
+
+<ol>
+<li><p> 进入DNSPod制定域名的管理界面</p></li>
+<li><p> “添加记录”，填入如下内容：</p>
+
+<p>v=spf1 include:spf.mail.qq.com ~all</p></li>
+<li><p> 最后点击保存即可</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南]]></title>
+    <link href="http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/"/>
+    <updated>2012-02-25T23:40:12+08:00</updated>
+    <id>http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet</id>
+    <content type="html"><![CDATA[<p>感谢强大的ipv6!</p>
+
+<blockquote><p>使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持<strong>NAT64/DNS64</strong>的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。</p></blockquote>
+
+<p>目前互联网上公布的二台DNS64服务器地址为：</p>
+
+<p><code>
+2001:778::37
+2001:df8:0:7::1
+</code></p>
+
+<p>通过简单设置就可以实现利用ipv6访问<strong>所有网站</strong>。</p>
+
+<!-- more -->
+
+
+<h2>一些限制</h2>
+
+<ol>
+<li><p> 目前该方法不能在<strong>windows xp</strong>上使用，只能在windows vista、windows 7上使用。</p></li>
+<li><p> 只能使用基本web服务，浏览网页，其他如登录QQ客户端不行（使用网页QQ可以）。</p></li>
+</ol>
+
+
+<h2>设置方法</h2>
+
+<h3>Windows7设置</h3>
+
+<p>进入网络和共享中心，点击本地连接，设置属性，双击ipv6属性输入上面的两个DNS服务器地址。同时取消ipv4协议以达到纯ipv6上网，最后点击确定就大功告成！</p>
+
+<h3>Ubuntu设置</h3>
+
+<p>对Linux了解的不多，采取的方法也许不是最佳的。Ubuntu网络管理程序使用的是NetworkManager，这个工具说实话很垃圾。无法设置很多选项，比如说我们即将设置的nameserver，而且每次联网都会覆盖掉你自定义的设置。</p>
+
+<p>牢骚到此为止。</p>
+
+<p>设置过程：</p>
+
+<ol>
+<li><p> 首先打开NetworkManager，<strong>编辑连接</strong>&mdash;>&ldquo;<strong>你目前用的网络连接&rdquo;</strong>&mdash;>&ldquo;ipv4标签下选择<strong>禁用</strong>&rdquo;&mdash;><strong>ipv6标签，选择自动</strong></p></li>
+<li><p> 编辑<code>/etc/resolv.conf</code></p></li>
+</ol>
+
+
+<p>```bash</p>
+
+<p>sudo gedit /etc/resolv.conf`</p>
+
+<p>```</p>
+
+<p>添加如下内容：</p>
+
+<pre><code>nameserver 2001:778::37
+nameserver 2001:df8:0:7::1
+</code></pre>
+
+<ul>
+<li><p>设置好resolve.conf之后，每次重启网络或者重新联网时NetworkManager都会覆盖掉你的设置，这里有个下下策的解决办法，运行下面的命令</p>
+
+<p>sudo chattr +i /etc/resolv.conf</p></li>
+</ul>
+
+
+<p>这样resolv.conf就变成无法修改了。可以避免被覆盖。如果要想恢复，则运行</p>
+
+<pre><code>sudo chattr -i /etc/resolv.conf
+</code></pre>
+
+<h2>使用感受</h2>
+
+<p>最近这几周一直在使用纯ipv6利用该方法上网。总得来说，还凑合。优点很明显，所有网站通行无阻。缺点就是<em>速度慢</em>，<strong>不稳定——偶尔会抽风。</strong></p>
+
+<p>建议是将此方法结合着ipv6 hosts方法达到更好的使用体验。</p>
+
+<h2>参考链接</h2>
+
+<ul>
+<li><a href="http://www.ipv6bbs.cn/archiver/tid-152.html">在IPv6网络下访问IPv4资源的方法(利用NAT64/DNS64实现)</a> via <a href="http://www.ipv6bbs.cn/">IPv6论坛</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

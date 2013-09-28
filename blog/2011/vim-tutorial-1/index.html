@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>VIM学习资料总结 - Liuyix</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。 Q：为什么要学习这么古老的编辑工具，是否真的有意义？
+A：一个coder也是一个“打字员”，最常用的就是文本编辑功能，而在所有的文本编辑器中，最为强大的就是VIM/ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.github.io/blog/2011/vim-tutorial-1">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Liuyix</a></h1>
+  
+    <h2>Just another coder.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">VIM学习资料总结</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-28T21:25:37+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><blockquote><p>一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。</p></blockquote>
+
+<p>Q：为什么要学习这么古老的编辑工具，是否真的有意义？<br/>
+A：一个coder也是一个“打字员”，最常用的就是文本编辑功能，而在所有的文本编辑器中，最为强大的就是VIM/Emacs两个流派，聪明的coder都是懒惰的，熟练使用了一种“神器”，就会在coding中变得更懒——换句话也是更高效。更多信息请参考：<a href="http://linuxtoy.org/archives/why-emacs-vim-good.html">为何 Emacs 和 Vim 被称为两大神器(via LinuxTOY)</a><br/>
+Q：VIM/Emacs，我该学习哪个？<br/>
+A:关于二者究竟哪个更胜一筹的争论已经长达几十年，到目前依旧没有定论，从中可以说明熟练掌握哪一个，效果是相当的。因此不要把时间浪费在选择上，而是要花在耐心的学习上。<br/>
+我没有用过emacs，这里简单说一下二者的差别。（皆来自于网络）<!-- more --></p>
+
+<ul>
+<li><p><strong>定位上</strong>：emacs是一个伪装成编辑器的OS，VIM则是专注与如何高效的文本编辑以及程序的编写</p></li>
+<li><p><strong>学习难度</strong>：二者都很难，VIM学习曲线陡峭但短时间即可掌握，Emacs则学习曲线平缓但需要长时间的学习</p></li>
+</ul>
+
+
+<p>Q：我应该怎样学习vim？
+A：动手操作是最关键的，一边看着教程一边跟着操作，如果用心几天的时间你就会爱上它的。
+下面列出一些我自学时搜集的优秀的网上的vim教学资源，<strong>有先后顺序</strong>。</p>
+
+<ol>
+<li><p> 下载安装vim，同时下载安装vim中文manual。vim/emacs的帮助文档是目前我见到的最为完善的帮助文档，今后的学习会越来越依靠它的。Vim中文文档地址：<a href="http://sourceforge.net/projects/vimcdoc/">http://sourceforge.net/projects/vimcdoc/</a></p></li>
+<li><p> 安装好后，首先要看的vim内置的简短的30分钟教程——Linux用户：在terminal下面输入vimtutor进入;Windows用户打开vim，单击下ESC键，然后输入”:help tutor“(注意help前面有一个冒号)</p></li>
+<li><p> 网络上比较好的入门教程是<A Byte of VIM>。这本书是英文的，前面的基本介绍部分有中文翻译版本。如果英语没啥问题的，推荐完整的看一遍，收获是巨大的，如果英语不好，看的很费劲，那么就看前几章的翻译版本吧。<a href="http://www.swaroopch.com/notes/Vim_en:Table_of_Contents">英文版地址</a>||<a href="http://www.swaroopch.com/notes/Vim_zh-cn:%E7%9B%AE%E5%BD%95">中文版地址</a></p></li>
+<li><p> 前面的基本教程看完之后，就是配置vimrc以及安装插件了。这方面的材料我推荐的是：<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/">vi/vim使用进阶｜Easwy</a>主要的内容是vim的配置以及插件的介绍</p></li>
+<li><p> 另外网络上流传甚广的一个vimrc，是国外的网友制作，内容很全，但是要有取舍，看一看还是有收获的。<a href="http://amix.dk/vim/vimrc.html">地址</a></p></li>
+</ol>
+
+
+<p>看过了这些材料之后，应该说算是入门了，最翔实的是内容还是在vim manual里面，要想继续的提高就该选择的看一看自己需要的、感兴趣的部分，同时<a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki">vim tips wiki</a>也是一个很不错的地方。
+Good Luck!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-28T21:25:37+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/techs/'>Techs</a>, <a class='category' href='/blog/categories/wei-fen-lei/'>未分类</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/handle-vim-e492/" title="Previous Post: 解决VIM插件/colorscheme出现E492不是编辑器命令 ^M">&laquo; 解决VIM插件/colorscheme出现E492不是编辑器命令 ^M</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/my-vimrc/" title="Next Post: 我的vimrc——vim配置的一些建议（附详细注释的vimrc）">我的vimrc——vim配置的一些建议（附详细注释的vimrc） &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>CS Master Candidate, BIT</br>Insterest: CSArch, Linux, Android </p>
+  <h3><strong>Do something to prove yourself!</strong></h3>
+  
+  <center>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/linux-file-io/">Linux_file_io</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/android-4-dot-3-selinux/">Android 4.3新特性——SElinux简介</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/dev'>dev (2)</a></li><li><a href='/blog/categories/life'>Life (3)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/sexy-python'>sexy python (1)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'liuyix';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://liuyix.github.io/blog/2011/vim-tutorial-1/';
+        var disqus_url = 'http://liuyix.github.io/blog/2011/vim-tutorial-1/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
