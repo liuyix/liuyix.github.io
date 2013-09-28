@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ubuntu下手动安装Eclipse CDT - Liuyix</title>
+  <title>#吐槽# Octopress：想说爱你不容易... - Liuyix</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="这篇文章期望的读者是谁？ Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写 希望达到的目标？ 增加一点linux基础知识的认识（严格说是ubuntu的目录结构）
-练习常用的linux命令（在本文中使用到了解压缩、文件夹的移动、创建符号连接） &hellip;">
+  <meta name="description" content="几个月时间，博客转到了github pages上的Octopress，结果是输出的文章比之前更少。（之前的几十篇文章也不见了踪影&hellip;） 我似乎不属于个例——一直以来都特意关注了我所能遇到的Octopress搭建的独立博客，大部分Octopress我所遇到中文博客都很少更新， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu">
+  <link rel="canonical" href="http://liuyix.github.io/blog/2013/octopress-fails">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
@@ -84,7 +83,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ubuntu下手动安装Eclipse CDT</h1>
+      <h1 class="entry-title">#吐槽# Octopress：想说爱你不容易...</h1>
     
     
       <p class="meta">
@@ -100,7 +99,7 @@
   
 
 
-<time datetime="2011-04-11T21:06:09+08:00" pubdate data-updated="true">Apr 11<span>th</span>, 2011</time>
+<time datetime="2013-09-27T23:09:00+08:00" pubdate data-updated="true">Sep 27<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -109,90 +108,45 @@
   </header>
 
 
-<div class="entry-content"><h2>这篇文章期望的读者是谁？</h2>
+<div class="entry-content"><p>几个月时间，博客转到了github pages上的Octopress，结果是输出的文章比之前更少。（之前的几十篇文章也不见了踪影&hellip;）</p>
 
-<p>Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写</p>
+<p>我似乎不属于个例——一直以来都特意关注了我所能遇到的Octopress搭建的独立博客，<em>大部分Octopress我所遇到中文博客都很少更新，其中大多迁移到Octopress后几个月内就不再更新了</em>。
+结合这几个月为数不多的使用，说一下Octopress的使用感受。</p>
 
-<h2>希望达到的目标？</h2>
+<h2>对ruby写的jekyll有种陌生的敬畏</h2>
 
-<ul>
-<li><p>增加一点linux基础知识的认识（严格说是ubuntu的目录结构）</p></li>
-<li><p>练习常用的linux命令（在本文中使用到了解压缩、文件夹的移动、创建符号连接）</p></li>
-<li><p>初步了解Linux Desktop Entry的写法</p></li>
-</ul>
+<p>ruby从来没有学过，因此对自己不了解的东西始终有种不自觉的排斥(coder都会有这种感觉吧)，所以每次都是怀着忐忑的心情敲着 <code>rake new_post['XXX']</code> , <code>rake generate</code> ，生怕出现什么闪失而不知所措。可不幸的是，意外总是时而发生。而对此我只能做的就是打开octopress.org，照着文档重新搭建下环境。</p>
 
+<h2>搭建环境简直就是pain in the ass</h2>
 
-<!-- more -->
+<p>我对ruby完全不了解（用了octopress感觉也不会用ruby了&hellip;）搭建环境非常繁琐，以下吐槽就当作一个不懂ruby的coder对ruby项目的吐槽吧。</p>
 
+<p>首先是不能使用系统自带的ruby程序，需要单独下载 <code>rbenv</code> 或者 <code>rvm</code> 来搭建奇葩的ruby-1.9.3。（反观python，大多数应用直接使用默认的环境，多么的方便。）<br/>
+而且每次实际上都是下载ruby源代码进行本地编译安装，<code>rbenv</code> / <code>rvm</code> 默认都需要从国外官网下载源码，速度在教育网可以说是惨不忍睹，再加之这两个工具都是个人开发，项目质量不好说，我偶尔会出现因网络问题导致失败重来的情况&hellip;<br/>
+之后还要陆陆续续的现在一坨各种插件和工具，在漫长的（速度巨慢）忐忑的（尼玛要出出点啥问题我很难解决，ruby不会文档又少&hellip;）等待后，环境总算是搭建好了。<br/>
+之后是 rbenv/rvm 的奇葩设置，这两种工具实际上每次都是靠<code>.bash_profile</code> 载入ruby-1.9.3环境，而Ubuntu默认的terminal必须要设置成非默认的<code>以shell运行的方式运行命令</code> 才会正常的载入ruby环境。<br/>
+千辛万苦加若干次挫折你才能开始真正的写blog。</p>
 
-<h2>正题</h2>
+<h2>不能“随时随地方便的写作”</h2>
+
+<p>想在不同的地点，不同的电脑、设备中更新博客几乎是不可能的。（事实上这是可能的，我之前努力研究过，非常麻烦）而我的环境恰恰就是这个样子：实验室常用主机一台，宿舍笔记本一台。仅仅多了一台编辑设备，你需要更多的努力才能正确的将环境搭好。</p>
+
+<p>这里简单的说下折腾的大致过程：</p>
 
 <ol>
-<li><p> 在Eclipse CDT官网下载Linux-32bit的安装包，比如下载到你的主目录下</p></li>
-<li><p> 终端下进入你下载的安装包的路径（如上文的主目录:~）</p></li>
-<li><p> <strong>解压缩</strong>下载的压缩包: <code>tar -zxvf eclipse-cpp-helios-SR2-linux-gtk.tar.gz</code></p></li>
-<li><p> 将文件夹所有内容移动到<strong><code>/usr/local/lib</code></strong>该位置相当于Windows里的Program Files文件夹，用于放置本地程序，注意此处必须使用root权限<code>sudo mv eclipse /usr/local/lib</code></p></li>
-<li><p> 在<code>/usr/local/bin</code>下创建eclipse启动程序的符号链接（符号链接相当于快捷方式），便于在终端里调用启动<code>sudo ln -s /usr/local/lib/eclipse/eclipse /usr/local/bin</code></p></li>
-<li><p> 创建Linux Desktop Entry:就是将Eclipse CDT添加到Ubuntu程序菜单中<code>sudo gedit /usr/share/applications/cdt-eclipse.desktop</code></p></li>
+<li>clone自己blog的<code>source</code>分支到新电脑，比如clone到 <code>foo.github.com</code></li>
+<li>在<code>foo.github.com</code>下新建目录<code>_deploy</code> 然后clone <code>master</code> 分支到该目录下</li>
+<li>在<code>foo.github.com</code>下搭建octopress</li>
 </ol>
 
 
-<p>该条命令的含义：在<code>/usr/share/applications/</code>目录下创建一个名为cdt-eclipse.desktop文件，该路径用于放置你看到的程序菜单中的所有程序，有兴趣可以用文件浏览器浏览</p>
-
-<ol>
-<li> 在弹出的gedit中写入以下内容</li>
-</ol>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[Desktop Entry]
-</span><span class='line'>Name=Eclipse-CDT
-</span><span class='line'>GenericName[zh_CN]=Eclipse的C/C++环境
-</span><span class='line'>GenericName=Eclipse with CDT
-</span><span class='line'>Comment=Eclipse C/C++ IDE
-</span><span class='line'>Exec=eclipse
-</span><span class='line'>Terminal=false
-</span><span class='line'>Icon=cdt-eclipse
-</span><span class='line'>Type=Application
-</span><span class='line'>Categories=Development;IDE;[/text]</span></code></pre></td></tr></table></div></figure>
-
-
-<p>简单说明:<br/>
-[Name]菜单项显示的名称<br/>
-[GenericName]应用程序的通用名称<br/>
-[GenericName[zh_CN]]国际化显示，当本地编码与之相符则显示相应的内容<br/>
-[Exec]调用的命令<br/>
-[Terminal]布尔值，若为真则是“在终端下运行”[Icon]表示相应的图标文件名称（图标文件在附件中）<br/>
-[Type]Desktop Entry文件的类型，Application表示该Desktop Entry文件指向了一个应用程序<br/>
-[Categories]该项只有在&#8221;Type&#8221;是&#8221;Application&#8221;时才有效。该项表示相关应用程序在菜单中显示的类别。</p>
-
-<ol>
-<li> 图标文件的处理：系统会自动依次在以下几个目录中查找<code>$HOME/.icons--&gt;$XDG_DATA_DIRS/icons --&gt;/usr/share/pixmaps</code>，因此将图标放入到<code>/usr/share/pixmaps/</code>目录中以便所有用户都可以使用到</li>
-</ol>
-
+<p>嗯，这仅仅是折腾的开始，如果在不同地点编辑的话，你需要经常<code>git pull</code>才可以，而且要是没有写好的blog，也需要push到服务器中，然后在另外的地方pull下来才能继续编辑。</p>
 
 <hr />
 
-<p>到这里就算是大功告成了，希望你通过实际的操作，能更加熟悉linux的环境！</p>
+<p>吐槽到此结束，没有坚持写博客，上述都是次要原因，主要的原因应该还是自己比较懒&hellip;（Octopress又让写博客变得略微的艰难，于是更加的懒）</p>
 
-<p><strong>附件</strong>（此附件包含图标以及desktop文件）<a href="http://u.115.com/file/f9e78679f9">下载链接</a></p>
-
-<h2>参考链接</h2>
-
-<ul>
-<li><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-dtef/index.html">Linux Desktop Entry 文件深入解析</a></li>
-<li><a href="http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html">Icon Theme Specification</a></li>
-</ul>
-
+<p>嗯&hellip;你没猜错，这是又要搬家的节奏&hellip;</p>
 </div>
 
 
@@ -215,14 +169,8 @@
   
 
 
-<time datetime="2011-04-11T21:06:09+08:00" pubdate data-updated="true">Apr 11<span>th</span>, 2011</time>
+<time datetime="2013-09-27T23:09:00+08:00" pubdate data-updated="true">Sep 27<span>th</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/linux/'>Linux</a>
-  
-</span>
 
 
     </p>
@@ -236,8 +184,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/youtube-download-with-subtitle/" title="Previous Post: 翻墙下载附带字幕的youtube视频">&laquo; 翻墙下载附带字幕的youtube视频</a>
       
-        <a class="basic-alignment right" href="/blog/2013/hello-octopress/" title="Next Post: Hello Octopress!">Hello Octopress! &raquo;</a>
       
     </p>
   </footer>
@@ -317,8 +265,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu/';
-        var disqus_url = 'http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu/';
+        var disqus_identifier = 'http://liuyix.github.io/blog/2013/octopress-fails/';
+        var disqus_url = 'http://liuyix.github.io/blog/2013/octopress-fails/';
         var disqus_script = 'embed.js';
       
     (function () {
