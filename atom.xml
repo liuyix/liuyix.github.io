@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Liuyix]]></title>
-  <link href="http://liuyix.github.io/atom.xml" rel="self"/>
-  <link href="http://liuyix.github.io/"/>
-  <updated>2013-10-06T20:54:11+08:00</updated>
-  <id>http://liuyix.github.io/</id>
+  <link href="http://liuyix.org/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2013-10-07T00:37:49+08:00</updated>
+  <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[mac上安装octopress]]></title>
-    <link href="http://liuyix.github.io/blog/2013/mac-install-octopress/"/>
+    <link href="http://liuyix.org/blog/2013/mac-install-octopress/"/>
     <updated>2013-10-06T12:31:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/mac-install-octopress</id>
+    <id>http://liuyix.org/blog/2013/mac-install-octopress</id>
     <content type="html"><![CDATA[<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
 <del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
 
@@ -128,9 +128,9 @@
   
   <entry>
     <title type="html"><![CDATA[#吐槽# Octopress：想说爱你不容易...]]></title>
-    <link href="http://liuyix.github.io/blog/2013/octopress-fails/"/>
+    <link href="http://liuyix.org/blog/2013/octopress-fails/"/>
     <updated>2013-09-27T23:09:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/octopress-fails</id>
+    <id>http://liuyix.org/blog/2013/octopress-fails</id>
     <content type="html"><![CDATA[<p>几个月时间，博客转到了github pages上的Octopress，结果是输出的文章比之前更少。（之前的几十篇文章也不见了踪影&hellip;）</p>
 
 <p>我似乎不属于个例——一直以来都特意关注了我所能遇到的Octopress搭建的独立博客，<em>大部分Octopress我所遇到中文博客都很少更新，其中大多迁移到Octopress后几个月内就不再更新了</em>。
@@ -175,9 +175,9 @@
   
   <entry>
     <title type="html"><![CDATA[翻墙下载附带字幕的youtube视频]]></title>
-    <link href="http://liuyix.github.io/blog/2013/youtube-download-with-subtitle/"/>
+    <link href="http://liuyix.org/blog/2013/youtube-download-with-subtitle/"/>
     <updated>2013-08-09T23:59:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/youtube-download-with-subtitle</id>
+    <id>http://liuyix.org/blog/2013/youtube-download-with-subtitle</id>
     <content type="html"><![CDATA[<blockquote><p>许久没写了，上一篇水文教程。</p></blockquote>
 
 <p>需要的工具：</p>
@@ -212,9 +212,9 @@
   
   <entry>
     <title type="html"><![CDATA[Android 4.3新特性——SElinux简介 ]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-4-dot-3-selinux/"/>
+    <link href="http://liuyix.org/blog/2013/android-4-dot-3-selinux/"/>
     <updated>2013-07-28T00:32:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-4-dot-3-selinux</id>
+    <id>http://liuyix.org/blog/2013/android-4-dot-3-selinux</id>
     <content type="html"><![CDATA[<p>New Jelly Bean &mdash; Android 4.3于7月底发布，这次整体上变化不是很大，所以还是叫Jelly Bean。不过在底层，Android在安全上实际增强了不少，Android 4.3开始集成SELinux, 系统的安全性(<em>潜力</em>)提高了一个档次。</p>
 
 <p>New Jelly Bean, New JB，Android 4.3指的都是Google新发布的Android 4.3系统，代号依旧是Jelly Bean</p>
@@ -337,14 +337,14 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
   
   <entry>
     <title type="html"><![CDATA[Android平台上的JNI技术介绍]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction/"/>
+    <link href="http://liuyix.org/blog/2013/android-ndk-and-jni-introduction/"/>
     <updated>2013-07-15T06:00:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction</id>
+    <id>http://liuyix.org/blog/2013/android-ndk-and-jni-introduction</id>
     <content type="html"><![CDATA[<h2>NDK简介</h2>
 
 <p>Android是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。</p>
 
-<p><img src="http://liuyix.github.io/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
+<p><img src="http://liuyix.org/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
 
 <center>图0-1 Android系统架构图</center>
 
@@ -370,7 +370,7 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 
 <p>JNI（Java Native Interface）是Java SDK 1.1时正式推出的，目的是为不同JVM实现间提供一个标准接口，从而使Java应用可以使用本地二进制共享库，扩充了原有JVM的能力，同时Java程序仍然无需再次编译就可以运行在其他平台上，即保持了平台独立性又能使用平台相关的本地共享库提升性能。在Java开发中的位置如下图所示。JNI作为连接平台独立的Java层(以下简称Java层)与与平台相关的本地环境(以下简称Native层)之间的桥梁。</p>
 
-<p><img src="http://liuyix.github.io/images/role-of-jni-intro.gif" alt="/images/role-of-jni-intro.gif" /></p>
+<p><img src="http://liuyix.org/images/role-of-jni-intro.gif" alt="/images/role-of-jni-intro.gif" /></p>
 
 <p>图1-1 JNI在Java开发中的位置</p>
 
@@ -1170,7 +1170,7 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 
 <p>下图是 <code>JNIEnv</code> 的一个简单图示<sup id="fnref:7"><a href="#fn:7" rel="footnote">7</a></sup></p>
 
-<p><img src="http://liuyix.github.io/images/jnienv.gif" alt="/images/jnienv.gif" /></p>
+<p><img src="http://liuyix.org/images/jnienv.gif" alt="/images/jnienv.gif" /></p>
 
 <p>JNIEnv能提供的功能非常多，大体可以分为以下几类5：</p>
 
@@ -1474,9 +1474,9 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
   
   <entry>
     <title type="html"><![CDATA[Android Root 那些事]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-root/"/>
+    <link href="http://liuyix.org/blog/2013/android-root/"/>
     <updated>2013-07-14T19:14:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-root</id>
+    <id>http://liuyix.org/blog/2013/android-root</id>
     <content type="html"><![CDATA[<h2>Root</h2>
 
 <p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
@@ -1511,9 +1511,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[《程序员的自我修养》小结]]></title>
-    <link href="http://liuyix.github.io/blog/2013/advanced-linkers-and-loaders/"/>
+    <link href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders/"/>
     <updated>2013-04-09T21:05:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/advanced-linkers-and-loaders</id>
+    <id>http://liuyix.org/blog/2013/advanced-linkers-and-loaders</id>
     <content type="html"><![CDATA[<p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
 应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
 
@@ -1523,7 +1523,7 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
 其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
 参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
 
-<p><img src="http://liuyix.github.io/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
+<p><img src="http://liuyix.org/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
 
 <p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
 ]]></content>
@@ -1531,9 +1531,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[Octopress修改记录]]></title>
-    <link href="http://liuyix.github.io/blog/2013/my-customize-octopress/"/>
+    <link href="http://liuyix.org/blog/2013/my-customize-octopress/"/>
     <updated>2013-03-08T22:27:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/my-customize-octopress</id>
+    <id>http://liuyix.org/blog/2013/my-customize-octopress</id>
     <content type="html"><![CDATA[<p>&lt;&mdash;more&mdash;></p>
 
 <h3>Octopress</h3>
@@ -1613,9 +1613,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[期待 Octopress 2.1]]></title>
-    <link href="http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1/"/>
+    <link href="http://liuyix.org/blog/2013/expecting-octopress-2-dot-1/"/>
     <updated>2013-03-08T00:11:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1</id>
+    <id>http://liuyix.org/blog/2013/expecting-octopress-2-dot-1</id>
     <content type="html"><![CDATA[<p>想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。</p>
 
 <p>搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个<a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">疑问</a>了，作者给予了回答，大意是太臃肿没必要，然社区群众们呼声很高，Octopress计划在2.1版本中支持jQuery!</p>
@@ -1629,10 +1629,10 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="http://liuyix.github.io/blog/2013/hello-octopress/"/>
+    <link href="http://liuyix.org/blog/2013/hello-octopress/"/>
     <updated>2013-03-07T18:45:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/hello-octopress</id>
-    <content type="html"><![CDATA[<p><img src="http://liuyix.github.io/images/octopress-logo.png" title="" ></p>
+    <id>http://liuyix.org/blog/2013/hello-octopress</id>
+    <content type="html"><![CDATA[<p><img src="http://liuyix.org/images/octopress-logo.png" title="" ></p>
 
 <h2>初识Octopress</h2>
 
@@ -1700,9 +1700,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   
   <entry>
     <title type="html"><![CDATA[[转]失败的高雅——李欧梵在香港中文大学的演讲]]></title>
-    <link href="http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li/"/>
+    <link href="http://liuyix.org/blog/2012/nobility-of-failure-by-oufan-li/"/>
     <updated>2012-11-24T04:40:58+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li</id>
+    <id>http://liuyix.org/blog/2012/nobility-of-failure-by-oufan-li</id>
     <content type="html"><![CDATA[<p><em>前几日在李开复的微信公共平台上看到的文章，还是有些价值的。</em></p>
 
 <blockquote><p>你可能不知道，有一种“高雅的失败”，可以历练你的人生。“人年轻时一定要认同危机，这段时间是一个缓冲期。在人成熟前，要经过认同溷乱的阶段。爱尔兰剧作 家、现代主义荒谬剧大师萨缪尔•贝克特说过：‘再试一次，再失败一次，失败得好一点。’ 当你发现越失败越好的时候，你就成功了。”</p></blockquote>
@@ -1813,9 +1813,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   
   <entry>
     <title type="html"><![CDATA[[转载]程序员常见的健康问题]]></title>
-    <link href="http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version/"/>
+    <link href="http://liuyix.org/blog/2012/common-programmer-health-problem-chiness-version/"/>
     <updated>2012-05-12T05:11:12+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version</id>
+    <id>http://liuyix.org/blog/2012/common-programmer-health-problem-chiness-version</id>
     <content type="html"><![CDATA[<blockquote><p>再战隼的博客上看到的，正巧这几日正受颈椎病的困扰 :&ndash;( 真的还算及时，在此提醒下所有战斗在代码一线的斗士们，注意身体，养成锻炼的好习惯！</p></blockquote>
 
 <p><a href="http://www.read.org.cn/html/1926-cheng-xu-yuan-de-chang-jian-jian-kang-wen-ti.html">原文链接</a>via<a href="http://www.read.org.cn/">战隼的学习探索</a></p>
@@ -2107,9 +2107,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   
   <entry>
     <title type="html"><![CDATA[一个简单的python小程序————使用douban API通过ISBN查询书籍信息]]></title>
-    <link href="http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api/"/>
+    <link href="http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api/"/>
     <updated>2012-03-11T07:52:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api</id>
+    <id>http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api</id>
     <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
 
 <ul>
@@ -2132,9 +2132,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   
   <entry>
     <title type="html"><![CDATA[Eclipse下配置NDK开发环境小结]]></title>
-    <link href="http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration/"/>
+    <link href="http://liuyix.org/blog/2012/android-ndk-eclipse-configuration/"/>
     <updated>2012-03-11T06:11:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration</id>
+    <id>http://liuyix.org/blog/2012/android-ndk-eclipse-configuration</id>
     <content type="html"><![CDATA[<p>分享下最近几周我的一些NDK开发经验和心得。</p>
 
 <p>Eclipse配置NDK环境，主要完成的功能使能调用Android NDK提供的工具链编译用C/C++源代码写好的共享库或者可执行的应用程序。由于我的工作需要的基本是完全native程序的编写，因此这里介绍的方法 <strong>更适合编译Android下的本地应用程序或者共享库</strong></p>
@@ -2186,9 +2186,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   
   <entry>
     <title type="html"><![CDATA[[译]初次参与开源软件项目的六个忠告]]></title>
-    <link href="http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/"/>
+    <link href="http://liuyix.org/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/"/>
     <updated>2012-03-11T06:00:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn</id>
+    <id>http://liuyix.org/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn</id>
     <content type="html"><![CDATA[<p>原文链接：<a href="http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source">http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source</a></p>
 
 <p>开源项目是一种好的释放自己的热情(&ldquo;geek out&rdquo;?)和做自己喜爱的事情的方式。有一个自己参与的开源项目可以使你的工作做起来更加快乐和满足，也会使你保持良好的编程水平，也会经常给你带来其他机遇。许多人不知道从何出入手向开源项目贡献自己的力量。以下是接触参与开源项目的六个简单的忠告。</p>
@@ -2223,9 +2223,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   
   <entry>
     <title type="html"><![CDATA[域名邮件不再被spam——SPF记录设置]]></title>
-    <link href="http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain/"/>
+    <link href="http://liuyix.org/blog/2012/howto-add-spf-record-for-domain/"/>
     <updated>2012-02-26T00:26:17+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain</id>
+    <id>http://liuyix.org/blog/2012/howto-add-spf-record-for-domain</id>
     <content type="html"><![CDATA[<p>一直使用的是QQ提供的<a href="http://domain.mail.qq.com/">域名邮箱</a>功能，很不错。本文旨在教你如何设置SPF记录防止自己域名的邮件被标记为spam。</p>
 
 <h2>什么是SPF记录</h2>
@@ -2253,9 +2253,9 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   
   <entry>
     <title type="html"><![CDATA[教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南]]></title>
-    <link href="http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/"/>
+    <link href="http://liuyix.org/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/"/>
     <updated>2012-02-25T23:40:12+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet</id>
+    <id>http://liuyix.org/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet</id>
     <content type="html"><![CDATA[<p>感谢强大的ipv6!</p>
 
 <blockquote><p>使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持<strong>NAT64/DNS64</strong>的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。</p></blockquote>
@@ -2341,9 +2341,9 @@ nameserver 2001:df8:0:7::1
   
   <entry>
     <title type="html"><![CDATA[makefile简单入门]]></title>
-    <link href="http://liuyix.github.io/blog/2012/write-simple-makefile/"/>
+    <link href="http://liuyix.org/blog/2012/write-simple-makefile/"/>
     <updated>2012-02-20T04:02:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/write-simple-makefile</id>
+    <id>http://liuyix.org/blog/2012/write-simple-makefile</id>
     <content type="html"><![CDATA[<blockquote><p>在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。</p></blockquote>
 
 <h2>导言</h2>
@@ -2426,9 +2426,9 @@ insert.o search.o files.o utils.o
   
   <entry>
     <title type="html"><![CDATA[开放与开源，自由与封闭]]></title>
-    <link href="http://liuyix.github.io/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software/"/>
+    <link href="http://liuyix.org/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software/"/>
     <updated>2012-01-31T08:08:28+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software</id>
+    <id>http://liuyix.org/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software</id>
     <content type="html"><![CDATA[<p>前几天偶然间看到了一个淘宝又一个非常不错的网站——Taocode（<a href="http://code.taobao.org/">http://code.taobao.org/</a>），是淘宝为国内开源社区做的又一个贡献吧。（越来越喜欢淘宝了）</p>
 
 <p>大致的逛了一逛，发现了我浏览的大部分项目都是“死”项目或者是一个人的表演。这不是开源，而是源码开放而已。</p>
@@ -2463,9 +2463,9 @@ insert.o search.o files.o utils.o
   
   <entry>
     <title type="html"><![CDATA[Emacs23 字体配置]]></title>
-    <link href="http://liuyix.github.io/blog/2011/howto-config-font-in-emacs23-2/"/>
+    <link href="http://liuyix.org/blog/2011/howto-config-font-in-emacs23-2/"/>
     <updated>2011-12-16T21:22:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2011/howto-config-font-in-emacs23-2</id>
+    <id>http://liuyix.org/blog/2011/howto-config-font-in-emacs23-2</id>
     <content type="html"><![CDATA[<h2>Update 2013-3-16</h2>
 
 <h3>字体设置没有可移植性</h3>

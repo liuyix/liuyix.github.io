@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: dev | Liuyix]]></title>
-  <link href="http://liuyix.github.io/blog/categories/dev/atom.xml" rel="self"/>
-  <link href="http://liuyix.github.io/"/>
-  <updated>2013-10-06T20:54:11+08:00</updated>
-  <id>http://liuyix.github.io/</id>
+  <link href="http://liuyix.org/blog/categories/dev/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2013-10-07T00:37:49+08:00</updated>
+  <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[一个简单的python小程序————使用douban API通过ISBN查询书籍信息]]></title>
-    <link href="http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api/"/>
+    <link href="http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api/"/>
     <updated>2012-03-11T07:52:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api</id>
+    <id>http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api</id>
     <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
 
 <ul>
@@ -40,9 +40,9 @@
   
   <entry>
     <title type="html"><![CDATA[Eclipse下配置NDK开发环境小结]]></title>
-    <link href="http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration/"/>
+    <link href="http://liuyix.org/blog/2012/android-ndk-eclipse-configuration/"/>
     <updated>2012-03-11T06:11:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration</id>
+    <id>http://liuyix.org/blog/2012/android-ndk-eclipse-configuration</id>
     <content type="html"><![CDATA[<p>分享下最近几周我的一些NDK开发经验和心得。</p>
 
 <p>Eclipse配置NDK环境，主要完成的功能使能调用Android NDK提供的工具链编译用C/C++源代码写好的共享库或者可执行的应用程序。由于我的工作需要的基本是完全native程序的编写，因此这里介绍的方法 <strong>更适合编译Android下的本地应用程序或者共享库</strong></p>
