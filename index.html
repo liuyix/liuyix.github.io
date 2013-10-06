@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="几个月时间，博客转到了github pages上的Octopress，结果是输出的文章比之前更少。（之前的几十篇文章也不见了踪影&hellip;） 我似乎不属于个例——一直以来都特意关注了我所能遇到的Octopress搭建的独立博客，大部分Octopress我所遇到中文博客都很少更新， &hellip;">
+  <meta name="description" content="Mac上安装octopress Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：http://ruby.taobao.org/ 可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,147 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-06T12:31:00+08:00" pubdate data-updated="true">Oct 6<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/mac-install-octopress/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Mac上安装octopress</h2>
+
+<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
+<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
+
+<ol>
+<li>安装homebrew</li>
+<li>安装rbenv以及ruby-build</li>
+<li><code>rbenv install 1.9.3-p448</code></li>
+<li><code>official install octopress</code></li>
+<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
+</ol>
+
+
+<h3>原有的octopress迁移到mac</h3>
+
+<p>如果之前在其他地方已经使用了octopress，那么在mac上的稍有不同。具体为：</p>
+
+<ul>
+<li>clone <em>yourname.github.com</em>的source分支：<code>git clone git clone -b source git@github.com:yourname/yourname.github.com.git octopress</code></li>
+<li>在clone<em>yourname.github.com</em>的master分支到<code>$your_octopress/_deploy</code>目录: <code>git clone git clone git@github.com:yourname/yourname.github.com.git _deploy</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 如果之前就已经在使用octopress，迁移到mac的话，不要clone octopress源，而是要clone你自己的repo源的source分支</span>
+</span><span class='line'>git clone -b <span class="nb">source </span>git@github.com:yourname/yourname.github.com.git octopress
+</span><span class='line'>git clone git@github.com:yourname/yourname.github.com.git octopress/_deploy
+</span><span class='line'>
+</span><span class='line'><span class="c">###### 安装octopress ######</span>
+</span><span class='line'><span class="c"># install homebrew</span>
+</span><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 使用brew安装rbenv</span>
+</span><span class='line'>brew install rbenv ruby-build
+</span><span class='line'>
+</span><span class='line'><span class="c"># 修改.bash_profile</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=/usr/local/var/rbenv&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'><span class="c"># 关闭terminal，再重新开启</span>
+</span><span class='line'>rbenv install ruby-1.9.3-p448
+</span><span class='line'>rbenv versions <span class="c">#应该显示的是system和1.9.3-p448</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 进入到你的octopress</span>
+</span><span class='line'><span class="nb">cd</span> <span class="nv">$your</span>-octopress
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;1.9.3-p448&#39;</span> &gt; .ruby-version
+</span><span class='line'>
+</span><span class='line'><span class="c"># 再次关闭终端，重新打开进入到你的ocotpress目录</span>
+</span><span class='line'>ruby --version <span class="c"># 应该显示的是ruby 1.9.3p448</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 推荐可选操作：更改rubygems源至国内淘宝源，下载更稳定,参考链接：ruby.taobao.org</span>
+</span><span class='line'>gem sources -l <span class="c"># 看一下默认的rubygems源的url</span>
+</span><span class='line'>gem sources --remove https://rubygems.org/ <span class="c">#此处的url以上一条命令为准，有时可能是http而不是https</span>
+</span><span class='line'>gem sources -a http://ruby.taobao.org
+</span><span class='line'>gem sources -l <span class="c"># 此处应该只显示的是淘宝的rubygems源</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 现在就可以参考官方的安装说明安装了</span>
+</span><span class='line'>gem install bundler
+</span><span class='line'>rbenv rehash    <span class="c"># If you use rbenv, rehash to be able to run the bundle command</span>
+</span><span class='line'>bundle install
+</span><span class='line'>
+</span><span class='line'><span class="c"># 如果是第一次安装octopress，还需要安装默认的theme</span>
+</span><span class='line'>rake install
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -216,6 +357,44 @@
 <hr />
 
 <p>让我的感觉印象深刻的是这个项目是由python编写，但是项目的部署非常不错，只有一个可执行文件，没有任何其他依赖。这个之后研究下 :&ndash;)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/linux-file-io/">Linux_file_io</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-09T00:05:00+08:00" pubdate data-updated="true">Aug 9<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/linux-file-io/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
 </div>
   
   
@@ -625,111 +804,6 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/hello-octopress/">Hello Octopress!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-07T18:45:00+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/hello-octopress/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/octopress-logo.png" title="" ></p>
-
-<h2>初识Octopress</h2>
-
-<p>忙里偷闲，折腾下Octopress～</p>
-
-<blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages.</p><footer><strong>http://octopress.org</strong></footer></blockquote>
-
-
-<p>Octopress说白了就是一个可以使用markdown<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>写博客的静态网页生成后端。而且还可以利用<a href="http://pages.github.com/" title="github pages">github pages</a>做自己的博客。<br/>
-使用了一段时间的Wordpress写博客，然后写着写着就没有然后了。没有坚持下来的原因很大一部分是因为自己，当然(很喜欢这个“当然”)Wordpress不爽体验也是一个原因。这促使我考虑Wordpress的替代方案。</p>
-
-<h3>[吐槽]从Wordpress转移到Octopress的原因</h3>
-
-<p>吐槽Wordpress各种不爽之前，先声明这不是技术上的比较，也不是产品上的优劣比较，我只是从个人需求的角度说一下Wordpress不适合写技术博客，也可以说不能快速的书写有质量的文章。
-简单的说Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/hello-octopress/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/nobility-of-failure-by-oufan-li/">[转]失败的高雅——李欧梵在香港中文大学的演讲</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-24T04:40:58+08:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/nobility-of-failure-by-oufan-li/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>前几日在李开复的微信公共平台上看到的文章，还是有些价值的。</em></p>
-
-<blockquote><p>你可能不知道，有一种“高雅的失败”，可以历练你的人生。“人年轻时一定要认同危机，这段时间是一个缓冲期。在人成熟前，要经过认同溷乱的阶段。爱尔兰剧作 家、现代主义荒谬剧大师萨缪尔•贝克特说过：‘再试一次，再失败一次，失败得好一点。’ 当你发现越失败越好的时候，你就成功了。”</p></blockquote>
-
-<p>李欧梵，国际知名文化学者。现代文学及文化研究、现代小说乃至中国电影，都是他学术研究的范围。1961年毕业于台湾大学外文系，此后赴美留学，获得哈佛大 学硕士和博士学位。他曾先后任教于香港中文大学以及美国的普林斯顿大学、印第安那大学、芝加哥大学、哈佛大学等知名高校。这位在世人看来十分成功的学者， 求学和任教路上其实磨难重重。学会和失败相处，方能挫而弥坚。</p>
-
-<p>不久前，李欧梵应邀赴香港中文大学作了一场题为《失败的高雅》（“The Nobility of Failure”）的演讲。常言道，“失败乃成功之母”，可失败的价值是什麽——这正是李欧梵要和大家分享的人生经验。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/nobility-of-failure-by-oufan-li/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -754,6 +828,10 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易&#8230;</a>
       </li>
     
@@ -762,22 +840,18 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
       </li>
     
       <li class="post">
+        <a href="/blog/2013/linux-file-io/">Linux_file_io</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/android-4-dot-3-selinux/">Android 4.3新特性——SElinux简介</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/android-root/">Android Root 那些事</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/dev'>dev (2)</a></li><li><a href='/blog/categories/life'>Life (3)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/sexy-python'>sexy python (1)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (3)</a></li><li><a href='/blog/categories/linux'>Linux (1)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
 </section>
 
 

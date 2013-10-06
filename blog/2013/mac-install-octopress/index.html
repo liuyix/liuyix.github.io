@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>mac上安装octopress - Liuyix</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="Mac上安装octopress Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：http://ruby.taobao.org/ 可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.github.io/blog/2013/mac-install-octopress">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Liuyix</a></h1>
+  
+    <h2>Just another coder.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mac上安装octopress</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-06T12:31:00+08:00" pubdate data-updated="true">Oct 6<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Mac上安装octopress</h2>
+
+<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
+<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
+
+<ol>
+<li>安装homebrew</li>
+<li>安装rbenv以及ruby-build</li>
+<li><code>rbenv install 1.9.3-p448</code></li>
+<li><code>official install octopress</code></li>
+<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
+</ol>
+
+
+<h3>原有的octopress迁移到mac</h3>
+
+<p>如果之前在其他地方已经使用了octopress，那么在mac上的稍有不同。具体为：</p>
+
+<ul>
+<li>clone <em>yourname.github.com</em>的source分支：<code>git clone git clone -b source git@github.com:yourname/yourname.github.com.git octopress</code></li>
+<li>在clone<em>yourname.github.com</em>的master分支到<code>$your_octopress/_deploy</code>目录: <code>git clone git clone git@github.com:yourname/yourname.github.com.git _deploy</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 如果之前就已经在使用octopress，迁移到mac的话，不要clone octopress源，而是要clone你自己的repo源的source分支</span>
+</span><span class='line'>git clone -b <span class="nb">source </span>git@github.com:yourname/yourname.github.com.git octopress
+</span><span class='line'>git clone git@github.com:yourname/yourname.github.com.git octopress/_deploy
+</span><span class='line'>
+</span><span class='line'><span class="c">###### 安装octopress ######</span>
+</span><span class='line'><span class="c"># install homebrew</span>
+</span><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 使用brew安装rbenv</span>
+</span><span class='line'>brew install rbenv ruby-build
+</span><span class='line'>
+</span><span class='line'><span class="c"># 修改.bash_profile</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=/usr/local/var/rbenv&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'><span class="c"># 关闭terminal，再重新开启</span>
+</span><span class='line'>rbenv install ruby-1.9.3-p448
+</span><span class='line'>rbenv versions <span class="c">#应该显示的是system和1.9.3-p448</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 进入到你的octopress</span>
+</span><span class='line'><span class="nb">cd</span> <span class="nv">$your</span>-octopress
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;1.9.3-p448&#39;</span> &gt; .ruby-version
+</span><span class='line'>
+</span><span class='line'><span class="c"># 再次关闭终端，重新打开进入到你的ocotpress目录</span>
+</span><span class='line'>ruby --version <span class="c"># 应该显示的是ruby 1.9.3p448</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 推荐可选操作：更改rubygems源至国内淘宝源，下载更稳定,参考链接：ruby.taobao.org</span>
+</span><span class='line'>gem sources -l <span class="c"># 看一下默认的rubygems源的url</span>
+</span><span class='line'>gem sources --remove https://rubygems.org/ <span class="c">#此处的url以上一条命令为准，有时可能是http而不是https</span>
+</span><span class='line'>gem sources -a http://ruby.taobao.org
+</span><span class='line'>gem sources -l <span class="c"># 此处应该只显示的是淘宝的rubygems源</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 现在就可以参考官方的安装说明安装了</span>
+</span><span class='line'>gem install bundler
+</span><span class='line'>rbenv rehash    <span class="c"># If you use rbenv, rehash to be able to run the bundle command</span>
+</span><span class='line'>bundle install
+</span><span class='line'>
+</span><span class='line'><span class="c"># 如果是第一次安装octopress，还需要安装默认的theme</span>
+</span><span class='line'>rake install
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-06T12:31:00+08:00" pubdate data-updated="true">Oct 6<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mac/'>mac</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/octopress-fails/" title="Previous Post: #吐槽# Octopress：想说爱你不容易...">&laquo; #吐槽# Octopress：想说爱你不容易...</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>CS Master Candidate, BIT</br>Insterest: CSArch, Linux, Android </p>
+  <h3><strong>Do something to prove yourself!</strong></h3>
+  
+  <center>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/linux-file-io/">Linux_file_io</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/android-4-dot-3-selinux/">Android 4.3新特性——SElinux简介</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (3)</a></li><li><a href='/blog/categories/linux'>Linux (1)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'liuyix';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://liuyix.github.io/blog/2013/mac-install-octopress/';
+        var disqus_url = 'http://liuyix.github.io/blog/2013/mac-install-octopress/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

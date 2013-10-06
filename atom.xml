@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.github.io/atom.xml" rel="self"/>
   <link href="http://liuyix.github.io/"/>
-  <updated>2013-09-28T14:53:33+08:00</updated>
+  <updated>2013-10-06T14:35:12+08:00</updated>
   <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,118 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[mac上安装octopress]]></title>
+    <link href="http://liuyix.github.io/blog/2013/mac-install-octopress/"/>
+    <updated>2013-10-06T12:31:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2013/mac-install-octopress</id>
+    <content type="html"><![CDATA[<h2>Mac上安装octopress</h2>
+
+<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
+<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
+
+<ol>
+<li>安装homebrew</li>
+<li>安装rbenv以及ruby-build</li>
+<li><code>rbenv install 1.9.3-p448</code></li>
+<li><code>official install octopress</code></li>
+<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
+</ol>
+
+
+<h3>原有的octopress迁移到mac</h3>
+
+<p>如果之前在其他地方已经使用了octopress，那么在mac上的稍有不同。具体为：</p>
+
+<ul>
+<li>clone <em>yourname.github.com</em>的source分支：<code>git clone git clone -b source git@github.com:yourname/yourname.github.com.git octopress</code></li>
+<li>在clone<em>yourname.github.com</em>的master分支到<code>$your_octopress/_deploy</code>目录: <code>git clone git clone git@github.com:yourname/yourname.github.com.git _deploy</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 如果之前就已经在使用octopress，迁移到mac的话，不要clone octopress源，而是要clone你自己的repo源的source分支</span>
+</span><span class='line'>git clone -b <span class="nb">source </span>git@github.com:yourname/yourname.github.com.git octopress
+</span><span class='line'>git clone git@github.com:yourname/yourname.github.com.git octopress/_deploy
+</span><span class='line'>
+</span><span class='line'><span class="c">###### 安装octopress ######</span>
+</span><span class='line'><span class="c"># install homebrew</span>
+</span><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 使用brew安装rbenv</span>
+</span><span class='line'>brew install rbenv ruby-build
+</span><span class='line'>
+</span><span class='line'><span class="c"># 修改.bash_profile</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=/usr/local/var/rbenv&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'><span class="c"># 关闭terminal，再重新开启</span>
+</span><span class='line'>rbenv install ruby-1.9.3-p448
+</span><span class='line'>rbenv versions <span class="c">#应该显示的是system和1.9.3-p448</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 进入到你的octopress</span>
+</span><span class='line'><span class="nb">cd</span> <span class="nv">$your</span>-octopress
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;1.9.3-p448&#39;</span> &gt; .ruby-version
+</span><span class='line'>
+</span><span class='line'><span class="c"># 再次关闭终端，重新打开进入到你的ocotpress目录</span>
+</span><span class='line'>ruby --version <span class="c"># 应该显示的是ruby 1.9.3p448</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 推荐可选操作：更改rubygems源至国内淘宝源，下载更稳定,参考链接：ruby.taobao.org</span>
+</span><span class='line'>gem sources -l <span class="c"># 看一下默认的rubygems源的url</span>
+</span><span class='line'>gem sources --remove https://rubygems.org/ <span class="c">#此处的url以上一条命令为准，有时可能是http而不是https</span>
+</span><span class='line'>gem sources -a http://ruby.taobao.org
+</span><span class='line'>gem sources -l <span class="c"># 此处应该只显示的是淘宝的rubygems源</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 现在就可以参考官方的安装说明安装了</span>
+</span><span class='line'>gem install bundler
+</span><span class='line'>rbenv rehash    <span class="c"># If you use rbenv, rehash to be able to run the bundle command</span>
+</span><span class='line'>bundle install
+</span><span class='line'>
+</span><span class='line'><span class="c"># 如果是第一次安装octopress，还需要安装默认的theme</span>
+</span><span class='line'>rake install
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[#吐槽# Octopress：想说爱你不容易...]]></title>
@@ -94,6 +206,15 @@
 <hr />
 
 <p>让我的感觉印象深刻的是这个项目是由python编写，但是项目的部署非常不错，只有一个可执行文件，没有任何其他依赖。这个之后研究下 :&ndash;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[linux_file_io]]></title>
+    <link href="http://liuyix.github.io/blog/2013/linux-file-io/"/>
+    <updated>2013-08-09T00:05:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2013/linux-file-io</id>
+    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
@@ -1582,890 +1703,94 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[[转]失败的高雅——李欧梵在香港中文大学的演讲]]></title>
-    <link href="http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li/"/>
-    <updated>2012-11-24T04:40:58+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li</id>
-    <content type="html"><![CDATA[<p><em>前几日在李开复的微信公共平台上看到的文章，还是有些价值的。</em></p>
-
-<blockquote><p>你可能不知道，有一种“高雅的失败”，可以历练你的人生。“人年轻时一定要认同危机，这段时间是一个缓冲期。在人成熟前，要经过认同溷乱的阶段。爱尔兰剧作 家、现代主义荒谬剧大师萨缪尔•贝克特说过：‘再试一次，再失败一次，失败得好一点。’ 当你发现越失败越好的时候，你就成功了。”</p></blockquote>
-
-<p>李欧梵，国际知名文化学者。现代文学及文化研究、现代小说乃至中国电影，都是他学术研究的范围。1961年毕业于台湾大学外文系，此后赴美留学，获得哈佛大 学硕士和博士学位。他曾先后任教于香港中文大学以及美国的普林斯顿大学、印第安那大学、芝加哥大学、哈佛大学等知名高校。这位在世人看来十分成功的学者， 求学和任教路上其实磨难重重。学会和失败相处，方能挫而弥坚。</p>
-
-<p>不久前，李欧梵应邀赴香港中文大学作了一场题为《失败的高雅》（“The Nobility of Failure”）的演讲。常言道，“失败乃成功之母”，可失败的价值是什麽——这正是李欧梵要和大家分享的人生经验。<!-- more --></p>
-
-<p>1、任何时代都有一窝蜂——都有一种时髦，有一种社会压力，有一种当时的社会价值。可每个人的生命裡不可能只有一样东西。你总有不同的兴趣，不同的价值，要应对不同的压力。<strong>你要问自己，到底喜欢什麽。</strong>这应该是中学以上、大学教育最重要的一部分。</p>
-
-<p>小学六年级时，我成绩非常好。那时，小学新换了一个刚从美国回来的校长。用现在的话讲，他在小学裡就实施博雅教育。男生女生都要跳舞，每个学生都要学音乐、 体育。虽然当时的台湾和现在一样，六年级要恶补、补习，因为要参加联考考初中。我们已经忙得那样了，可校长说，不行，你们要去运动、要去玩。</p>
-
-<p>也许我不用功，也许我太自信，当我考新竹中学时，突然失常了：晚上太紧张，没有睡好，第二天考数学的时候，我只得了40分。要进入当时的台湾名校，数学一定 要60分才行。我生平第一次感到耻辱。我父母都在新竹中学做老师。中学的老师和校长都是我父母的朋友。我马上想，父母怎麽办，他们没面子了。</p>
-
-<p>我跟我父亲说，这次考试考太差了。父亲没骂我，说40分就40分吧，咱们想想办法。父亲带我去见学校的教务长，教务长看着我，对父亲摇摇头说：“你的儿子我恐怕救不了了。”</p>
-
-<p>没想到放榜的时候，新竹中学多了一项叫“备取”。从前是没有备取的，那一年设了“备取”，有人说，就是专门为我开的。备取一共12个学生，最后一名就是我。 我那时大概10岁多，感觉自己抬不起头来。好在年纪小，过了不久成绩就跟上去了，一帆风顺到了高中三年级，又面临人生的第二个考验。</p>
-
-<p>我的总成绩当时是全校第四名，而全校前五名还是前六名就可以保送大学。我觉得自己太幸运了，但社会压力马上就来了。</p>
-
-<p>当时在台湾，最好的保送生一定是上医学院或是理工科，商科没有人要念。可是我的兴趣很明显，不在理工科。我高一的时候就开始参加各种活动，把班级学生组织起 来，组成一个合唱团，比赛的时候我做指挥，最后得了全校第一名。我那时就知道，自己的兴趣是音乐、艺术、文学之类的东西，可是，到抉择的时候，我该怎麽 办？</p>
-
-<p>我记得我和父母亲第一次开诚佈公地说这个问题。 我的姨丈建议我学法律。可是法律没有我想要感受的艺术的气息。我想念的是文学，又不敢选文学，因为那时的台湾，念文学出来最多当个中学老师。于是姨丈又 说，还有一个外文系可选。我想这好，不如先把英文念好，到时候可以去当外交官。</p>
-
-<p>现在回想起来，我对于当时的大学制度有一个批评。因为当时的台湾大学，文学院只有四个系，学生选的最多、最受欢迎的就是外文系，其他的是历史系、哲学系、考 古人类学系。其实，我和当时的潮流已经做了妥协。但是如果你现在问我，这四个系最喜欢什麽？我除了文学之外，最喜欢人类学，可那时选考古学的人非常少。</p>
-
-<p>2、当我回顾以前，回忆是跳跃式的，想到的都是片段。常常是老师讲过的一句话，看书看到的某一页，或者是哪裡得到的灵感。<strong>而这些使我一生受用无穷灵光片语、个人经验，大多都是在我失落的时候发生的。</strong></p>
-
-<p>我进台湾大学外文系时，一心要当外交官，所以认真练习演讲，死背英文。</p>
-
-<p>和我同时进台大的几位同学，现在都是台湾文学界真正有名的人物，其中就包括白先勇。大家知道白先勇是怎麽上台湾大学的吗？那一年白先勇原本考上了，可是由于 种种压力，他跑到台湾南部的工学院去念水利。念了一年后，他觉得自己实在不喜欢水利，喜欢的是文学，于是第二年又考了台大。所以，白先勇是一进大学就决定 要从事文学的。到大二时，白先勇说要办一个杂志，这个杂志就是《现代文学》。当时没有钱，他问家裡亲戚朋友借钱，全部投在这个杂志上，还把我们都拉了进 去。现在大家把我说成《现代文学》的开创者之一，我有点汗颜，因为我当时只是做了一两篇翻译而已。</p>
-
-<p>我常和白先勇常开玩笑说，就是因为你们太厉害，所以我走了另一条路。不过回想起来，我中学开始兴趣就在文学，特别是西洋文学。</p>
-
-<p>我现在把《现代文学》第一年的几期拿出来看，发现有我几篇文章在裡面，那时我的笔名叫“李欧”，翻译的主要是一些论文。比如汤玛斯•曼的论文。时隔半个世 纪，我回到香港，在香港科技大学当客座教授的时候就讲汤玛斯•曼。可我翻译的时候，根本不知道这篇论文在说什麽，也没有看过汤玛斯•曼的小说。</p>
-
-<p>我们的《现代文学》杂志最后失败了。鲁迅第一次翻译《域外小说集》，也只卖了几十本。我们卖了一两百本，一半以上是白先勇的亲戚买的，还有几本是有些人在书摊上买去的。但是，有的人对于自己的理想真是有一种执着。<strong>明知道在世俗眼光裡不会成功，但又总觉得，就算是失败也有意义。</strong></p>
-
-<p>我不自觉地从同学的经验裡得到启示，但表面上还是很胆怯。毕业以后，当时一窝蜂地要到美国留学，我也跟着大家去申请。</p>
-
-<p>现在各位要申请去美国，会到电脑上找很多资料，我们那时候没有资料，美国大学在哪裡也搞不清楚。我问自己，我要申请什麽呢？我真正想要申请的是比较文学，可又不敢申请。于是我就乱申请，像钓鱼般地乱撒网。</p>
-
-<p>我 心裡想，我还喜欢看电影，不如申请去UCLA（加州大学洛杉矶分校）念电影系。大学四年级的时候，有个老师教西洋戏剧的课，我非常喜欢。听说美国最好的戏 剧在耶鲁，于是我写信申请念耶鲁的西洋戏剧。剩下就是选将来可以溷碗饭吃但又跟文学稍微有点关係的专业，比如传媒研究、大众媒体等等。最后我想，我念外文 系的目的就是当外交官，不能不申请一次，所以申请到芝加哥大学念国际关係。</p>
-
-<p>差不多都准备好了，我父亲问我，为什麽不试试哈佛。我想，没有希望何必试。父亲说，试试没关係。结果我就去了，然后发现申请的大学几乎全部落空，只有两个大学有回信。一个是芝加哥大学，一个是哈佛。</p>
-
-<p>哈佛给我的信写着“Alternate for a Scholarship”。我以为“Alternate”是指另一种奖学金，“for”那个字忘记看了。后来知道，原来又是备取！哈佛回信的意思是，如果别的获奖学金的学生不去，我可以被考虑。我们全家人都看错了。</p>
-
-<p>芝 加哥大学给我的回信，明明写了一个字叫“Scholarship”，结果上飞机前的几个月才知道，芝加哥大学的“Scholarship”只是免学费，没 有奖学金。当时，以我们这样在台湾的中产阶级家庭，买一张飞机票是我父母全年的薪水。父母辛辛苦苦把钱凑足，买了一张单程飞机票，送我到美国去。</p>
-
-<p>我迷迷煳煳到美国，完全是失落的。芝加哥在哪裡、怎麽走都不太清楚。所以我就买最便宜的灰狗大巴的票，一路玩到芝加哥。到了芝加哥就开始念书。美国天寒地冻，我没有衣服，就到西尔斯百货公司买一件最丑最便宜的外套。</p>
-
-<p>学校裡老师讲的完全是“天书”。国际关係当时是讲理论，于是，我陷入到各种危机，觉得自己到美国完全是荒谬的，可能几个月都支持不住。</p>
-
-<p>芝 加哥大学的制度和哈佛不一样，是Quarter制的，十个礼拜就是一个Quarter，学期很短。10个礼拜内要念几十本书，念完还要写一篇论文，这简直 是难以想像的。好在那位教授说，你是台湾来的，懂中文，那你试着写一个春秋战国时期的国际关係。我当时根本没有念过春秋战国的历史，只好去图书馆借书。我 记得，我看到一本现在被尊为大师的吕思勉教授写的关于春秋战国的书。我就从那本书开始接触中国历史的。</p>
-
-<p>这篇论文交给老师，竟蒙老师欣赏，甚至他后来还要留我。可我知道，我不能一辈子搞这个。我有两条路。其实我想的是再到洛杉矶去学电影，因为在美国最失望的时候，我都坐着火车去看电影。义大利片、法国片、新潮片……都是那种怪怪的失落的片子，所以有很多认同感。</p>
-
-<p>后来一个同学说，既然哈佛给过你一个“Alternate”，就再试试看吧。于是我就又试了一下。那个时候我在芝加哥大学远东图书馆工作，馆长钱存训先生是在美国汉学界非常有名的教授。他为我写了一封信，不知道写了什麽，竟蒙录取。</p>
-
-<p>3、大学的目标是什麽？这段时间就是一个缓冲期，你在大学裡可以随意选课，随意地找寻自己的兴趣。<strong>在人成熟前，要经过认同溷乱的阶段。</strong></p>
-
-<p>也许是因为我在很好的环境读书，从来没有想到，我拿到博士学位以后要做什麽。</p>
-
-<p>各 位可能不相信，当时的环境和现在不一样，现在念书，大概三年就要拿学位。可我们那时在哈佛念博士都是拖。有的人拖了十几年，我算快的了，拖了8年。在这8 年裡，我感受到以前教育的不足，拼命念书。我总是觉得自己是不足的，当你觉得自己在这个方面做得不错的时候，总发现，怎麽有的地方还是不知道。</p>
-
-<p>所 以，我这裡要说一点批评的话。在人文学科研究方面，如果你只是为了一个学位，为了一个专业，为了一个非常能触摸到的成功的过程或者成功的目标，你这个学者 绝对不是一流学者。可是，现在的制度往往使得一些非常有才气的年轻同事受制于这个“监牢”，不得不这麽做。所以我非常同情香港各大学人文学科的教授。<strong>人文学科是要晃荡晃荡慢慢积累的，从失落裡面汲取经验，最后慢慢发现，自己找寻的目标是什麽。</strong></p>
-
-<p>甚至大学也是如此。我反对在大一时就分专业。我很崇拜心理学家Erikson，“认同”这个词就是他发明的。大学的目标是什麽？按照他的看法，人年轻时一定 有认同危机，这段时间就是一个缓冲期，你在大学裡可以随意选课，随意地找寻自己的兴趣。你的一生裡，只有大学这个时期可以让你在教授的、环境的保护下，找 寻自己的认同。<strong>到了社会上，就没有时间了。</strong>也就是说，在人成熟前，要经过认同溷乱的阶段。</p>
-
-<p>我的认同溷乱，从大学一年级到博士班，至少10年。我的问题一直是，我是谁，我要做什麽？</p>
-
-<p>4、人在一个漫长的过程中，会开始反省，什麽是成功什麽是失败。有一样金科玉律免不了：<strong>没有一连串的挫折和失败，你的成功都是虚的。</strong></p>
-
-<p>我最宝贵的一次学术经验，不是在哈佛不是在芝加哥，是在普林斯顿。也可以说，那是我一生中犯的最大的一个错误。</p>
-
-<p>我在香港中文大学教了一年半后，突然收到一封电报，是普林斯顿大学请我去教课。</p>
-
-<p>我当时心中万般不想去，因为我非常喜欢香港，可是我所有的朋友都说，为了将来的前途，一定要去。于是我到了普林斯顿。</p>
-
-<p>我 在香港中文大学的时候，人是飘飘然的感觉；一到普林斯顿就发现，好像又回到我刚来美国时的感受，压力非常大。普林斯顿请我去教中国近代史，但是近代史裡没 有文学，只有经济史、外交史这些东西。我越教越没有兴趣。这个时候，普林斯顿东亚系知道我在香港教过比较文学课，他们就说，你不如试试教文学吧。我越教就 越有兴趣，我对现代文学的兴趣也是从无形中得来的。</p>
-
-<p>当我在普林斯顿教到第四年的时候，学校说要考虑永久职（tenure）了。当时历史系有名的教授开了一次集体讨论会，觉得李欧梵的学术还可以，可是不够普林斯顿要求的那麽好。为什麽呢？因为“他的心一半在文学”。</p>
-
-<p>我当时正好在写鲁迅，非常痛苦，不知道该怎麽着手。历史系教授看我写的鲁迅草稿，觉得写得太差了。而东亚系觉得我是搞历史的，不是搞文学的。最后历史系主任 说，你赶快打电话求职吧，普林斯顿留不住你了。我当时傻眼了。那时候我有个女朋友，本来准备结婚了。她第一个反应是，“天哪！怎麽办？”本来我们连傢俱都 买好了，房子都找到了，可她马上离开了我。</p>
-
-<p><strong>在这种最绝望的关头，我才知道，失败的滋味是什麽。失败的滋味，有几方面可以看得很清楚。当你在校园裡走的时候，有些跟你不熟的同事，见了面不打招呼了，因 为你是一个失败者。美国人的价值裡，LOSER（失败者）是很糟糕的。我后来反省，也许他们有道理，他们正好打中了我的弱点。我的心其实不在经济史，不在 制度史，我的心还是在文学。</strong></p>
-
-<p>最后，两个朋友救了我。一个朋友为我在当时的一个女校找了一个职位，说我教什麽都可以。另一个职位是在印第安那大学教中国古典文学。当时系主任临时找的一个 教授不去了，本来是让他教元杂剧。于是系主任问我，能不能教元杂剧。其实我只看过一本元杂剧，叫《窦娥冤》，其他都没有看过。不过我还是说，可以。</p>
-
-<p>当人受到极大挫折后，基本的感受就是要“生存”。我当时没有钱回去，无颜见江东父老。这麽多年在美国，怎麽能以失败收场呢？</p>
-
-<p><strong>置之死地而后生，</strong>我接受了这个职位。可没想到，我在印第安那大学如鱼得水，因为这个大学的音乐系是全美最大的。学校有四个交响乐团，一个歌剧院，有无数个免费音乐会。我一直喜欢音乐，觉得这裡真是天堂。音乐使得我在教学学术研究上精力百倍。</p>
-
-<p><strong>我精力百倍，只是为了争一口气。</strong>这口气不是为了我自己，这就是讲<strong>失败的价值——要为一个理想，一个有意义的而不是乱七八糟的目的。</strong>我当时觉得，美国汉学界不顾现代文学是没有道理的。他们认为，中国20世纪文学都是宣传都是政治，那我说，如果这样，鲁迅难道只是一个政客吗？</p>
-
-<p>我不服气。可是在美国，你要把一个学科带上来，不像在华人地区这麽容易，一切都要从头做起。于是我出版了二三十本中国现代文学翻译和研究系列。没有想到，我 写的教材还没有出，已经使我在美国现代文学研究界小有名气了。因为大家要找教科书，就是找印第安那大学出版社的那本，一看就有我的名字在上面。</p>
-
-<p>这麽多年失败的经验让我知道，我在中国现代文学研究上的成功，一方面是侥倖，一方面是所谓“天时地利人和”凑合在一起。</p>
-
-<p>人在一个漫长的过程中会开始反省，什麽是成功什麽是失败。有一样金科玉律免不了：没有一连串的挫折和失败，你的成功都是虚的。我没有看过一个马上成功的例子，即使有，那个成功的人到了晚年也会感到空虚的。</p>
-
-<p><strong>爱尔兰剧作家、现代主义荒谬剧大师萨缪尔•贝克说过一句话：再试一次，再失败一次，失败得好一点。</strong></p>
-
-<p><strong>当你发现越失败越好的时候，你就成功了，这是我得到的一个教训。</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[转载]程序员常见的健康问题]]></title>
-    <link href="http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version/"/>
-    <updated>2012-05-12T05:11:12+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version</id>
-    <content type="html"><![CDATA[<blockquote><p>再战隼的博客上看到的，正巧这几日正受颈椎病的困扰 :&ndash;( 真的还算及时，在此提醒下所有战斗在代码一线的斗士们，注意身体，养成锻炼的好习惯！</p></blockquote>
-
-<p><a href="http://www.read.org.cn/html/1926-cheng-xu-yuan-de-chang-jian-jian-kang-wen-ti.html">原文链接</a>via<a href="http://www.read.org.cn/">战隼的学习探索</a></p>
-
-<p>其实这些问题不仅见于程序员，其他长期经常坐在电脑前的职场人士（比如：网络编辑、站长等），都会有其中的某些健康问题。希望从事这些行业的朋友，对自己的健康问题，予以重视。以下是全文。</p>
-
-<p>我最近在写《Learn Python The Hard Way》的最后几节课，我还要加一课：关于程序员在其职业生涯中普遍的健康问题。我发现诸多代码人在敲代码的时候好像不在乎他们的身体状况， 很可能是太过于全神贯注。我希望人们可以通过知晓一些与程序员相关的健康问题而获益，并可以避免曾经发生在我身上，而且就我知道也发生在很多人身上的问题。</p>
-
-<p>我可能不会把这篇博文全部放进该书里，因为有点多。但我会写个缩减版。请您惠知喜好，或有我可以引用的附加资源。<!-- more --></p>
-
-<h3><strong>我的背景和资历</strong></h3>
-
-<p>我以前是一等合格美国士兵，并学习过多种武术。近年来我未像过去学武术一样奋力工作，而是专注于瑜伽、入定和一些简单的活动。我小时候是异常健康的，现在依然如故，这归功于我早已根深蒂固的锻炼习惯。</p>
-
-<p><img src="http://blog.jobbole.com/wp-content/uploads/vb/485-thumb_zed%20shaw.jpg" alt="zed shaw" /></p>
-
-<p>首先先列一下我学过的武术：忍术（Ninjitsu），合气道（Aikido），柔术（Judo），泰拳（Muay Thai），咏春（Wing Tsung），卡波耶拉（Capoeira），阿尼斯（Arnis），其排序不分先后。我要讲只有泰拳我是连贯学习的，大概有六年时间。其他的用了一到两年时间。我去了很多地方，因此学习之道就是那儿有什么便学什么。</p>
-
-<p>而且，在部队里我是体能测试优秀，几乎是连续两年满分通过的。如没记错，这其中有几乎每天两至四小时的训练，这在部队里不算什么。除此之外，别无他事可做。</p>
-
-<p>然后，不论我干不干活，我如今一直保持着同样的体重、灵敏及力量。所以我无法告诉你怎么减肥。我很可能先天基因就是如此。这意味着你要根据自身情况来调整我的建议。</p>
-
-<p>有着前述的体魄，当我渐老我更喜欢侵略性弱以及更灵活的一些运动。瑜伽是不错的，常被误认为很难。我同样把票投给普拉提（Pilates），游泳，舞蹈等一切对我身体无直接影响的运动。我尤其注意我的手，缘由我也会说到。</p>
-
-<p>好，写这么多是让你知道我还有点能耐，但是更重要的是，在干这些的同时，我是一个职业编程者。在退役后，我平均每天学习八到十六个小时。 我使用盲打而且玩吉他，我还避免了腕道综合征，以及重复性劳损问题。</p>
-
-<p>希望我保健的经验能帮你恢复或保持健康。</p>
-
-<h3><strong>程序员的常见健康问题</strong></h3>
-
-<p>编程乍一看是个耗人的领域，一方面似乎你没有做很多，另外和很多代码人对待其身体的态度有关。 你要一贯地保持健康，因为身体好时会减少对精神的摩擦损害，而将注意力集中到要事上，而不是你生理上的小毛病。</p>
-
-<p>显然建议就是大多人说的饮食，外出活动。我这里不会教你怎么吃或健身，或者哪种武术。如你对这些感兴趣，找一个职业的来帮助你锻炼。</p>
-
-<p>这里要说的程序员们平日的职业病。他们相当明显而且平常，由于某些原因他们并不在意这些本不该发生的事情：</p>
-
-<p>▲ 腕部疼痛（重复性劳损）</p>
-
-<p>▲ 盯着看移动的打印进度以及其后的句点造成的眼部问题</p>
-
-<p>▲ 姿势不当造成的背部不适，尤其是背下侧，肩上侧。</p>
-
-<p>▲ 肠道和尿道的问题（不能正常大小便）</p>
-
-<p>▲ 摄入太多咖啡因，而且喝水少造成的脱水</p>
-
-<p>▲ 坐姿保持太久，造成男性的痔疮或前列腺问题（我一会再细说）</p>
-
-<p>▲ 光照不足造成维生素D缺乏</p>
-
-<p>▲ 熬夜或者喝咖啡过多导致的睡眠失调</p>
-
-<p>▲ 缺乏伸展导致普遍的僵硬和疼痛</p>
-
-<p>我一直跟这些问题作抗争，因为编程，弹吉他，或者举重时误伤。每当我重获健康的时候，我就知道了此后怎样避免。只有一小部分问题是周期性的。你可能觉得这里的某些问题无关紧要，但请相信我，许多程序员都有这样那样的问题，且原因不一，即使你还没有。</p>
-
-<h3><strong>普遍原因</strong></h3>
-
-<p>一般来说，可以总结成嗜编程为命。你可能想成为个中翘楚，就像我一样，因此除了生活除了编程别无其他。你不去卫生间，你勇猛地进行10小时连续编程。而且你饮食不规，只神笃“真正的代码人”这一信条。</p>
-
-<p>事实是真正的编程者都是有点傻蛋。他们从来吃不到正点，ML也没有准。跑步从来都气喘吁吁，他们的内脏有一些严重问题，但不是疾病原因。真的，在你精通某件事之前，灭了自己可不是很值。</p>
-
-<p>所以，在你看到这些问题以及我怎么解决的时候，记住这都是为了有一个均衡的生活习惯，而不是沉溺于编码或者其他什么事。相信我你会实实在在地好起来，如果你给你自己减负并且保持健康。</p>
-
-<h3>腕部疼痛</h3>
-
-<p>这个可能是我用心最多的。因为频繁且长时间地编码、拨弦，我的腕部有着周期性的疼痛。那年我22岁，刚开始职业性地编码。但是我一直有一个合气道的功课，这样我的腕部就会恢复如初。</p>
-
-<p>你知道，合气道有着绝佳的腕部练习，从而让你的腕部变得结实又柔软。他们创造的这些练习可以避免伤害，原本的许多技巧就有扭、撕扯、手臂和肩关节的脱节。</p>
-
-<p>这些练习治好了我的所有关节错位和疼痛，并让我长时间编程且没有任何大问题。我唯一可能出现问题是因为我要把现在的键盘换成新的古怪布局的键盘，但如果我练习一周合气道我就有可以重返代码并依然强健。</p>
-
-<p>现在如果你有严重的腕道综合征或者其他类型的重复性劳损问题，先咨询你的医师再行尝试这里的技巧。如你要做的话，开始时要轻慢，不要让你感到疼。伸展应该不会疼，只会轻度有点不适。如果你感觉疼，是过度拉伸了。.</p>
-
-<p>你实际想每次伸展运动得到放松。这有点难解释，但不是强迫你的关节在某个固定位置，而是先到达一个位置，想一想放松而后再到更远的位置。</p>
-
-<p>记住这一点，怎么做练习则有很多视频：</p>
-
-<p>▲ 翻转手腕 （Youtube的视频，须翻墙）</p>
-
-<p>▲ 扭腕</p>
-
-<p>▲ 手腕外侧弯曲</p>
-
-<p>▲ 手腕内侧弯曲</p>
-
-<p>下面介绍当你坐下来打字的时候怎么去做锻炼（每次都要这样）：</p>
-
-<ol>
-<li><p>首先要热身，将手伸向前方在空中尽可能快速地抓20次。然后甩手，再做手腕单侧弯曲10次，然后换方向弯曲10次。</p></li>
-<li><p>用你最擅长的，以中速做5至10次。</p></li>
-<li><p>继续做各项动作，但甩手和甩胳膊，弯曲手腕后到要归位。这些动作会移动手腕中的骨头，甩的时候它们就会归位。</p></li>
-<li><p>千万不要做过头，让你手腕感到损伤。要适度恰好，并放松。那个“没有付出就没有收获”只会伤害你。</p></li>
-</ol>
-
-
-<p>每次敲代码前做这系列动作，每天要做，而且停下来的时候也做一次。用不了多长时间，一段时间的不适之后你的手腕就会开始适应并回到正常，并感到好许多。</p>
-
-<p>还有：在做这些之前先咨询一下医生。你做这些可是自己冒风险，所以自己不小心搞坏了手腕不要来起诉我。 这些是千年武术中的家常便饭，所以我知道它们不会有危险，但各人情况不同。如果你做法不对可能后果严重，如果感到疼痛立即停止并咨询医师。</p>
-
-<h3><strong>吉他手更糟糕</strong></h3>
-
-<p>在吉他手或贝司手跟前，程序员的重复性劳损可是小菜。这起因是诸多愚蠢的理由，许多著名的音乐家讲一天八小时或十六小时学习法。正因如此，吉他手们糟践自己，最后不能演奏。</p>
-
-<p>吉他对于手来讲是硬乐器，所以有一点点疼痛你就歇菜了。我在学校的时候，像个傻比一样轻信我的老师自己一天练八个小时的琴。我字面理解就是一下子就八个小时，我这样折磨自己一个月然后就崩了。</p>
-
-<p>我的拇指有了赘骨，其他的指头疼痛难止。我的手腕还耐得住，但指头已经不行了。 二逼呵呵的我没有听那句话，任何新的运动需要循序渐进。</p>
-
-<p>我解决这个的唯一办法，而且用了一年半，是做以下的事情：</p>
-
-<ol>
-<li><p>找把不伤手的吉他。说你啥样吉他都能玩是屁话。去找个最好的不伤你手的吉他。</p></li>
-<li><p>做上面的锻炼，我的指头做得更多。</p></li>
-<li><p>通过做练习，慢慢开始恢复指头的力度并注意放松。</p></li>
-<li><p>在弹的时候注意放松，拨弦的时候更轻巧。</p></li>
-<li><p>避免弯曲，这些曾导致我的手受伤。</p></li>
-<li><p>变换姿势和演奏风格，不抓紧吉他就能快速移动，舒服地把拇指压在琴颈背面。</p></li>
-<li><p>调整吉他高度，让我的肩和手都觉得舒服。</p></li>
-<li><p>站着，很少长时间坐下，长时间摆一个姿势是很别扭的。</p></li>
-</ol>
-
-
-<p>去年做完这些后我的手最终痊愈了，并且感觉良好。我还没有不让我弄伤自己的好习惯。我已经老大不小了，所以这些对我很重要，但这也意味着我不能做那些可能弄伤我手的活计。</p>
-
-<p>我的手现在是我的命根子，所以不能再打拳了，或者其他我还想学习的事情。因为打沙袋我手上已经有多处凹陷了。</p>
-
-<h3><strong>眼疲劳</strong></h3>
-
-<p>我觉得这对我不是问题，但你最好悠着点。我年轻的时候比20/20还要好，但用了几十年电脑有点偏了，曾经用过眼镜矫正，我用得着的时候一直戴着，没有它们看周围的世界真是恼人的模糊。</p>
-
-<p>在黑暗时期，我们天天还瞅的是CRT显示器，烦人的闪烁已经把一些人的眼睛整垮了。现在的问题是多数LCD屏幕对字体的糟糕渲染。 我想归功于苹果公司的专利，多数LCD屏都不能正常渲染字体。尽管有人认为苹果的字体看起来毛茸茸的，所以对于你的好处将很难说。</p>
-
-<p>我想每天两个小时不看电脑。要么我去玩吉他不用费眼力，要么去公园散步。我可能不是整整两个小时都去这样干，但是加起来要保持两个小时。</p>
-
-<p>这对于你可能有的头痛有助益。多数时候程序员可能会想玩电脑的时候开着灯导致了头痛，但其实是因为体位不对，还有糟糕的字体，饮水不足，而且是跟电脑打持久战。</p>
-
-<p>不是把你房间的灯都关掉，只需要合理的照明，选择适合你液晶屏和室内灯光的色彩方案。 即融合室内照明，液晶屏亮度和字体，以及让你感觉更舒服的色彩方案。</p>
-
-<p>但还是先休息一下吧。</p>
-
-<h3><strong>背部问题</strong></h3>
-
-<p>我挺走运的，背一直还可以。尽管如此，我相当多时间是坐办公室，并保持着灵活强健的脊背。</p>
-
-<p>我的问题是背的上半部分，脖子，肩部。我习惯猫在键盘上，所以必须强迫自己坐直。事实是，刚刚敲这段话的时候我就没坐直，才想起矫正一下。</p>
-
-<p>现在选择你的座椅很重要，我喜欢艾伦椅（Aeron），那种硬质小凳子或长凳。现在非常热衷我的40美元的钢琴凳，过去我坐着它弹钢琴的。因为没有后背，凳子会时时逼迫你坐端正 ，并调用我的核心肌肉（肚子和背部）。</p>
-
-<p>我的肩部完全处于压/迫状态。我习惯于在我全神贯注的时候收紧双肩，这样让我的整个背上部感到疼痛，一直蔓延到脖子和头部。当我长时间玩吉他的时候问题更糟。</p>
-
-<p>我发现最有效的解决办法是伸展上肢，做俯卧撑。伸展办法很简单，抓住门框，然后双臂同向或反向拉伸。你觉得身体有点僵硬的时候试试下面这些招数：</p>
-
-<ol>
-<li><p>用一只手抓紧门框，手心朝向你的身体，然后向前挺胸，越过肩位。</p></li>
-<li><p>用另一只手握紧门框，胳膊交叉在前，手心继续朝里，然后伸展肩部，使背部得到伸展。</p></li>
-<li><p>两只手都抓住门框，高举过头，稍向后站呈倾斜，然后来回拉伸。（就像站着做俯卧撑）</p></li>
-</ol>
-
-
-<p>如果你做了，同时做抡臂，摇摆，你就会觉得好一些。或许在你开始干活之前加一些腕部伸展。</p>
-
-<p>另外就是做真正的俯卧撑了。我工作的时候并不做这个，因为它会让你很累，难于工作。在睡前我做十次，这十下足以对付胸、背、肩、腕。 不要过快，要慢，注意在做的时候使身体平衡。</p>
-
-<h3><strong>脱水</strong></h3>
-
-<p>这个问题不大，我时常有点内疚。我发现我一天狂喝咖啡，正因为这样我想我也该喝点水。如果我没有头疼那倒有点不对。脱水的问题很难发觉，直到你发现的时候已经晚了。</p>
-
-<p>我的建议（我也要多做的）是，喝其他非纯净水的饮料时也喝一杯水。同样请勿喝苏打水。它们只是一堆伪糖，让你变胖导致糖尿病，还有它并没有给你产生水。喝纯黑咖啡吧，它们真他妈好，记着再喝些水。</p>
-
-<h3><strong>肠道及尿道问题</strong></h3>
-
-<p>好吧，接下来的两个问题确实不雅，所以就不提发生在我身上的事了，但我要说这句话：“<strong>上厕所的时候他妈赶紧去，别犹豫。</strong>”</p>
-
-<p>你不知道这条提示有多有用，我真希望我年轻的时候知道这句话。因为我是一个拼命汉从不间断，跳过上厕所，憋相当长时间。 肠道问题就是你的机体不再告诉你你该拉屎了，只是愈积愈多。</p>
-
-<p>这样的话最后会导致便秘，这将终结你的健康状态。对于尿道倒次要，但是你依然可能会有感染和其他令你惊奇的事情。</p>
-
-<p>如果你已经搞砸了，你去弄一些纤维片，待在家里然后吃掉，不要去外面，因为后果很囧的。</p>
-
-<p>然后，你觉得是时候了，拾起身去拥抱上帝吧。我告诉你，在你拉完屎之后你的伟大想法才会自然迸发。</p>
-
-<h3><strong>痔疮和前列腺问题</strong></h3>
-
-<p>另外一个不上厕所会导致的就是痔疮。我知道够恶心的，我保证只提这一次。但是，许多编程者有这个问题，并羞于启齿，他们并不知道为什么。下面听我一一道来，我做过下述所有事情，但是只得过一两次痔疮：</p>
-
-<ol>
-<li><p>长时间坐着。</p></li>
-<li><p>举重东西，不用辅助。</p></li>
-<li><p>该去解决内急的时候不去。</p></li>
-<li><p>强迫自己去拉屎，实际上不需要。</p></li>
-<li><p>最糟糕的：坐在厕所里看书。</p></li>
-</ol>
-
-
-<p>最后一条就是罪魁祸首。如果你不是必须要大C，可别老泡在那。这相当于将你整个身体和肠子的重量压进已经泻完的直肠上，并试图挤出来。恶心至极！这导致痔疮因为你的血管中的血压不自然地升高。</p>
-
-<p>确实臭哄哄的，但潜在危害很大。恩，危急情形是血流一地，这时候谁都知道去看大夫。你可能需要手术，但做无妨。我没有做但也差点：有一年我在举重，然后在库房工作，不间断编程，没有用过厕所。</p>
-
-<p>是，我是个大笨蛋。你可别学我。为了你的屁屁的健康，请做以下的事：</p>
-
-<ol>
-<li><p>多吃果蔬，至少吃点纤维片。</p></li>
-<li><p>该解决个人问题时赶紧的！</p></li>
-<li><p>任何情况下不要压/迫直肠。</p></li>
-</ol>
-
-
-<p>还有一个导致前列腺的问题，如果整天坐在屁股上的话。站起来转转就可以。如果尿血或者排尿困难，去看医生，否则会更危险。</p>
-
-<h3><strong>维生素D不足</strong></h3>
-
-<p>维生素D有点怪。的确只能通过晒太阳产生，但你并不必去专门为此去暴露在阳光下。5到30分钟就好，取决于光照的强度。还与你的钙水平和磷缺乏程度有关。但你要是饮食规律，并非只吃些薯片的话，就问题不大。</p>
-
-<p>还有一些事比如消沉，搞坏的牙齿，一些奇怪部位的疼痛比如臂肘的骨头，肌肉痉挛，总体来讲就是跟烂泥一样。同样，如果你觉得不行的话去看医生，正常情况下在日头正盛的时候，去外面溜达半个小时足矣。</p>
-
-<p>事实上，我觉得一个问题是硅谷里很多刚起步公司提供的餐饮。因为你要泡在办公室，经常吃残汤剩饭，而且照明也不好，太阳高照的时候你也不出去晒下。加上你的睡眠习惯你的维生素D状况就糟糕透了。</p>
-
-<p>不要吃盒饭，在中午去外面吃一顿。好处你自知，而且外面的食物好多了。</p>
-
-<p>我在温哥华和西雅图的时候有轻微的维生素D缺乏，那儿光照不足，对于我来说简直要我命。有人能搞定，但是像我这样青年时代在热带岛屿上度过的人，不足的光照确实就是杀手。</p>
-
-<p>所以，你趁有太阳的时候出去晒晒。</p>
-
-<h3><strong>睡眠失调</strong></h3>
-
-<p>我的睡眠时间一向很灵活，跟季节和地域有关。有时候我如猫头鹰附体，熬夜熬到很晚才睡。最近搬到旧金山后开始早睡，不再晚睡了，最近感觉很好。</p>
-
-<p>有时候，我不确定为何在夜里创作音乐或编程倒多产。我认为在一个疲惫的状态下我的大脑确是在休息的。我还觉得是因为夜里更安静，没有滋扰。</p>
-
-<p>不管怎样，早睡晚睡已经把我的睡眠机制搞砸了。当我渐长我更喜欢早起，我觉得白天更清醒更放松。熬夜后再睡往往觉得自己有遗留反应，而且头疼。</p>
-
-<p>如果你也有睡眠问题，我有一些简单的调适方法助你入睡。需要实践，但很有效。</p>
-
-<p>首先，花你的血本买个好床，2000+美元不算多。我买了2200块的Tempur-Pedic。 的确很值。</p>
-
-<p>有了床，开始练习助睡法，有点自我催眠的意味：</p>
-
-<ol>
-<li><p>关掉你房内的所有灯光和音响。</p></li>
-<li><p>躺下，让手放在让你舒服的位置。</p></li>
-<li><p>缓慢地深呼吸，并想象空气流进身体及逸散出体外的场景。</p></li>
-<li><p>当你能注意到你的呼吸之时，想象你在看窗外辽阔的太空，悬星满布。</p></li>
-<li><p>然后伴随呼吸幻想自己漂浮在空中，渐入巨幅的星系，一切星辰，皆伴随你左右。</p></li>
-<li><p>持续幻想，感觉你的床也在漂浮，直到皆不见。</p></li>
-</ol>
-
-
-<p>你或许在四五点睡觉，但不是要出去的话，就幻想自己漂浮直到你真感觉融化了。</p>
-
-<p>如果你有重度失眠，还请咨询医师。但还是试下这招，一天做一到两个小时。练习后绝对会让你入睡。</p>
-
-<h3><strong>刚柔并济</strong></h3>
-
-<p>如果浑身不适难于活动，这时就该做下伸展运动。当然最好莫过于去瑜伽馆每周做练习，并回家自己练习。如果没有时间，可以买书或在图书馆借N多教程。入门级就可以，你真的不需要太多。</p>
-
-<p>我想如果你晚上入睡前做5-6个大幅的伸展练习就够了。你会觉得相当放松，你的健康状况和自我感觉也会有提升。</p>
-
-<p>伸展身体的时候同样要放松大脑，增长创造性的一大妙法就是做瑜伽或半个小时的伸展运动，然后早晨冲澡。 伴随禅定你就会精神自适并发觉个中未曾体验之奥妙。</p>
-
-<p>我也不知为何，但是精神之松弛对于突发的灵感多有助益。</p>
-
-<h3><strong>迈出第一步</strong></h3>
-
-<p>上面的内容可能对于你有点多，我当然希望你不会都有这些问题缠身。然而我建议，尽管你可能没有那些毛病，但要避免它们的发生。如果你要开始编码，请采用“编前热身”。</p>
-
-<p>下面就是我在敲代码前要干的，或者玩吉他前，以及我变僵需要休息的时候。</p>
-
-<ol>
-<li><p>活动身体各关节，只需将腕、臂、颈、臀转摇几下。比如正向五次，然后反向五次。</p></li>
-<li><p>在各部分前做一些腕部练习，摇一下手腕。</p></li>
-<li><p>将臂举过头顶尽可能高，然后向后伸展尽可能远，然后伸到身体前面来。</p></li>
-<li><p>最后，小心地用手扶着头分别向右、左、前、后摇几下。</p></li>
-</ol>
-
-
-<p>如果你做这些的话，将避免一些编程会带来的伤害。因为编程并不会大伤体能，避免受伤还是很容易的，因此上述部分就够了。</p>
-
-<p>然而，如果有特殊问题的话，继续去咨询医疗师，如果得到他们允许可以试试我的这些方法。我这儿说的无过激或奇异的方法，只是些基本的练习和一些常识，因此是个医生都会许可的。我告诉你要咨询别人是只是因为我不想吃官司。</p>
-
-<p>真希望这些能让你变好，如果没有的话，记下建议，以防出现这些状况。如果你够好运，连一个问题都不会有，但我觉得是个程序员都有或多或少的问题。</p>
-
-<p>如果对上述的事情持有疑问，可以给我发邮件，我会给你一些建议。</p>
-
-<p>保重。</p>
-
-<p><strong>作者Zed Shaws</strong>是一位作家、软件开发人员、音乐人（下文中提到吉他手），于2010年发布《Learn Python The Hard Way》一书，他也是 Mongrel Web 服务器系统的作者之一。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[一个简单的python小程序————使用douban API通过ISBN查询书籍信息]]></title>
-    <link href="http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api/"/>
-    <updated>2012-03-11T07:52:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api</id>
-    <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
+    <title type="html"><![CDATA[Ubuntu下手动安装Eclipse CDT]]></title>
+    <link href="http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu/"/>
+    <updated>2011-04-11T21:06:09+08:00</updated>
+    <id>http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu</id>
+    <content type="html"><![CDATA[<h2>这篇文章期望的读者是谁？</h2>
+
+<p>Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写</p>
+
+<h2>希望达到的目标？</h2>
 
 <ul>
-<li>命令行的解析</li>
-<li>文件的读写</li>
-<li>XML解析</li>
-<li>http连接</li>
-<li>多线程</li>
+<li><p>增加一点linux基础知识的认识（严格说是ubuntu的目录结构）</p></li>
+<li><p>练习常用的linux命令（在本文中使用到了解压缩、文件夹的移动、创建符号连接）</p></li>
+<li><p>初步了解Linux Desktop Entry的写法</p></li>
 </ul>
 
-
-<p>短短不到200行的程序就可以做到这些，可以算是python的推广广告吧，哈哈</p>
-
-<script src="https://gist.github.com/liuyix/6738920.js"></script>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Eclipse下配置NDK开发环境小结]]></title>
-    <link href="http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration/"/>
-    <updated>2012-03-11T06:11:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration</id>
-    <content type="html"><![CDATA[<p>分享下最近几周我的一些NDK开发经验和心得。</p>
-
-<p>Eclipse配置NDK环境，主要完成的功能使能调用Android NDK提供的工具链编译用C/C++源代码写好的共享库或者可执行的应用程序。由于我的工作需要的基本是完全native程序的编写，因此这里介绍的方法 <strong>更适合编译Android下的本地应用程序或者共享库</strong></p>
-
-<p>本文提供的方法皆非原创，在这里感谢原创作者的分享。</p>
-
-<h2>NDK环境配置之前</h2>
-
-<p>Eclipse需要事先安装好 <strong>CDT</strong> ，本文在Ubuntu平台上测试可用。</p>
-
-<h2>最简单有效的方法————创建新的Builder</h2>
-
-<p>本方法是在Eclipse中调用NDK提供的 <code>ndk-build</code> 命令进行编译。综合这几周的开发，感觉还是这个方法是最靠谱的。因为你只需要编写一个Android.mk，无需考虑依赖关系，同时也最大程度的遵循了google提供的NDK build方法。</p>
-
-<h3>具体配置步骤</h3>
-
-<ul>
-<li><p>新建一个C++ Project</p></li>
-<li><p>进入到这个project的 <strong>Propertities</strong> 选项中</p></li>
-<li><p><strong>Builders</strong> 一栏 –> <strong>New</strong> –> <strong>Program</strong></p></li>
-<li><p>参考下面这张图进行配置，几个重要的地方：</p>
-
-<ul>
-<li><p><strong>Location</strong> 填入 <code>$NDK_HOME</code> /ndk-build 其中 <code>$NDK_BUILD</code> 是NDK安装的根目录</p></li>
-<li><p><strong>Working Directory</strong> 填入当前project的位置，可以通过选择 <strong>Browse Workspace…</strong> 选择</p></li>
-<li><p>可选步骤： <strong>Arguments</strong> 中写下需要传给ndk-build的参数</p></li>
-<li><p>如果要实现 <em>auto-build</em> 可以在 <strong>Refresh</strong> 和 <strong>Build Options</strong> 中进行配置，我个人觉得auto-build对开发没有实际作用，因此这里就不介绍了。</p></li>
-</ul>
-</li>
-</ul>
-
-
-<p>简单几步就可以编译共享库了，够简单吧</p>
-
-<h2>参考链接</h2>
-
-<p><a href="http://mobilepearls.com/labs/ndk-builder-in-eclipse/">Setting up Automatic NDK Builds in Eclipse</a></p>
-
-<h2>其他方法</h2>
-
-<p>这里还有一种我试验可用的方法，但是配置起来实在麻烦，适合移植已有程序或者开发大型项目时完全定制编译过程中使用。这里只给出出处，有兴趣的同学可以看看。</p>
-
-<ul>
-<li><a href="http://www.srombauts.fr/2011/03/06/standalone-toolchain/">http://www.srombauts.fr/2011/03/06/standalone-toolchain/</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[译]初次参与开源软件项目的六个忠告]]></title>
-    <link href="http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/"/>
-    <updated>2012-03-11T06:00:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn</id>
-    <content type="html"><![CDATA[<p>原文链接：<a href="http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source">http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source</a></p>
-
-<p>开源项目是一种好的释放自己的热情(&ldquo;geek out&rdquo;?)和做自己喜爱的事情的方式。有一个自己参与的开源项目可以使你的工作做起来更加快乐和满足，也会使你保持良好的编程水平，也会经常给你带来其他机遇。许多人不知道从何出入手向开源项目贡献自己的力量。以下是接触参与开源项目的六个简单的忠告。</p>
-
-<h2>参与到平时使用的开源软件的项目之中(言外之意是不要鲁莽的参与到你不使用或者不了解的开源项目中)</h2>
-
-<p>这一条很明显，但是记得不要尝试参与到你不使用或者你一无所知的项目中去。给你平时使用的，你也许愿意投入贡献的开源软件列一张清单。别忘了还有你使用的开源类库、开源模块也可以考虑投入贡献，记得参与到一个有许多开发者使用的开源项目有更多的益处。你使用框架吗、文件转换工具、图形类库或者一般开源软件需要使用的构建工具吗，或者一个新功能？以上这些都是你第一次参与开源项目的首选。</p>
-
-<h2>Do What You Love 做你真正感兴趣的部分</h2>
-
-<p>记得要找一个你 <strong>真正</strong> 感兴趣的部分做出你的贡献。比如说你对解析器情有独钟，那么一个编译器项目就不是第一次参与的项目首选。也许可以考虑一个webserver项目或者构建工具项目中的解析配置文件模块。</p>
-
-<h2>掌握开源软件中常用的工具</h2>
-
-<p>对于每个开源项目，版本控制系统、bug追踪系统、patch提交系统，有自己的代码规范，feature request，问题排查系统(user troubleshooting issues)以及构建工具和开发者讨论社区，这些都会有所差异。因此你应该花些时间学习熟悉这个项目使用的工具。一些常识，例如不该在开发者邮件列表里询问如何使用SVN;不该在用户论坛里提交bug，这些都该知道。认真阅读开发文档，学习使用上述的工具不仅可以节省大家的时间也会提高你所做的贡献被接受的可能。</p>
-
-<h2>观察了解项目的人际圈子</h2>
-
-<p>除了认真考虑技术，了解项目中的社交圈子也很重要。你该知道哪些人是核心开发人员(core maintainer)，这些核心开发者是如何与他人交流的，在开发社区中哪些人更活跃，他们为项目制定了那些规则。对于新的贡献者，有些项目会很开放和热心帮助，而有些项目则不大友好。记得要多在邮件列表、IRC或者其他开发者交流渠道上花时间观察，熟悉项目开发的交流氛围。 也许你认为开发者社区的交流互动不很重要，但是这却是成为一个成功的贡献者还是沮丧的离开的差异所在。回忆器我第一次尝试贡献开源项目时，我想改善一个音乐播放器程序的播放列表格式，因为这个音乐播放器程序在命令行下指定播放列表时，它不支持所有可用的格式。由于我的歌曲文件名字超出了Linux内核支持的命令行参数的字符上限，因此我没有办法将所有的音乐放入播放列表中。于是我在邮件列表中发了封邮件询问开发组他们是否考虑支持新的播放列表格式。于是立即引起了一场争论。当我第二天查看邮件列表时，我看到了上百个回复，一些人表示支持，一些人说现在的已有格式已经很好，还有些人问道这是哪来的新人。于是整个事情由回应问题变成了争论。 我当时犯的错误就是没有足够了解项目的社交圈。查看下邮件列表的存档，你才会发现有些项目只对一小撮核心贡献者开放，而对大多数人尤其是那些连一个bugfix都没提交过的人一点都不理会的。因此这就引出了我要谈到的下一条也是最重要的一条忠告——从小处入手</p>
-
-<h2>从小处入手</h2>
-
-<p>从小处入手有两方面含义，一是小的贡献，二是规模小的项目。提交一些小的bugfix或者实现一个简单的feature可以帮助你提高社区中的声望，同时也会使你熟悉项目中的提交流程。这两个方面都灰是你的补丁被接受的可能性大大提高。 一个规模小的项目中，你的贡献会更富有成效，因为熟悉提交流程和工具链会更快，你还能和核心开发者有更好的沟通。一个只有一个维护者的项目，提交一个bugfix补丁通常和邮寄一封附有diff文件和问题描述信息的邮件给维护者一样简单。</p>
-
-<h2>开始自己的开源项目</h2>
-
-<p>开始接触开源项目的一个最简单的方法就是建立自己的开源项目。写一个firefox插件、一个wordpress插件或者一个emacs mode都是不错的想法，既可以快速写就，通常还会赢得不少用户的肯定。 不过在你创建自己的项目之前，记得一定要好好查查，确保你的工作没有人在做。你也许会惊喜的发现有许多项目只需要一点点关注就会使这些项目变得更有价值。</p>
-
-<p>以上就是6条初次参与开源软件项目的忠告。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[域名邮件不再被spam——SPF记录设置]]></title>
-    <link href="http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain/"/>
-    <updated>2012-02-26T00:26:17+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain</id>
-    <content type="html"><![CDATA[<p>一直使用的是QQ提供的<a href="http://domain.mail.qq.com/">域名邮箱</a>功能，很不错。本文旨在教你如何设置SPF记录防止自己域名的邮件被标记为spam。</p>
-
-<h2>什么是SPF记录</h2>
-
-<p>参考wiki：<a href="http://en.wikipedia.org/wiki/Sender_Policy_Framework">http://en.wikipedia.org/wiki/Sender_Policy_Framework</a></p>
-
-<p>SPF是<strong>Sender Policy Framework</strong>的简称，是一种email验证系统，旨在通过检测email proofing，验证发送者IP地址的方法来杜绝垃圾邮件的方法。</p>
-
-<blockquote><p>接收邮件方会首先检查域名的SPF记录，来确定发件人的IP地址是否被包含在SPF记录里面，如果在，就认为是一封正确的邮件，否则会认为是一封伪造的邮件进行退回。</p></blockquote>
-
-<h2>设置过程</h2>
-
-<p>本文以DNSPod为例展示QQ域名邮箱的SPF设置过程。</p>
-
-<ol>
-<li><p> 进入DNSPod制定域名的管理界面</p></li>
-<li><p> “添加记录”，填入如下内容：</p>
-
-<p>v=spf1 include:spf.mail.qq.com ~all</p></li>
-<li><p> 最后点击保存即可</p></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南]]></title>
-    <link href="http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/"/>
-    <updated>2012-02-25T23:40:12+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet</id>
-    <content type="html"><![CDATA[<p>感谢强大的ipv6!</p>
-
-<blockquote><p>使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持<strong>NAT64/DNS64</strong>的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。</p></blockquote>
-
-<p>目前互联网上公布的二台DNS64服务器地址为：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>2001:778::37
-</span><span class='line'>2001:df8:0:7::1</span></code></pre></td></tr></table></div></figure>
-
-
-<p>通过简单设置就可以实现利用ipv6访问<strong>所有网站</strong>。</p>
 
 <!-- more -->
 
 
-<h2>一些限制</h2>
+<h2>正题</h2>
 
 <ol>
-<li><p> 目前该方法不能在<strong>windows xp</strong>上使用，只能在windows vista、windows 7上使用。</p></li>
-<li><p> 只能使用基本web服务，浏览网页，其他如登录QQ客户端不行（使用网页QQ可以）。</p></li>
+<li><p> 在Eclipse CDT官网下载Linux-32bit的安装包，比如下载到你的主目录下</p></li>
+<li><p> 终端下进入你下载的安装包的路径（如上文的主目录:~）</p></li>
+<li><p> <strong>解压缩</strong>下载的压缩包: <code>tar -zxvf eclipse-cpp-helios-SR2-linux-gtk.tar.gz</code></p></li>
+<li><p> 将文件夹所有内容移动到<strong><code>/usr/local/lib</code></strong>该位置相当于Windows里的Program Files文件夹，用于放置本地程序，注意此处必须使用root权限<code>sudo mv eclipse /usr/local/lib</code></p></li>
+<li><p> 在<code>/usr/local/bin</code>下创建eclipse启动程序的符号链接（符号链接相当于快捷方式），便于在终端里调用启动<code>sudo ln -s /usr/local/lib/eclipse/eclipse /usr/local/bin</code></p></li>
+<li><p> 创建Linux Desktop Entry:就是将Eclipse CDT添加到Ubuntu程序菜单中<code>sudo gedit /usr/share/applications/cdt-eclipse.desktop</code></p></li>
 </ol>
 
 
-<h2>设置方法</h2>
-
-<h3>Windows7设置</h3>
-
-<p>进入网络和共享中心，点击本地连接，设置属性，双击ipv6属性输入上面的两个DNS服务器地址。同时取消ipv4协议以达到纯ipv6上网，最后点击确定就大功告成！</p>
-
-<h3>Ubuntu设置</h3>
-
-<p>对Linux了解的不多，采取的方法也许不是最佳的。Ubuntu网络管理程序使用的是NetworkManager，这个工具说实话很垃圾。无法设置很多选项，比如说我们即将设置的nameserver，而且每次联网都会覆盖掉你自定义的设置。</p>
-
-<p>牢骚到此为止。</p>
-
-<p>设置过程：</p>
+<p>该条命令的含义：在<code>/usr/share/applications/</code>目录下创建一个名为cdt-eclipse.desktop文件，该路径用于放置你看到的程序菜单中的所有程序，有兴趣可以用文件浏览器浏览</p>
 
 <ol>
-<li><p> 首先打开NetworkManager，<strong>编辑连接</strong>&mdash;>&ldquo;<strong>你目前用的网络连接&rdquo;</strong>&mdash;>&ldquo;ipv4标签下选择<strong>禁用</strong>&rdquo;&mdash;><strong>ipv6标签，选择自动</strong></p></li>
-<li><p> 编辑<code>/etc/resolv.conf</code></p></li>
+<li> 在弹出的gedit中写入以下内容</li>
 </ol>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo gedit /etc/resolv.conf<span class="sb">`</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>添加如下内容：</p>
-
-<pre><code>nameserver 2001:778::37
-nameserver 2001:df8:0:7::1
-</code></pre>
-
-<ul>
-<li><p>设置好resolve.conf之后，每次重启网络或者重新联网时NetworkManager都会覆盖掉你的设置，这里有个下下策的解决办法，运行下面的命令</p>
-
-<p>sudo chattr +i /etc/resolv.conf</p></li>
-</ul>
-
-
-<p>这样resolv.conf就变成无法修改了。可以避免被覆盖。如果要想恢复，则运行</p>
-
-<pre><code>sudo chattr -i /etc/resolv.conf
-</code></pre>
-
-<h2>使用感受</h2>
-
-<p>最近这几周一直在使用纯ipv6利用该方法上网。总得来说，还凑合。优点很明显，所有网站通行无阻。缺点就是<em>速度慢</em>，<strong>不稳定——偶尔会抽风。</strong></p>
-
-<p>建议是将此方法结合着ipv6 hosts方法达到更好的使用体验。</p>
-
-<h2>参考链接</h2>
-
-<ul>
-<li><a href="http://www.ipv6bbs.cn/archiver/tid-152.html">在IPv6网络下访问IPv4资源的方法(利用NAT64/DNS64实现)</a> via <a href="http://www.ipv6bbs.cn/">IPv6论坛</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[makefile简单入门]]></title>
-    <link href="http://liuyix.github.io/blog/2012/write-simple-makefile/"/>
-    <updated>2012-02-20T04:02:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/write-simple-makefile</id>
-    <content type="html"><![CDATA[<blockquote><p>在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。</p></blockquote>
-
-<h2>导言</h2>
-
-<p>make程序可以算得上是一个domain specific language，完全是一个完整的脚本语言，make是linux,unix上编译 <strong>等</strong> 工作的标准工具，对于复杂的程序来说，可以智能的、自动化完成复杂的程序编译工作。而需要就是编写一个directive的脚本——makefile告诉编译器和其他工具应该如何编译project。 本篇是陈皓写的“跟我一起写makefile”的第一部分的总结，比较凌乱…</p>
-
-<h2>学习资料</h2>
-
-<ul>
-<li>陈皓——“跟我一起写makefile”</li>
-<li>how to write a simple makefile<!-- more --></li>
-</ul>
-
-
-<h2>makefile的最基本编写规则</h2>
-
-<pre><code>target : prerequisites
-    command
-</code></pre>
-
-<p>这个就是makefile最基本的编写规则，后续的讲解以及makefile的更多写法不过是为了进一步简化这个规则的编写。也就是说你只要把这个规则弄懂了，makefile你就会写了，和makefile高手，你差得就是一些技巧和高级用法了。但起码你会写makefile了。</p>
-
-<ul>
-<li><p><strong>target</strong> 就是要构建的目标——可以是C/C++的object，可以是目标程序，也可以是一个标签。</p></li>
-<li><p><strong>prerequistites</strong> 是构建 <strong>target</strong> 需要的文件。对object来说，它也许是c，c++源文件； <strong>target</strong> 是目标程序，那么它就是object文件（.o文件）</p></li>
-<li><p><strong>command</strong> 是将 <strong>prerequistites</strong> 变成 <strong>target</strong> 的方法</p></li>
-</ul>
-
-
-<p>一言以弊之，target是output,prerequisites是输入，command是过程方法。 值得注意的是command必须以一个TAB键作为开始，否则会出现&#8221;遗漏分隔符。停止&#8221;的错误。</p>
-
-<h3>hello-makefile的makefile</h3>
-
-<p>首先编写一个hello-makefile.c，内容我想就不用我写了吧…之后在存放hello-makefile的目录下创建一个 <em>Makefile</em>文件(注意没有扩展名)。 Makefile内容如下：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='makefile'><span class='line'><span class="nf">hello-makefile</span><span class="o">:</span><span class="m">hello-makefile.o</span>
-</span><span class='line'>    cc -o hello-makefile hello-makefile.o
-</span><span class='line'><span class="nf">hello-makefile.o</span><span class="o">:</span> <span class="m">hello-makefile.c</span>
-</span><span class='line'>    cc -o hello-makefile.o hello-makefile.c
-</span><span class='line'><span class="nf">clean</span><span class="o">:</span>
-</span><span class='line'>    rm *.o hello-makefile
-</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[Desktop Entry]
+</span><span class='line'>Name=Eclipse-CDT
+</span><span class='line'>GenericName[zh_CN]=Eclipse的C/C++环境
+</span><span class='line'>GenericName=Eclipse with CDT
+</span><span class='line'>Comment=Eclipse C/C++ IDE
+</span><span class='line'>Exec=eclipse
+</span><span class='line'>Terminal=false
+</span><span class='line'>Icon=cdt-eclipse
+</span><span class='line'>Type=Application
+</span><span class='line'>Categories=Development;IDE;[/text]</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>TAB键、反斜杠(/)</h2>
-
-<ul>
-<li><p>TAB键在makefile中是command开头的分割符，这在前文已有讲述。</p></li>
-<li><p>反斜杠（/）用来断行，即一行没有写下或者为了美观而将 <code>command</code> 或者 <code>prerequistites</code> 拆成几行来写。刚学习写makefile时可能会忘掉而出现错误。</p></li>
-</ul>
-
-
-<h2>make不仅仅可以做编译</h2>
-
-<p>target可以是目标文件、二进制程序，也可以是一个label，后面没有prerequisites，可以让makefile如同shellscript一样完成其他工作（备份、打包）。比如说我们经常使用的 <code>make clean</code> 实际上是利用make完成shell脚本一样的工作。</p>
-
-<h2>使用变量，简化书写，减少bug</h2>
-
-<pre><code>objects = main.o kbd.o command.o display.o \
-insert.o search.o files.o utils.o
-</code></pre>
-
-<p>以后使用时就使用 <strong>$(objects)</strong></p>
-
-<h2>自动推导</h2>
-
-<p><strong>.PHONY</strong> 表示clean是一个伪目标文件</p>
-
-<h2>编写makefile好习惯</h2>
-
-<p>每个makefile中都 <em>应该</em> 定义一个clean命令，用于清空从前的编译产生的文件。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[开放与开源，自由与封闭]]></title>
-    <link href="http://liuyix.github.io/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software/"/>
-    <updated>2012-01-31T08:08:28+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software</id>
-    <content type="html"><![CDATA[<p>前几天偶然间看到了一个淘宝又一个非常不错的网站——Taocode（<a href="http://code.taobao.org/">http://code.taobao.org/</a>），是淘宝为国内开源社区做的又一个贡献吧。（越来越喜欢淘宝了）</p>
-
-<p>大致的逛了一逛，发现了我浏览的大部分项目都是“死”项目或者是一个人的表演。这不是开源，而是源码开放而已。</p>
-
-<h1>什么是开源？</h1>
-
-<p>在我看来，开源不是单单的源代码开放，更本质的来说一个革命性的软件开发方式——任何人都可以参与到软件的开发当中。在我看来一个好的开源项目绝不是一个人的项目，而是多个人甚至是由许多人组成的社区共同进行开发，可以说开源是hacker的coding party。一个人玩着没意思，大家协作着一起玩才是开源的内涵。</p>
-
-<p>在国内的开源社区，可能因为我的了解太少，很成功的开源项目我知道的真不多。国内的开源还需努力啊。</p>
-
-<p>android在我看来不是严格来说不是一个开源的操作系统，它更像是一个开放的操作系统，因为android是google内部封闭开发，之后再公布源代码，也就是说任何人都可以查看代码，但是你不能提交修改的代码，也不能决定android的发展方向。</p>
-
-<p>相比较来看，linux kernel才是最典型的开源。</p>
-
-<h1>什么是自由软件？</h1>
-
-<p>自由软件和开源不是一回事。自由软件强调的是使用者的权利（例如使用者应该有修改权利、重新分发的权利等等），具体来说就是五花八门的协议，其中最有名的当属GPL协议、BSD协议等等。</p>
-
-<h1>封闭软件是魔鬼吗？</h1>
-
-<p>答：是，也不是。读完《乔布斯传》之后，对于开放与封闭、自由软件与封闭软件的认识不再如Richard Stallman那样的偏激了。</p>
-
-<p>在大众消费领域，对消费者、普通用户来说，其实他们在乎的是用户体验，是产品是否好用，是否拥有产品的修改、分发权利对他们来说毫无意义。因此封闭的还是自由的对消费者来说都一样，在这个领域封闭软件不是什么妖魔鬼怪，不是魔鬼。正所谓黑猫白猫，抓到耗子的就是好猫。苹果公司是IT业界最出名的封闭王国，它的产品从硬件到软件都是最封闭的，但可以说也是最优秀的，最好的。因此它的产品最畅销。</p>
-
-<p>然而从一个行业角度来看，从一个企业的角度来看，开放比封闭具有更多的优势，也是更受欢迎的。依旧是苹果公司的例子，个人电脑市场上微软战胜苹果公司，成为业界的PC霸主，一大原因就是它采用的是开放策略（不是开源哦）——微软负责操作系统，硬件归硬件厂商、配件厂商生产，这个策略在现在看来似乎是理所当然，但在当时来说是一个非常巨大的创新。而苹果公司依旧是走硬件到软件的一体化封闭策略。（不是原创思想，吴军的<a href="http://book.douban.com/subject/6709783/">浪潮之巅</a>中有精辟的介绍，极品好书，力荐！）</p>
-
-<p>封闭也会导致垄断的出现，最终使用者还是会受到伤害。因为垄断会扼杀创新，抑制进步。</p>
-
-<p>当然开放也有它的弱点：你无法掌控每个环节的品质，木桶理论告诉我们，你讲一个环节做的再完美，也未必会是整个产品完美。乔帮主的封闭策略恰恰没有这个顾虑，因此你会发现虽然Windows PC占据了绝大份额，可不得不承认Mac是最美的。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs23 字体配置]]></title>
-    <link href="http://liuyix.github.io/blog/2011/howto-config-font-in-emacs23-2/"/>
-    <updated>2011-12-16T21:22:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2011/howto-config-font-in-emacs23-2</id>
-    <content type="html"><![CDATA[<h2>Update 2013-3-16</h2>
-
-<h3>字体设置没有可移植性</h3>
-
-<p>在多个机子上迁移emacs时需要将字体设置部分注释掉，不然会出现 <em>emacs正常启动，但是配色显示不正常</em>的现象。</p>
-
-<h3>更傻瓜的设置方式</h3>
-
-<p>全部用界面菜单操作更方便。</p>
+<p>简单说明:<br/>
+[Name]菜单项显示的名称<br/>
+[GenericName]应用程序的通用名称<br/>
+[GenericName[zh_CN]]国际化显示，当本地编码与之相符则显示相应的内容<br/>
+[Exec]调用的命令<br/>
+[Terminal]布尔值，若为真则是“在终端下运行”[Icon]表示相应的图标文件名称（图标文件在附件中）<br/>
+[Type]Desktop Entry文件的类型，Application表示该Desktop Entry文件指向了一个应用程序<br/>
+[Categories]该项只有在&#8221;Type&#8221;是&#8221;Application&#8221;时才有效。该项表示相关应用程序在菜单中显示的类别。</p>
 
 <ol>
-<li><code>Options</code> &mdash;> <code>Set Default Font</code></li>
-<li>选择满意的字体之后，保存设置 <code>Options</code> &mdash;> <code>Save options</code></li>
+<li> 图标文件的处理：系统会自动依次在以下几个目录中查找<code>$HOME/.icons--&gt;$XDG_DATA_DIRS/icons --&gt;/usr/share/pixmaps</code>，因此将图标放入到<code>/usr/share/pixmaps/</code>目录中以便所有用户都可以使用到</li>
 </ol>
 
 
 <hr />
 
-<blockquote><p>前几天使用org2blog出了一些莫名的问题，经过一系列的折腾（编译安装emacs,源码安装org-mode），还是没有搞清楚问题出在哪儿了，但是现在org2blog又不明原因的恢复正常了！（对emacs不了解的人伤不起啊，有时间一定要仔细研究下）</p></blockquote>
+<p>到这里就算是大功告成了，希望你通过实际的操作，能更加熟悉linux的环境！</p>
 
-<p>emacs23中默认的字体很小,此文告诉你如何用最&#8221;业余&#8221;也是很简便的方式添加修改emacs配置～</p>
+<p><strong>附件</strong>（此附件包含图标以及desktop文件）<a href="http://u.115.com/file/f9e78679f9">下载链接</a></p>
 
-<!-- more -->
-
-
-<ol>
-<li><p> 打开emacs，菜单栏中选择 <strong>Options</strong> –> <strong>Set Default Font…</strong></p></li>
-<li><p> 在弹出的对话框中挑选好字体以及大小</p></li>
-<li><p> 在任意文本下,将光标停在修改后的文字上面</p></li>
-<li><p> 输入命令:</p>
-
-<p>M-x describe-font</p></li>
-<li><p> 复制 <strong>name(open by):</strong> 后面的内容，比如说是</p>
-
-<p><code>-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1</code></p></li>
-<li><p> 根据(5)，将</p>
-
-<p><code>(set default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")</code></p></li>
-</ol>
-
-
-<p>这一句添加到 <em>.emacs</em>配置文件中</p>
-
-<ol>
-<li> 重启emacs就会看到效果！</li>
-</ol>
-
-
-<p>Gook luck!</p>
-
-<h3>参考文章</h3>
-
-<p><a href="http://blog.waterlin.org/articles/%E8%AE%BE%E7%BD%AEemacs%E7%9A%84%E5%AD%97%E4%BD%93.html">设置Emacs的字体</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LFS的构建过程---LFS实践总结(一)]]></title>
-    <link href="http://liuyix.github.io/blog/2011/building-lfs-summary-a/"/>
-    <updated>2011-07-28T18:02:44+08:00</updated>
-    <id>http://liuyix.github.io/blog/2011/building-lfs-summary-a</id>
-    <content type="html"><![CDATA[<p><img src="http://www.linuxfromscratch.org/images/lfs-logo.png" alt="" /></p>
-
-<p>LFS是&#8221;Linux From Scratch&#8221;的简写，&#8221;from scratch&#8221;的本义是“从头开始”，这里应该是引申义,&ldquo;从源代码构建&#8221;。</p>
-
-<p>LFS的主页上介绍为&#8221;Linux From Scratch (LFS) is a project that provides you with step-by-step instructions for building your own customized Linux system entirely from source.&ldquo;更多详细的介绍可以移步到<a href="http://www.linuxfromscratch.org/lfs/">LFS Project Homepage</a>看看。</p>
-
-<p>LFS主要的意义在于&#8221;教学&#8221;上，通过自己动手构建能更深入的认识linux，了解linux的运行原理。通过自己动手，还可以增强Linux上的操作水平。对于Linux的新手，LFS可能是一项比较“痛苦”的学习过程，因为你要使用大量的命令;对于使用过Linux一段时间的用户来说，构建LFS可以将Linux的零散的认识串起来，增强Linux的整体认识。</p>
-
-<p>构建LFS的主要困难，我觉得对一看到E文就头大的童鞋来说，的确是nightmare。但我想喜爱折腾的，尤其是喜欢Linux的，E文都不会是大问题。除了语言的问题之外，得益于LFS文档的详尽和完美，我在构建的过程中没有遇到什么问题，很顺利。所以我觉得还是要认真读文档理解好就没什么问题。</p>
-
-<!-- more -->
-
-
-<h2>简要的LFS构建过程</h2>
-
-<p>在分析构建过程之前，有必要说明下一些LFS-BOOK中重要的词汇。</p>
+<h2>参考链接</h2>
 
 <ul>
-<li><p>toolchain:工具链，这是构建LFS中最重要的一个组成部分。它包含了编译程序的必要工具集，其中包括了assembler(汇编编译器)、compiler(编译器)、linker(链接器)等等。回忆一下在计算机的基础课程（操作系统、组成原理）讲述的构建程序的从源代码编辑到程序运行的完整过程，在这个过程中就用到了这些工具。只要保证了toolchain的正确无误，LFS的构建就成功了一大半了。</p></li>
-<li><p>utilities:即我们在shell中各种linux工具。也包括构建程序所需要的一些必要的二进制工具。</p></li>
+<li><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-dtef/index.html">Linux Desktop Entry 文件深入解析</a></li>
+<li><a href="http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html">Icon Theme Specification</a></li>
 </ul>
 
-
-<p>为了在不同发行版上尝试构建LFS可以有结果一致性，即能参考同一个文档得到大致相同的结果(成功或者错误显示)，也为了达到少出错误的目的，采用了类似cross compile的方式的构建系统，简单讲就是多次的调整toolchain。</p>
-
-<h3>LFS的构建步骤：</h3>
-
-<ol>
-<li><p>  通过现有的toolchain环境，编译出“new and host-independent toolchain”。之所以这样是要保证后面的构建过程尽可能少的出错误，也可以保证在不同环境下进行的构建能有一个操作结果一致性的保障。</p></li>
-<li><p> 通过新的toolchain编译必要的工具(utilities)。第1步和第2步是第5章的主要内容。</p></li>
-<li><p> 通过以上2步实际上LFS的“地基”已经打好，下一步就要开始在上面“盖楼”了，这是第6章要做的工作。首先是进入mini Linux system(准备好环境后，通过chroot命令)，之后开始安装packages，（此过程相当于使用live-cd安装linux的过程，不同的是这里使用的是手动编译安装所有的package,而使用live-cd的安装过程是把已经编译好的packages复制到指定位置），<strong>要理解linux的运行原理，实际就是理解Linux运行所需要的所有package的功能和内容。</strong></p></li>
-<li><p> 所有的package已经搭建好，现在还缺少引导程序，即启动脚本bootscript，这是第7章所讲的内容，通过启动脚本将package粘合在一起组成一个完整的系统。这其中比较重要的是udev的运行原理，其他的还有bootscripts,localtime,console,inputrc,bash,network。</p></li>
-<li><p>  最后的步骤就是编译内核并将新的内核添加到grub启动菜单中。</p></li>
-</ol>
-
-
-<p>LFS的编译toolchain构建的顺序大体上是一样的：</p>
-
-<blockquote><p>Linux-<version> API Headers&mdash;&ndash;>Glibc&mdash;&ndash;>Binutils&mdash;&ndash;>GCC&mdash;&ndash;>Utilities/Programs</p></blockquote>
-
-<p>这个顺序不能变。</p>
-
-<ol>
-<li><p> 将KERNEL对上层的“通信接口”&mdash;API接口 expose出来</p></li>
-<li><p> 通过API接口构建C库函数接口，Glibc提供了基本的管理内存、搜索目录、对文件的各种操作等功能</p></li>
-<li><p> Binutils提供了linker,assembler以及其他管理对象文件的工具</p></li>
-<li><p> GCC：C/C++编译器</p></li>
-<li><p> 至此就完成了toolchain的部署，其他软件都可以通过这个toolchain编译安装了。</p></li>
-</ol>
-
-
-<p>这里列出的顺序相对位置是一定的，实际的构建过程还会设计一些细节，如GCC编译前需要编译MPFR，MPC等数学库函数</p>
-
-<p>进一步概括LFS的构建过程就是先构建&#8221;干净的&#8221;toolchain，再通过toolchain编译必要的程序，然后编写启动脚本,编译kernel，最后将LFS添加到GRUB引导菜单中。是的，原理就是这么简单，难就难在面对一个实际系统构建中的各种细节。</p>
-
-<p>我想将LFS弄明白的含义就是&#8221;我知道1)如何编译程序2)toolchain的构建过程3)Linux运行中重要的工具有哪些都有什么用4)重要的脚本配置。理解弄清这些内容，就可以进一步的玩转Linux！</p>
 ]]></content>
   </entry>
   

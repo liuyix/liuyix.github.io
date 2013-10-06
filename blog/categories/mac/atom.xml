@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mac | Liuyix]]></title>
+  <link href="http://liuyix.github.io/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2013-10-06T14:35:12+08:00</updated>
+  <id>http://liuyix.github.io/</id>
+  <author>
+    <name><![CDATA[liuyix]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[mac上安装octopress]]></title>
+    <link href="http://liuyix.github.io/blog/2013/mac-install-octopress/"/>
+    <updated>2013-10-06T12:31:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2013/mac-install-octopress</id>
+    <content type="html"><![CDATA[<h2>Mac上安装octopress</h2>
+
+<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
+<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
+
+<ol>
+<li>安装homebrew</li>
+<li>安装rbenv以及ruby-build</li>
+<li><code>rbenv install 1.9.3-p448</code></li>
+<li><code>official install octopress</code></li>
+<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
+</ol>
+
+
+<h3>原有的octopress迁移到mac</h3>
+
+<p>如果之前在其他地方已经使用了octopress，那么在mac上的稍有不同。具体为：</p>
+
+<ul>
+<li>clone <em>yourname.github.com</em>的source分支：<code>git clone git clone -b source git@github.com:yourname/yourname.github.com.git octopress</code></li>
+<li>在clone<em>yourname.github.com</em>的master分支到<code>$your_octopress/_deploy</code>目录: <code>git clone git clone git@github.com:yourname/yourname.github.com.git _deploy</code></li>
+</ul>
+
+
+<p>```bash</p>
+
+<h1>如果之前就已经在使用octopress，迁移到mac的话，不要clone octopress源，而是要clone你自己的repo源的source分支</h1>
+
+<p>git clone -b source git@github.com:yourname/yourname.github.com.git octopress
+git clone git@github.com:yourname/yourname.github.com.git octopress/_deploy</p>
+
+<h6>安装octopress</h6>
+
+<h1>install homebrew</h1>
+
+<p>ruby -e &ldquo;$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go">https://raw.github.com/mxcl/homebrew/go</a>)&rdquo;</p>
+
+<h1>使用brew安装rbenv</h1>
+
+<p>brew install rbenv ruby-build</p>
+
+<h1>修改.bash_profile</h1>
+
+<p>echo &lsquo;export RBENV_ROOT=/usr/local/var/rbenv&rsquo; >> ~/.bash_profile
+echo &lsquo;if which rbenv > /dev/null; then eval &ldquo;$(rbenv init &ndash;)&rdquo;; fi&rsquo; >> ~/.bash_profile</p>
+
+<h1>关闭terminal，再重新开启</h1>
+
+<p>rbenv install ruby-1.9.3-p448
+rbenv versions #应该显示的是system和1.9.3-p448</p>
+
+<h1>进入到你的octopress</h1>
+
+<p>cd $your-octopress
+echo &lsquo;1.9.3-p448&rsquo; > .ruby-version</p>
+
+<h1>再次关闭终端，重新打开进入到你的ocotpress目录</h1>
+
+<p>ruby &mdash;version # 应该显示的是ruby 1.9.3p448</p>
+
+<h1>推荐可选操作：更改rubygems源至国内淘宝源，下载更稳定,参考链接：ruby.taobao.org</h1>
+
+<p>gem sources -l # 看一下默认的rubygems源的url
+gem sources &mdash;remove <a href="https://rubygems.org/">https://rubygems.org/</a> #此处的url以上一条命令为准，有时可能是http而不是https
+gem sources -a <a href="http://ruby.taobao.org">http://ruby.taobao.org</a>
+gem sources -l # 此处应该只显示的是淘宝的rubygems源</p>
+
+<h1>现在就可以参考官方的安装说明安装了</h1>
+
+<p>gem install bundler
+rbenv rehash    # If you use rbenv, rehash to be able to run the bundle command
+bundle install</p>
+
+<h1>如果是第一次安装octopress，还需要安装默认的theme</h1>
+
+<p>rake install</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>
