@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sexy python | Liuyix]]></title>
+  <link href="http://liuyix.github.io/blog/categories/sexy-python/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2013-10-06T20:18:01+08:00</updated>
+  <id>http://liuyix.github.io/</id>
+  <author>
+    <name><![CDATA[liuyix]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[一个简单的python小程序————使用douban API通过ISBN查询书籍信息]]></title>
+    <link href="http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api/"/>
+    <updated>2012-03-11T07:52:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api</id>
+    <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
+
+<ul>
+<li>命令行的解析</li>
+<li>文件的读写</li>
+<li>XML解析</li>
+<li>http连接</li>
+<li>多线程</li>
+</ul>
+
+
+<p>短短不到200行的程序就可以做到这些，可以算是python的推广广告吧，哈哈</p>
+
+<script src="https://gist.github.com/liuyix/6738920.js"></script>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

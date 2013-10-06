@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>snipMate(snipMate.vim)与AutoComplPop(acp.vim)冲突的解决方法 - Liuyix</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="今天开始熟悉vim上的开发，没想到一下子就遇到了一个问题——snipMate与AutoComplPop(以下简称acp)的冲突问题，具体症状为输入while或者for等关键词时会自动跳出补全窗口，按在菜单中来回选择而不是snippets。
+解决办法： 在snipMate.vim中添加以下代码： 1 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.github.io/blog/2011/solve-collasion-between-snipmate-and-acp">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Liuyix</a></h1>
+  
+    <h2>Just another coder.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">snipMate(snipMate.vim)与AutoComplPop(acp.vim)冲突的解决方法</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-02T20:29:13+08:00" pubdate data-updated="true">May 2<span>nd</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>今天开始熟悉vim上的开发，没想到一下子就遇到了一个问题——snipMate与AutoComplPop(以下简称acp)的冲突问题，具体症状为输入while或者for等关键词时会自动跳出补全窗口，按在菜单中来回选择而不是snippets。
+解决办法：<!-- more --></p>
+
+<ol>
+<li> 在snipMate.vim中添加以下代码：</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>fun! GetSnipsInCurrentScope()
+</span><span class='line'>let snips = {}
+</span><span class='line'>for scope in [bufnr('%')] + split(&amp;ft, '\.') + ['_']
+</span><span class='line'>call extend(snips, get(s:snippets, scope, {}), 'keep')
+</span><span class='line'>call extend(snips, get(s:multi_snips, scope, {}), 'keep')
+</span><span class='line'>endfor
+</span><span class='line'>return snips
+</span><span class='line'>endf</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li> 在.vimrc中添加以下的设置<code>let g:acp_behaviorSnipmateLength=1</code></li>
+</ol>
+
+
+<p>这样就把snipMate集成到了acp中，可以通过<strong>输入大写的关键词(FOR,WHILE&hellip;)从弹出的菜单中选择</strong>。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-02T20:29:13+08:00" pubdate data-updated="true">May 2<span>nd</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/techs/'>Techs</a>, <a class='category' href='/blog/categories/wei-fen-lei/'>未分类</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/my-vimrc/" title="Previous Post: 我的vimrc——vim配置的一些建议（附详细注释的vimrc）">&laquo; 我的vimrc——vim配置的一些建议（附详细注释的vimrc）</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/vim-stl-auto-complete/" title="Next Post: 实现vim下的STL自动补全">实现vim下的STL自动补全 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>CS Master Candidate, BIT</br>Insterest: CSArch, Linux, Android </p>
+  <h3><strong>Do something to prove yourself!</strong></h3>
+  
+  <center>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/android-4-dot-3-selinux/">Android 4.3新特性——SElinux简介</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/dev'>dev (2)</a></li><li><a href='/blog/categories/life'>Life (3)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/sexy-python'>sexy python (1)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'liuyix';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://liuyix.github.io/blog/2011/solve-collasion-between-snipmate-and-acp/';
+        var disqus_url = 'http://liuyix.github.io/blog/2011/solve-collasion-between-snipmate-and-acp/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

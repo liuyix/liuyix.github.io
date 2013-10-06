@@ -2,7 +2,95 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://liuyix.github.io/blog/2011/eclipse-cdt-installation-on-ubuntu/</loc>
-        <lastmod>2013-10-04T23:27:18+08:00</lastmod>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/migration-from-windows-to-linux/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/wordpress-modification/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/handle-vim-e492/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/vim-tutorial-1/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/my-vimrc/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/solve-collasion-between-snipmate-and-acp/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/vim-stl-auto-complete/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/install-mysql-on-ubuntu-10-04-from-source/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/pkm-tools-on-linux-recommendation/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/building-lfs-summary-a/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2011/howto-config-font-in-emacs23-2/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://liuyix.github.io/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software/
+        </loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2012/write-simple-makefile/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/
+        </loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/
+        </loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version/
+        </loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li/</loc>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.github.io/blog/2013/hello-octopress/</loc>
@@ -33,20 +121,16 @@
         <lastmod>2013-10-04T23:27:18+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.github.io/blog/2013/linux-file-io/</loc>
-        <lastmod>2013-10-04T23:27:18+08:00</lastmod>
-    </url>
-    <url>
         <loc>http://liuyix.github.io/blog/2013/youtube-download-with-subtitle/</loc>
         <lastmod>2013-10-04T23:27:18+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.github.io/blog/2013/octopress-fails/</loc>
-        <lastmod>2013-10-04T23:27:18+08:00</lastmod>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.github.io/blog/2013/mac-install-octopress/</loc>
-        <lastmod>2013-10-06T14:40:07+08:00</lastmod>
+        <lastmod>2013-10-06T14:47:52+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.github.io/404.html</loc>
@@ -54,19 +138,15 @@
     </url>
     <url>
         <loc>http://liuyix.github.io/blog/archives/</loc>
-        <lastmod>2013-10-06T14:40:07+08:00</lastmod>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.github.io/</loc>
-        <lastmod>2013-10-06T14:40:07+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://liuyix.github.io/my-vimrc/</loc>
-        <lastmod>2013-10-04T23:27:18+08:00</lastmod>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.github.io/pkm-tools-on-linux-recommendation/</loc>
-        <lastmod>2013-10-06T14:40:07+08:00</lastmod>
+        <lastmod>2013-10-06T20:15:24+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.github.io/pkm-tools-on-linux-recommendation/index.markdown.bak</loc>
