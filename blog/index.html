@@ -170,42 +170,12 @@
 <p>我似乎不属于个例——一直以来都特意关注了我所能遇到的Octopress搭建的独立博客，<em>大部分Octopress我所遇到中文博客都很少更新，其中大多迁移到Octopress后几个月内就不再更新了</em>。
 结合这几个月为数不多的使用，说一下Octopress的使用感受。</p>
 
-<h2>对ruby写的jekyll有种陌生的敬畏</h2>
-
-<p>ruby从来没有学过，因此对自己不了解的东西始终有种不自觉的排斥(coder都会有这种感觉吧)，所以每次都是怀着忐忑的心情敲着 <code>rake new_post['XXX']</code> , <code>rake generate</code> ，生怕出现什么闪失而不知所措。可不幸的是，意外总是时而发生。而对此我只能做的就是打开octopress.org，照着文档重新搭建下环境。</p>
-
-<h2>搭建环境简直就是pain in the ass</h2>
-
-<p>我对ruby完全不了解（用了octopress感觉也不会用ruby了&hellip;）搭建环境非常繁琐，以下吐槽就当作一个不懂ruby的coder对ruby项目的吐槽吧。</p>
-
-<p>首先是不能使用系统自带的ruby程序，需要单独下载 <code>rbenv</code> 或者 <code>rvm</code> 来搭建奇葩的ruby-1.9.3。（反观python，大多数应用直接使用默认的环境，多么的方便。）<br/>
-而且每次实际上都是下载ruby源代码进行本地编译安装，<code>rbenv</code> / <code>rvm</code> 默认都需要从国外官网下载源码，速度在教育网可以说是惨不忍睹，再加之这两个工具都是个人开发，项目质量不好说，我偶尔会出现因网络问题导致失败重来的情况&hellip;<br/>
-之后还要陆陆续续的现在一坨各种插件和工具，在漫长的（速度巨慢）忐忑的（尼玛要出出点啥问题我很难解决，ruby不会文档又少&hellip;）等待后，环境总算是搭建好了。<br/>
-之后是 rbenv/rvm 的奇葩设置，这两种工具实际上每次都是靠<code>.bash_profile</code> 载入ruby-1.9.3环境，而Ubuntu默认的terminal必须要设置成非默认的<code>以shell运行的方式运行命令</code> 才会正常的载入ruby环境。<br/>
-千辛万苦加若干次挫折你才能开始真正的写blog。</p>
-
-<h2>不能“随时随地方便的写作”</h2>
-
-<p>想在不同的地点，不同的电脑、设备中更新博客几乎是不可能的。（事实上这是可能的，我之前努力研究过，非常麻烦）而我的环境恰恰就是这个样子：实验室常用主机一台，宿舍笔记本一台。仅仅多了一台编辑设备，你需要更多的努力才能正确的将环境搭好。</p>
-
-<p>这里简单的说下折腾的大致过程：</p>
-
-<ol>
-<li>clone自己blog的<code>source</code>分支到新电脑，比如clone到 <code>foo.github.com</code></li>
-<li>在<code>foo.github.com</code>下新建目录<code>_deploy</code> 然后clone <code>master</code> 分支到该目录下</li>
-<li>在<code>foo.github.com</code>下搭建octopress</li>
-</ol>
-
-
-<p>嗯，这仅仅是折腾的开始，如果在不同地点编辑的话，你需要经常<code>git pull</code>才可以，而且要是没有写好的blog，也需要push到服务器中，然后在另外的地方pull下来才能继续编辑。</p>
-
-<hr />
-
-<p>吐槽到此结束，没有坚持写博客，上述都是次要原因，主要的原因应该还是自己比较懒&hellip;（Octopress又让写博客变得略微的艰难，于是更加的懒）</p>
-
-<p>嗯&hellip;你没猜错，这是又要搬家的节奏&hellip;</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/octopress-fails/">继续阅读 &rarr;</a>
+    </footer>
   
 
 
