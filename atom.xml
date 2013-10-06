@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-10-07T00:41:05+08:00</updated>
+  <updated>2013-10-07T01:02:47+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -352,7 +352,12 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 <center>图0-1 Android系统架构图</center>
 
 
-<p>图0-1是Android系统架构图。大多数程序位于最上层的Java Application层。Android通过把系统划分为几个层次从而使得开发者可以使用平台无关的Java语言进行Android应用开发，不必关心程序实际的硬件环境。 Google不仅为开发者提供了SDK开发套件，为了能让开发者使用C/C++编写的本地化的共享库，利用编译后的共享库更高效的完成计算密集型的操作来提高应用的性能，或者移植重用已有的C/C++组件，提高开发效率，Android 1.5之后，又推出了NDK（Native Development Kit）。有了NDK，开发者能够在Android平台上使用JNI(Java Native Interface)技术，实现应用程序中调用本地二进制共享库。 由于Android系统不同于以往的JNI使用环境而是在嵌入式硬件环境下，Android NDK提供了一套交叉编译工具链,和构建程序的工具方便开发者在桌面环境下编译目标平台的二进制共享库。 目前NDK提供了对ARMv5TE,ARMv7-A,x86和MIPS指令集平台的支持，同时在本地接口的支持上，目前以下本地接口支持</p>
+<p>图0-1是Android系统架构图。</p>
+
+<!--more-->
+
+
+<p>大多数程序位于最上层的Java Application层。Android通过把系统划分为几个层次从而使得开发者可以使用平台无关的Java语言进行Android应用开发，不必关心程序实际的硬件环境。 Google不仅为开发者提供了SDK开发套件，为了能让开发者使用C/C++编写的本地化的共享库，利用编译后的共享库更高效的完成计算密集型的操作来提高应用的性能，或者移植重用已有的C/C++组件，提高开发效率，Android 1.5之后，又推出了NDK（Native Development Kit）。有了NDK，开发者能够在Android平台上使用JNI(Java Native Interface)技术，实现应用程序中调用本地二进制共享库。 由于Android系统不同于以往的JNI使用环境而是在嵌入式硬件环境下，Android NDK提供了一套交叉编译工具链,和构建程序的工具方便开发者在桌面环境下编译目标平台的二进制共享库。 目前NDK提供了对ARMv5TE,ARMv7-A,x86和MIPS指令集平台的支持，同时在本地接口的支持上，目前以下本地接口支持</p>
 
 <ul>
 <li>libc</li>
@@ -378,9 +383,6 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 <p>图1-1 JNI在Java开发中的位置</p>
 
 <p>实际上在Android内部就大量的使用了JNI技术，尤其是在Libraries层和Framework层。</p>
-
-<!--more-->
-
 
 <h2>何时使用Android NDK</h2>
 
@@ -1484,7 +1486,8 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 
 <p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
 
-<p>&lt;&mdash;more&mdash;></p>
+<!--more-->
+
 
 <h2>获得Root的几个思路</h2>
 
