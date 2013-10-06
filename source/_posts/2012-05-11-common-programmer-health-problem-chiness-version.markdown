@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2012-05-11 21:11:12
 layout: post
 slug: common-programmer-health-problem-chiness-version

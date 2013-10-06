@@ -1,10 +1,10 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-04-28 13:25:37
 layout: post
 slug: vim-tutorial-1
-title: VIM学习资料总结——VIM自学系列一
+title: VIM学习资料总结
 wordpress_id: 217
 categories:
 - Techs
@@ -16,17 +16,13 @@ tags:
 - 资料
 ---
 
-![vim](http://www.vim.org/images/vim_header.gif)
+> 一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。
 
-前言：一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。
-Q：为什么要学习这么古老的编辑工具，是否真的有意义？
-A：一个coder也是一个“打字员”，最常用的就是文本编辑功能，而在所有的文本编辑器中，最为强大的就是VIM/Emacs两个流派，聪明的coder都是懒惰的，熟练使用了一种“神器”，就会在coding中变得更懒——换句话也是更高效。更多信息请参考：[为何 Emacs 和 Vim 被称为两大神器(via LinuxTOY)](http://linuxtoy.org/archives/why-emacs-vim-good.html)
-Q：VIM/Emacs，我该学习哪个？
-A:关于二者究竟哪个更胜一筹的争论已经长达几十年，到目前依旧没有定论，从中可以说明熟练掌握哪一个，效果是相当的。因此不要把时间浪费在选择上，而是要花在耐心的学习上。
+Q：为什么要学习这么古老的编辑工具，是否真的有意义？  
+A：一个coder也是一个“打字员”，最常用的就是文本编辑功能，而在所有的文本编辑器中，最为强大的就是VIM/Emacs两个流派，聪明的coder都是懒惰的，熟练使用了一种“神器”，就会在coding中变得更懒——换句话也是更高效。更多信息请参考：[为何 Emacs 和 Vim 被称为两大神器(via LinuxTOY)](http://linuxtoy.org/archives/why-emacs-vim-good.html)  
+Q：VIM/Emacs，我该学习哪个？  
+A:关于二者究竟哪个更胜一筹的争论已经长达几十年，到目前依旧没有定论，从中可以说明熟练掌握哪一个，效果是相当的。因此不要把时间浪费在选择上，而是要花在耐心的学习上。  
 我没有用过emacs，这里简单说一下二者的差别。（皆来自于网络）<!-- more -->
-
-
-
 	
   * **定位上**：emacs是一个伪装成编辑器的OS，VIM则是专注与如何高效的文本编辑以及程序的编写
 
@@ -36,7 +32,7 @@ A:关于二者究竟哪个更胜一筹的争论已经长达几十年，到目前
 
 Q：我应该怎样学习vim？
 A：动手操作是最关键的，一边看着教程一边跟着操作，如果用心几天的时间你就会爱上它的。
-下面列出一些我自学时搜集的优秀的网上的vim教学资源，**有先后顺序**。<!-- more -->
+下面列出一些我自学时搜集的优秀的网上的vim教学资源，**有先后顺序**。
 
 
 

@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2012-02-25 15:40:12
 layout: post
 slug: visit-all-sites-free-of-charge-by-ipv6-in-cernet
@@ -23,9 +23,10 @@ tags:
 
 目前互联网上公布的二台DNS64服务器地址为：
 
+```
 2001:778::37
-
 2001:df8:0:7::1
+```
 
 
 
@@ -59,7 +60,7 @@ tags:
 进入网络和共享中心，点击本地连接，设置属性，双击ipv6属性输入上面的两个DNS服务器地址。同时取消ipv4协议以达到纯ipv6上网，最后点击确定就大功告成！
 
 
-### [![](http://liuyix.com/wordpress/wp-content/uploads/2012/02/1.png)](http://liuyix.com/visit-all-sites-free-of-charge-by-ipv6-in-cernet/attachment/1)Ubuntu设置
+### Ubuntu设置
 
 
 对Linux了解的不多，采取的方法也许不是最佳的。Ubuntu网络管理程序使用的是NetworkManager，这个工具说实话很垃圾。无法设置很多选项，比如说我们即将设置的nameserver，而且每次联网都会覆盖掉你自定义的设置。
@@ -76,9 +77,11 @@ tags:
 	
   2. 编辑`/etc/resolv.conf`
 
-    
-    sudo gedit /etc/resolv.conf
+```bash
 
+sudo gedit /etc/resolv.conf`
+
+```
 
 添加如下内容：
 

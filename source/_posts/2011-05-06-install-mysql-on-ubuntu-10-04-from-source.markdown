@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-05-06 21:45:02
 layout: post
 slug: install-mysql-on-ubuntu-10-04-from-source
@@ -13,6 +13,15 @@ tags:
 - ubuntu
 - 编译安装
 ---
+
+
+## Update: 2013-09-28
+
+{% blockquote liuyix %}
+这篇文章是在2011年，目前已经过时。这篇文章只作为存档保留。
+{% endblockquote %}
+
+_____
 
 由于我之前安装其他的软件时，已经安装了mysql的开发相关的lib，因此编译安装MySQL不是很顺利。具体的错误神马的，就不提了（也没记住多少……）应该都是个例。总结起来一句话就是——尽量在你安装Mysql前电脑尽量保持clean(一些mysql的开发包一类的最好先卸载)。
 <!-- more -->
@@ -61,9 +70,12 @@ tags:
   * 建议有兴趣的童鞋读一读解压后的mysql目录下的相关文档，有许多重要的信息。比如此文以及大部分的类似文章都参考自INSTALL-SOURCE文档。
 
 	
-  * 创建mysql用户以及用户组，方便管理[bash]sudo groupadd mysql[/bash]
+  * 创建mysql用户以及用户组，方便管理
 
-[bash]sudo useradd -r -g mysql mysql[/bash]
+```
+sudo groupadd mysql
+sudo useradd -r -g mysql mysql
+```
 
 
 
@@ -71,105 +83,40 @@ tags:
 ## 二、初识CMAKE——配置MySQL编译选项
 
 
-MySQL 5.5的编译工具由Autotool转变为了cmake（有关于更多关于cmake的信息，请大家自行google了解）。MySQL团队也撰写了一篇[Autotools to CMake Transition Guide](http://forge.mysql.com/wiki/Autotools_to_CMake_Transition_Guide),本文将要列出的各个编译选项以及更多的编译选项的说明可以参考该文档。在troubleshooting时，此文档更是不得不看。编译时我习惯于一些选项（比如安装位置）不按默认的来，因为如果按默认选项出了问题，更不好解决（因为到时你不仅需要知道到底有选项有何含义还要知道默认的是什么，反而更麻烦）。进入解压的源代码目录mysql-VERSION
+MySQL 5.5的编译工具由Autotool转变为了cmake（有关于更多关于cmake的信息，请大家自行google了解）。MySQL团队也撰写了一篇[Autotools to CMake Transition Guide](http://forge.mysql.com/wiki/Autotools_to_CMake_Transition_Guide),本文将要列出的各个编译选项以及更多的编译选项的说明可以参考该文档。在troubleshooting时，此文档更是不得不看。编译时我习惯于一些选项（比如安装位置）不按默认的来，因为如果按默认选项出了问题，更不好解决（因为到时你不仅需要知道到底有选项有何含义还要知道默认的是什么，反而更麻烦）。进入解压的源代码目录`mysql-VERSION`
 
-[bash]cmake . \
+```makefile
+cmake . \
 -DCMAKE_INSTALL_PREFIX=/usr/mysql \
 -DMYSQL_DATADIR=/usr/mysql/data
 -DDEFAULT_CHARSET=utf8 \
 -DDEFAULT_COLLATION=utf8_general_ci \
 -DMYSQL_UNIX_ADDR=/tmp/mysqld.sock \
 -DWITH_DEBUG=0 \
--DWITH_INNOBASE_STORAGE_ENGINE=1[/bash]
+-DWITH_INNOBASE_STORAGE_ENGINE=1
+```
 
-丰富的
-
-
-
-
-
-
-
-
-选项名称
-
-
-选项含义
-
-
-
-
-
-
-DCMAKE_INSTALL_PREFIX
-
-
-安装路径
-
-
-
-
-
-
-DMYSQL_DATADIR
-
-
-数据库路径
-
-
-
-
-
-
-DDEFAULT_CHARSET
-
-
-默认字符
-
-
-
-
-
-
-DDEFAULT_COLLATION
-
-
-默认字符集
-
-
-
-
-
-
-DMYSQL_UNIX_ADDR
-
-
-连接数据库socket路径
-
-
-
-
-
-
-DWITH_DEBUG
-
-
-bool值，表示是否开启debug模式
-
-
+| 选项名称 | 选项含义
+| ---
+| DCMAKE_INSTALL_PREFIX | 安装路径
+| DMYSQL_DATADIR | 数据库路径
+| DDEFAULT_CHARSET | 默认字符
+| DDEFAULT_COLLATION | 默认字符集
+| DMYSQL_UNIX_ADDR | 连接数据库socket路径
+| DWITH_DEBUG | bool值，表示是否开启debug模式
 
 
 在这里我开始的时候有一个疏忽：**只设置DDEFAULT_CHARSET而没有设置DDEFAULT_COLLATION**，因此总是出现
 
-[text]COLLATION 'latin1_swedish_ci' is not valid for CHARACTER SET 'utf8'[/text]
+`COLLATION 'latin1_swedish_ci' is not valid for CHARACTER SET 'utf8'`
 
 
 ## 三、编译安装
 
 
-[bash]sudo make[/bash]
-
-[bash]sudo make install[/bash]
+```bash
+sudo make && make install
+```
 
 这个阶段出现的问题概率较小。但是记得一定要以**root权限执行make和make install**，因为填写的安装路径不是home，而是/usr，必须有root权限才能进行写操作。
 
@@ -182,37 +129,45 @@ bool值，表示是否开启debug模式
 
 
 	
-  1. 进入安装后的目录执行[bash]sudo chown -R mysql .[/bash]
-
-[bash]chgrp -R mysql .[/bash]
-
+  + 进入安装后的目录执行
+  
+```bash
+sudo chown -R mysql .
+chgrp -R mysql .
+```
 	
-  2. [bash]sudo bin/scripts/mysql_install_db \
+  + 执行以下命令：
+  
+```
+sudo bin/scripts/mysql_install_db \
 --user=mysql \
 --basedir=/usr/mysql \
 --datadir=/usr/mysql/data \
---no-defaults[/bash]
+--no-defaults
+```
 
-切记后面有个--no-defaults选项，如果没有该选项，则程序会自动载入默认的配置文件，而目前你还没有完成配置文件的编写，因此很可能载入的是错误的信息。如果该指令能够运行成功，那么恭喜你，你的MySQLy可以成功的启动了。如果这一步出现了错误，不要着急，相关的log以及mysqld的启动信息提供了足够的信息帮助你trouble shooting（我就是这么过来的...）完成之后再执行
+切记后面有个--no-defaults选项，如果没有该选项，则程序会自动载入默认的配置文件，而目前你还没有完成配置文件的编写，因此很可能载入的是错误的信息。   
+如果该指令能够运行成功，那么恭喜你，你的MySQLy可以成功的启动了。如果这一步出现了错误，不要着急，相关的log以及mysqld的启动信息提供了足够的信息帮助你trouble shooting（我就是这么过来的...）完成之后再执行
 
-[bash]chown -R root .[/bash]
-
-[bash]chown -R mysql data[/bash]
+```
+chown -R root .
+chown -R mysql data
+```
 
 这两条指令应该是安全性考虑。
 
 	
-  3. 配置my.cnf——mysql的配置文件，这是很重要的一步，配置得当以后就不需要在启动时写上大段的参数了。
-首先应该知道：MySQL寻找配置文件的路径以及顺序。最开始检索的位置是`/etc/my.cnf`之后是`/etc/mysql/my.cnf`因此我们要做的就是在这两个地方之一建立配置文件my.cnf。MySQL为我们准备了几种不同方案的默认配置文件（在/usr/mysql/support-files/中），因此我们可以复制一份到上述的位置[bash]sudo cp /usr/mysql/support-files/my-medium.cnf /etc/mysql/my.cnf[/bash]
+  + 配置my.cnf——mysql的配置文件，这是很重要的一步，配置得当以后就不需要在启动时写上大段的参数了。
+首先应该知道：MySQL寻找配置文件的路径以及顺序。最开始检索的位置是`/etc/my.cnf`之后是`/etc/mysql/my.cnf`因此我们要做的就是在这两个地方之一建立配置文件my.cnf。MySQL为我们准备了几种不同方案的默认配置文件（在/usr/mysql/support-files/中），因此我们可以复制一份到上述的位置`sudo cp /usr/mysql/support-files/my-medium.cnf /etc/mysql/my.cnf`
 
 通常我们是通过脚本传入适当的参数启动mysqld。因此在/etc/my.cnf中加入如下的内容：
 
-[text]
+```
 [mysqld]
 basedir=/usr/mysql
 datadir=/usr/mysql/data
 user=mysql
-[/text]
+```
 
 更多关于my.cnf的配置限于篇幅就不再讲了，但为了日常的开发需要还应该继续配置的，这部分内容就参考google搜索以及MySQL Manual吧
 
@@ -224,23 +179,13 @@ user=mysql
 
 这一部分讲解如何添加MySQL在开机时自动启动。MySQL Manual关于此部分的内容不准确，没有涵盖debian类的linux发行版的做法。
 
-MySQL已经提供了默认的脚本mysql.server（在[mysql安装目录]/support-files/），首先进入该目录，尝试运行该脚本
+MySQL已经提供了默认的脚本mysql.server（在`mysql安装目录`/support-files/），首先进入该目录，尝试运行该脚本`sudo ./mysql.server start`   
 
-[bash]sudo ./mysql.server start[/bash]
+运行正常的话则执行`sudo cp mysql.server /etc/init.d/mysql`   
 
-运行正常的话则执行
+Debian/Ubuntu上开机启动服务的管理不是使用chkconfig，而使用的是sysv-rc-conf，尝试执行`sudo sysv-rc-conf`   
 
-[bash]sudo cp mysql.server /etc/init.d/mysql[/bash]
-
-Debian/Ubuntu上开机启动服务的管理不是使用chkconfig，而使用的是sysv-rc-conf，尝试执行
-
-[bash]sudo sysv-rc-conf[/bash]
-
-若提示没有安装，则
-
-[bash]sudo apt-get install sysv-rc-conf[/bash]
-
-，之后运行即可，该工具采用的是图形界面，很直观在此就不介绍如何使用了，我们需要做的是找到【mysql】一栏，选定【3】【4】【5】这三列，这样就完成了开机自动启动MySQL daemon了。
+若提示没有安装，则`sudo apt-get install sysv-rc-conf`，之后运行即可，该工具采用的是图形界面，很直观在此就不介绍如何使用了，我们需要做的是找到【mysql】一栏，选定【3】【4】【5】这三列，这样就完成了开机自动启动MySQL daemon了。
 
 **MySQL的安装就基本完成了，希望大家能和我一样在“折腾”的过程中有所收获，“痛并快乐着”！**
 

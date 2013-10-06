@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2012-01-31 00:08:28
 layout: post
 slug: opinions-about-opensource-and-free-software-vs-closed-software

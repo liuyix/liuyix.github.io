@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-04-20 23:14:00
 layout: post
 slug: migration-from-windows-to-linux
@@ -14,12 +14,18 @@ tags:
 - 迁移
 ---
 
+## Update 2013-09-28
+
+**金山WPS for Linux 出来啦~** 小伙伴们用后都为他的表现惊呆了~~非常棒！   
+地址猛戳：[http://linux.wps.cn/](http://linux.wps.cn/)
+
+
+____
+
 一年多的考研生活结束了，终于有时间将电脑环境完整的迁移到Ubuntu平台了。
 
-[![](http://liuyix.com/wordpress/wp-content/uploads/2011/04/ubuntu-logo.png)](http://liuyix.com/wordpress/wp-content/uploads/2011/04/ubuntu-logo.png)
+
 **迁移到Ubuntu Linux平台的困难**
-
-
 
 	
   * 使用习惯的改变——Windows上主要操作是在GUI界面下完成，重度使用鼠标;Linux平台则主要使用功能异常强悍的终端命令行，对键盘的使用比较多,很少使用鼠标。（我个人还是很喜欢用terminal解决问题，感觉很简洁，很准确，很cool  :-)）。
@@ -40,7 +46,6 @@ tags:
 在Linux上最不方便的要数网银了，杯具的IE Only。如果要使用网银，那一定要安装WINE+IEs4Linux，2个搭配可以完美实现Linux下的IE使用！
 
 **Rhythmbox——iPod同步工具iTunes的最佳替代**
-[![](http://liuyix.com/wordpress/wp-content/uploads/2011/04/rhythmbox.png)](http://liuyix.com/wordpress/wp-content/uploads/2011/04/rhythmbox.png)
 
 Rhythmbox可以完美的替代iTunes，可以与iPod同步，同时还可以使用Last.FM,可以满足日常的需求。关于Rhythmbox的介绍，点击[这里](http://www.hudong.com/wiki/Rhythmbox)
 
@@ -51,8 +56,7 @@ Rhythmbox可以完美的替代iTunes，可以与iPod同步，同时还可以使�
 
 LinuxFetion/官方飞信网页版——完美替代飞信
 Linux Fetion是民间开发，作为桌面应用，使用体验还是不错的。如果自己很不常用，只是过节发发短信的话，可以使用官方版网页飞信（[地址](https://webim.feixin.10086.cn/)）
-Linux Fetion的截图：
-[![](http://liuyix.com/wordpress/wp-content/uploads/2011/04/Linux-Fetion_001.png)](http://liuyix.com/wordpress/wp-content/uploads/2011/04/Linux-Fetion_001.png)
+
 
 **OpenOffice/LibreOffice——替代Office的近似唯一选择**
 关于LibreOffice与OpenOffice的关系，可以参考[这里](http://www.oschina.net/news/15571/openoffice-and-libreoffice),一句话就是LibreOffice是OpenOffice社区独立出去的，它更自由，在功能等方面应该是没有什么差别的，都很强大。

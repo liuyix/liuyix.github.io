@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2012-03-10 22:11:00
 layout: post
 slug: android-ndk-eclipse-configuration

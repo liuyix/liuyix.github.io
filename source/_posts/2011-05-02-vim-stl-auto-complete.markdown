@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-05-02 21:10:50
 layout: post
 slug: vim-stl-auto-complete
@@ -19,19 +19,17 @@ vim的强大之处就在于可扩展性，换句话说就是“禁得起折腾�
 
 具体方法：
 
-
+	
+  1. 将下载的压缩包cpp_src.tar.bz2解压，比如解压到 *~/src* `tar -jxf cpp_src.tar.bz2 -d ~/src`
 
 	
-  1. 将下载的压缩包cpp_src.tar.bz2解压，比如解压到~/src[bash]tar -jxf cpp_src.tar.bz2 -d ~/src[/bash]
+  2. 打开终端，将work directory定位到~/src,然后运行以下命令`ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ cpp_src `
 
 	
-  2. 打开终端，将work directory定位到~/src,然后运行以下命令[bash]ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ cpp_src [/bash]
+  3. 将生成的tags重命名：`mv tags a-new-name-tags`
 
 	
-  3. 将生成的tags重命名：[bash]mv tags a-new-name-tags[/bash]
-
-	
-  4. 在vim的环境中执行[text]:set tags+=/my/path/to/tags/cpp[/text]
+  4. 在vim的环境中执行`:set tags+=/my/path/to/tags/cpp`
 
 
 这样就可以在代码中自动补全STL代码了！Good Luck!

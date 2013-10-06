@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-07-28 10:02:44
 layout: post
 slug: building-lfs-summary-a
@@ -15,7 +15,9 @@ tags:
 
 ![](http://www.linuxfromscratch.org/images/lfs-logo.png)
 
-LFS是"Linux From Scratch"的简写，"from scratch"的本义是“从头开始”，这里应该是引申义,"从源代码构建"。LFS的主页上介绍为"Linux From Scratch (LFS) is a project that provides you with step-by-step instructions for building your own customized Linux system entirely from source."更多详细的介绍可以移步到[LFS Project Homepage](http://www.linuxfromscratch.org/lfs/)看看。
+LFS是"Linux From Scratch"的简写，"from scratch"的本义是“从头开始”，这里应该是引申义,"从源代码构建"。
+
+LFS的主页上介绍为"Linux From Scratch (LFS) is a project that provides you with step-by-step instructions for building your own customized Linux system entirely from source."更多详细的介绍可以移步到[LFS Project Homepage](http://www.linuxfromscratch.org/lfs/)看看。
 
 LFS主要的意义在于"教学"上，通过自己动手构建能更深入的认识linux，了解linux的运行原理。通过自己动手，还可以增强Linux上的操作水平。对于Linux的新手，LFS可能是一项比较“痛苦”的学习过程，因为你要使用大量的命令;对于使用过Linux一段时间的用户来说，构建LFS可以将Linux的零散的认识串起来，增强Linux的整体认识。
 

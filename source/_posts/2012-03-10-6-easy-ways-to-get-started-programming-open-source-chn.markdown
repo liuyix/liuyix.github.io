@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2012-03-10 22:00:00
 layout: post
 slug: 6-easy-ways-to-get-started-programming-open-source-chn

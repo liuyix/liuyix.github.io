@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-05-19 10:58:49
 layout: post
 slug: pkm-tools-on-linux-recommendation
@@ -12,6 +12,14 @@ tags:
 - pkm
 - 软件
 ---
+
+## Update: 2013-09-28
+
+{% blockquote liuyix %}
+这篇文章是在2011年写就，目前来说已经过时。这篇文章只作为存档保留。
+{% endblockquote %}
+
+_____
 
 个人知识管理（以下简称pkm）内容上，国内有影响力的博客以及一些国产的软件都集中于windows平台，很少有关注linux平台。对于linux控来说，有些小遗憾。
 

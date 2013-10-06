@@ -1,9 +1,6 @@
 ---
 comments: true
-published: false
-published: false
-/ published: false
-/published: false
+published: true
 date: 2012-11-23 20:40:58
 layout: post
 slug: nobility-of-failure-by-oufan-li

@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2012-02-25 16:26:17
 layout: post
 slug: howto-add-spf-record-for-domain
@@ -45,14 +45,6 @@ SPF是**Sender Policy Framework**的简称，是一种email验证系统，旨在
     v=spf1 include:spf.mail.qq.com ~all
 
 
-
-
-如下图[![](http://liuyix.com/wordpress/wp-content/uploads/2012/02/0.png)](http://liuyix.com/wordpress/wp-content/uploads/2012/02/0.png)
-
-
-
-
-	
   3. 最后点击保存即可
 
 

@@ -91,12 +91,6 @@ python GUI开发工具选择主要是pyqt,pygtk,wxPython这三个。本文就来
 ### 使用PyQT开发的知名程序(摘自Wikipedia)
 
 
-
-
-
-
-
-
 	
   * Anki, a spaced repetition flashcard program
 

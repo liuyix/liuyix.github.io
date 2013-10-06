@@ -12,6 +12,14 @@ tags:
 - ubuntu
 ---
 
+## Update: 2013-09-28
+
+{% blockquote liuyix %}
+这篇文章是在2011年写就，目前来说已经过时。这篇文章只作为存档保留。
+{% endblockquote %}
+
+_____
+
 ## 这篇文章期望的读者是谁？
 
 

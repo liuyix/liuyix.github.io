@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-04-22 08:55:03
 layout: post
 slug: handle-vim-e492
@@ -13,7 +13,6 @@ tags:
 - 问题
 ---
 
-最近2天在学习使用“编辑器之神”vim，应用下载的colorscheme时，出现
-[text]E492不是编辑器命令 ^M[/text]
-google之发现原来问题处在了file format上，我用的linux，而vim的colorscheme则是windows模式，因此换行符不同造成的。
-解决方法也很简单：使用vim打开有问题的插件或者主题，输入[text]:set ff=unix[/text]之后保存即可
+最近2天在学习使用“编辑器之神”vim，应用下载的colorscheme时，出现**E492不是编辑器命令 ^M**  
+google之发现原来问题处在了file format上，我用的linux，而vim的colorscheme则是windows模式，因此换行符不同造成的。  
+解决方法也很简单：使用vim打开有问题的插件或者主题，输入`:set ff=unix`之后保存即可

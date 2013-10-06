@@ -1,6 +1,6 @@
 ---
 comments: true
-published: false
+published: true
 date: 2011-05-02 12:29:13
 layout: post
 slug: solve-collasion-between-snipmate-and-acp
@@ -21,7 +21,8 @@ tags:
 
 	
   1. 在snipMate.vim中添加以下代码：
-[text]
+
+```
 fun! GetSnipsInCurrentScope()
 let snips = {}
 for scope in [bufnr('%')] + split(&amp;ft, '\.') + ['_']
@@ -30,10 +31,10 @@ call extend(snips, get(s:multi_snips, scope, {}), 'keep')
 endfor
 return snips
 endf
-[/text]
+```
 
 	
-  2. 在.vimrc中添加以下的设置[text]let g:acp_behaviorSnipmateLength=1[/text]
+  2. 在.vimrc中添加以下的设置`let g:acp_behaviorSnipmateLength=1`
 
 
 这样就把snipMate集成到了acp中，可以通过**输入大写的关键词(FOR,WHILE...)从弹出的菜单中选择**。
