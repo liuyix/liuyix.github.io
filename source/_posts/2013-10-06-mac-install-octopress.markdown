@@ -15,6 +15,8 @@ categories: mac
 1. `official install octopress`
 1. 在octopress目录下面新建配置文件`echo '1.9.3-p448' > $your-octopress-path/.ruby-version`
 
+<!--more-->
+
 ### 原有的octopress迁移到mac
 
 如果之前在其他地方已经使用了octopress，那么在mac上的稍有不同。具体为：

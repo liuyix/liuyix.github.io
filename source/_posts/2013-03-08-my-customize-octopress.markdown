@@ -7,6 +7,8 @@ categories: [octopress]
 published: true
 ---
 
+<--more-->
+
 ### Octopress
 
 Reference: [Clone Your Octopress to Blog From Two Places](http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/)
@@ -17,6 +19,8 @@ octopress有2个branch—— `source` 和 `master`
 
 `master` 是jekyll生成后的静态网站源码，**位置在_deploy目录**  
 `source` 是 octopress源码，是*octopress*根目录   
+
+
 
 #### Blog流程
 

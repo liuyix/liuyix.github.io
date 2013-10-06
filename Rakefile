@@ -4,12 +4,12 @@ require "stringex"
 
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
-ssh_user       = "user@domain.com"
+ssh_user       = "cnliuyix@o.stdyun.net"
 ssh_port       = "22"
-document_root  = "~/website.com/"
+document_root  = "~/liuyix.org/"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "push"
+deploy_default = "both"
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "master"
@@ -220,7 +220,15 @@ task :deploy do
   end
 
   Rake::Task[:copydot].invoke(source_dir, public_dir)
-  Rake::Task["#{deploy_default}"].execute
+  
+  if "#{deploy_default}" == "both"
+    puts "starting multi deploy..."
+    Rake::Task["push"].execute
+    Rake::Task["rsync"].execute
+  else
+    puts "starting normal deploy"
+    Rake::Task["#{deploy_default}"].execute
+  end
 end
 
 desc "Generate website and deploy"
