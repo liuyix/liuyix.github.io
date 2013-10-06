@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.github.io/atom.xml" rel="self"/>
   <link href="http://liuyix.github.io/"/>
-  <updated>2013-10-06T20:18:01+08:00</updated>
+  <updated>2013-10-06T20:54:11+08:00</updated>
   <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -28,6 +28,9 @@
 <li><code>official install octopress</code></li>
 <li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
 </ol>
+
+
+<!--more-->
 
 
 <h3>原有的octopress迁移到mac</h3>
@@ -1478,6 +1481,8 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 
 <p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
 
+<p>&lt;&mdash;more&mdash;></p>
+
 <h2>获得Root的几个思路</h2>
 
 <ul>
@@ -1529,7 +1534,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
     <link href="http://liuyix.github.io/blog/2013/my-customize-octopress/"/>
     <updated>2013-03-08T22:27:00+08:00</updated>
     <id>http://liuyix.github.io/blog/2013/my-customize-octopress</id>
-    <content type="html"><![CDATA[<h3>Octopress</h3>
+    <content type="html"><![CDATA[<p>&lt;&mdash;more&mdash;></p>
+
+<h3>Octopress</h3>
 
 <p>Reference: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></p>
 

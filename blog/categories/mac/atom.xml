@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mac | Liuyix]]></title>
   <link href="http://liuyix.github.io/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://liuyix.github.io/"/>
-  <updated>2013-10-06T20:18:01+08:00</updated>
+  <updated>2013-10-06T20:54:11+08:00</updated>
   <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -28,6 +28,9 @@
 <li><code>official install octopress</code></li>
 <li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
 </ol>
+
+
+<!--more-->
 
 
 <h3>原有的octopress迁移到mac</h3>

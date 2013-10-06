@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Liuyix]]></title>
   <link href="http://liuyix.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://liuyix.github.io/"/>
-  <updated>2013-10-06T20:18:01+08:00</updated>
+  <updated>2013-10-06T20:54:11+08:00</updated>
   <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -18,7 +18,9 @@
     <link href="http://liuyix.github.io/blog/2013/my-customize-octopress/"/>
     <updated>2013-03-08T22:27:00+08:00</updated>
     <id>http://liuyix.github.io/blog/2013/my-customize-octopress</id>
-    <content type="html"><![CDATA[<h3>Octopress</h3>
+    <content type="html"><![CDATA[<p>&lt;&mdash;more&mdash;></p>
+
+<h3>Octopress</h3>
 
 <p>Reference: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></p>
 

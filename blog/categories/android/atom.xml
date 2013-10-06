@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | Liuyix]]></title>
   <link href="http://liuyix.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://liuyix.github.io/"/>
-  <updated>2013-10-06T20:18:01+08:00</updated>
+  <updated>2013-10-06T20:54:11+08:00</updated>
   <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -1065,6 +1065,8 @@ jboolean IsSameObject(JNIEnv *env, jobject ref1,jobject ref2);
     <content type="html"><![CDATA[<h2>Root</h2>
 
 <p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
+
+<p>&lt;&mdash;more&mdash;></p>
 
 <h2>获得Root的几个思路</h2>
 
