@@ -8,8 +8,6 @@ title: '一个简单的python小程序————使用douban API通过ISBN查�
 wordpress_id: 646
 categories:
 - dev
-- sexy python
-- Techs
 tags:
 - douban
 - xml
