@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-10-12T20:44:04+08:00</updated>
+  <updated>2013-10-19T23:30:06+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,124 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[百度校招-系统研发工程师-笔试题]]></title>
+    <link href="http://liuyix.org/blog/2013/baidu-exam-review/"/>
+    <updated>2013-10-15T01:36:00+08:00</updated>
+    <id>http://liuyix.org/blog/2013/baidu-exam-review</id>
+    <content type="html"><![CDATA[<p>几道编程算法题：</p>
+
+<ul>
+<li>实现类似wget一样的进度条</li>
+<li>100亿个单词，每个单词长度小于30，输出去重后的所有单词。</li>
+</ul>
+
+
+<!--more-->
+
+
+<h3>实现类似wget进度条</h3>
+
+<blockquote><p>当时没有想出来，回来才搜索之后才知道考察的是对转义符的理解。</p></blockquote>
+
+<p>关于换行，话题看起来看似简单，但实际内容不少。</p>
+
+<p><strong>主流操作系统文本换行的差异</strong></p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> OS </th>
+<th> 按下回车后插入的控制字符 </th>
+<th> 含义 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> Windows </td>
+<td> <code>\r\n</code> </td>
+<td> 0x0D 0x0A <em>CR LF</em> </td>
+</tr>
+<tr>
+<td></td>
+<td> Linux </td>
+<td> <code>\n</code> </td>
+<td> 0x0D <em>LF</em> </td>
+</tr>
+<tr>
+<td></td>
+<td> Mac OSX </td>
+<td> <code>\r</code> </td>
+<td> 0x0D <em>CR</em> </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>因此你经常会遇到Windows下用notepad看某些Linux编辑的文本，都没有换行。</p>
+
+<p>基本的内容就这么多，如何实现wget的进度条即是在Linux下用<code>\r</code>而不用<code>\n</code>，这样会不断的将新内容输出到同一行，从而达到“刷新”的效果。</p>
+
+<figure class='code'><figcaption><span>demo.c </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;stdlib.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;unistd.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//类似wget的进度条的实现，实际就是转移符\r的使用，\r的作用是返回至行首而不换行</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kt">unsigned</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">char</span> <span class="o">*</span><span class="n">bar</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">bar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;#&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;progress:[%s]%d%%</span><span class="se">\r</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bar</span><span class="o">+</span><span class="n">len</span><span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span><span class="c1">//一定要fflush，否则不会会因为缓冲无法定时输出。</span>
+</span><span class='line'>        <span class="n">usleep</span><span class="p">(</span><span class="mi">100000</span><span class="p">);</span><span class="c1">// 睡眠100ms</span>
+</span><span class='line'>        <span class="c1">//sleep(1);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>给定100亿个单词，每个单词长度小于30，输出去重后的所有单词序列。</h3>
+
+<p>面试准备不充分，这是trie树的最典型的题目了。
+更多的信息可以看July的文章。
+<a href="http://blog.csdn.net/v_july_v/article/details/6897097">http://blog.csdn.net/v_july_v/article/details/6897097</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[小米面试内核驱动工程师总结]]></title>
@@ -2495,43 +2613,6 @@ insert.o search.o files.o utils.o
 <h2>编写makefile好习惯</h2>
 
 <p>每个makefile中都 <em>应该</em> 定义一个clean命令，用于清空从前的编译产生的文件。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[开放与开源，自由与封闭]]></title>
-    <link href="http://liuyix.org/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software/"/>
-    <updated>2012-01-31T08:08:28+08:00</updated>
-    <id>http://liuyix.org/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software</id>
-    <content type="html"><![CDATA[<p>前几天偶然间看到了一个淘宝又一个非常不错的网站——Taocode（<a href="http://code.taobao.org/">http://code.taobao.org/</a>），是淘宝为国内开源社区做的又一个贡献吧。（越来越喜欢淘宝了）</p>
-
-<p>大致的逛了一逛，发现了我浏览的大部分项目都是“死”项目或者是一个人的表演。这不是开源，而是源码开放而已。</p>
-
-<h1>什么是开源？</h1>
-
-<p>在我看来，开源不是单单的源代码开放，更本质的来说一个革命性的软件开发方式——任何人都可以参与到软件的开发当中。在我看来一个好的开源项目绝不是一个人的项目，而是多个人甚至是由许多人组成的社区共同进行开发，可以说开源是hacker的coding party。一个人玩着没意思，大家协作着一起玩才是开源的内涵。</p>
-
-<p>在国内的开源社区，可能因为我的了解太少，很成功的开源项目我知道的真不多。国内的开源还需努力啊。</p>
-
-<p>android在我看来不是严格来说不是一个开源的操作系统，它更像是一个开放的操作系统，因为android是google内部封闭开发，之后再公布源代码，也就是说任何人都可以查看代码，但是你不能提交修改的代码，也不能决定android的发展方向。</p>
-
-<p>相比较来看，linux kernel才是最典型的开源。</p>
-
-<h1>什么是自由软件？</h1>
-
-<p>自由软件和开源不是一回事。自由软件强调的是使用者的权利（例如使用者应该有修改权利、重新分发的权利等等），具体来说就是五花八门的协议，其中最有名的当属GPL协议、BSD协议等等。</p>
-
-<h1>封闭软件是魔鬼吗？</h1>
-
-<p>答：是，也不是。读完《乔布斯传》之后，对于开放与封闭、自由软件与封闭软件的认识不再如Richard Stallman那样的偏激了。</p>
-
-<p>在大众消费领域，对消费者、普通用户来说，其实他们在乎的是用户体验，是产品是否好用，是否拥有产品的修改、分发权利对他们来说毫无意义。因此封闭的还是自由的对消费者来说都一样，在这个领域封闭软件不是什么妖魔鬼怪，不是魔鬼。正所谓黑猫白猫，抓到耗子的就是好猫。苹果公司是IT业界最出名的封闭王国，它的产品从硬件到软件都是最封闭的，但可以说也是最优秀的，最好的。因此它的产品最畅销。</p>
-
-<p>然而从一个行业角度来看，从一个企业的角度来看，开放比封闭具有更多的优势，也是更受欢迎的。依旧是苹果公司的例子，个人电脑市场上微软战胜苹果公司，成为业界的PC霸主，一大原因就是它采用的是开放策略（不是开源哦）——微软负责操作系统，硬件归硬件厂商、配件厂商生产，这个策略在现在看来似乎是理所当然，但在当时来说是一个非常巨大的创新。而苹果公司依旧是走硬件到软件的一体化封闭策略。（不是原创思想，吴军的<a href="http://book.douban.com/subject/6709783/">浪潮之巅</a>中有精辟的介绍，极品好书，力荐！）</p>
-
-<p>封闭也会导致垄断的出现，最终使用者还是会受到伤害。因为垄断会扼杀创新，抑制进步。</p>
-
-<p>当然开放也有它的弱点：你无法掌控每个环节的品质，木桶理论告诉我们，你讲一个环节做的再完美，也未必会是整个产品完美。乔帮主的封闭策略恰恰没有这个顾虑，因此你会发现虽然Windows PC占据了绝大份额，可不得不承认Mac是最美的。</p>
 ]]></content>
   </entry>
   

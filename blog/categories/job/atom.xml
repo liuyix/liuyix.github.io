@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: job | Liuyix]]></title>
+  <link href="http://liuyix.org/blog/categories/job/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2013-10-19T23:30:06+08:00</updated>
+  <id>http://liuyix.org/</id>
+  <author>
+    <name><![CDATA[liuyix]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[百度校招-系统研发工程师-笔试题]]></title>
+    <link href="http://liuyix.org/blog/2013/baidu-exam-review/"/>
+    <updated>2013-10-15T01:36:00+08:00</updated>
+    <id>http://liuyix.org/blog/2013/baidu-exam-review</id>
+    <content type="html"><![CDATA[<p>几道编程算法题：</p>
+
+<ul>
+<li>实现类似wget一样的进度条</li>
+<li>100亿个单词，每个单词长度小于30，输出去重后的所有单词。</li>
+</ul>
+
+
+<!--more-->
+
+
+<h3>实现类似wget进度条</h3>
+
+<blockquote><p>当时没有想出来，回来才搜索之后才知道考察的是对转义符的理解。</p></blockquote>
+
+<p>关于换行，话题看起来看似简单，但实际内容不少。</p>
+
+<p><strong>主流操作系统文本换行的差异</strong></p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> OS </th>
+<th> 按下回车后插入的控制字符 </th>
+<th> 含义 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> Windows </td>
+<td> <code>\r\n</code> </td>
+<td> 0x0D 0x0A <em>CR LF</em> </td>
+</tr>
+<tr>
+<td></td>
+<td> Linux </td>
+<td> <code>\n</code> </td>
+<td> 0x0D <em>LF</em> </td>
+</tr>
+<tr>
+<td></td>
+<td> Mac OSX </td>
+<td> <code>\r</code> </td>
+<td> 0x0D <em>CR</em> </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>因此你经常会遇到Windows下用notepad看某些Linux编辑的文本，都没有换行。</p>
+
+<p>基本的内容就这么多，如何实现wget的进度条即是在Linux下用<code>\r</code>而不用<code>\n</code>，这样会不断的将新内容输出到同一行，从而达到“刷新”的效果。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>demo.c </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">stdlib</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">unistd</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="c1">//类似wget的进度条的实现，实际就是转移符\r的使用，\r的作用是返回至行首而不换行</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kt">unsigned</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="n">bar</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">bar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;#&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;progress:[%s]%d%%</span><span class="se">\r</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bar</span><span class="o">+</span><span class="n">len</span><span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span><span class="c1">//一定要fflush，否则不会会因为缓冲无法定时输出。</span>
+</span><span class='line'>    <span class="n">usleep</span><span class="p">(</span><span class="mi">100000</span><span class="p">);</span><span class="c1">// 睡眠100ms</span>
+</span><span class='line'>    <span class="c1">//sleep(1);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>给定100亿个单词，每个单词长度小于30，输出去重后的所有单词序列。</h3>
+
+<p>面试准备不充分，这是trie树的最典型的题目了。
+更多的信息可以看July的文章。
+<a href="http://blog.csdn.net/v_july_v/article/details/6897097">http://blog.csdn.net/v_july_v/article/details/6897097</a></p>
+]]></content>
+  </entry>
+  
+</feed>
