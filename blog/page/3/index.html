@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="前几天偶然间看到了一个淘宝又一个非常不错的网站——Taocode（http://code.taobao.org/），是淘宝为国内开源社区做的又一个贡献吧。（越来越喜欢淘宝了） 大致的逛了一逛，发现了我浏览的大部分项目都是“死”项目或者是一个人的表演。这不是开源，而是源码开放而已。 什么是开源？ &hellip;">
+  <meta name="description" content="在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。 导言 make程序可以算得上是一个domain specific language， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/write-simple-makefile/">Makefile简单入门</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-20T04:02:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/write-simple-makefile/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。</p></blockquote>
+
+<h2>导言</h2>
+
+<p>make程序可以算得上是一个domain specific language，完全是一个完整的脚本语言，make是linux,unix上编译 <strong>等</strong> 工作的标准工具，对于复杂的程序来说，可以智能的、自动化完成复杂的程序编译工作。而需要就是编写一个directive的脚本——makefile告诉编译器和其他工具应该如何编译project。 本篇是陈皓写的“跟我一起写makefile”的第一部分的总结，比较凌乱…</p>
+
+<h2>学习资料</h2>
+
+<ul>
+<li>陈皓——“跟我一起写makefile”</li>
+<li>how to write a simple makefile</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/write-simple-makefile/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -556,46 +607,6 @@ A:关于二者究竟哪个更胜一筹的争论已经长达几十年，到目前
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/handle-vim-e492/">解决VIM插件/colorscheme出现E492不是编辑器命令 ^M</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-22T16:55:03+08:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2011</time>
-        
-         | <a href="/blog/2011/handle-vim-e492/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近2天在学习使用“编辑器之神”vim，应用下载的colorscheme时，出现<strong>E492不是编辑器命令 ^M</strong><br/>
-google之发现原来问题处在了file format上，我用的linux，而vim的colorscheme则是windows模式，因此换行符不同造成的。<br/>
-解决方法也很简单：使用vim打开有问题的插件或者主题，输入<code>:set ff=unix</code>之后保存即可</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -622,6 +633,10 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/linux-kernel-overview/">Linux Kernel概览</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/baidu-exam-review/">百度校招-系统研发工程师-笔试题</a>
       </li>
     
@@ -635,10 +650,6 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
     
       <li class="post">
         <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易&#8230;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a>
       </li>
     
   </ul>

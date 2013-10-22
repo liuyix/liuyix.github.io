@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。 搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个疑问了，作者给予了回答， &hellip;">
+  <meta name="description" content="&lt;&mdash;more&mdash;> Octopress Reference: Clone Your Octopress to Blog From Two Places $octopress 代表的是 git clone -b source git@github.com:username &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,115 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/my-customize-octopress/">Octopress修改记录</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-08T22:27:00+08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>&lt;&mdash;more&mdash;></p>
+
+<h3>Octopress</h3>
+
+<p>Reference: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></p>
+
+<p><code>$octopress</code> 代表的是 <code>git clone -b source git@github.com:username/username.github.com.git octopress</code></p>
+
+<p>octopress有2个branch—— <code>source</code> 和 <code>master</code></p>
+
+<p><code>master</code> 是jekyll生成后的静态网站源码，<strong>位置在_deploy目录</strong><br/>
+<code>source</code> 是 octopress源码，是<em>octopress</em>根目录</p>
+
+<h4>Blog流程</h4>
+
+<p><code>cd $octopress &amp;&amp; rake generate</code></p>
+
+<ol>
+<li>更新octopress源码(目的是要保存markdown源文件)
+
+<ul>
+<li><code>git add &lt;modified file&gt;</code></li>
+<li><code>git commit -am 'some comment'</code></li>
+<li>git push origin <strong>source</strong></li>
+</ul>
+</li>
+<li>生成后的网站源码部署
+
+<ul>
+<li><code>rake deploy</code></li>
+</ul>
+</li>
+</ol>
+
+
+<h3>多个电脑上编写octopress博客</h3>
+
+<p>可能很多人会像我一样有这样的需求：工作地点和家里都想要更新下自己的blog，还有有时会在自己的台式机和笔记本上更新blog，这时你就会遇到我现在的问题： <em>怎么在多个电脑上部署octopress环境</em></p>
+
+<h3>表格boarder的修复</h3>
+
+<p>参考: <a href="" title="http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/">链接</a><br/>
+只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 <code>sass/custom/_styles.scss</code> 里面了就出效果了。</p>
+
+<h3>markdown interpreter换成了kramdown</h3>
+
+<p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
+
+<h4>Update 2013-07-14</h4>
+
+<p>octopress升级到了2.0, 新的<code>rdiscount</code>支持了footnote特性，因此又换回了<code>rdiscount</code></p>
+
+<h3>404 page</h3>
+
+<p>在source下面建立404.html</p>
+
+<h3>自定义sidebar</h3>
+
+<p>这个教程里就有</p>
+
+<h3>category-list</h3>
+
+<p>TODO</p>
+
+<h3>stylesheet小幅改动</h3>
+
+<h4>awkward ul ol</h4>
+
+<p><a href="https://github.com/imathis/octopress/issues/417">issue417</a>
+在 <code>sass/custom/_styles.scss</code> 里修改</p>
+
+<h4>footnote</h4>
+
+<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -598,57 +707,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/write-simple-makefile/">Makefile简单入门</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-20T04:02:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/write-simple-makefile/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。</p></blockquote>
-
-<h2>导言</h2>
-
-<p>make程序可以算得上是一个domain specific language，完全是一个完整的脚本语言，make是linux,unix上编译 <strong>等</strong> 工作的标准工具，对于复杂的程序来说，可以智能的、自动化完成复杂的程序编译工作。而需要就是编写一个directive的脚本——makefile告诉编译器和其他工具应该如何编译project。 本篇是陈皓写的“跟我一起写makefile”的第一部分的总结，比较凌乱…</p>
-
-<h2>学习资料</h2>
-
-<ul>
-<li>陈皓——“跟我一起写makefile”</li>
-<li>how to write a simple makefile</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/write-simple-makefile/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -675,6 +733,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/linux-kernel-overview/">Linux Kernel概览</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/baidu-exam-review/">百度校招-系统研发工程师-笔试题</a>
       </li>
     
@@ -688,10 +750,6 @@
     
       <li class="post">
         <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易&#8230;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a>
       </li>
     
   </ul>

@@ -9,12 +9,9 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Wordpress没有考虑到中文书写的首行缩进的习惯，因此要实现这个功能可以采用修改主题style.css来实现，如果你的主题不常更改的化，这一方法应该说可以一劳永逸。
-总体思路：进入Appearance&mdash;>Editor&mdash;>选择style.css
-找到类似 1
-2
-3
-4 &hellip;">
+  <meta name="description" content="最近2天在学习使用“编辑器之神”vim，应用下载的colorscheme时，出现E492不是编辑器命令 ^M
+google之发现原来问题处在了file format上，我用的linux，而vim的colorscheme则是windows模式，因此换行符不同造成的。
+解决方法也很简单： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +83,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/handle-vim-e492/">解决VIM插件/colorscheme出现E492不是编辑器命令 ^M</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-22T16:55:03+08:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2011</time>
+        
+         | <a href="/blog/2011/handle-vim-e492/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近2天在学习使用“编辑器之神”vim，应用下载的colorscheme时，出现<strong>E492不是编辑器命令 ^M</strong><br/>
+google之发现原来问题处在了file format上，我用的linux，而vim的colorscheme则是windows模式，因此换行符不同造成的。<br/>
+解决方法也很简单：使用vim打开有问题的插件或者主题，输入<code>:set ff=unix</code>之后保存即可</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -289,6 +326,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/linux-kernel-overview/">Linux Kernel概览</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/baidu-exam-review/">百度校招-系统研发工程师-笔试题</a>
       </li>
     
@@ -302,10 +343,6 @@
     
       <li class="post">
         <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易&#8230;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a>
       </li>
     
   </ul>
