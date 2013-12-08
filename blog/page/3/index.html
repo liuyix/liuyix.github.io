@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="感谢强大的ipv6! 使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持NAT64/DNS64的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。 目前互联网上公布的二台DNS64服务器地址为： 1
-2 &hellip;">
+  <meta name="description" content="在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。 导言 make程序可以算得上是一个domain specific language， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,61 +81,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/">教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-25T23:40:12+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>感谢强大的ipv6!</p>
-
-<blockquote><p>使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持<strong>NAT64/DNS64</strong>的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。</p></blockquote>
-
-<p>目前互联网上公布的二台DNS64服务器地址为：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>2001:778::37
-</span><span class='line'>2001:df8:0:7::1</span></code></pre></td></tr></table></div></figure>
-
-
-<p>通过简单设置就可以实现利用ipv6访问<strong>所有网站</strong>。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
   
   
     <article>
@@ -616,6 +560,53 @@
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/vim-tutorial-1/">VIM学习资料总结</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-28T21:25:37+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/vim-tutorial-1/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。</p></blockquote>
+
+<p>Q：为什么要学习这么古老的编辑工具，是否真的有意义？<br/>
+A：一个coder也是一个“打字员”，最常用的就是文本编辑功能，而在所有的文本编辑器中，最为强大的就是VIM/Emacs两个流派，聪明的coder都是懒惰的，熟练使用了一种“神器”，就会在coding中变得更懒——换句话也是更高效。更多信息请参考：<a href="http://linuxtoy.org/archives/why-emacs-vim-good.html">为何 Emacs 和 Vim 被称为两大神器(via LinuxTOY)</a><br/>
+Q：VIM/Emacs，我该学习哪个？<br/>
+A:关于二者究竟哪个更胜一筹的争论已经长达几十年，到目前依旧没有定论，从中可以说明熟练掌握哪一个，效果是相当的。因此不要把时间浪费在选择上，而是要花在耐心的学习上。<br/>
+我没有用过emacs，这里简单说一下二者的差别。（皆来自于网络）</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/vim-tutorial-1/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -642,10 +633,6 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/mysql-encode/">Mysql-encode</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2013/linux-kernel-overview/">Linux Kernel概览</a>
       </li>
     
@@ -659,6 +646,10 @@
     
       <li class="post">
         <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易&#8230;</a>
       </li>
     
   </ul>

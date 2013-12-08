@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="总结下读过的有关Kernel的书籍，主要是&lt;Understanding the Linux Kernel>>、&lt;Linux Kernel Development>、&lt;Linux Device Drivers> 终极目标 完整的回答以下问题： 从开机上电到进入命令提示行， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,44 +81,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/mysql-encode/">Mysql-encode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-08T13:16:00+08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/mysql-encode/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -594,6 +555,55 @@
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-09T21:05:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/advanced-linkers-and-loaders/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
+
+<h2>OS存在于每一个程序之中</h2>
+
+<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br/>
+其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
+参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
+
+<p><img src="/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
+
+<p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -618,10 +628,6 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/mysql-encode/">Mysql-encode</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2013/linux-kernel-overview/">Linux Kernel概览</a>
       </li>
     
@@ -635,6 +641,10 @@
     
       <li class="post">
         <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易&#8230;</a>
       </li>
     
   </ul>
