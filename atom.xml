@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-10-25T00:13:11+08:00</updated>
+  <updated>2013-12-08T13:49:48+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[mysql-encode]]></title>
+    <link href="http://liuyix.org/blog/2013/mysql-encode/"/>
+    <updated>2013-12-08T13:16:00+08:00</updated>
+    <id>http://liuyix.org/blog/2013/mysql-encode</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux Kernel概览]]></title>
@@ -2588,94 +2597,6 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
 <p>v=spf1 include:spf.mail.qq.com ~all</p></li>
 <li><p> 最后点击保存即可</p></li>
 </ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南]]></title>
-    <link href="http://liuyix.org/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/"/>
-    <updated>2012-02-25T23:40:12+08:00</updated>
-    <id>http://liuyix.org/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet</id>
-    <content type="html"><![CDATA[<p>感谢强大的ipv6!</p>
-
-<blockquote><p>使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持<strong>NAT64/DNS64</strong>的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。</p></blockquote>
-
-<p>目前互联网上公布的二台DNS64服务器地址为：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>2001:778::37
-</span><span class='line'>2001:df8:0:7::1</span></code></pre></td></tr></table></div></figure>
-
-
-<p>通过简单设置就可以实现利用ipv6访问<strong>所有网站</strong>。</p>
-
-<!-- more -->
-
-
-<h2>一些限制</h2>
-
-<ol>
-<li><p> 目前该方法不能在<strong>windows xp</strong>上使用，只能在windows vista、windows 7上使用。</p></li>
-<li><p> 只能使用基本web服务，浏览网页，其他如登录QQ客户端不行（使用网页QQ可以）。</p></li>
-</ol>
-
-
-<h2>设置方法</h2>
-
-<h3>Windows7设置</h3>
-
-<p>进入网络和共享中心，点击本地连接，设置属性，双击ipv6属性输入上面的两个DNS服务器地址。同时取消ipv4协议以达到纯ipv6上网，最后点击确定就大功告成！</p>
-
-<h3>Ubuntu设置</h3>
-
-<p>对Linux了解的不多，采取的方法也许不是最佳的。Ubuntu网络管理程序使用的是NetworkManager，这个工具说实话很垃圾。无法设置很多选项，比如说我们即将设置的nameserver，而且每次联网都会覆盖掉你自定义的设置。</p>
-
-<p>牢骚到此为止。</p>
-
-<p>设置过程：</p>
-
-<ol>
-<li><p> 首先打开NetworkManager，<strong>编辑连接</strong>&mdash;>&ldquo;<strong>你目前用的网络连接&rdquo;</strong>&mdash;>&ldquo;ipv4标签下选择<strong>禁用</strong>&rdquo;&mdash;><strong>ipv6标签，选择自动</strong></p></li>
-<li><p> 编辑<code>/etc/resolv.conf</code></p></li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo gedit /etc/resolv.conf<span class="sb">`</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>添加如下内容：</p>
-
-<pre><code>nameserver 2001:778::37
-nameserver 2001:df8:0:7::1
-</code></pre>
-
-<ul>
-<li><p>设置好resolve.conf之后，每次重启网络或者重新联网时NetworkManager都会覆盖掉你的设置，这里有个下下策的解决办法，运行下面的命令</p>
-
-<p>sudo chattr +i /etc/resolv.conf</p></li>
-</ul>
-
-
-<p>这样resolv.conf就变成无法修改了。可以避免被覆盖。如果要想恢复，则运行</p>
-
-<pre><code>sudo chattr -i /etc/resolv.conf
-</code></pre>
-
-<h2>使用感受</h2>
-
-<p>最近这几周一直在使用纯ipv6利用该方法上网。总得来说，还凑合。优点很明显，所有网站通行无阻。缺点就是<em>速度慢</em>，<strong>不稳定——偶尔会抽风。</strong></p>
-
-<p>建议是将此方法结合着ipv6 hosts方法达到更好的使用体验。</p>
-
-<h2>参考链接</h2>
-
-<ul>
-<li><a href="http://www.ipv6bbs.cn/archiver/tid-152.html">在IPv6网络下访问IPv4资源的方法(利用NAT64/DNS64实现)</a> via <a href="http://www.ipv6bbs.cn/">IPv6论坛</a></li>
-</ul>
 
 ]]></content>
   </entry>
