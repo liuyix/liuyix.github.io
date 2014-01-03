@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2013-12-08T13:54:22+08:00</updated>
+  <updated>2014-01-03T21:29:23+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[我在BIT的这几年]]></title>
+    <link href="http://liuyix.org/blog/2014/my-work-in-bit/"/>
+    <updated>2014-01-03T19:39:00+08:00</updated>
+    <id>http://liuyix.org/blog/2014/my-work-in-bit</id>
+    <content type="html"><![CDATA[<h2>我在BIT的这几年</h2>
+
+<p>2年半的研究生即将结束，聊以此文做一下这几年的回顾吧。</p>
+
+<p>2011年我考入了BIT，之后机缘之下来到了现在的实验室，正式成为了现在的导师的<em>第一任</em>弟子。实话说如果当时选择导师的时候能了解到更多的信息，可能就不会是这个选择了。幸运的是误打误撞的还碰到了不错的导师，与其说是导师，现在感觉倒更像是朋友和师兄，他给予了充分的自由和平等，我很感激。不过自己的散漫之气也因此耽误了不少事情，实感愧疚。这个之后会有提到。</p>
+
+<!--more-->
+
+
+<h2>第一学期</h2>
+
+<h4>研究生课程</h4>
+
+<p>研究生的第一年主要是上课了，没有在实验室待多少时间。第一个学期和大多数人一样尽力把培养方案中要求的课程上完，于是乎第一个学期几乎是宿舍、研究生楼、食堂、实验室这四个地方奔波，课满的时候一天5节课，从早上8点一直到晚上9点半。比较坑爹的是下午和晚上的课程之间的休息仅有40分钟——下午6点下课，晚上的课6点40就开始，40分钟几乎连晚饭都搞不定。（一是下课高峰人很多，二来距离不近）<br/>
+研究生的课程难度上其实和本科生差别不大，不过还是让我感受到了一些压力：每一门专业课程都有至少一个，有时几个可以称得上是project的作业。虽然听说这种程度的project其实只能算是接近于本科生课程的要求，有的甚至还要宽松。但这恰恰是燕山大学计算机专业的不足之处，本科时我一直期待着可以有这种一试身手的有挑战的任务。</p>
+
+<h4>环境</h4>
+
+<p>住宿和饮食得益于北京重点高校的给力扶持令人满意，所住的宿舍环境干净、宽松，食堂因为学校的补助，饭菜相比外面实惠很多。（不过现在也因为CPI有所涨价了，从2011年￥8每顿饭到现在￥12左右）<br/>
+实验室的环境同其他同学相比也好一些，人均面积可以说是在整个学院来说都是很大的。刚到的时候实验室的机器不怎么给力，是2007年的老机器了，忍受了一年之后终于在2012年的时候换成了目前非常给力的工作站。 <br/>
+研究生阶段不同于大学本科，每个人的作息和时间安排因实验室而异，有的实验室要求很严格，规定了下课后必须到实验室;有的则相对灵活宽松，没有具体的要求，只要及时把任务搞定就可以。我很幸运的是后者，所以没有课的时候比较自由。不过后面会提到这样带来的一些副作用。</p>
+
+<h4>实验室工作</h4>
+
+<p>每个实验室因Boss不同，对研究生以及整个实验室的工作方向都有相当的差别。有的是企业项目导向的，以企业合作的方式让学生去完成一些企业项目（说白了就是当廉价劳动力&hellip;）;有的是以学术研究为导向的，具体来说就是拿到了某个基金，之后来做一些研究工作，说白了就是发论文;更多的则是兼而有之，既有一些与企业合作的项目，也有一些学术型的研究。我所在的实验室是第二种，单纯以学术研究为导向的，因而研究生的第一个学期我在实验室的主要任务就是读论文，内容集中在<em>Simulation</em>,<em>Performance Evaluation</em>这一块。由于自己之前没有什么基础，因而读的时候收获甚微。<br/>
+除此之外，我还接触了<em>Gem5模拟器</em>。惭愧的是在实验室待了2年有余，Gem5模拟器钻研的不是很精，只是对整个架构，完整的工作原理有了一个初步的了解，实现了一些功能的扩展。这个稍后会细说。</p>
+
+<p>整个一个学期，最令我印象深刻的事是关于人工智能课程，其实这个课程当初没有选，几个舍友选了之后向我推荐，当时想着不如多学些让自己有个更宽的知识面，没成想最后的结束比较狼狈，课程项目做的马马虎虎，考试也只是擦边60分水过，自己现在对AI依旧比较陌生，不得不说是一个遗憾。<strong>现在想来这是自己的一个弱点——对自己没感觉的东西，总是不能做的令人满意，如果现在设想十年后自己没有成功的原因的话，这应该算上一条。</strong></p>
+
+<h2>第二学期</h2>
+
+<p>2012年4月份这一个学期伊始，导师出国做为期一年的访问学者。</p>
+
+<h4>几个月的实习</h4>
+
+<p>临走前将我安排到了中国软件评测中心CSTC做实习（在2011年年末的时候就已经有了一些接触，当时不过是在学校来做，这个时候就正式去公司去做实习了）。实习工作比较水，一如给的不足一百的实习薪水。做的内容是Android平台的安全软件研究。具体来说就是“研究”LBE隐私卫士的实现原理。这也是我第一次接触LBE。 <br/>
+之后大概两个月都在做这一块的逆向研究，越发的感觉到LBE“主动防御”技术真的好牛逼。恰巧的是同年四五月份，360安全卫士、腾讯管家也才陆陆续续的推出了类似功能。我在CSTC的情况很微妙，只是我一个人独立在做这一块，最终是大概到了4月末还是没有作出成果，原因是多方面的，对Android整个系统的了解我只是个大菜鸟，只是自学了一点皮毛，同时我也不是Hacker级别的玩家。虽然对我来说我也研究出了一些门道，但很遗憾的没有做出成品。<br/>
+这一段时间我实现了利用ptrace实现<em>动态注入共享库</em>，还有运行时的<em>function redirection</em>，对Android Binder协议也接触了一点。我已经尽力了，没什么遗憾。 <br/>
+之后为了交差，CSTC的指导人又让我做一个简单的短信和来电骚扰拦截应用，这个相对于前者难度很小，于是大概一个月的时间就做出来一个基于黑白名单的短信和电话过滤应用。实现使用的核心原理没什么难度，网上都有，就是Java反射调用一个没有公开的接口从而实现来电拦截。这个应用代码主要是sqlite的增删改查以及界面的实现。</p>
+
+<h4>实验室工作</h4>
+
+<p>导师和我在这个学期还是经常有邮件的联系，实验室的工作也一直还有，就是完成一个很tricky的trace收集算法，在gem5上实现，然后发会议paper，因为CSTC的实习，实验室的这块工作就没怎么顾得上，到了七八月份眼看着到了论文deadline，这时候CSTC那一块要求做的来电和短信的过滤应用也告一段落，因此就决定把实习辞掉，专心来做paper，这个时候是7月末。</p>
+
+<p>To be continued&hellip;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux Kernel概览]]></title>
@@ -2588,94 +2641,6 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
 <p>v=spf1 include:spf.mail.qq.com ~all</p></li>
 <li><p> 最后点击保存即可</p></li>
 </ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南]]></title>
-    <link href="http://liuyix.org/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/"/>
-    <updated>2012-02-25T23:40:12+08:00</updated>
-    <id>http://liuyix.org/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet</id>
-    <content type="html"><![CDATA[<p>感谢强大的ipv6!</p>
-
-<blockquote><p>使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持<strong>NAT64/DNS64</strong>的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。</p></blockquote>
-
-<p>目前互联网上公布的二台DNS64服务器地址为：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>2001:778::37
-</span><span class='line'>2001:df8:0:7::1</span></code></pre></td></tr></table></div></figure>
-
-
-<p>通过简单设置就可以实现利用ipv6访问<strong>所有网站</strong>。</p>
-
-<!-- more -->
-
-
-<h2>一些限制</h2>
-
-<ol>
-<li><p> 目前该方法不能在<strong>windows xp</strong>上使用，只能在windows vista、windows 7上使用。</p></li>
-<li><p> 只能使用基本web服务，浏览网页，其他如登录QQ客户端不行（使用网页QQ可以）。</p></li>
-</ol>
-
-
-<h2>设置方法</h2>
-
-<h3>Windows7设置</h3>
-
-<p>进入网络和共享中心，点击本地连接，设置属性，双击ipv6属性输入上面的两个DNS服务器地址。同时取消ipv4协议以达到纯ipv6上网，最后点击确定就大功告成！</p>
-
-<h3>Ubuntu设置</h3>
-
-<p>对Linux了解的不多，采取的方法也许不是最佳的。Ubuntu网络管理程序使用的是NetworkManager，这个工具说实话很垃圾。无法设置很多选项，比如说我们即将设置的nameserver，而且每次联网都会覆盖掉你自定义的设置。</p>
-
-<p>牢骚到此为止。</p>
-
-<p>设置过程：</p>
-
-<ol>
-<li><p> 首先打开NetworkManager，<strong>编辑连接</strong>&mdash;>&ldquo;<strong>你目前用的网络连接&rdquo;</strong>&mdash;>&ldquo;ipv4标签下选择<strong>禁用</strong>&rdquo;&mdash;><strong>ipv6标签，选择自动</strong></p></li>
-<li><p> 编辑<code>/etc/resolv.conf</code></p></li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo gedit /etc/resolv.conf<span class="sb">`</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>添加如下内容：</p>
-
-<pre><code>nameserver 2001:778::37
-nameserver 2001:df8:0:7::1
-</code></pre>
-
-<ul>
-<li><p>设置好resolve.conf之后，每次重启网络或者重新联网时NetworkManager都会覆盖掉你的设置，这里有个下下策的解决办法，运行下面的命令</p>
-
-<p>sudo chattr +i /etc/resolv.conf</p></li>
-</ul>
-
-
-<p>这样resolv.conf就变成无法修改了。可以避免被覆盖。如果要想恢复，则运行</p>
-
-<pre><code>sudo chattr -i /etc/resolv.conf
-</code></pre>
-
-<h2>使用感受</h2>
-
-<p>最近这几周一直在使用纯ipv6利用该方法上网。总得来说，还凑合。优点很明显，所有网站通行无阻。缺点就是<em>速度慢</em>，<strong>不稳定——偶尔会抽风。</strong></p>
-
-<p>建议是将此方法结合着ipv6 hosts方法达到更好的使用体验。</p>
-
-<h2>参考链接</h2>
-
-<ul>
-<li><a href="http://www.ipv6bbs.cn/archiver/tid-152.html">在IPv6网络下访问IPv4资源的方法(利用NAT64/DNS64实现)</a> via <a href="http://www.ipv6bbs.cn/">IPv6论坛</a></li>
-</ul>
 
 ]]></content>
   </entry>

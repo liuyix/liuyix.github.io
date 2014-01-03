@@ -141,28 +141,8 @@
         <lastmod>2013-11-25T05:24:15+08:00</lastmod>
     </url>
     <url>
-        <loc>http://liuyix.org/blog/archives/</loc>
-        <lastmod>2013-11-25T05:24:15+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://liuyix.org/blog/</loc>
-        <lastmod>2013-11-25T05:24:15+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://liuyix.org/404.html</loc>
-        <lastmod>2013-08-07T23:04:02+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://liuyix.org/pkm-tools-on-linux-recommendation/index.markdown.bak</loc>
-        <lastmod>2013-08-07T23:04:02+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://liuyix.org/pkm-tools-on-linux-recommendation/</loc>
-        <lastmod>2013-11-25T05:24:15+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://liuyix.org/robots.txt</loc>
-        <lastmod>2013-08-07T23:04:02+08:00</lastmod>
+        <loc>http://liuyix.org/blog/2014/my-work-in-bit/</loc>
+        <lastmod>2014-01-03T21:28:31+08:00</lastmod>
     </url>
     <url>
         <loc>http://liuyix.org/splash2-benchmark/</loc>
@@ -171,5 +151,29 @@
     <url>
         <loc>http://liuyix.org/</loc>
         <lastmod>2013-12-08T13:48:37+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.org/pkm-tools-on-linux-recommendation/index.markdown.bak</loc>
+        <lastmod>2013-08-07T23:04:02+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.org/pkm-tools-on-linux-recommendation/</loc>
+        <lastmod>2014-01-03T21:28:31+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.org/blog/archives/</loc>
+        <lastmod>2014-01-03T21:28:31+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.org/blog/</loc>
+        <lastmod>2014-01-03T21:28:31+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.org/404.html</loc>
+        <lastmod>2013-08-07T23:04:02+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liuyix.org/robots.txt</loc>
+        <lastmod>2013-08-07T23:04:02+08:00</lastmod>
     </url>
 </urlset>

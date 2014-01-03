@@ -9,7 +9,8 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="&lt;&mdash;more&mdash;> Octopress Reference: Clone Your Octopress to Blog From Two Places $octopress 代表的是 git clone -b source git@github.com:username &hellip;">
+  <meta name="description" content="应用开发程序员面向的是软件用户;系统程序员面向的是程序员。
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/advanced-linkers-and-loaders/">《程序员的自我修养》小结</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-09T21:05:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/advanced-linkers-and-loaders/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
+应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
+
+<h2>OS存在于每一个程序之中</h2>
+
+<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br/>
+其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
+参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
+
+<p><img src="/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
+
+<p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -652,61 +702,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/">教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-25T23:40:12+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>感谢强大的ipv6!</p>
-
-<blockquote><p>使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持<strong>NAT64/DNS64</strong>的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。</p></blockquote>
-
-<p>目前互联网上公布的二台DNS64服务器地址为：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>2001:778::37
-</span><span class='line'>2001:df8:0:7::1</span></code></pre></td></tr></table></div></figure>
-
-
-<p>通过简单设置就可以实现利用ipv6访问<strong>所有网站</strong>。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -733,6 +728,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/my-work-in-bit/">我在BIT的这几年</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/linux-kernel-overview/">Linux Kernel概览</a>
       </li>
     
@@ -748,15 +747,11 @@
         <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易&#8230;</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/dev'>dev (2)</a></li><li><a href='/blog/categories/interview'>interview (1)</a></li><li><a href='/blog/categories/job'>job (1)</a></li><li><a href='/blog/categories/life'>Life (3)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/techs'>Techs (8)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/dev'>dev (2)</a></li><li><a href='/blog/categories/interview'>interview (1)</a></li><li><a href='/blog/categories/job'>job (1)</a></li><li><a href='/blog/categories/life'>Life (3)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/research'>Research (1)</a></li><li><a href='/blog/categories/techs'>Techs (8)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
 </section>
 
 
@@ -770,7 +765,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - liuyix -
+  Copyright &copy; 2014 - liuyix -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
