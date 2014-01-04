@@ -2,7 +2,7 @@
 layout: post
 title: "我在BIT的这几年"
 date: 2014-01-03 19:39
-comments: false
+comments: true
 categories: Research
 published: true
 ---
