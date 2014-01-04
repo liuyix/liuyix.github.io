@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2014-01-04T14:47:12+08:00</updated>
+  <updated>2014-01-04T15:20:41+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -2591,7 +2591,7 @@ Octopress在界面上完成度很高，可以说不需要任何修改，其简�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[一个简单的python小程序————使用douban API通过ISBN查询书籍信息]]></title>
+    <title type="html"><![CDATA[一个简单的python小程序——使用douban API通过ISBN查询书籍信息]]></title>
     <link href="http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api/"/>
     <updated>2012-03-11T07:52:00+08:00</updated>
     <id>http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api</id>
