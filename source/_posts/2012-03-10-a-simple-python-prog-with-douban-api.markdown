@@ -4,10 +4,10 @@ published: true
 date: 2012-03-10 23:52:00
 layout: post
 slug: a-simple-python-prog-with-douban-api
-title: '一个简单的python小程序————使用douban API通过ISBN查询书籍信息'
+title: '一个简单的python小程序——使用douban API通过ISBN查询书籍信息'
 wordpress_id: 646
 categories:
-- dev
+- Techs
 tags:
 - douban
 - xml

@@ -3,7 +3,7 @@ layout: post
 title: "百度校招-系统研发工程师-笔试题"
 date: 2013-10-15 01:36
 comments: true
-categories: job
+categories: interview
 ---
 
 几道编程算法题：
