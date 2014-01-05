@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: dev | Liuyix]]></title>
+  <link href="http://liuyix.org/blog/categories/dev/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2013-10-25T00:13:11+08:00</updated>
+  <id>http://liuyix.org/</id>
+  <author>
+    <name><![CDATA[liuyix]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[一个简单的python小程序————使用douban API通过ISBN查询书籍信息]]></title>
+    <link href="http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api/"/>
+    <updated>2012-03-11T07:52:00+08:00</updated>
+    <id>http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api</id>
+    <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
+
+<ul>
+<li>命令行的解析</li>
+<li>文件的读写</li>
+<li>XML解析</li>
+<li>http连接</li>
+<li>多线程</li>
+</ul>
+
+
+<p>短短不到200行的程序就可以做到这些，可以算是python的推广广告吧，哈哈</p>
+
+<script src="https://gist.github.com/liuyix/6738920.js"></script>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Eclipse下配置NDK开发环境小结]]></title>
+    <link href="http://liuyix.org/blog/2012/android-ndk-eclipse-configuration/"/>
+    <updated>2012-03-11T06:11:00+08:00</updated>
+    <id>http://liuyix.org/blog/2012/android-ndk-eclipse-configuration</id>
+    <content type="html"><![CDATA[<p>分享下最近几周我的一些NDK开发经验和心得。</p>
+
+<p>Eclipse配置NDK环境，主要完成的功能使能调用Android NDK提供的工具链编译用C/C++源代码写好的共享库或者可执行的应用程序。由于我的工作需要的基本是完全native程序的编写，因此这里介绍的方法 <strong>更适合编译Android下的本地应用程序或者共享库</strong></p>
+
+<p>本文提供的方法皆非原创，在这里感谢原创作者的分享。</p>
+
+<h2>NDK环境配置之前</h2>
+
+<p>Eclipse需要事先安装好 <strong>CDT</strong> ，本文在Ubuntu平台上测试可用。</p>
+
+<h2>最简单有效的方法————创建新的Builder</h2>
+
+<p>本方法是在Eclipse中调用NDK提供的 <code>ndk-build</code> 命令进行编译。综合这几周的开发，感觉还是这个方法是最靠谱的。因为你只需要编写一个Android.mk，无需考虑依赖关系，同时也最大程度的遵循了google提供的NDK build方法。</p>
+
+<h3>具体配置步骤</h3>
+
+<ul>
+<li><p>新建一个C++ Project</p></li>
+<li><p>进入到这个project的 <strong>Propertities</strong> 选项中</p></li>
+<li><p><strong>Builders</strong> 一栏 –> <strong>New</strong> –> <strong>Program</strong></p></li>
+<li><p>参考下面这张图进行配置，几个重要的地方：</p>
+
+<ul>
+<li><p><strong>Location</strong> 填入 <code>$NDK_HOME</code> /ndk-build 其中 <code>$NDK_BUILD</code> 是NDK安装的根目录</p></li>
+<li><p><strong>Working Directory</strong> 填入当前project的位置，可以通过选择 <strong>Browse Workspace…</strong> 选择</p></li>
+<li><p>可选步骤： <strong>Arguments</strong> 中写下需要传给ndk-build的参数</p></li>
+<li><p>如果要实现 <em>auto-build</em> 可以在 <strong>Refresh</strong> 和 <strong>Build Options</strong> 中进行配置，我个人觉得auto-build对开发没有实际作用，因此这里就不介绍了。</p></li>
+</ul>
+</li>
+</ul>
+
+
+<p>简单几步就可以编译共享库了，够简单吧</p>
+
+<h2>参考链接</h2>
+
+<p><a href="http://mobilepearls.com/labs/ndk-builder-in-eclipse/">Setting up Automatic NDK Builds in Eclipse</a></p>
+
+<h2>其他方法</h2>
+
+<p>这里还有一种我试验可用的方法，但是配置起来实在麻烦，适合移植已有程序或者开发大型项目时完全定制编译过程中使用。这里只给出出处，有兴趣的同学可以看看。</p>
+
+<ul>
+<li><a href="http://www.srombauts.fr/2011/03/06/standalone-toolchain/">http://www.srombauts.fr/2011/03/06/standalone-toolchain/</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

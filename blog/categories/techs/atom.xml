@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Techs | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/techs/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2014-01-04T15:20:41+08:00</updated>
+  <updated>2013-10-25T00:13:11+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,31 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[一个简单的python小程序——使用douban API通过ISBN查询书籍信息]]></title>
-    <link href="http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api/"/>
-    <updated>2012-03-11T07:52:00+08:00</updated>
-    <id>http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api</id>
-    <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
-
-<ul>
-<li>命令行的解析</li>
-<li>文件的读写</li>
-<li>XML解析</li>
-<li>http连接</li>
-<li>多线程</li>
-</ul>
-
-
-<p>短短不到200行的程序就可以做到这些，可以算是python的推广广告吧，哈哈</p>
-
-<script src="https://gist.github.com/liuyix/6738920.js"></script>
-
-
-
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Eclipse下配置NDK开发环境小结]]></title>
@@ -244,6 +219,88 @@ nameserver 2001:df8:0:7::1
 <li><a href="http://www.ipv6bbs.cn/archiver/tid-152.html">在IPv6网络下访问IPv4资源的方法(利用NAT64/DNS64实现)</a> via <a href="http://www.ipv6bbs.cn/">IPv6论坛</a></li>
 </ul>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[makefile简单入门]]></title>
+    <link href="http://liuyix.org/blog/2012/write-simple-makefile/"/>
+    <updated>2012-02-20T04:02:00+08:00</updated>
+    <id>http://liuyix.org/blog/2012/write-simple-makefile</id>
+    <content type="html"><![CDATA[<blockquote><p>在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。</p></blockquote>
+
+<h2>导言</h2>
+
+<p>make程序可以算得上是一个domain specific language，完全是一个完整的脚本语言，make是linux,unix上编译 <strong>等</strong> 工作的标准工具，对于复杂的程序来说，可以智能的、自动化完成复杂的程序编译工作。而需要就是编写一个directive的脚本——makefile告诉编译器和其他工具应该如何编译project。 本篇是陈皓写的“跟我一起写makefile”的第一部分的总结，比较凌乱…</p>
+
+<h2>学习资料</h2>
+
+<ul>
+<li>陈皓——“跟我一起写makefile”</li>
+<li>how to write a simple makefile<!-- more --></li>
+</ul>
+
+
+<h2>makefile的最基本编写规则</h2>
+
+<pre><code>target : prerequisites
+    command
+</code></pre>
+
+<p>这个就是makefile最基本的编写规则，后续的讲解以及makefile的更多写法不过是为了进一步简化这个规则的编写。也就是说你只要把这个规则弄懂了，makefile你就会写了，和makefile高手，你差得就是一些技巧和高级用法了。但起码你会写makefile了。</p>
+
+<ul>
+<li><p><strong>target</strong> 就是要构建的目标——可以是C/C++的object，可以是目标程序，也可以是一个标签。</p></li>
+<li><p><strong>prerequistites</strong> 是构建 <strong>target</strong> 需要的文件。对object来说，它也许是c，c++源文件； <strong>target</strong> 是目标程序，那么它就是object文件（.o文件）</p></li>
+<li><p><strong>command</strong> 是将 <strong>prerequistites</strong> 变成 <strong>target</strong> 的方法</p></li>
+</ul>
+
+
+<p>一言以弊之，target是output,prerequisites是输入，command是过程方法。 值得注意的是command必须以一个TAB键作为开始，否则会出现"遗漏分隔符。停止"的错误。</p>
+
+<h3>hello-makefile的makefile</h3>
+
+<p>首先编写一个hello-makefile.c，内容我想就不用我写了吧…之后在存放hello-makefile的目录下创建一个 <em>Makefile</em>文件(注意没有扩展名)。 Makefile内容如下：</p>
+
+<p>```makefile</p>
+
+<pre><code>hello-makefile:hello-makefile.o
+    cc -o hello-makefile hello-makefile.o
+hello-makefile.o: hello-makefile.c
+    cc -o hello-makefile.o hello-makefile.c
+clean:
+    rm *.o hello-makefile
+</code></pre>
+
+<p>```</p>
+
+<h2>TAB键、反斜杠(/)</h2>
+
+<ul>
+<li><p>TAB键在makefile中是command开头的分割符，这在前文已有讲述。</p></li>
+<li><p>反斜杠（/）用来断行，即一行没有写下或者为了美观而将 <code>command</code> 或者 <code>prerequistites</code> 拆成几行来写。刚学习写makefile时可能会忘掉而出现错误。</p></li>
+</ul>
+
+
+<h2>make不仅仅可以做编译</h2>
+
+<p>target可以是目标文件、二进制程序，也可以是一个label，后面没有prerequisites，可以让makefile如同shellscript一样完成其他工作（备份、打包）。比如说我们经常使用的 <code>make clean</code> 实际上是利用make完成shell脚本一样的工作。</p>
+
+<h2>使用变量，简化书写，减少bug</h2>
+
+<pre><code>objects = main.o kbd.o command.o display.o \
+insert.o search.o files.o utils.o
+</code></pre>
+
+<p>以后使用时就使用 <strong>$(objects)</strong></p>
+
+<h2>自动推导</h2>
+
+<p><strong>.PHONY</strong> 表示clean是一个伪目标文件</p>
+
+<h2>编写makefile好习惯</h2>
+
+<p>每个makefile中都 <em>应该</em> 定义一个clean命令，用于清空从前的编译产生的文件。</p>
 ]]></content>
   </entry>
   
