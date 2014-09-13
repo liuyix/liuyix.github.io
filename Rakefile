@@ -9,7 +9,9 @@ ssh_port       = "22"
 document_root  = "~/liuyix.org/"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "both"
+#deploy_default = "both"
+deploy_default = "push"
+
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "master"
