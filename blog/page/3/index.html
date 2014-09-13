@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="感谢强大的ipv6! 使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持NAT64/DNS64的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。 目前互联网上公布的二台DNS64服务器地址为： 1
-2 &hellip;">
+  <meta name="description" content="一直使用的是QQ提供的域名邮箱功能，很不错。本文旨在教你如何设置SPF记录防止自己域名的邮件被标记为spam。 什么是SPF记录 参考wiki：http://en.wikipedia.org/wiki/Sender_Policy_Framework SPF是Sender Policy &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/howto-add-spf-record-for-domain/">域名邮件不再被spam——SPF记录设置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-26T00:26:17+08:00" pubdate data-updated="true">Feb 26<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/howto-add-spf-record-for-domain/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>一直使用的是QQ提供的<a href="http://domain.mail.qq.com/">域名邮箱</a>功能，很不错。本文旨在教你如何设置SPF记录防止自己域名的邮件被标记为spam。</p>
+
+<h2>什么是SPF记录</h2>
+
+<p>参考wiki：<a href="http://en.wikipedia.org/wiki/Sender_Policy_Framework">http://en.wikipedia.org/wiki/Sender_Policy_Framework</a></p>
+
+<p>SPF是<strong>Sender Policy Framework</strong>的简称，是一种email验证系统，旨在通过检测email proofing，验证发送者IP地址的方法来杜绝垃圾邮件的方法。</p>
+
+<blockquote><p>接收邮件方会首先检查域名的SPF记录，来确定发件人的IP地址是否被包含在SPF记录里面，如果在，就认为是一封正确的邮件，否则会认为是一封伪造的邮件进行退回。</p></blockquote>
+
+<h2>设置过程</h2>
+
+<p>本文以DNSPod为例展示QQ域名邮箱的SPF设置过程。</p>
+
+<ol>
+<li><p> 进入DNSPod制定域名的管理界面</p></li>
+<li><p> “添加记录”，填入如下内容：</p>
+
+<p>v=spf1 include:spf.mail.qq.com ~all</p></li>
+<li><p> 最后点击保存即可</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -556,66 +614,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/my-vimrc/">我的vimrc——vim配置的一些建议（附详细注释的vimrc）</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-29T03:16:18+08:00" pubdate data-updated="true">Apr 29<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/my-vimrc/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近仔细的研究了一下传说中的史上最强的vimrc，收获不少，其中有许多亮点，在这里分享下我觉得非常不错的地方。我的vimrc主要是汇集吸收了多个网上流传的vimrc以及加入了我的自定义的部分</p>
-
-<ul>
-<li><p>绑定CTRL-s，CTRL-v，CTRL-c，CTRL-v一些其他编辑器中常用的快捷键</p></li>
-<li><p>绑定键来翻页（因为使用j k 光标总是左右动，绑定功能键来翻页则不需要同时按CTRL-E了，更轻松）</p></li>
-<li><p>绑定CTRL-[hjkl]来在窗口间移动</p></li>
-<li><p>绑定左右箭头(&lt;&mdash;|&mdash;>)在buffer间移动，适合多文件的编辑</p></li>
-<li><p>绑定<leader>t[nef]实现方便的进行标签业的操作（新建，移动等等）</p></li>
-<li><p>绑定ALT+[jk]实现行的上移下移</p></li>
-<li><p>独特的括号匹配，使用$[123$]自动生成一对括号</p></li>
-<li><p>自动载入每个项目的配置——易水博客</p></li>
-</ul>
-
-
-<p>还有一些插件的配置，这部分我还没有仔细的研究，对于minibuffer的配置，我个人目前觉得默认就已经能满足我的个人需求了，所以注释掉了</p>
-
-<p>我的vimrc编写经验：<br/>
-对于vimrc的定制，最好是从个人的日常使用中总结，留心一下使用哪些组合按键使用的频率最多或者哪些操作最多，然后将这些组合按键或者操作加以绑定更简洁的快捷键，极为频繁的就用F[1-12]绑定。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/my-vimrc/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -642,6 +640,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/work-review/">明日迷的一天</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/my-work-in-bit/">我在BIT的这几年</a>
       </li>
     
@@ -655,10 +657,6 @@
     
       <li class="post">
         <a href="/blog/2013/xiaomi-onsite/">小米面试内核驱动工程师总结</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
       </li>
     
   </ul>

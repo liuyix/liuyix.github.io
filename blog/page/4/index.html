@@ -9,8 +9,8 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。 Q：为什么要学习这么古老的编辑工具，是否真的有意义？
-A：一个coder也是一个“打字员”，最常用的就是文本编辑功能，而在所有的文本编辑器中，最为强大的就是VIM/ &hellip;">
+  <meta name="description" content="最近仔细的研究了一下传说中的史上最强的vimrc，收获不少，其中有许多亮点，在这里分享下我觉得非常不错的地方。我的vimrc主要是汇集吸收了多个网上流传的vimrc以及加入了我的自定义的部分 绑定CTRL-s，CTRL-v，CTRL-c，CTRL-v一些其他编辑器中常用的快捷键
+绑定键来翻页（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,66 @@ A：一个coder也是一个“打字员”，最常用的就是文本编辑功�
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/my-vimrc/">我的vimrc——vim配置的一些建议（附详细注释的vimrc）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-29T03:16:18+08:00" pubdate data-updated="true">Apr 29<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/my-vimrc/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近仔细的研究了一下传说中的史上最强的vimrc，收获不少，其中有许多亮点，在这里分享下我觉得非常不错的地方。我的vimrc主要是汇集吸收了多个网上流传的vimrc以及加入了我的自定义的部分</p>
+
+<ul>
+<li><p>绑定CTRL-s，CTRL-v，CTRL-c，CTRL-v一些其他编辑器中常用的快捷键</p></li>
+<li><p>绑定键来翻页（因为使用j k 光标总是左右动，绑定功能键来翻页则不需要同时按CTRL-E了，更轻松）</p></li>
+<li><p>绑定CTRL-[hjkl]来在窗口间移动</p></li>
+<li><p>绑定左右箭头(&lt;&mdash;|&mdash;>)在buffer间移动，适合多文件的编辑</p></li>
+<li><p>绑定<leader>t[nef]实现方便的进行标签业的操作（新建，移动等等）</p></li>
+<li><p>绑定ALT+[jk]实现行的上移下移</p></li>
+<li><p>独特的括号匹配，使用$[123$]自动生成一对括号</p></li>
+<li><p>自动载入每个项目的配置——易水博客</p></li>
+</ul>
+
+
+<p>还有一些插件的配置，这部分我还没有仔细的研究，对于minibuffer的配置，我个人目前觉得默认就已经能满足我的个人需求了，所以注释掉了</p>
+
+<p>我的vimrc编写经验：<br/>
+对于vimrc的定制，最好是从个人的日常使用中总结，留心一下使用哪些组合按键使用的频率最多或者哪些操作最多，然后将这些组合按键或者操作加以绑定更简洁的快捷键，极为频繁的就用F[1-12]绑定。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/my-vimrc/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -372,6 +432,10 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/work-review/">明日迷的一天</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/my-work-in-bit/">我在BIT的这几年</a>
       </li>
     
@@ -385,10 +449,6 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
     
       <li class="post">
         <a href="/blog/2013/xiaomi-onsite/">小米面试内核驱动工程师总结</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
       </li>
     
   </ul>

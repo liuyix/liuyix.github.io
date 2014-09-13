@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="应用开发程序员面向的是软件用户;系统程序员面向的是程序员。
-应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统 &hellip;">
+  <meta name="description" content="Root 所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/android-root/">Android Root 那些事</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-14T19:14:00+08:00" pubdate data-updated="true">Jul 14<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/android-root/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Root</h2>
+
+<p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/android-root/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -643,72 +687,13 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/howto-add-spf-record-for-domain/">域名邮件不再被spam——SPF记录设置</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-26T00:26:17+08:00" pubdate data-updated="true">Feb 26<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/howto-add-spf-record-for-domain/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一直使用的是QQ提供的<a href="http://domain.mail.qq.com/">域名邮箱</a>功能，很不错。本文旨在教你如何设置SPF记录防止自己域名的邮件被标记为spam。</p>
-
-<h2>什么是SPF记录</h2>
-
-<p>参考wiki：<a href="http://en.wikipedia.org/wiki/Sender_Policy_Framework">http://en.wikipedia.org/wiki/Sender_Policy_Framework</a></p>
-
-<p>SPF是<strong>Sender Policy Framework</strong>的简称，是一种email验证系统，旨在通过检测email proofing，验证发送者IP地址的方法来杜绝垃圾邮件的方法。</p>
-
-<blockquote><p>接收邮件方会首先检查域名的SPF记录，来确定发件人的IP地址是否被包含在SPF记录里面，如果在，就认为是一封正确的邮件，否则会认为是一封伪造的邮件进行退回。</p></blockquote>
-
-<h2>设置过程</h2>
-
-<p>本文以DNSPod为例展示QQ域名邮箱的SPF设置过程。</p>
-
-<ol>
-<li><p> 进入DNSPod制定域名的管理界面</p></li>
-<li><p> “添加记录”，填入如下内容：</p>
-
-<p>v=spf1 include:spf.mail.qq.com ~all</p></li>
-<li><p> 最后点击保存即可</p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
-    <a class="next" href="/blog/">Newer &rarr;</a>
+    <a class="next" href="/">Newer &rarr;</a>
     
   </div>
 </div>
@@ -728,6 +713,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/work-review/">明日迷的一天</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/my-work-in-bit/">我在BIT的这几年</a>
       </li>
     
@@ -741,10 +730,6 @@
     
       <li class="post">
         <a href="/blog/2013/xiaomi-onsite/">小米面试内核驱动工程师总结</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a>
       </li>
     
   </ul>
