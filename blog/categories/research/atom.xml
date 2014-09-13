@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Research | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/research/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2014-09-13T16:12:33+08:00</updated>
+  <updated>2014-09-13T16:15:27+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SMP L1 Cache MESI Coherence Protocol Internal]]></title>
+    <link href="http://liuyix.org/blog/2014/cache-internal-professional/"/>
+    <updated>2014-01-07T15:02:00+08:00</updated>
+    <id>http://liuyix.org/blog/2014/cache-internal-professional</id>
+    <content type="html"><![CDATA[<h2>Gem5 Simulator Ruby Memory System</h2>
+
+<p>Ruby Memory</p>
+
+<h2>基于Directory的SMP L1 Cache MESI协议的内部实现</h2>
+
+<p><strong>Directory</strong> :
+<strong>SMP</strong> :
+<strong>L1</strong> :</p>
+
+<p><img src="/images/Diagrama_MESI.gif" alt="/images/Diagrama_MESI.gif" /></p>
+
+<p>而实际上<strong>SMP架构</strong>中的MESI具有多个<em>瞬时状态</em> ,在研究Gem5模拟器中集成的<em>Ruby Memory System Simulator</em>的实现，根据协议实现代码，我得到了以下添加了瞬时状态后的有限状态机图示（ <strong>该图依然为简化后的图，其中省略了自旋状态转换</strong> ，这样看起来更清晰些）</p>
+
+<p><img src="/images/MESI-orig.png" alt="MESI" /></p>
+
+<p>当然这依然不是最终实现的结构，该图并没有考虑目前已经广泛应用在各种处理器上的 <em>Prefetcher</em>
+本文之后会介绍这些 <em>State</em> 以及对应的 <em>Event</em> 。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[我在BIT的这几年]]></title>

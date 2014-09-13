@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Linux Kernel概览 - Liuyix</title>
+  <title>SMP L1 Cache MESI Coherence Protocol Internal - Liuyix</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="总结下读过的有关Kernel的书籍，主要是&lt;Understanding the Linux Kernel>>、&lt;Linux Kernel Development>、&lt;Linux Device Drivers> 终极目标 完整的回答以下问题： 从开机上电到进入命令提示行， &hellip;">
+  <meta name="description" content="Gem5 Simulator Ruby Memory System Ruby Memory 基于Directory的SMP L1 Cache MESI协议的内部实现 Directory :
+SMP :
+L1 : 而实际上SMP架构中的MESI具有多个瞬时状态 ,在研究Gem5模拟器中集成的Ruby &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.org/blog/2013/linux-kernel-overview">
+  <link rel="canonical" href="http://liuyix.org/blog/2014/cache-internal-professional">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
@@ -84,7 +86,7 @@
   
   <header>
     
-      <h1 class="entry-title">Linux Kernel概览</h1>
+      <h1 class="entry-title">SMP L1 Cache MESI Coherence Protocol Internal</h1>
     
     
       <p class="meta">
@@ -100,7 +102,7 @@
   
 
 
-<time datetime="2013-10-22T20:19:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2013</time>
+<time datetime="2014-01-07T15:02:00+08:00" pubdate data-updated="true">Jan 7<span>th</span>, 2014</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -109,147 +111,24 @@
   </header>
 
 
-<div class="entry-content"><blockquote><p>总结下读过的有关Kernel的书籍，主要是<a href="http://book.douban.com/subject/2287506/">&lt;Understanding the Linux Kernel></a>>、<a href="http://book.douban.com/subject/6097773/">&lt;Linux Kernel Development></a>、<a href="http://book.douban.com/subject/1723151/">&lt;Linux Device Drivers></a></p></blockquote>
+<div class="entry-content"><h2>Gem5 Simulator Ruby Memory System</h2>
 
-<h3>终极目标</h3>
+<p>Ruby Memory</p>
 
-<p>完整的回答以下问题：</p>
+<h2>基于Directory的SMP L1 Cache MESI协议的内部实现</h2>
 
-<ul>
-<li>从开机上电到进入命令提示行，Linux完整的启动过程</li>
-<li>Linux终端下敲入<code>ls</code>的完整过程。(从接收键盘设备中断到显示到结果显示到屏幕)</li>
-<li>Linux终端下输入<code>cat foo.txt</code>的完整过程。(同上，其中包含了读写磁盘的操作)</li>
-<li><em>to be continued&hellip;</em></li>
-</ul>
+<p><strong>Directory</strong> :
+<strong>SMP</strong> :
+<strong>L1</strong> :</p>
 
+<p><img src="/images/Diagrama_MESI.gif" alt="/images/Diagrama_MESI.gif" /></p>
 
-<!--more-->
+<p>而实际上<strong>SMP架构</strong>中的MESI具有多个<em>瞬时状态</em> ,在研究Gem5模拟器中集成的<em>Ruby Memory System Simulator</em>的实现，根据协议实现代码，我得到了以下添加了瞬时状态后的有限状态机图示（ <strong>该图依然为简化后的图，其中省略了自旋状态转换</strong> ，这样看起来更清晰些）</p>
 
+<p><img src="/images/MESI-orig.png" alt="MESI" /></p>
 
-<h3>内核态/用户态</h3>
-
-<p>Intel x86有4种不同的状态，Unix内核只使用内核态和用户态。</p>
-
-<p>内核线程：</p>
-
-<ul>
-<li>内核态在内核地址空间执行</li>
-<li>不与用户直接交互，无须终端设备</li>
-<li>通常在系统启动时创建，一直活跃直到系统关闭</li>
-</ul>
-
-
-<p>陷入内核态的几种方式：</p>
-
-<ul>
-<li>用户态进程调用<code>syscall</code>系统调用</li>
-<li>遇到<code>Exception</code>(无效指令、越界访问、除数为0等)：内核会代表进程处理异常</li>
-<li>外设向CPU发出<code>interrupt</code></li>
-<li>执行内核线程</li>
-</ul>
-
-
-<h3>进程实现</h3>
-
-<p>当进程暂停时，将表征进程状态的寄存器保存到<strong>进程描述符</strong>中，其中包括：程序计数器、栈指针寄存器、通用寄存器、CPU状态信息的控制寄存器（处理器状态字）以及内存管理寄存器。当需要恢复进程执行时，再将保存的字段恢复即可。</p>
-
-<h3>可重入内核</h3>
-
-<p>可重入内核可以包含非可重入代码，需要利用锁机制。</p>
-
-<p><em>Kernel Control Path</em> 内核控制路径表示内核态中内核进行的任务类型：处理syscall、异常、中断处理程序。 <br/>
-内核控制路径可以交错执行。</p>
-
-<h3>进程地址空间</h3>
-
-<p>每个进程有“私有”的地址空间，用户态下：私有栈、数据区、代码区；内核态：内核的数据区和代码区、<strong>进程内核栈</strong></p>
-
-<p>在进程的角度上每个进程都是独立的地址空间，但是内核管理上未必是独立的，有可能是共享。</p>
-
-<h3>同步和临界区</h3>
-
-<p>利用同步机制防止多个内核控制路径破坏全局的内核数据结构。</p>
-
-<ul>
-<li>非抢占式内核</li>
-<li>禁止中断</li>
-<li>信号量</li>
-<li>自旋锁</li>
-<li>避免死锁：Linux通过按规定的顺序请求信号量避免死锁。</li>
-</ul>
-
-
-<h3>信号和IPC</h3>
-
-<p><em>信号机制</em>将系统事件报告给进程的机制。系统事件分为两种：异步通告(SIGINT),同步错误或异常。</p>
-
-<p>进程间通信的机制：信号量、信息队列、共享内存；标准有两种：System V IPC和POSIX</p>
-
-<h3>进程管理</h3>
-
-<ul>
-<li><code>fork</code></li>
-<li><code>exec</code></li>
-<li><code>_exit</code></li>
-<li><code>wait4</code></li>
-<li>zombie进程</li>
-<li><em>process group</em></li>
-<li><em>login session</em></li>
-</ul>
-
-
-<h3>内存管理</h3>
-
-<h4>虚拟内存</h4>
-
-<blockquote><p>虚拟内存(virtual memory) 作为一种逻辑层，处于应用程序的内存请求与MMU(Memory Management Unit，硬件内存管理单元)之间。</p></blockquote>
-
-<h4>RAM的使用</h4>
-
-<p>RAM中有一部分存放内核映像部分(内核代码和内核数据结构)。其余部分有三种不同的作用：</p>
-
-<ul>
-<li>内核使用</li>
-<li>进程使用</li>
-<li>磁盘和其他设备的高速缓存</li>
-</ul>
-
-
-<h4>KMA: Kernel Memory Allocator</h4>
-
-<p>KMA内核内存分配器子系统用来处理所有的内存请求，其中包括内核内其他子系统、用户进程通过syscall请求增加内存使用的请求。</p>
-
-<p>KMA的特点：</p>
-
-<ul>
-<li>快</li>
-<li>省,浪费最少</li>
-<li>尽量无碎片</li>
-<li>可以同其他内存管理子系统合作</li>
-</ul>
-
-
-<h4>进程虚拟地址空间处理</h4>
-
-<p><strong>尽可能的“懒”的做法</strong> ：必要时才做耗时的工作(COW和demand paging策略)，如果必须要做耗时的工作就多做些(预读取机制)</p>
-
-<ul>
-<li>demand paging内存分配策略：进程可在页没有载入主存下执行，当访问到不存在的页时，发生缺页中断，之后中断处理程序将页载入到内存。</li>
-<li>COW写时复制策略</li>
-</ul>
-
-
-<h4>高速缓存</h4>
-
-<ul>
-<li>推迟写回磁盘的操作</li>
-<li><code>sync</code> 调用</li>
-</ul>
-
-
-<h3>设备驱动程序</h3>
-
-<p><img src="/images/device-driver-interface.bmp" alt="/images/device-driver-interface.bmp" /></p>
+<p>当然这依然不是最终实现的结构，该图并没有考虑目前已经广泛应用在各种处理器上的 <em>Prefetcher</em>
+本文之后会介绍这些 <em>State</em> 以及对应的 <em>Event</em> 。</p>
 </div>
 
 
@@ -272,8 +151,14 @@
   
 
 
-<time datetime="2013-10-22T20:19:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2013</time>
+<time datetime="2014-01-07T15:02:00+08:00" pubdate data-updated="true">Jan 7<span>th</span>, 2014</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/research/'>Research</a>
+  
+</span>
 
 
     </p>
@@ -287,10 +172,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/baidu-exam-review/" title="Previous Post: 百度校招-系统研发工程师-笔试题">&laquo; 百度校招-系统研发工程师-笔试题</a>
+        <a class="basic-alignment left" href="/blog/2014/my-work-in-bit/" title="Previous Post: 我在BIT的这几年">&laquo; 我在BIT的这几年</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/my-work-in-bit/" title="Next Post: 我在BIT的这几年">我在BIT的这几年 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/work-review/" title="Next Post: 明日迷的一天">明日迷的一天 &raquo;</a>
       
     </p>
   </footer>
@@ -370,8 +255,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://liuyix.org/blog/2013/linux-kernel-overview/';
-        var disqus_url = 'http://liuyix.org/blog/2013/linux-kernel-overview/';
+        var disqus_identifier = 'http://liuyix.org/blog/2014/cache-internal-professional/';
+        var disqus_url = 'http://liuyix.org/blog/2014/cache-internal-professional/';
         var disqus_script = 'embed.js';
       
     (function () {

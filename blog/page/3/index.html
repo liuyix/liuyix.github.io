@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="一直使用的是QQ提供的域名邮箱功能，很不错。本文旨在教你如何设置SPF记录防止自己域名的邮件被标记为spam。 什么是SPF记录 参考wiki：http://en.wikipedia.org/wiki/Sender_Policy_Framework SPF是Sender Policy &hellip;">
+  <meta name="description" content="原文链接：http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source 开源项目是一种好的释放自己的热情(&ldquo;geek out&rdquo;?)和做自己喜爱的事情的方式。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/">[译]初次参与开源软件项目的六个忠告</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-11T06:00:00+08:00" pubdate data-updated="true">Mar 11<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>原文链接：<a href="http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source">http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source</a></p>
+
+<p>开源项目是一种好的释放自己的热情(&ldquo;geek out&rdquo;?)和做自己喜爱的事情的方式。有一个自己参与的开源项目可以使你的工作做起来更加快乐和满足，也会使你保持良好的编程水平，也会经常给你带来其他机遇。许多人不知道从何出入手向开源项目贡献自己的力量。以下是接触参与开源项目的六个简单的忠告。</p>
+
+<h2>参与到平时使用的开源软件的项目之中(言外之意是不要鲁莽的参与到你不使用或者不了解的开源项目中)</h2>
+
+<p>这一条很明显，但是记得不要尝试参与到你不使用或者你一无所知的项目中去。给你平时使用的，你也许愿意投入贡献的开源软件列一张清单。别忘了还有你使用的开源类库、开源模块也可以考虑投入贡献，记得参与到一个有许多开发者使用的开源项目有更多的益处。你使用框架吗、文件转换工具、图形类库或者一般开源软件需要使用的构建工具吗，或者一个新功能？以上这些都是你第一次参与开源项目的首选。</p>
+
+<h2>Do What You Love 做你真正感兴趣的部分</h2>
+
+<p>记得要找一个你 <strong>真正</strong> 感兴趣的部分做出你的贡献。比如说你对解析器情有独钟，那么一个编译器项目就不是第一次参与的项目首选。也许可以考虑一个webserver项目或者构建工具项目中的解析配置文件模块。</p>
+
+<h2>掌握开源软件中常用的工具</h2>
+
+<p>对于每个开源项目，版本控制系统、bug追踪系统、patch提交系统，有自己的代码规范，feature request，问题排查系统(user troubleshooting issues)以及构建工具和开发者讨论社区，这些都会有所差异。因此你应该花些时间学习熟悉这个项目使用的工具。一些常识，例如不该在开发者邮件列表里询问如何使用SVN;不该在用户论坛里提交bug，这些都该知道。认真阅读开发文档，学习使用上述的工具不仅可以节省大家的时间也会提高你所做的贡献被接受的可能。</p>
+
+<h2>观察了解项目的人际圈子</h2>
+
+<p>除了认真考虑技术，了解项目中的社交圈子也很重要。你该知道哪些人是核心开发人员(core maintainer)，这些核心开发者是如何与他人交流的，在开发社区中哪些人更活跃，他们为项目制定了那些规则。对于新的贡献者，有些项目会很开放和热心帮助，而有些项目则不大友好。记得要多在邮件列表、IRC或者其他开发者交流渠道上花时间观察，熟悉项目开发的交流氛围。 也许你认为开发者社区的交流互动不很重要，但是这却是成为一个成功的贡献者还是沮丧的离开的差异所在。回忆器我第一次尝试贡献开源项目时，我想改善一个音乐播放器程序的播放列表格式，因为这个音乐播放器程序在命令行下指定播放列表时，它不支持所有可用的格式。由于我的歌曲文件名字超出了Linux内核支持的命令行参数的字符上限，因此我没有办法将所有的音乐放入播放列表中。于是我在邮件列表中发了封邮件询问开发组他们是否考虑支持新的播放列表格式。于是立即引起了一场争论。当我第二天查看邮件列表时，我看到了上百个回复，一些人表示支持，一些人说现在的已有格式已经很好，还有些人问道这是哪来的新人。于是整个事情由回应问题变成了争论。 我当时犯的错误就是没有足够了解项目的社交圈。查看下邮件列表的存档，你才会发现有些项目只对一小撮核心贡献者开放，而对大多数人尤其是那些连一个bugfix都没提交过的人一点都不理会的。因此这就引出了我要谈到的下一条也是最重要的一条忠告——从小处入手</p>
+
+<h2>从小处入手</h2>
+
+<p>从小处入手有两方面含义，一是小的贡献，二是规模小的项目。提交一些小的bugfix或者实现一个简单的feature可以帮助你提高社区中的声望，同时也会使你熟悉项目中的提交流程。这两个方面都灰是你的补丁被接受的可能性大大提高。 一个规模小的项目中，你的贡献会更富有成效，因为熟悉提交流程和工具链会更快，你还能和核心开发者有更好的沟通。一个只有一个维护者的项目，提交一个bugfix补丁通常和邮寄一封附有diff文件和问题描述信息的邮件给维护者一样简单。</p>
+
+<h2>开始自己的开源项目</h2>
+
+<p>开始接触开源项目的一个最简单的方法就是建立自己的开源项目。写一个firefox插件、一个wordpress插件或者一个emacs mode都是不错的想法，既可以快速写就，通常还会赢得不少用户的肯定。 不过在你创建自己的项目之前，记得一定要好好查查，确保你的工作没有人在做。你也许会惊喜的发现有许多项目只需要一点点关注就会使这些项目变得更有价值。</p>
+
+<p>以上就是6条初次参与开源软件项目的忠告。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -572,48 +638,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/solve-collasion-between-snipmate-and-acp/">snipMate(snipMate.vim)与AutoComplPop(acp.vim)冲突的解决方法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-02T20:29:13+08:00" pubdate data-updated="true">May 2<span>nd</span>, 2011</time>
-        
-         | <a href="/blog/2011/solve-collasion-between-snipmate-and-acp/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天开始熟悉vim上的开发，没想到一下子就遇到了一个问题——snipMate与AutoComplPop(以下简称acp)的冲突问题，具体症状为输入while或者for等关键词时会自动跳出补全窗口，按在菜单中来回选择而不是snippets。
-解决办法：</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/solve-collasion-between-snipmate-and-acp/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -644,6 +668,10 @@
       </li>
     
       <li class="post">
+        <a href="/blog/2014/cache-internal-professional/">SMP L1 Cache MESI Coherence Protocol Internal</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/my-work-in-bit/">我在BIT的这几年</a>
       </li>
     
@@ -655,15 +683,11 @@
         <a href="/blog/2013/baidu-exam-review/">百度校招-系统研发工程师-笔试题</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/xiaomi-onsite/">小米面试内核驱动工程师总结</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (4)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/research'>Research (1)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (4)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/research'>Research (2)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
 </section>
 
 
