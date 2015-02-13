@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2014-09-20T21:02:55+08:00</updated>
+  <updated>2015-02-13T22:27:42+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -25,9 +25,10 @@
 
 <ul>
 <li>Facebook@Percona Live 2014 <a href="http://www.percona.com/live/mysql-conference-2014/sessions/global-transaction-id-facebook">GLOBAL TRANSACTION ID AT FACEBOOK</a></li>
+<li>MySQL Manual使用时GTID时的限制：<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html">17.1.3.4 Restrictions on Replication with GTIDs</a></li>
 </ul>
 </li>
-<li>MySQL Manual使用时GTID时的限制：<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html">17.1.3.4 Restrictions on Replication with GTIDs</a></li>
+<li></li>
 </ul>
 
 ]]></content>
