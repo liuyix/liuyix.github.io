@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Coding | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-02-13T22:27:42+08:00</updated>
+  <updated>2015-04-05T23:55:12+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[git workflow]]></title>
+    <link href="http://liuyix.org/blog/2015/git-workflow/"/>
+    <updated>2015-04-05T23:30:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/git-workflow</id>
+    <content type="html"><![CDATA[<p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<a href="http://google-opensource.blogspot.com/2015/03/farewell-to-google-code.html">1</a>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。</p>
+
+<h2>git flow</h2>
+
+<ul>
+<li>master</li>
+<li>develop</li>
+<li>release</li>
+<li>feature</li>
+<li>bugfix</li>
+</ul>
+
+
+<p>一个例子是线上生产稳定的跑着1.2版本（master分支），开发和测试主要活跃在develop分支，产品路线图中计划的下个月的1.3版本的发布是develop的一个release分支。在1.3版本中总共加入了3个feature和5个bugfix，总共由4个人负责代码开发。</p>
+
+<p>2个主要分支：master和develop。master分支对应生产环境跑的代码，很像rpm包的<code>current channel</code>；develop对应的就是rpm发布的<code>test channel</code>，feature和release在完成后都会并入到develop分支。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bash Tips]]></title>

@@ -5,14 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Linux下个人知识管理(PKM)工具推荐 - Liuyix</title>
+  <title>git workflow - Liuyix</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Linux下个人知识管理(PKM)工具推荐 <!--
-//alert(document.location.pathname)
-window.location = "../blog/2011/pkm-tools-on-linux-recommendation/"
-//--> About Me id &hellip;">
+  <meta name="description" content="Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘1。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;gitlab。 git flow master
+develop
+release
+feature
+bugfix &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +22,7 @@ window.location = "../blog/2011/pkm-tools-on-linux-recommendation/"
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.org/pkm-tools-on-linux-recommendation">
+  <link rel="canonical" href="http://liuyix.org/blog/2015/git-workflow">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
@@ -83,34 +84,106 @@ window.location = "../blog/2011/pkm-tools-on-linux-recommendation/"
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Linux下个人知识管理(PKM)工具推荐</h1>
     
-  </header>
-  
-  <script type="text/javascript">
-<!--
-//alert(document.location.pathname)
-window.location = "../blog/2011/pkm-tools-on-linux-recommendation/"
-//-->
-</script>
+      <h1 class="entry-title">Git Workflow</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
 
   
-    <footer>
+
+
+<time datetime="2015-04-05T23:30:00+08:00" pubdate data-updated="true">Apr 5<span>th</span>, 2015</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<a href="http://google-opensource.blogspot.com/2015/03/farewell-to-google-code.html">1</a>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。</p>
+
+<h2>git flow</h2>
+
+<ul>
+<li>master</li>
+<li>develop</li>
+<li>release</li>
+<li>feature</li>
+<li>bugfix</li>
+</ul>
+
+
+<p>一个例子是线上生产稳定的跑着1.2版本（master分支），开发和测试主要活跃在develop分支，产品路线图中计划的下个月的1.3版本的发布是develop的一个release分支。在1.3版本中总共加入了3个feature和5个bugfix，总共由4个人负责代码开发。</p>
+
+<p>2个主要分支：master和develop。master分支对应生产环境跑的代码，很像rpm包的<code>current channel</code>；develop对应的就是rpm发布的<code>test channel</code>，feature和release在完成后都会并入到develop分支。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
       
-        <div class="sharing">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-05T23:30:00+08:00" pubdate data-updated="true">Apr 5<span>th</span>, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/coding/'>Coding</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2014/mysql-gtid-introduction/" title="Previous Post: MySQL 5.6 GTID 学习笔记">&laquo; MySQL 5.6 GTID 学习笔记</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -179,7 +252,10 @@ window.location = "../blog/2011/pkm-tools-on-linux-recommendation/"
       var disqus_shortname = 'liuyix';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://liuyix.org/blog/2015/git-workflow/';
+        var disqus_url = 'http://liuyix.org/blog/2015/git-workflow/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="LFS是&#8221;Linux From Scratch&#8221;的简写，&#8221;from scratch&#8221;的本义是“从头开始”，这里应该是引申义,&ldquo;从源代码构建&#8221;。 LFS的主页上介绍为&#8221;Linux From Scratch (LFS &hellip;">
+  <meta name="description" content="Update 2013-3-16 字体设置没有可移植性 在多个机子上迁移emacs时需要将字体设置部分注释掉，不然会出现 emacs正常启动，但是配色显示不正常的现象。 更傻瓜的设置方式 全部用界面菜单操作更方便。 Options &mdash;> Set Default Font &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/howto-config-font-in-emacs23-2/">Emacs23 字体配置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-16T21:22:00+08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/howto-config-font-in-emacs23-2/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Update 2013-3-16</h2>
+
+<h3>字体设置没有可移植性</h3>
+
+<p>在多个机子上迁移emacs时需要将字体设置部分注释掉，不然会出现 <em>emacs正常启动，但是配色显示不正常</em>的现象。</p>
+
+<h3>更傻瓜的设置方式</h3>
+
+<p>全部用界面菜单操作更方便。</p>
+
+<ol>
+<li><code>Options</code> &mdash;> <code>Set Default Font</code></li>
+<li>选择满意的字体之后，保存设置 <code>Options</code> &mdash;> <code>Save options</code></li>
+</ol>
+
+
+<hr />
+
+<blockquote><p>前几天使用org2blog出了一些莫名的问题，经过一系列的折腾（编译安装emacs,源码安装org-mode），还是没有搞清楚问题出在哪儿了，但是现在org2blog又不明原因的恢复正常了！（对emacs不了解的人伤不起啊，有时间一定要仔细研究下）</p></blockquote>
+
+<p>emacs23中默认的字体很小,此文告诉你如何用最&#8221;业余&#8221;也是很简便的方式添加修改emacs配置～</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/howto-config-font-in-emacs23-2/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -525,65 +588,6 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/migration-from-windows-to-linux/">Windows迁移到Ubuntu的软件替代方案</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-21T07:14:00+08:00" pubdate data-updated="true">Apr 21<span>st</span>, 2011</time>
-        
-         | <a href="/blog/2011/migration-from-windows-to-linux/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Update 2013-09-28</h2>
-
-<p><strong>金山WPS for Linux 出来啦~</strong> 小伙伴们用后都为他的表现惊呆了~~非常棒！ <br/>
-地址猛戳：<a href="http://linux.wps.cn/">http://linux.wps.cn/</a></p>
-
-<hr />
-
-<p>一年多的考研生活结束了，终于有时间将电脑环境完整的迁移到Ubuntu平台了。</p>
-
-<p><strong>迁移到Ubuntu Linux平台的困难</strong></p>
-
-<ul>
-<li><p>使用习惯的改变——Windows上主要操作是在GUI界面下完成，重度使用鼠标;Linux平台则主要使用功能异常强悍的终端命令行，对键盘的使用比较多,很少使用鼠标。（我个人还是很喜欢用terminal解决问题，感觉很简洁，很准确，很cool  :&ndash;)）。</p></li>
-<li><p>一些常用软件的替代方案——这个应该是目前最大的困难，Windows平台下的日常软件需要找到替代品或者解决办法，例如IE、iTunes、Office套件、影音播放器、QQ等聊天工具……，不过目前幸运的是，大部分的软件还是可以找到替代的。</p></li>
-<li><p>操作上的不熟练——各种linux命令以及各个应用程序的配置等等，这方面都需要一定时间的“磨合”才会逐渐适应新的环境，这也是需要很大的决心和耐心的。</p></li>
-</ul>
-
-
-<p>本文的重点应该是在常用软件的替代方案上——分享一下我个人的这几天折腾的成果！</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/migration-from-windows-to-linux/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -610,6 +614,10 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/git-workflow/">Git Workflow</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/mysql-gtid-introduction/">MySQL 5.6 GTID 学习笔记</a>
       </li>
     
@@ -625,15 +633,11 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
         <a href="/blog/2014/keep-doing-make-miracle/">积跬步至千里</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/work-review/">明日迷的一天</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/coding'>Coding (1)</a></li><li><a href='/blog/categories/database'>Database (1)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (6)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/research'>Research (2)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/coding'>Coding (2)</a></li><li><a href='/blog/categories/database'>Database (1)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (6)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/research'>Research (2)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
 </section>
 
 
