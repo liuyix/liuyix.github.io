@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘1。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;gitlab。掌握git工作流是大势所趋。 git小白推荐读物：atlassian出版的Git &hellip;">
+  <meta name="description" content="Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘1。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;gitlab。知道怎么玩git是大势所趋。 Git小白推荐读物：atlassian出版的Git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,42 +112,27 @@
   </header>
 
 
-  <div class="entry-content"><p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<a href="http://google-opensource.blogspot.com/2015/03/farewell-to-google-code.html">1</a>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。掌握git工作流是大势所趋。</p>
+  <div class="entry-content"><p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。知道怎么玩git是大势所趋。</p>
 
-<p>git小白推荐读物：atlassian出版的<a href="https://www.atlassian.com/git/tutorials">Git Tutorials</a>，这家公司拥有mac上最佳git客户端SourceTree以及Bitbucket。</p>
+<p>Git小白推荐读物：atlassian出版的<a href="https://www.atlassian.com/git/tutorials">Git Tutorials</a>，这家公司拥有mac上最佳git客户端SourceTree以及Bitbucket。</p>
 
 <p>本文是对<a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Comparing Workflows</a>这篇文章和自己的使用心得所做的总结。</p>
 
 <p>以下三种工作流只是典型的代表，不是规范，而是参考，可以结合自己的使用特点灵活选择和修改。</p>
 
-<h3>Centralized Workflow</h3>
-
-<p>适合几个人的小项目或者自己玩。</p>
-
-<h3>Feature Branch Workflow</h3>
-
-<p>适合几个人的小项目。</p>
-
-<h3>Gitflow</h3>
-
-<p>比较适合多人的大型项目。</p>
-
-<p><img src="http://nvie.com/img/git-model@2x.png" title="git branching model" alt="git branching model" /></p>
-
 <ul>
-<li>master</li>
-<li>develop</li>
-<li>release</li>
-<li>feature</li>
-<li>bugfix</li>
+<li>Centralized Workflow</li>
+<li>Feature Branch Workflow</li>
+<li>Gitflow</li>
 </ul>
 
 
-<p>一个例子是线上生产稳定的跑着1.2版本（master分支），开发和测试主要活跃在develop分支，产品路线图中计划的下个月的1.3版本的发布是develop的一个release分支。在1.3版本中总共加入了3个feature和5个bugfix，总共由4个人负责代码开发。</p>
-
-<p>2个主要分支：master和develop。master分支对应生产环境跑的代码，很像rpm包的<code>current channel</code>；develop对应的就是rpm发布的<code>test channel</code>，feature和release在完成后都会并入到develop分支。</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/git-workflow/">继续阅读 &rarr;</a>
+    </footer>
   
 
 
@@ -867,11 +852,10 @@
 <aside class="sidebar">
   
     <section>
-  <h1>About Me</h1>
-  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>CS Master Candidate, BIT</br>Insterest: CSArch, Linux, Android </p>
-  <h3><strong>Do something to prove yourself!</strong></h3>
-  
+  <h1>About</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>
   <center>
+  All articles licensed under
   <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
 <center>
 </section>

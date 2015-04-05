@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Coding | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-04-06T00:58:06+08:00</updated>
+  <updated>2015-04-06T01:26:14+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -18,21 +18,49 @@
     <link href="http://liuyix.org/blog/2015/git-workflow/"/>
     <updated>2015-04-05T23:30:00+08:00</updated>
     <id>http://liuyix.org/blog/2015/git-workflow</id>
-    <content type="html"><![CDATA[<p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<a href="http://google-opensource.blogspot.com/2015/03/farewell-to-google-code.html">1</a>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。掌握git工作流是大势所趋。</p>
+    <content type="html"><![CDATA[<p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。知道怎么玩git是大势所趋。</p>
 
-<p>git小白推荐读物：atlassian出版的<a href="https://www.atlassian.com/git/tutorials">Git Tutorials</a>，这家公司拥有mac上最佳git客户端SourceTree以及Bitbucket。</p>
+<p>Git小白推荐读物：atlassian出版的<a href="https://www.atlassian.com/git/tutorials">Git Tutorials</a>，这家公司拥有mac上最佳git客户端SourceTree以及Bitbucket。</p>
 
 <p>本文是对<a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Comparing Workflows</a>这篇文章和自己的使用心得所做的总结。</p>
 
 <p>以下三种工作流只是典型的代表，不是规范，而是参考，可以结合自己的使用特点灵活选择和修改。</p>
 
+<ul>
+<li>Centralized Workflow</li>
+<li>Feature Branch Workflow</li>
+<li>Gitflow</li>
+</ul>
+
+
+<!--more-->
+
+
 <h3>Centralized Workflow</h3>
 
-<p>适合几个人的小项目或者自己玩。</p>
+<ul>
+<li>适合几个人的小项目或者自己玩。</li>
+<li>和svn差别小。</li>
+<li>多人协作采用rebase方式并入master。
+
+<ul>
+<li>小李和小红分别把代码拉到本地进行开发，然后小李先提交到了master，这时候小红再提交她的修改会被reject，因为push的过程中小红本地的Master分支和remote（服务器）上的不同。这时候小红需要<code>git pull --rebase origin master</code>将远程的代码和她本地的修改进行融合，融合的目的是让小红提交的所有的commit看起来实在小李同学push到master分支后的那个点开始做的。</li>
+</ul>
+</li>
+</ul>
+
+
+<p><img src="https://www.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/centralized-workflow/11.svg" alt="小红在小李之后push到master" /></p>
 
 <h3>Feature Branch Workflow</h3>
 
-<p>适合几个人的小项目。</p>
+<ul>
+<li>适合几个人的小项目。</li>
+<li>利用<em>pull request</em>进行code review和交流改进。</li>
+</ul>
+
+
+<p>相比<em>Centralized Workflow</em>，这个工作流没有增加多少内容，只是在merge过程时一定要创建<code>pull request</code>让大家可以有个代码review和交流修改的过程。</p>
 
 <h3>Gitflow</h3>
 
@@ -49,9 +77,23 @@
 </ul>
 
 
-<p>一个例子是线上生产稳定的跑着1.2版本（master分支），开发和测试主要活跃在develop分支，产品路线图中计划的下个月的1.3版本的发布是develop的一个release分支。在1.3版本中总共加入了3个feature和5个bugfix，总共由4个人负责代码开发。</p>
+<!-- 一个例子是线上生产稳定的跑着1.2版本（master分支），开发和测试主要活跃在develop分支，产品路线图中计划的下个月的1.3版本的发布是develop的一个release分支。在1.3版本中总共加入了3个feature和5个bugfix，总共由4个人负责代码开发。-->
 
-<p>2个主要分支：master和develop。master分支对应生产环境跑的代码，很像rpm包的<code>current channel</code>；develop对应的就是rpm发布的<code>test channel</code>，feature和release在完成后都会并入到develop分支。</p>
+
+
+
+<!--2个主要分支：master和develop。master分支对应生产环境跑的代码，很像rpm包的`current channel`；develop对应的就是rpm发布的`test channel`，feature和release在完成后都会并入到develop分支。-->
+
+
+
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>http://google-opensource.blogspot.com/2015/03/farewell-to-google-code.html<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
 ]]></content>
   </entry>
   
