@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Reading List Facebook部署5.6 GTID的blog: Lessons from Deploying MySQL GTID at Scale(需要翻墙) Facebook@Percona Live 2014 GLOBAL TRANSACTION ID AT FACEBOOK &hellip;">
+  <meta name="description" content="Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘1。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;gitlab。掌握git工作流是大势所趋。 git小白推荐读物：atlassian出版的Git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,77 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/git-workflow/">Git Workflow</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-05T23:30:00+08:00" pubdate data-updated="true">Apr 5<span>th</span>, 2015</time>
+        
+         | <a href="/blog/2015/git-workflow/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<a href="http://google-opensource.blogspot.com/2015/03/farewell-to-google-code.html">1</a>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。掌握git工作流是大势所趋。</p>
+
+<p>git小白推荐读物：atlassian出版的<a href="https://www.atlassian.com/git/tutorials">Git Tutorials</a>，这家公司拥有mac上最佳git客户端SourceTree以及Bitbucket。</p>
+
+<p>本文是对<a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Comparing Workflows</a>这篇文章和自己的使用心得所做的总结。</p>
+
+<p>以下三种工作流只是典型的代表，不是规范，而是参考，可以结合自己的使用特点灵活选择和修改。</p>
+
+<h3>Centralized Workflow</h3>
+
+<p>适合几个人的小项目或者自己玩。</p>
+
+<h3>Feature Branch Workflow</h3>
+
+<p>适合几个人的小项目。</p>
+
+<h3>Gitflow</h3>
+
+<p>比较适合多人的大型项目。</p>
+
+<p><img src="http://nvie.com/img/git-model@2x.png" title="git branching model" alt="git branching model" /></p>
+
+<ul>
+<li>master</li>
+<li>develop</li>
+<li>release</li>
+<li>feature</li>
+<li>bugfix</li>
+</ul>
+
+
+<p>一个例子是线上生产稳定的跑着1.2版本（master分支），开发和测试主要活跃在develop分支，产品路线图中计划的下个月的1.3版本的发布是develop的一个release分支。在1.3版本中总共加入了3个feature和5个bugfix，总共由4个人负责代码开发。</p>
+
+<p>2个主要分支：master和develop。master分支对应生产环境跑的代码，很像rpm包的<code>current channel</code>；develop对应的就是rpm发布的<code>test channel</code>，feature和release在完成后都会并入到develop分支。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -785,53 +856,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/xiaomi-onsite/">小米面试内核驱动工程师总结</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-11T19:54:00+08:00" pubdate data-updated="true">Oct 11<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/xiaomi-onsite/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>此为吐槽贴，略涉及技术。</p></blockquote>
-
-<p>之前网申投的是<em>内核驱动工程师</em>，这个职位是凭着自己对Linux Internal还保持非常浓厚的兴趣，虽然实践不多，还有就是一看到这个title就有种高端大气上档次的赶脚。之后前几天打来电话去面试，这才知道这次是小米的bsp团队招人。</p>
-
-<p>怀着忐忑和兴奋的心情去小米参加bsp团队的面试。结果比较让人失望，一方面是自己还有很多不够深入的地方，一方面是bsp团队明显准备不足。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/xiaomi-onsite/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -856,6 +880,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/git-workflow/">Git Workflow</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/mysql-gtid-introduction/">MySQL 5.6 GTID 学习笔记</a>
       </li>
     
@@ -871,15 +899,11 @@
         <a href="/blog/2014/keep-doing-make-miracle/">积跬步至千里</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/work-review/">明日迷的一天</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/coding'>Coding (1)</a></li><li><a href='/blog/categories/database'>Database (1)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (6)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/research'>Research (2)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/coding'>Coding (2)</a></li><li><a href='/blog/categories/database'>Database (1)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (6)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/research'>Research (2)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
 </section>
 
 
