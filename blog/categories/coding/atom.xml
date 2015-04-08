@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Coding | Liuyix]]></title>
+  <title><![CDATA[Category: Coding, | Liuyix]]></title>
   <link href="http://liuyix.org/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-04-06T12:28:49+08:00</updated>
+  <updated>2015-04-09T00:13:12+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -14,195 +14,83 @@
 
   
   <entry>
-    <title type="html"><![CDATA[git workflow]]></title>
-    <link href="http://liuyix.org/blog/2015/git-workflow/"/>
-    <updated>2015-04-05T23:30:00+08:00</updated>
-    <id>http://liuyix.org/blog/2015/git-workflow</id>
-    <content type="html"><![CDATA[<p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。知道怎么玩git是大势所趋。</p>
-
-<p>Git小白推荐读物：atlassian出版的<a href="https://www.atlassian.com/git/tutorials">Git Tutorials</a>，这家公司拥有mac上最佳git客户端SourceTree以及Bitbucket。</p>
-
-<p>本文是对<a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Comparing Workflows</a>这篇文章和自己的使用心得所做的总结。</p>
-
-<p>以下三种工作流只是典型的代表，不是规范，而是参考，可以结合自己的使用特点灵活选择和修改。</p>
+    <title type="html"><![CDATA[由互联网中的Python应用想到的网站架构的优化]]></title>
+    <link href="http://liuyix.org/blog/2015/python-in-industry/"/>
+    <updated>2015-04-08T22:56:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/python-in-industry</id>
+    <content type="html"><![CDATA[<ul>
+<li>国内<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
 
 <ul>
-<li>Centralized Workflow</li>
-<li>Feature Branch Workflow</li>
-<li>Gitflow</li>
+<li>知乎</li>
+<li>豆瓣</li>
+<li>果壳网</li>
 </ul>
-
-
-<!--more-->
-
-
-<h3>Centralized Workflow</h3>
+</li>
+<li>国外，只列出我认识的比较出名的，还有好多<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>=。=
 
 <ul>
-<li>适合几个人的小项目或者自己玩。</li>
-<li>和svn差别小。</li>
-<li>多人协作采用rebase方式并入master。
-
-<ul>
-<li>小李和小红分别把代码拉到本地进行开发，然后小李先提交到了master，这时候小红再提交她的修改会被reject，因为push的过程中小红本地的Master分支和remote（服务器）上的不同。这时候小红需要<code>git pull --rebase origin master</code>将远程的代码和她本地的修改进行融合，融合的目的是让小红提交的所有的commit看起来实在小李同学push到master分支后的那个点开始做的。</li>
+<li>Quora 国外的知乎？</li>
+<li>Dropbox 国外的金山快盘？</li>
+<li>Disqus 国外的多说？</li>
+<li>Pinterest 国外的花瓣？</li>
+<li>Youtube 国外的优酷？</li>
+<li>Slideshare 国外的百度文库？</li>
+<li>reddit 国外的猫扑？</li>
+<li>Yelp 国外的大众点评</li>
+<li>&hellip;</li>
 </ul>
 </li>
 </ul>
 
 
-<p><img src="https://www.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/centralized-workflow/11.svg" alt="小红在小李之后push到master" /></p>
+<p>更多的信息可以参考Python官网的<a href="https://www.python.org/about/success/">Python Success Stories</a>。</p>
 
-<h3>Feature Branch Workflow</h3>
+<h3>Quora</h3>
+
+<p>下面是QuorWhy did Quora choose Python for its development?a创始人在Quora上对<em>Why did Quora choose Python for its development?</em>的回答<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></p>
+
+<blockquote><p>We decided that Python was fast enough for most of what we need to do (since we push our performance-critical code to backend servers written in C++ whenever possible). As far as typechecking, we ended up writing very thorough unit tests which are worth writing anyway, and achieve most of the same goals.</p></blockquote>
+
+<p>可以看到对于Python的性能短板，Quora在performance-critical的地方尽可能换用了C++。对于Python没有静态类型，Quora用尽可能的单元测试来确保质量。之所以选择Python其实很大的原因是Founder对Python比较擅长。
+进一步google了下，他们的框架用的Pylon。</p>
+
+<h3>知乎的技术架构</h3>
+
+<p>知乎CTO在去年年底有过分享，目前在InfoQ上能找到整理稿。链接：<a href="http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution">http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution</a></p>
+
+<p>简而言之用的tornado，自己开发了日志系统Kids，消息传递系统Sink，还有页面渲染ZhihuNode。</p>
+
+<h3>网站架构及性能的思考</h3>
+
+<p>本周听了一次FB周海平在阿里内部的一次分享。无论是阿里、Facebook还是豆瓣，我发现了在网站架构上这几家有很多共同点的：</p>
 
 <ul>
-<li>适合几个人的小项目。</li>
-<li>利用<em>pull request</em>进行code review和交流改进。</li>
+<li>MySQL作为存储后端</li>
+<li>MySQL上一定有memcache、tair这样的KV系统做缓存</li>
+<li>都各自开发了适合自己的消息分发系统，Notify, Thrift, Beanstalkd</li>
+<li>后端应该都具有实时日志数据分析： HBase、云梯2、Kids</li>
+<li>不同程度上用异步化来提高性能，并会一直以此来作为性能提升的方法。</li>
+<li>消息链路上的优化：一个网页的渲染上是树状结构的获取数据，因此可以在通过优化这棵树来达到优化整个过程的目的</li>
 </ul>
 
 
-<p>相比<em>Centralized Workflow</em>，这个工作流没有增加多少内容，只是在merge过程时一定要创建<code>pull request</code>让大家可以有个代码review和交流修改的过程。</p>
+<h3>其他</h3>
 
-<h3>Gitflow</h3>
-
-<p>比较适合多人的大型项目。</p>
-
-<p><img src="http://nvie.com/img/git-model@2x.png" title="git branching model" alt="git branching model" /></p>
-
-<ul>
-<li>master</li>
-<li>develop</li>
-<li>release</li>
-<li>feature</li>
-<li>bugfix</li>
-</ul>
-
-
-<!-- 一个例子是线上生产稳定的跑着1.2版本（master分支），开发和测试主要活跃在develop分支，产品路线图中计划的下个月的1.3版本的发布是develop的一个release分支。在1.3版本中总共加入了3个feature和5个bugfix，总共由4个人负责代码开发。-->
-
-
-
-
-<!--2个主要分支：master和develop。master分支对应生产环境跑的代码，很像rpm包的`current channel`；develop对应的就是rpm发布的`test channel`，feature和release在完成后都会并入到develop分支。-->
-
-
-
+<p>网站选型不单纯是比较语言优劣，还和社区的发展趋势活跃(谁都不想用过一门可能几年就无人问津的语言)、团队内普遍的好恶和掌控能力（C、C++最好，但是大家都不会）、整个行业的形势（团队内都用Lisp，但是招不到人）等等多种因素有关系。
+选择哪门语言确实重要，这决定了未来几年或者更远的时间内技术的发展路线，更重要的当规模扩大后需要在性能优化上要付出的代价。（这里面可以拿Facebook优化PHP作为反例，若是当初扎克用的是java或者c++，也许也不会因此如此兴师动众的重写了PHP生态系统里面的大部分东西。）</p>
 <div class="footnotes">
 <hr/>
 <ol>
 <li id="fn:1">
-<p>http://google-opensource.blogspot.com/2015/03/farewell-to-google-code.html<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<p><a href="http://www.zhihu.com/question/19685768">知乎-国内使用 Python 作为主要开发语言的知名网站有哪些</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p><a href="http://www.quora.com/Which-Internet-companies-use-Python">Quora-Which Internet companies use Python?</a><a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p><a href="http://www.quora.com/Why-did-Quora-choose-Python-for-its-development">Quora-Why did Quora choose Python for its development?</a><a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
 </ol>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bash Tips]]></title>
-    <link href="http://liuyix.org/blog/2014/bash-tips/"/>
-    <updated>2014-09-14T16:59:00+08:00</updated>
-    <id>http://liuyix.org/blog/2014/bash-tips</id>
-    <content type="html"><![CDATA[<h3>Bash 遇到错误就退出</h3>
-
-<p><a href="http://stackoverflow.com/a/4382179">http://stackoverflow.com/a/4382179</a></p>
-
-<p><code>set -e</code></p>
-
-<blockquote><p>If you put set -e in a script, the script will terminate as soon as any command inside it fails (i.e. as soon as any command returns a nonzero status). This doesn&rsquo;t let you write your own message, but often the failing command&rsquo;s own messages are enough.</p>
-
-<p>The advantage of this approach is that it&rsquo;s automatic: you don&rsquo;t run the risk of forgetting to deal with an error case.</p>
-
-<p>Commands whose status is tested by a conditional (such as if, &amp;&amp; or ||) do not terminate the script (otherwise the conditional would be pointless). An idiom for the occasional command whose failure doesn&rsquo;t matter is command-that-may-fail || true. You can also turn set -e off for a part of the script with set +e.</p></blockquote>
-
-<h2>Bash使用数组</h2>
-
-<h3>快速入门</h3>
-
-<p>(Bash For Loop Array: Iterate Through Array Values)[<a href="http://www.cyberciti.biz/faq/bash-for-loop-array/">http://www.cyberciti.biz/faq/bash-for-loop-array/</a>]</p>
-
-<ul>
-<li>用括号指定，空格指定就好</li>
-<li>遍历： <code>for i in "${var[@]}"</code></li>
-</ul>
-
-
-<h3>深入</h3>
-
-<p>```</p>
-
-<h1>!/bin/bash</h1>
-
-<h1>array-ops.sh: More fun with arrays.</h1>
-
-<p>array=( zero one two three four five )</p>
-
-<h1>Element 0   1   2    3     4    5</h1>
-
-<p>echo ${array[0]}       #  zero
-echo ${array:0}        #  zero</p>
-
-<pre><code>                   #  Parameter expansion of first element,
-                   #+ starting at position # 0 (1st character).
-</code></pre>
-
-<p>echo ${array:1}        #  ero</p>
-
-<pre><code>                   #  Parameter expansion of first element,
-                   #+ starting at position # 1 (2nd character).
-</code></pre>
-
-<p>echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&rdquo;</p>
-
-<p>echo ${#array[0]}      #  4</p>
-
-<pre><code>                   #  Length of first element of array.
-</code></pre>
-
-<p>echo ${#array}         #  4</p>
-
-<pre><code>                   #  Length of first element of array.
-                   #  (Alternate notation)
-</code></pre>
-
-<p>echo ${#array[1]}      #  3</p>
-
-<pre><code>                   #  Length of second element of array.
-                   #  Arrays in Bash have zero-based indexing.
-</code></pre>
-
-<p>echo ${#array[*]}      #  6</p>
-
-<pre><code>                   #  Number of elements in array.
-</code></pre>
-
-<p>echo ${#array[@]}      #  6</p>
-
-<pre><code>                   #  Number of elements in array.
-</code></pre>
-
-<p>echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&rdquo;</p>
-
-<p>array2=( [0]=&ldquo;first element&rdquo; [1]=&ldquo;second element&rdquo; [3]=&ldquo;fourth element&rdquo; )</p>
-
-<h1>^     ^       ^     ^      ^       ^     ^      ^       ^</h1>
-
-<h1>Quoting permits embedding whitespace within individual array elements.</h1>
-
-<p>echo ${array2[0]}      # first element
-echo ${array2[1]}      # second element
-echo ${array2[2]}      #</p>
-
-<pre><code>                   # Skipped in initialization, and therefore null.
-</code></pre>
-
-<p>echo ${array2[3]}      # fourth element
-echo ${#array2[0]}     # 13    (length of first element)
-echo ${#array2[*]}     # 3     (number of elements in array)</p>
-
-<p>exit
-```</p>
-
-<p>(Arrays)[<a href="http://www.tldp.org/LDP/abs/html/arrays.html">http://www.tldp.org/LDP/abs/html/arrays.html</a>]</p>
 ]]></content>
   </entry>
   
