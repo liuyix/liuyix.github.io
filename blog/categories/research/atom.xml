@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Research | Liuyix]]></title>
-  <link href="http://liuyix.org/blog/categories/research/atom.xml" rel="self"/>
-  <link href="http://liuyix.org/"/>
-  <updated>2015-04-09T00:13:12+08:00</updated>
-  <id>http://liuyix.org/</id>
+  <link href="http://liuyix.github.io/blog/categories/research/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2015-08-24T23:57:12+08:00</updated>
+  <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SMP L1 Cache MESI Coherence Protocol Internal]]></title>
-    <link href="http://liuyix.org/blog/2014/cache-internal-professional/"/>
+    <link href="http://liuyix.github.io/blog/2014/cache-internal-professional/"/>
     <updated>2014-01-07T15:02:00+08:00</updated>
-    <id>http://liuyix.org/blog/2014/cache-internal-professional</id>
+    <id>http://liuyix.github.io/blog/2014/cache-internal-professional</id>
     <content type="html"><![CDATA[<h2>Gem5 Simulator Ruby Memory System</h2>
 
 <p>Ruby Memory</p>
@@ -41,9 +41,9 @@
   
   <entry>
     <title type="html"><![CDATA[我在BIT的这几年]]></title>
-    <link href="http://liuyix.org/blog/2014/my-work-in-bit/"/>
+    <link href="http://liuyix.github.io/blog/2014/my-work-in-bit/"/>
     <updated>2014-01-03T19:39:00+08:00</updated>
-    <id>http://liuyix.org/blog/2014/my-work-in-bit</id>
+    <id>http://liuyix.github.io/blog/2014/my-work-in-bit</id>
     <content type="html"><![CDATA[<h3>Changelog</h3>
 
 <table>

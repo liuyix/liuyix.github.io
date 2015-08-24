@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: mac | Liuyix]]></title>
-  <link href="http://liuyix.org/blog/categories/mac/atom.xml" rel="self"/>
-  <link href="http://liuyix.org/"/>
-  <updated>2015-04-09T00:13:12+08:00</updated>
-  <id>http://liuyix.org/</id>
+  <link href="http://liuyix.github.io/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2015-08-24T23:57:12+08:00</updated>
+  <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[mac上安装octopress]]></title>
-    <link href="http://liuyix.org/blog/2013/mac-install-octopress/"/>
+    <link href="http://liuyix.github.io/blog/2013/mac-install-octopress/"/>
     <updated>2013-10-06T12:31:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/mac-install-octopress</id>
+    <id>http://liuyix.github.io/blog/2013/mac-install-octopress</id>
     <content type="html"><![CDATA[<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
 <del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
 

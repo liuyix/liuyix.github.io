@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Other | Liuyix]]></title>
+  <link href="http://liuyix.github.io/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2015-08-24T23:57:12+08:00</updated>
+  <id>http://liuyix.github.io/</id>
+  <author>
+    <name><![CDATA[liuyix]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress source迁移到新主机]]></title>
+    <link href="http://liuyix.github.io/blog/2015/new-mac-test/"/>
+    <updated>2015-08-24T00:04:00+08:00</updated>
+    <id>http://liuyix.github.io/blog/2015/new-mac-test</id>
+    <content type="html"><![CDATA[<ul>
+<li>新机器首先是把ssh key加入到github的setting</li>
+<li>git clone <em>liuyix.github.com</em></li>
+<li>git checkout source
+
+<ul>
+<li>操作完这一步后就相当于把当前octopress的source文档拉到了本地了。</li>
+</ul>
+</li>
+<li>安装octopress相关的ruby依赖等
+
+<ul>
+<li>可选步骤：修改rubygems的安装源到国内的taobao源</li>
+</ul>
+</li>
+</ul>
+
+
+<p>完成上面几步后，就可以尝试调用<code>rake generate</code>生成一次网站，然后<code>rake deploy</code>看下是否成功~</p>
+
+<p>-EOF-</p>
+]]></content>
+  </entry>
+  
+</feed>

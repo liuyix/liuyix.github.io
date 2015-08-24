@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Life | Liuyix]]></title>
-  <link href="http://liuyix.org/blog/categories/life/atom.xml" rel="self"/>
-  <link href="http://liuyix.org/"/>
-  <updated>2015-04-09T00:13:12+08:00</updated>
-  <id>http://liuyix.org/</id>
+  <link href="http://liuyix.github.io/blog/categories/life/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2015-08-24T23:57:12+08:00</updated>
+  <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -14,121 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[拖延的反思]]></title>
-    <link href="http://liuyix.org/blog/2014/procrastination-helps/"/>
-    <updated>2014-09-14T11:39:00+08:00</updated>
-    <id>http://liuyix.org/blog/2014/procrastination-helps</id>
-    <content type="html"><![CDATA[<p>昨天在多看阅读中看到的一篇关于拖延症的文章&mdash;《“被绑架”了的拖延症患者 &mdash; 爱上拖延症的八个理由》。原始出处已无法考据，感谢原作者的分享。在网上找到了一个<a href="http://talk.ifeng.com/zaixianjiangtang/shys/special/tuoyanzheng/zuixin/detail_2012_10/30/18669615_0.shtml">引用链接</a>。</p>
-
-<p>之前也正好看到了李松蔚在微信公众账号里面发表的拖延症系列文章中的《框架中的拖延者（3）：和解，无关明日》，二者有想通之处：拖延是内心不和谐的表征，造成拖延一定有更深层次的原因。如果发生拖延了不深究原因只一味的自责，那么拖延只会恶化，身心不会得到解脱，真正的“病因”因此会一直纠缠着自己。</p>
-
-<p>在《被绑架》一文中，笔者就内省自己拖延的原因，勇敢的做出了改变。</p>
-
-<p>笔者自述自己拖延中大部分时间是用来玩游戏、听音乐、看电影、读文章、读书。相比于『有意义的工作』，笔者把这作为自己内省和成长的一部分。</p>
-
-<p>这一点上我部分赞同，不想工作必然有其他可理解的原因，不仅仅是『找回属于自己的时间』。我觉得拖延不做工作，尤其是周末。有可能是自己的身体在通过『懒惰小人』告诉自己需要休息放松。<em>人不是机器，一般情况下很难长期保持高强度的工作。</em></p>
-
-<p>在“行为和内心一致”这一节中，笔者在工作中发现越来越讨厌工作，逃避工作。</p>
-
-<blockquote><p>这一阶段的拖延虽然还有漫无目的的无聊，但更多的是一些有意识地利用拖延下来的时间学习哲学、心理学或者英语和写作等相关技能
-事后从这个角度看，事情甚至完全反过来，就像是为了获得收入和安全感拖延了我的学习时间而去做无趣的工作。</p></blockquote>
-
-<p>笔者确实发现了自己不喜欢自己的工作。（事后也用自己的行动的结果说明了自己在其他领域有更好的发展。）但是通常而言无论是什么事，总有你不愿意做的部分和喜欢做的部分。认清自己内心到底喜欢做什么并能持之以恒，这是需要智慧的。若是缺乏智慧，则误把因为“懒”做事挑肥拣瘦当做这不是我喜欢做的工作。今天从银行辞职该做摄影师，坚持不了多久又觉得摄影不是真正喜欢的事情，又改写小说&hellip;<br/>
-用智慧做出判断，用勇气做出改变相比治疗拖延症是更重要的。
-关于如何甄选自己喜欢的职业，建议读一读<a href="http://book.douban.com/subject/4953695/">《拆掉思维里的墙》</a>这本书。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[积跬步至千里]]></title>
-    <link href="http://liuyix.org/blog/2014/keep-doing-make-miracle/"/>
-    <updated>2014-09-13T21:19:00+08:00</updated>
-    <id>http://liuyix.org/blog/2014/keep-doing-make-miracle</id>
-    <content type="html"><![CDATA[<p>焦虑的我今天冥冥中发现了BYVoid的github，进而去他的博客兜了一圈，感触良多。先介绍下背景。</p>
-
-<p>BYVoid这个人是去年校招时听闻的。那时刚参加完阿里的校招，还没有出结果，焦急的等待中持续关注着北邮人论坛的有关阿里校招的消息。那个时候不知阿里内部哪位好事者漏出了一张阿里校招时给出A+ offer的面试后台系统记录截图。（A+就是去年阿里校招的阿里星计划，60W年薪+股票期权），这个八卦中的主角就是郭家宝，网名BYVoid。一个九零后的清华本科生，本科的假期在MSRA，Google，Hulu，Facebook有过实习经历，初高中参加信息学竞赛，后来保送到清华。还出过一本书<a href="http://book.douban.com/subject/10789820/">《Node.js开发指南》</a>。<br/>
-关于他个人的更多介绍，可以看下他的博客介绍：<a href="https://www.byvoid.com/zht/about/resume">链接</a>以及他的报告<a href="https://byvoid.github.io/slides/experiences-2014/index.html">《我的一些经历》</a></p>
-
-<p>我最感兴趣的是<em>一个牛人是如何成长的</em>，<em>他的博客文章的质量是如何提高的</em>。进到博客一看发现这位新秀从2007年就开始写博客了(2010年才上大学)。于是我就从最后面的文章开始翻起来，有种在读别人的日记的赶脚&hellip;（兴致勃勃的去看一个本科毕业生在初三时写的文章，没有这种赶脚才怪呢）BYVoid<br/>
-这几年确实没少写。每个月有十几篇二十几篇的数量。</p>
-
-<p>花了一个晚上的时间把所有的文章题目过了一遍。感触挺多:
-技术牛人其实也是普通人，只是做事更加深入、认真，专注一些和坚持久一些『罢了』。</p>
-
-<h4>履历</h4>
-
-<p>BYVoid初中一次偶然的机会，他的老师发现了他在信息学上的天分（拿出一张卷子让他做，结果竟然很多都做对了，后来才知道这是去年的信息学竞赛试题）。也许就是这样的契机让郭同学的人生轨迹变得和同龄人与众不同。之后郭家宝同学通过竞赛保送到省实验中学，之后的高中几年就一直在做信息学竞赛。从他的博客上来看，BYVoid不仅是有天分，本身也很喜欢信息学竞赛，解数学题。他不仅做了老师要求的内容，还在课下自己主动刷题训练（高中的文章很多都是UASCO解题报告）。高中联赛名次不错，最后联赛超常发挥拿到了国家比赛的金牌，靠这块金牌顺利的保送到了清华大学，这时的他才高中二年级。接下去的一年和很多人不同的是，他不再有高考压力，于是在看新白娘子传奇的过程中，发现了自己对汉语字体的兴趣，逐渐开始了汉字研究。到了大学，还保持着这份兴趣。建立了至今广为使用的Opencc开源项目。<br/>
-<em>良好的编程功底</em>加上清华大学计算机系拥有的资源，BYVoid在MSRA, Hulu, Google, Facebook都做过实习。今年毕业的他应该是去了瑞士Google（从他的LinkedIn了解到的）</p>
-
-<h4>感悟</h4>
-
-<ul>
-<li>不怀目的的写作是最真实的成长记录，<a href="https://www.byvoid.com/zhs/blog/read-rss">这篇文章</a>就是很好的一个例子。</li>
-<li>任何人都是从基础逐渐开始成长。写作的能力也一样，长文写作也是一点点培养建立的，BYVoid自己也做了几年博客文章的一个总结（<a href="https://www.byvoid.com/zhs/blog/my-blog-four-years">link</a>）。技能的提高都是通过不断的坚持练习达到的。对于写作来说只有不断的写，开始时也许文字会短小、不连贯，包含很多主观的随感以及转载。但是不断的坚持，慢慢的开始有了深度和广度。在BYVoid的博客中我看到了<strong>每一个阶段都是真实的表现了自己同期的水平和状态</strong>，一个初中生不会一开始就会写出有研究深度的文章和报告而是会写出介绍环境搭建、介绍Vim用法等入门心得。没有刻意地训练只是日积月累的写作，量变终会得到质变。写就<a href="https://byvoid.github.io/slides/cassandra/index.html"><Cassandra></a>、<a href="https://byvoid.github.io/slides/bitcoin-internals/index.html">Bitcoin Internals</a>这样的Slides。</li>
-<li><strong>兴趣</strong>、<strong>自我驱动</strong>更有可能成为领域达人。退一步讲成为不了达人，自己也可以自得其乐。这也是『过程比结果重要』的一种诠释吧。兴趣使然 &mdash;> 深入研究 &mdash;> 升华提高。</li>
-<li><strong>持久</strong>和<strong>钻研</strong>的个性是能力持续提高的秘诀。拥有兴趣而没有持之以恒的坚持也很难成为一位达人（当然也可以将持久作为兴趣定义的属性）。这些文章 <a href="https://www.byvoid.com/blog/string-hash-compare">Hash函数比较</a>，<a href="%E7%A0%B4%E8%A7%A3Firefox%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%E5%8A%A0%E5%AF%86%E7%9A%84%E4%BF%A1%E6%81%AF">破解Firefox密码管理器加密的信息</a>，<a href="https://www.byvoid.com/zhs/blog/firefox-js">CmYkRgb123 Online Grading System</a> ，还有OpenCC 不仅能看出他的兴趣也能感受到一份钻研的热情。</li>
-</ul>
-
-
-<p>拥有足够浓厚的兴趣和一个非功利的健康心态很容易成为某一领域的达人。但是如果没有这些，只要你：持之以恒、不浮躁、耐心、钻研、自我驱动也一样可以达成。</p>
-
-<h3>『我不追求输赢，我只是认真』</h3>
-
-<p>『钻研』是BYVoid给我印象最深的一点。作为一种个性，不仅是在技术能力上体现，会在生活的很多方面能感受得到。高中信息学竞赛时，他把NOIP2000到2007年所有题都做了一遍<a href="https://www.byvoid.com/blog/noip-allsolutions/">link</a> 并整理出来这个就不是所有人都能做到的。还有他特别爱玩仙剑奇侠传游戏，这个很多人都爱玩，但是很少有人像他这样详细相关的情节、剧情都详细写成评测文章，<a href="https://www.byvoid.com/blog/pal4-experience">仙剑四</a>，<a href="https://www.byvoid.com/zhs/blog/tag/%E4%BB%99%E5%8A%8D%E4%BA%94">仙剑五系列</a>。或者看一部电影做一个影评<a href="https://www.byvoid.com/zhs/blog/under-the-hawthorn-tree">山楂树之恋</a>。还体现在文字的研究上，从他的<a href="https://www.byvoid.com/zhs/blog/xb-word-pron">第一篇文章</a>，之后有了OpenCC——<a href="https://www.byvoid.com/zhs/blog/open-chinese-convert">文章link</a>，在简繁字体的研究一直持续着。</p>
-
-<p>因为没有看到合适的介绍node.js的书籍，也恰逢认识了图灵图书的编辑，于是促成了一本Node.js开发指南的诞生。这让我想到『机会总是留给有准备的人』。</p>
-
-<p>所以成就一个牛人主要是一个人身上的某种品质——如BYVoid的钻研，而不仅仅是兴趣。</p>
-
-<h3>一些博客链接</h3>
-
-<ul>
-<li><a href="https://www.byvoid.com/zhs/blog/new-year-2009">2008年总结</a>，2008年年末开始刷POI，2009年开始写比较长的解题报告，匈牙利算法，很认真的画了图，写了很详细，很认真</li>
-<li>2009年近半年的近期总结-<a href="https://www.byvoid.com/zhs/blog/summary-2009-3">https://www.byvoid.com/zhs/blog/summary-2009-3</a></li>
-<li>一次吐槽 &mdash; <a href="https://www.byvoid.com/zhs/blog/sequence-mad">https://www.byvoid.com/zhs/blog/sequence-mad</a></li>
-<li>NOI2009 &mdash; <a href="https://www.byvoid.com/zhs/blog/noi-2009%EF%BC%8Chttps://www.byvoid.com/zhs/blog/noi-ssc-exp">https://www.byvoid.com/zhs/blog/noi-2009%EF%BC%8Chttps://www.byvoid.com/zhs/blog/noi-ssc-exp</a></li>
-<li>语言研究的第一篇文章 &mdash; <a href="https://www.byvoid.com/zhs/blog/xb-word-pron%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%85%A2%E6%85%A2%E5%BC%80%E5%A7%8B%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6%E8%AF%AD%E8%A8%80%E4%BA%86%EF%BC%8C%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%80%E7%AF%87https://www.byvoid.com/zhs/blog/bh-diao-cao%EF%BC%8C%E4%B9%8B%E5%90%8E%E5%B0%B1%E4%B8%80%E7%9B%B4%E5%9C%A8%E7%A0%94%E7%A9%B6%E7%AE%80%E7%B9%81%E5%AD%97%E4%BD%93">https://www.byvoid.com/zhs/blog/xb-word-pron%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%85%A2%E6%85%A2%E5%BC%80%E5%A7%8B%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6%E8%AF%AD%E8%A8%80%E4%BA%86%EF%BC%8C%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%80%E7%AF%87https://www.byvoid.com/zhs/blog/bh-diao-cao%EF%BC%8C%E4%B9%8B%E5%90%8E%E5%B0%B1%E4%B8%80%E7%9B%B4%E5%9C%A8%E7%A0%94%E7%A9%B6%E7%AE%80%E7%B9%81%E5%AD%97%E4%BD%93</a></li>
-<li>有自己开发维护的系统：<a href="https://www.byvoid.com/zhs/blog/vakuum-dev-note-02">https://www.byvoid.com/zhs/blog/vakuum-dev-note-02</a></li>
-<li>2010年6月开启了OpenCC项目 <a href="https://www.byvoid.com/zhs/blog/open-chinese-convert">https://www.byvoid.com/zhs/blog/open-chinese-convert</a></li>
-<li>讲述自己与汉语 <a href="https://www.byvoid.com/zhs/blog/i-and-chinese-language">https://www.byvoid.com/zhs/blog/i-and-chinese-language</a></li>
-<li>2011年11月份的博客质量很高
-
-<ul>
-<li><a href="https://www.byvoid.com/zhs/blog/godel-incompleteness-theorems-agnosticism">https://www.byvoid.com/zhs/blog/godel-incompleteness-theorems-agnosticism</a></li>
-<li><a href="https://www.byvoid.com/zhs/blog/rdbms-isolation-lock-concurrency">https://www.byvoid.com/zhs/blog/rdbms-isolation-lock-concurrency</a></li>
-</ul>
-</li>
-<li>仙剑五总结 <a href="https://www.byvoid.com/zhs/blog/pal5-comment">https://www.byvoid.com/zhs/blog/pal5-comment</a></li>
-<li>写书小记 &mdash; <a href="https://www.byvoid.com/zhs/blog/compose-a-book">https://www.byvoid.com/zhs/blog/compose-a-book</a></li>
-<li><a href="https://www.byvoid.com/zhs/blog/why-functional-programming">https://www.byvoid.com/zhs/blog/why-functional-programming</a></li>
-<li><a href="https://www.byvoid.com/zhs/blog/i-and-chinese-language">https://www.byvoid.com/zhs/blog/i-and-chinese-language</a></li>
-<li>影评山楂树之恋 <a href="https://www.byvoid.com/zhs/blog/under-the-hawthorn-tree">https://www.byvoid.com/zhs/blog/under-the-hawthorn-tree</a></li>
-<li>2012年的总结 **<a href="https://www.byvoid.com/zhs/blog/recent-one-year**">https://www.byvoid.com/zhs/blog/recent-one-year**</a></li>
-<li><a href="https://www.byvoid.com/blog/treasure-young-days/">https://www.byvoid.com/blog/treasure-young-days/</a></li>
-<li>美国之行系列： <a href="https://www.byvoid.com/blog/usa-tour-impress">https://www.byvoid.com/blog/usa-tour-impress</a></li>
-<li>海外面试经历 <a href="https://www.byvoid.com/zhs/blog/oversea-internship-interviews">https://www.byvoid.com/zhs/blog/oversea-internship-interviews</a></li>
-<li>绥芬河出国 <a href="https://www.byvoid.com/zhs/blog/archive/2014/1">https://www.byvoid.com/zhs/blog/archive/2014/1</a></li>
-<li><a href="http://www.qyer.com/u/1754807/footprint">http://www.qyer.com/u/1754807/footprint</a></li>
-<li>整个高中的经历：
-
-<ol>
-<li> <a href="https://www.byvoid.com/zhs/blog/my-highschool-1">https://www.byvoid.com/zhs/blog/my-highschool-1</a></li>
-<li> <a href="https://www.byvoid.com/blog/my-highschool-2">https://www.byvoid.com/blog/my-highschool-2</a></li>
-<li> <a href="https://www.byvoid.com/blog/my-highschool-3">https://www.byvoid.com/blog/my-highschool-3</a></li>
-<li> <a href="https://www.byvoid.com/blog/my-highschool-4">https://www.byvoid.com/blog/my-highschool-4</a></li>
-<li> <a href="https://www.byvoid.com/blog/my-highschool-5">https://www.byvoid.com/blog/my-highschool-5</a></li>
-</ol>
-</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[我在BIT的这几年]]></title>
-    <link href="http://liuyix.org/blog/2014/my-work-in-bit/"/>
+    <link href="http://liuyix.github.io/blog/2014/my-work-in-bit/"/>
     <updated>2014-01-03T19:39:00+08:00</updated>
-    <id>http://liuyix.org/blog/2014/my-work-in-bit</id>
+    <id>http://liuyix.github.io/blog/2014/my-work-in-bit</id>
     <content type="html"><![CDATA[<h3>Changelog</h3>
 
 <table>
@@ -311,9 +200,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转]失败的高雅——李欧梵在香港中文大学的演讲]]></title>
-    <link href="http://liuyix.org/blog/2012/nobility-of-failure-by-oufan-li/"/>
+    <link href="http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li/"/>
     <updated>2012-11-24T04:40:58+08:00</updated>
-    <id>http://liuyix.org/blog/2012/nobility-of-failure-by-oufan-li</id>
+    <id>http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li</id>
     <content type="html"><![CDATA[<p><em>前几日在李开复的微信公共平台上看到的文章，还是有些价值的。</em></p>
 
 <blockquote><p>你可能不知道，有一种“高雅的失败”，可以历练你的人生。“人年轻时一定要认同危机，这段时间是一个缓冲期。在人成熟前，要经过认同溷乱的阶段。爱尔兰剧作 家、现代主义荒谬剧大师萨缪尔•贝克特说过：‘再试一次，再失败一次，失败得好一点。’ 当你发现越失败越好的时候，你就成功了。”</p></blockquote>
@@ -424,9 +313,9 @@
   
   <entry>
     <title type="html"><![CDATA[[转载]程序员常见的健康问题]]></title>
-    <link href="http://liuyix.org/blog/2012/common-programmer-health-problem-chiness-version/"/>
+    <link href="http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version/"/>
     <updated>2012-05-12T05:11:12+08:00</updated>
-    <id>http://liuyix.org/blog/2012/common-programmer-health-problem-chiness-version</id>
+    <id>http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version</id>
     <content type="html"><![CDATA[<blockquote><p>再战隼的博客上看到的，正巧这几日正受颈椎病的困扰 :&ndash;( 真的还算及时，在此提醒下所有战斗在代码一线的斗士们，注意身体，养成锻炼的好习惯！</p></blockquote>
 
 <p><a href="http://www.read.org.cn/html/1926-cheng-xu-yuan-de-chang-jian-jian-kang-wen-ti.html">原文链接</a>via<a href="http://www.read.org.cn/">战隼的学习探索</a></p>
@@ -713,6 +602,62 @@
 <p>保重。</p>
 
 <p><strong>作者Zed Shaws</strong>是一位作家、软件开发人员、音乐人（下文中提到吉他手），于2010年发布《Learn Python The Hard Way》一书，他也是 Mongrel Web 服务器系统的作者之一。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我的PKM——Linux下的个人知识管理(PKM)之工具推荐]]></title>
+    <link href="http://liuyix.github.io/blog/2011/pkm-tools-on-linux-recommendation/"/>
+    <updated>2011-05-19T18:58:49+08:00</updated>
+    <id>http://liuyix.github.io/blog/2011/pkm-tools-on-linux-recommendation</id>
+    <content type="html"><![CDATA[<h2>Update: 2013-09-28</h2>
+
+<p><blockquote><p>这篇文章是在2011年写就，目前来说已经过时。这篇文章只作为存档保留。</p><footer><strong>liuyix</strong></footer></blockquote></p>
+
+<hr />
+
+<p>个人知识管理（以下简称pkm）内容上，国内有影响力的博客以及一些国产的软件都集中于windows平台，很少有关注linux平台。对于linux控来说，有些小遗憾。</p>
+
+<p>Linux玩家是不会被这点小困难难倒的。 :-D本文的主要目的就是分享一下我在Linux上实践pkm的一点心得。介绍我目前使用的工具和一些平时收集的策略。由于自己也是刚刚接触实践pkm，因此不免会有内容不全面、不到位的情况，请各看家轻拍转。</p>
+
+<p>我理解的pkm的大致的几个过程：收集、积累、检索应用与分享。<!-- more --></p>
+
+<h2>收集过程：Google Reader + 麦库/Evernote</h2>
+
+<p>这一过程因人而异，我个人主要使用的是google reader，因为阅读的主要内容是一些博客，因此通过RSS订阅到google reader直接阅读。如果获取的信息不是通过google reader得到的，而是通过搜索得到的，则通过麦库（严格讲是麦库的chrome插件）收集。更多关于麦库的使用，可以参考我的博文。收集时可以通过添加“未整理”等标签以及放入指定的文件夹实现分类。<!-- more --></p>
+
+<h2>知识的存储过程：Zim + 麦库</h2>
+
+<p>知识的存储过程，我使用的是建立个人wiki的方法完成知识的有效组织、整理分类。这样做的好处之一就是在存储整理的过程之中会潜移默化的对知识进行初步的消化。</p>
+
+<p>Zim是Linux平台下图形化的离线wiki工具，可以建立个人wiki，是我目前接触使用的个人wiki工具。它的官方网站：<a href="http://zim-wiki.org/">http://zim-wiki.org/</a></p>
+
+<p>使用wiki进行知识存储的最大的优势同时也是最大的挑战就在于知识的分类——如何将所有的知识组织起来。分类也是因人而异的，不同职业，不同背景的人其分类的策略是不同的。目前，我的知识主要集中在技术和阅读方面的，因此初步的是按照技术的分类（linux,cpp,读书笔记），起步阶段，内容较少，因此没有必要弄的很复杂，随着内容的逐渐增多，可以适当的添加父类重新组织。</p>
+
+<p>Zim是一个本地化的工具，在云计算逐渐流行的今天，我们还是需要一款云端工具，这里我推荐使用麦库。麦库的定位就是Evernote的竞争者。</p>
+
+<p>Evernote应该说是当前比较的热门的网络笔记本工具，其最大的优势就在于数据存储在“云端”，你可以在Android手机、浏览器、Windows平台甚至是Linux平台上方便同步使用。而且支持文件夹和标签功能，不仅可以记录文字，还可以上传文件等等。一个生动的使用情景：用朋友家的电脑上网的时候看到了某篇日志不错，于是利用浏览器的插件（或者使用在线的网页版Evernote）将内容整理到Evernote网络笔记本上，之后出门的时候可以通过手机上的Evernote应用查看更改内容。到了家里，打开电脑里的Evernote程序编辑整理。从此不必担心数据的丢失，还可以随时的浏览更改自己的文件。</p>
+
+<p>上面所说的Evernote的功能，麦库都具备。同时麦库还具备一个Evernote不具备的重要功能：国产。在国内的众所周知的网络条件下，国外的优秀服务说不定哪天就访问不了，而且即使可以使用还得忍受着异常缓慢的网速，而麦库作为一款国产的功能上可以媲美Evernote的应用，速度上和稳定性上可以完胜Evernote,不必担心哪天一醒来登录不了Evernote了。</p>
+
+<h2>知识的检索与应用：</h2>
+
+<p>知识的检索依赖于知识的存储。</p>
+
+<p>如果使用的Zim，可以在存储时加入适当的标签，这样在检索时可以利用标签进行检索。当然也可以利用全文检索的功能。Zim还具有Wiki服务器浏览方式，在使用体验上更接近于Wiki。</p>
+
+<p>Evernote/麦库：Evernote和麦库可以通过标签等方式进行检索。Evernote还结合了google的搜索功能。麦库在检索方面有一个只能信息检索（可以筛选出email,电话等，还可以自定义正则表达式）。</p>
+
+<h2>知识的分享：撰写文章+微博分享</h2>
+
+<p>pkm最终的目标是将外部的知识转换为自己的知识，即将知识充分的吸收，变为自己的东西。与他人交流分享是知识消化吸收的最好方式。教授知识是学习的最好方法。</p>
+
+<p>参考链接：
+<a href="http://xbeta.info/pkm-3.htm"> 个人知识管理的误区(by Albert) via</a> <a href="http://xbeta.info">Xbeta</a></p>
+
+<p><a href="http://xiaoy.info/">Space of Yuan &amp; Yum</a>的<a href="http://xiaoy.info/pkm/dokuwiki/doku.php?id=personalpromotion:pkm:index">PKM wiki</a></p>
+
+<p><a href="%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86">个人知识管理介绍</a></p>
 ]]></content>
   </entry>
   

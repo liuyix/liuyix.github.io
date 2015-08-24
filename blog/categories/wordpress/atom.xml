@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Wordpress | Liuyix]]></title>
-  <link href="http://liuyix.org/blog/categories/wordpress/atom.xml" rel="self"/>
-  <link href="http://liuyix.org/"/>
-  <updated>2015-04-09T00:13:12+08:00</updated>
-  <id>http://liuyix.org/</id>
+  <link href="http://liuyix.github.io/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://liuyix.github.io/"/>
+  <updated>2015-08-24T23:57:12+08:00</updated>
+  <id>http://liuyix.github.io/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Wordpress排版——中文首行缩进和行间距修改的实现]]></title>
-    <link href="http://liuyix.org/blog/2011/wordpress-modification/"/>
+    <link href="http://liuyix.github.io/blog/2011/wordpress-modification/"/>
     <updated>2011-04-21T17:46:24+08:00</updated>
-    <id>http://liuyix.org/blog/2011/wordpress-modification</id>
+    <id>http://liuyix.github.io/blog/2011/wordpress-modification</id>
     <content type="html"><![CDATA[<p>Wordpress没有考虑到中文书写的首行缩进的习惯，因此要实现这个功能可以采用修改主题style.css来实现，如果你的主题不常更改的化，这一方法应该说可以一劳永逸。
 总体思路：进入Appearance&mdash;>Editor&mdash;>选择style.css
 找到类似</p>
