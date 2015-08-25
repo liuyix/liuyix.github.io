@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Liuyix]]></title>
-  <link href="http://liuyix.github.io/atom.xml" rel="self"/>
-  <link href="http://liuyix.github.io/"/>
-  <updated>2015-08-24T23:57:12+08:00</updated>
-  <id>http://liuyix.github.io/</id>
+  <link href="http://liuyix.org/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2015-08-25T23:18:05+08:00</updated>
+  <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress source迁移到新主机]]></title>
-    <link href="http://liuyix.github.io/blog/2015/new-mac-test/"/>
+    <link href="http://liuyix.org/blog/2015/new-mac-test/"/>
     <updated>2015-08-24T00:04:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2015/new-mac-test</id>
+    <id>http://liuyix.org/blog/2015/new-mac-test</id>
     <content type="html"><![CDATA[<ul>
 <li>新机器首先是把ssh key加入到github的setting</li>
 <li>git clone <em>liuyix.github.com</em></li>
@@ -43,10 +43,443 @@
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[由互联网中的Python应用想到的网站架构的优化]]></title>
+    <link href="http://liuyix.org/blog/2015/python-in-industry/"/>
+    <updated>2015-04-08T22:56:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/python-in-industry</id>
+    <content type="html"><![CDATA[<ul>
+<li>国内<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
+
+<ul>
+<li>知乎</li>
+<li>豆瓣</li>
+<li>果壳网</li>
+</ul>
+</li>
+<li>国外，只列出我认识的比较出名的，还有好多<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>=。=
+
+<ul>
+<li>Quora 国外的知乎？</li>
+<li>Dropbox 国外的金山快盘？</li>
+<li>Disqus 国外的多说？</li>
+<li>Pinterest 国外的花瓣？</li>
+<li>Youtube 国外的优酷？</li>
+<li>Slideshare 国外的百度文库？</li>
+<li>reddit 国外的猫扑？</li>
+<li>Yelp 国外的大众点评</li>
+<li>&hellip;</li>
+</ul>
+</li>
+</ul>
+
+
+<p>更多的信息可以参考Python官网的<a href="https://www.python.org/about/success/">Python Success Stories</a>。</p>
+
+<h3>Quora</h3>
+
+<p>下面是QuorWhy did Quora choose Python for its development?a创始人在Quora上对<em>Why did Quora choose Python for its development?</em>的回答<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></p>
+
+<blockquote><p>We decided that Python was fast enough for most of what we need to do (since we push our performance-critical code to backend servers written in C++ whenever possible). As far as typechecking, we ended up writing very thorough unit tests which are worth writing anyway, and achieve most of the same goals.</p></blockquote>
+
+<p>可以看到对于Python的性能短板，Quora在performance-critical的地方尽可能换用了C++。对于Python没有静态类型，Quora用尽可能的单元测试来确保质量。之所以选择Python其实很大的原因是Founder对Python比较擅长。
+进一步google了下，他们的框架用的Pylon。</p>
+
+<h3>知乎的技术架构</h3>
+
+<p>知乎CTO在去年年底有过分享，目前在InfoQ上能找到整理稿。链接：<a href="http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution">http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution</a></p>
+
+<p>简而言之用的tornado，自己开发了日志系统Kids，消息传递系统Sink，还有页面渲染ZhihuNode。</p>
+
+<h3>网站架构及性能的思考</h3>
+
+<p>本周听了一次FB周海平在阿里内部的一次分享。无论是阿里、Facebook还是豆瓣，我发现了在网站架构上这几家有很多共同点的：</p>
+
+<ul>
+<li>MySQL作为存储后端</li>
+<li>MySQL上一定有memcache、tair这样的KV系统做缓存</li>
+<li>都各自开发了适合自己的消息分发系统，Notify, Thrift, Beanstalkd</li>
+<li>后端应该都具有实时日志数据分析： HBase、云梯2、Kids</li>
+<li>不同程度上用异步化来提高性能，并会一直以此来作为性能提升的方法。</li>
+<li>消息链路上的优化：一个网页的渲染上是树状结构的获取数据，因此可以在通过优化这棵树来达到优化整个过程的目的</li>
+</ul>
+
+
+<h3>其他</h3>
+
+<p>网站选型不单纯是比较语言优劣，还和社区的发展趋势活跃(谁都不想用过一门可能几年就无人问津的语言)、团队内普遍的好恶和掌控能力（C、C++最好，但是大家都不会）、整个行业的形势（团队内都用Lisp，但是招不到人）等等多种因素有关系。
+选择哪门语言确实重要，这决定了未来几年或者更远的时间内技术的发展路线，更重要的当规模扩大后需要在性能优化上要付出的代价。（这里面可以拿Facebook优化PHP作为反例，若是当初扎克用的是java或者c++，也许也不会因此如此兴师动众的重写了PHP生态系统里面的大部分东西。）</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p><a href="http://www.zhihu.com/question/19685768">知乎-国内使用 Python 作为主要开发语言的知名网站有哪些</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p><a href="http://www.quora.com/Which-Internet-companies-use-Python">Quora-Which Internet companies use Python?</a><a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p><a href="http://www.quora.com/Why-did-Quora-choose-Python-for-its-development">Quora-Why did Quora choose Python for its development?</a><a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[git workflow]]></title>
+    <link href="http://liuyix.org/blog/2015/git-workflow/"/>
+    <updated>2015-04-05T23:30:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/git-workflow</id>
+    <content type="html"><![CDATA[<p>Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;<a href="https://gitlab.com/">gitlab</a>。知道怎么玩git是大势所趋。</p>
+
+<p>Git小白推荐读物：atlassian出版的<a href="https://www.atlassian.com/git/tutorials">Git Tutorials</a>，这家公司拥有mac上最佳git客户端SourceTree以及Bitbucket。</p>
+
+<p>本文是对<a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Comparing Workflows</a>这篇文章和自己的使用心得所做的总结。</p>
+
+<p>以下三种工作流只是典型的代表，不是规范，而是参考，可以结合自己的使用特点灵活选择和修改。</p>
+
+<ul>
+<li>Centralized Workflow</li>
+<li>Feature Branch Workflow</li>
+<li>Gitflow</li>
+</ul>
+
+
+<!--more-->
+
+
+<h3>Centralized Workflow</h3>
+
+<ul>
+<li>适合几个人的小项目或者自己玩。</li>
+<li>和svn差别小。</li>
+<li>多人协作采用rebase方式并入master。
+
+<ul>
+<li>小李和小红分别把代码拉到本地进行开发，然后小李先提交到了master，这时候小红再提交她的修改会被reject，因为push的过程中小红本地的Master分支和remote（服务器）上的不同。这时候小红需要<code>git pull --rebase origin master</code>将远程的代码和她本地的修改进行融合，融合的目的是让小红提交的所有的commit看起来实在小李同学push到master分支后的那个点开始做的。</li>
+</ul>
+</li>
+</ul>
+
+
+<p><img src="https://www.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/centralized-workflow/11.svg" alt="小红在小李之后push到master" /></p>
+
+<h3>Feature Branch Workflow</h3>
+
+<ul>
+<li>适合几个人的小项目。</li>
+<li>利用<em>pull request</em>进行code review和交流改进。</li>
+</ul>
+
+
+<p>相比<em>Centralized Workflow</em>，这个工作流没有增加多少内容，只是在merge过程时一定要创建<code>pull request</code>让大家可以有个代码review和交流修改的过程。</p>
+
+<h3>Gitflow</h3>
+
+<p>比较适合多人的大型项目。</p>
+
+<p><img src="http://nvie.com/img/git-model@2x.png" title="git branching model" alt="git branching model" /></p>
+
+<ul>
+<li>master</li>
+<li>develop</li>
+<li>release</li>
+<li>feature</li>
+<li>bugfix</li>
+</ul>
+
+
+<!-- 一个例子是线上生产稳定的跑着1.2版本（master分支），开发和测试主要活跃在develop分支，产品路线图中计划的下个月的1.3版本的发布是develop的一个release分支。在1.3版本中总共加入了3个feature和5个bugfix，总共由4个人负责代码开发。-->
+
+
+
+
+<!--2个主要分支：master和develop。master分支对应生产环境跑的代码，很像rpm包的`current channel`；develop对应的就是rpm发布的`test channel`，feature和release在完成后都会并入到develop分支。-->
+
+
+<h3>More Readings</h3>
+
+<ul>
+<li><a href="http://paulhammant.com/2014/01/08/googles-vs-facebooks-trunk-based-development/">Google&rsquo;s vs Facebook&rsquo;s Trunk Based Development</a></li>
+</ul>
+
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>http://google-opensource.blogspot.com/2015/03/farewell-to-google-code.html<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL 5.6 GTID 学习笔记]]></title>
+    <link href="http://liuyix.org/blog/2014/mysql-gtid-introduction/"/>
+    <updated>2014-09-20T18:45:00+08:00</updated>
+    <id>http://liuyix.org/blog/2014/mysql-gtid-introduction</id>
+    <content type="html"><![CDATA[<h3>Reading List</h3>
+
+<ul>
+<li>Facebook部署5.6 GTID的blog: <a href="https://www.facebook.com/notes/mysql-at-facebook/lessons-from-deploying-mysql-gtid-at-scale/10152252699590933">Lessons from Deploying MySQL GTID at Scale</a>(需要翻墙)
+
+<ul>
+<li>Facebook@Percona Live 2014 <a href="http://www.percona.com/live/mysql-conference-2014/sessions/global-transaction-id-facebook">GLOBAL TRANSACTION ID AT FACEBOOK</a></li>
+<li>MySQL Manual使用时GTID时的限制：<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html">17.1.3.4 Restrictions on Replication with GTIDs</a></li>
+</ul>
+</li>
+<li></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bash Tips]]></title>
+    <link href="http://liuyix.org/blog/2014/bash-tips/"/>
+    <updated>2014-09-14T16:59:00+08:00</updated>
+    <id>http://liuyix.org/blog/2014/bash-tips</id>
+    <content type="html"><![CDATA[<h3>Bash 遇到错误就退出</h3>
+
+<p><a href="http://stackoverflow.com/a/4382179">http://stackoverflow.com/a/4382179</a></p>
+
+<p><code>set -e</code></p>
+
+<blockquote><p>If you put set -e in a script, the script will terminate as soon as any command inside it fails (i.e. as soon as any command returns a nonzero status). This doesn&rsquo;t let you write your own message, but often the failing command&rsquo;s own messages are enough.</p>
+
+<p>The advantage of this approach is that it&rsquo;s automatic: you don&rsquo;t run the risk of forgetting to deal with an error case.</p>
+
+<p>Commands whose status is tested by a conditional (such as if, &amp;&amp; or ||) do not terminate the script (otherwise the conditional would be pointless). An idiom for the occasional command whose failure doesn&rsquo;t matter is command-that-may-fail || true. You can also turn set -e off for a part of the script with set +e.</p></blockquote>
+
+<h2>Bash使用数组</h2>
+
+<h3>快速入门</h3>
+
+<p>(Bash For Loop Array: Iterate Through Array Values)[<a href="http://www.cyberciti.biz/faq/bash-for-loop-array/">http://www.cyberciti.biz/faq/bash-for-loop-array/</a>]</p>
+
+<ul>
+<li>用括号指定，空格指定就好</li>
+<li>遍历： <code>for i in "${var[@]}"</code></li>
+</ul>
+
+
+<h3>深入</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/bin/bash
+</span><span class='line'># array-ops.sh: More fun with arrays.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>array=( zero one two three four five )
+</span><span class='line'># Element 0   1   2    3     4    5
+</span><span class='line'>
+</span><span class='line'>echo ${array[0]}       #  zero
+</span><span class='line'>echo ${array:0}        #  zero
+</span><span class='line'>                       #  Parameter expansion of first element,
+</span><span class='line'>                       #+ starting at position # 0 (1st character).
+</span><span class='line'>echo ${array:1}        #  ero
+</span><span class='line'>                       #  Parameter expansion of first element,
+</span><span class='line'>                       #+ starting at position # 1 (2nd character).
+</span><span class='line'>
+</span><span class='line'>echo "--------------"
+</span><span class='line'>
+</span><span class='line'>echo ${#array[0]}      #  4
+</span><span class='line'>                       #  Length of first element of array.
+</span><span class='line'>echo ${#array}         #  4
+</span><span class='line'>                       #  Length of first element of array.
+</span><span class='line'>                       #  (Alternate notation)
+</span><span class='line'>
+</span><span class='line'>echo ${#array[1]}      #  3
+</span><span class='line'>                       #  Length of second element of array.
+</span><span class='line'>                       #  Arrays in Bash have zero-based indexing.
+</span><span class='line'>
+</span><span class='line'>echo ${#array[*]}      #  6
+</span><span class='line'>                       #  Number of elements in array.
+</span><span class='line'>echo ${#array[@]}      #  6
+</span><span class='line'>                       #  Number of elements in array.
+</span><span class='line'>
+</span><span class='line'>echo "--------------"
+</span><span class='line'>
+</span><span class='line'>array2=( [0]="first element" [1]="second element" [3]="fourth element" )
+</span><span class='line'>#            ^     ^       ^     ^      ^       ^     ^      ^       ^
+</span><span class='line'># Quoting permits embedding whitespace within individual array elements.
+</span><span class='line'>
+</span><span class='line'>echo ${array2[0]}      # first element
+</span><span class='line'>echo ${array2[1]}      # second element
+</span><span class='line'>echo ${array2[2]}      #
+</span><span class='line'>                       # Skipped in initialization, and therefore null.
+</span><span class='line'>echo ${array2[3]}      # fourth element
+</span><span class='line'>echo ${#array2[0]}     # 13    (length of first element)
+</span><span class='line'>echo ${#array2[*]}     # 3     (number of elements in array)
+</span><span class='line'>
+</span><span class='line'>exit</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(Arrays)[<a href="http://www.tldp.org/LDP/abs/html/arrays.html">http://www.tldp.org/LDP/abs/html/arrays.html</a>]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[拖延的反思]]></title>
+    <link href="http://liuyix.org/blog/2014/procrastination-helps/"/>
+    <updated>2014-09-14T11:39:00+08:00</updated>
+    <id>http://liuyix.org/blog/2014/procrastination-helps</id>
+    <content type="html"><![CDATA[<p>昨天在多看阅读中看到的一篇关于拖延症的文章&mdash;《“被绑架”了的拖延症患者 &mdash; 爱上拖延症的八个理由》。原始出处已无法考据，感谢原作者的分享。在网上找到了一个<a href="http://talk.ifeng.com/zaixianjiangtang/shys/special/tuoyanzheng/zuixin/detail_2012_10/30/18669615_0.shtml">引用链接</a>。</p>
+
+<p>之前也正好看到了李松蔚在微信公众账号里面发表的拖延症系列文章中的《框架中的拖延者（3）：和解，无关明日》，二者有想通之处：拖延是内心不和谐的表征，造成拖延一定有更深层次的原因。如果发生拖延了不深究原因只一味的自责，那么拖延只会恶化，身心不会得到解脱，真正的“病因”因此会一直纠缠着自己。</p>
+
+<p>在《被绑架》一文中，笔者就内省自己拖延的原因，勇敢的做出了改变。</p>
+
+<p>笔者自述自己拖延中大部分时间是用来玩游戏、听音乐、看电影、读文章、读书。相比于『有意义的工作』，笔者把这作为自己内省和成长的一部分。</p>
+
+<p>这一点上我部分赞同，不想工作必然有其他可理解的原因，不仅仅是『找回属于自己的时间』。我觉得拖延不做工作，尤其是周末。有可能是自己的身体在通过『懒惰小人』告诉自己需要休息放松。<em>人不是机器，一般情况下很难长期保持高强度的工作。</em></p>
+
+<p>在“行为和内心一致”这一节中，笔者在工作中发现越来越讨厌工作，逃避工作。</p>
+
+<blockquote><p>这一阶段的拖延虽然还有漫无目的的无聊，但更多的是一些有意识地利用拖延下来的时间学习哲学、心理学或者英语和写作等相关技能
+事后从这个角度看，事情甚至完全反过来，就像是为了获得收入和安全感拖延了我的学习时间而去做无趣的工作。</p></blockquote>
+
+<p>笔者确实发现了自己不喜欢自己的工作。（事后也用自己的行动的结果说明了自己在其他领域有更好的发展。）但是通常而言无论是什么事，总有你不愿意做的部分和喜欢做的部分。认清自己内心到底喜欢做什么并能持之以恒，这是需要智慧的。若是缺乏智慧，则误把因为“懒”做事挑肥拣瘦当做这不是我喜欢做的工作。今天从银行辞职该做摄影师，坚持不了多久又觉得摄影不是真正喜欢的事情，又改写小说&hellip;<br/>
+用智慧做出判断，用勇气做出改变相比治疗拖延症是更重要的。
+关于如何甄选自己喜欢的职业，建议读一读<a href="http://book.douban.com/subject/4953695/">《拆掉思维里的墙》</a>这本书。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[积跬步至千里]]></title>
+    <link href="http://liuyix.org/blog/2014/keep-doing-make-miracle/"/>
+    <updated>2014-09-13T21:19:00+08:00</updated>
+    <id>http://liuyix.org/blog/2014/keep-doing-make-miracle</id>
+    <content type="html"><![CDATA[<p>焦虑的我今天冥冥中发现了BYVoid的github，进而去他的博客兜了一圈，感触良多。先介绍下背景。</p>
+
+<p>BYVoid这个人是去年校招时听闻的。那时刚参加完阿里的校招，还没有出结果，焦急的等待中持续关注着北邮人论坛的有关阿里校招的消息。那个时候不知阿里内部哪位好事者漏出了一张阿里校招时给出A+ offer的面试后台系统记录截图。（A+就是去年阿里校招的阿里星计划，60W年薪+股票期权），这个八卦中的主角就是郭家宝，网名BYVoid。一个九零后的清华本科生，本科的假期在MSRA，Google，Hulu，Facebook有过实习经历，初高中参加信息学竞赛，后来保送到清华。还出过一本书<a href="http://book.douban.com/subject/10789820/">《Node.js开发指南》</a>。<br/>
+关于他个人的更多介绍，可以看下他的博客介绍：<a href="https://www.byvoid.com/zht/about/resume">链接</a>以及他的报告<a href="https://byvoid.github.io/slides/experiences-2014/index.html">《我的一些经历》</a></p>
+
+<p>我最感兴趣的是<em>一个牛人是如何成长的</em>，<em>他的博客文章的质量是如何提高的</em>。进到博客一看发现这位新秀从2007年就开始写博客了(2010年才上大学)。于是我就从最后面的文章开始翻起来，有种在读别人的日记的赶脚&hellip;（兴致勃勃的去看一个本科毕业生在初三时写的文章，没有这种赶脚才怪呢）BYVoid<br/>
+这几年确实没少写。每个月有十几篇二十几篇的数量。</p>
+
+<p>花了一个晚上的时间把所有的文章题目过了一遍。感触挺多:
+技术牛人其实也是普通人，只是做事更加深入、认真，专注一些和坚持久一些『罢了』。</p>
+
+<h4>履历</h4>
+
+<p>BYVoid初中一次偶然的机会，他的老师发现了他在信息学上的天分（拿出一张卷子让他做，结果竟然很多都做对了，后来才知道这是去年的信息学竞赛试题）。也许就是这样的契机让郭同学的人生轨迹变得和同龄人与众不同。之后郭家宝同学通过竞赛保送到省实验中学，之后的高中几年就一直在做信息学竞赛。从他的博客上来看，BYVoid不仅是有天分，本身也很喜欢信息学竞赛，解数学题。他不仅做了老师要求的内容，还在课下自己主动刷题训练（高中的文章很多都是UASCO解题报告）。高中联赛名次不错，最后联赛超常发挥拿到了国家比赛的金牌，靠这块金牌顺利的保送到了清华大学，这时的他才高中二年级。接下去的一年和很多人不同的是，他不再有高考压力，于是在看新白娘子传奇的过程中，发现了自己对汉语字体的兴趣，逐渐开始了汉字研究。到了大学，还保持着这份兴趣。建立了至今广为使用的Opencc开源项目。<br/>
+<em>良好的编程功底</em>加上清华大学计算机系拥有的资源，BYVoid在MSRA, Hulu, Google, Facebook都做过实习。今年毕业的他应该是去了瑞士Google（从他的LinkedIn了解到的）</p>
+
+<h4>感悟</h4>
+
+<ul>
+<li>不怀目的的写作是最真实的成长记录，<a href="https://www.byvoid.com/zhs/blog/read-rss">这篇文章</a>就是很好的一个例子。</li>
+<li>任何人都是从基础逐渐开始成长。写作的能力也一样，长文写作也是一点点培养建立的，BYVoid自己也做了几年博客文章的一个总结（<a href="https://www.byvoid.com/zhs/blog/my-blog-four-years">link</a>）。技能的提高都是通过不断的坚持练习达到的。对于写作来说只有不断的写，开始时也许文字会短小、不连贯，包含很多主观的随感以及转载。但是不断的坚持，慢慢的开始有了深度和广度。在BYVoid的博客中我看到了<strong>每一个阶段都是真实的表现了自己同期的水平和状态</strong>，一个初中生不会一开始就会写出有研究深度的文章和报告而是会写出介绍环境搭建、介绍Vim用法等入门心得。没有刻意地训练只是日积月累的写作，量变终会得到质变。写就<a href="https://byvoid.github.io/slides/cassandra/index.html"><Cassandra></a>、<a href="https://byvoid.github.io/slides/bitcoin-internals/index.html">Bitcoin Internals</a>这样的Slides。</li>
+<li><strong>兴趣</strong>、<strong>自我驱动</strong>更有可能成为领域达人。退一步讲成为不了达人，自己也可以自得其乐。这也是『过程比结果重要』的一种诠释吧。兴趣使然 &mdash;> 深入研究 &mdash;> 升华提高。</li>
+<li><strong>持久</strong>和<strong>钻研</strong>的个性是能力持续提高的秘诀。拥有兴趣而没有持之以恒的坚持也很难成为一位达人（当然也可以将持久作为兴趣定义的属性）。这些文章 <a href="https://www.byvoid.com/blog/string-hash-compare">Hash函数比较</a>，<a href="%E7%A0%B4%E8%A7%A3Firefox%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%E5%8A%A0%E5%AF%86%E7%9A%84%E4%BF%A1%E6%81%AF">破解Firefox密码管理器加密的信息</a>，<a href="https://www.byvoid.com/zhs/blog/firefox-js">CmYkRgb123 Online Grading System</a> ，还有OpenCC 不仅能看出他的兴趣也能感受到一份钻研的热情。</li>
+</ul>
+
+
+<p>拥有足够浓厚的兴趣和一个非功利的健康心态很容易成为某一领域的达人。但是如果没有这些，只要你：持之以恒、不浮躁、耐心、钻研、自我驱动也一样可以达成。</p>
+
+<h3>『我不追求输赢，我只是认真』</h3>
+
+<p>『钻研』是BYVoid给我印象最深的一点。作为一种个性，不仅是在技术能力上体现，会在生活的很多方面能感受得到。高中信息学竞赛时，他把NOIP2000到2007年所有题都做了一遍<a href="https://www.byvoid.com/blog/noip-allsolutions/">link</a> 并整理出来这个就不是所有人都能做到的。还有他特别爱玩仙剑奇侠传游戏，这个很多人都爱玩，但是很少有人像他这样详细相关的情节、剧情都详细写成评测文章，<a href="https://www.byvoid.com/blog/pal4-experience">仙剑四</a>，<a href="https://www.byvoid.com/zhs/blog/tag/%E4%BB%99%E5%8A%8D%E4%BA%94">仙剑五系列</a>。或者看一部电影做一个影评<a href="https://www.byvoid.com/zhs/blog/under-the-hawthorn-tree">山楂树之恋</a>。还体现在文字的研究上，从他的<a href="https://www.byvoid.com/zhs/blog/xb-word-pron">第一篇文章</a>，之后有了OpenCC——<a href="https://www.byvoid.com/zhs/blog/open-chinese-convert">文章link</a>，在简繁字体的研究一直持续着。</p>
+
+<p>因为没有看到合适的介绍node.js的书籍，也恰逢认识了图灵图书的编辑，于是促成了一本Node.js开发指南的诞生。这让我想到『机会总是留给有准备的人』。</p>
+
+<p>所以成就一个牛人主要是一个人身上的某种品质——如BYVoid的钻研，而不仅仅是兴趣。</p>
+
+<h3>一些博客链接</h3>
+
+<ul>
+<li><a href="https://www.byvoid.com/zhs/blog/new-year-2009">2008年总结</a>，2008年年末开始刷POI，2009年开始写比较长的解题报告，匈牙利算法，很认真的画了图，写了很详细，很认真</li>
+<li>2009年近半年的近期总结-<a href="https://www.byvoid.com/zhs/blog/summary-2009-3">https://www.byvoid.com/zhs/blog/summary-2009-3</a></li>
+<li>一次吐槽 &mdash; <a href="https://www.byvoid.com/zhs/blog/sequence-mad">https://www.byvoid.com/zhs/blog/sequence-mad</a></li>
+<li>NOI2009 &mdash; <a href="https://www.byvoid.com/zhs/blog/noi-2009%EF%BC%8Chttps://www.byvoid.com/zhs/blog/noi-ssc-exp">https://www.byvoid.com/zhs/blog/noi-2009%EF%BC%8Chttps://www.byvoid.com/zhs/blog/noi-ssc-exp</a></li>
+<li>语言研究的第一篇文章 &mdash; <a href="https://www.byvoid.com/zhs/blog/xb-word-pron%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%85%A2%E6%85%A2%E5%BC%80%E5%A7%8B%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6%E8%AF%AD%E8%A8%80%E4%BA%86%EF%BC%8C%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%80%E7%AF%87https://www.byvoid.com/zhs/blog/bh-diao-cao%EF%BC%8C%E4%B9%8B%E5%90%8E%E5%B0%B1%E4%B8%80%E7%9B%B4%E5%9C%A8%E7%A0%94%E7%A9%B6%E7%AE%80%E7%B9%81%E5%AD%97%E4%BD%93">https://www.byvoid.com/zhs/blog/xb-word-pron%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%85%A2%E6%85%A2%E5%BC%80%E5%A7%8B%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6%E8%AF%AD%E8%A8%80%E4%BA%86%EF%BC%8C%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%80%E7%AF%87https://www.byvoid.com/zhs/blog/bh-diao-cao%EF%BC%8C%E4%B9%8B%E5%90%8E%E5%B0%B1%E4%B8%80%E7%9B%B4%E5%9C%A8%E7%A0%94%E7%A9%B6%E7%AE%80%E7%B9%81%E5%AD%97%E4%BD%93</a></li>
+<li>有自己开发维护的系统：<a href="https://www.byvoid.com/zhs/blog/vakuum-dev-note-02">https://www.byvoid.com/zhs/blog/vakuum-dev-note-02</a></li>
+<li>2010年6月开启了OpenCC项目 <a href="https://www.byvoid.com/zhs/blog/open-chinese-convert">https://www.byvoid.com/zhs/blog/open-chinese-convert</a></li>
+<li>讲述自己与汉语 <a href="https://www.byvoid.com/zhs/blog/i-and-chinese-language">https://www.byvoid.com/zhs/blog/i-and-chinese-language</a></li>
+<li>2011年11月份的博客质量很高
+
+<ul>
+<li><a href="https://www.byvoid.com/zhs/blog/godel-incompleteness-theorems-agnosticism">https://www.byvoid.com/zhs/blog/godel-incompleteness-theorems-agnosticism</a></li>
+<li><a href="https://www.byvoid.com/zhs/blog/rdbms-isolation-lock-concurrency">https://www.byvoid.com/zhs/blog/rdbms-isolation-lock-concurrency</a></li>
+</ul>
+</li>
+<li>仙剑五总结 <a href="https://www.byvoid.com/zhs/blog/pal5-comment">https://www.byvoid.com/zhs/blog/pal5-comment</a></li>
+<li>写书小记 &mdash; <a href="https://www.byvoid.com/zhs/blog/compose-a-book">https://www.byvoid.com/zhs/blog/compose-a-book</a></li>
+<li><a href="https://www.byvoid.com/zhs/blog/why-functional-programming">https://www.byvoid.com/zhs/blog/why-functional-programming</a></li>
+<li><a href="https://www.byvoid.com/zhs/blog/i-and-chinese-language">https://www.byvoid.com/zhs/blog/i-and-chinese-language</a></li>
+<li>影评山楂树之恋 <a href="https://www.byvoid.com/zhs/blog/under-the-hawthorn-tree">https://www.byvoid.com/zhs/blog/under-the-hawthorn-tree</a></li>
+<li>2012年的总结 **<a href="https://www.byvoid.com/zhs/blog/recent-one-year**">https://www.byvoid.com/zhs/blog/recent-one-year**</a></li>
+<li><a href="https://www.byvoid.com/blog/treasure-young-days/">https://www.byvoid.com/blog/treasure-young-days/</a></li>
+<li>美国之行系列： <a href="https://www.byvoid.com/blog/usa-tour-impress">https://www.byvoid.com/blog/usa-tour-impress</a></li>
+<li>海外面试经历 <a href="https://www.byvoid.com/zhs/blog/oversea-internship-interviews">https://www.byvoid.com/zhs/blog/oversea-internship-interviews</a></li>
+<li>绥芬河出国 <a href="https://www.byvoid.com/zhs/blog/archive/2014/1">https://www.byvoid.com/zhs/blog/archive/2014/1</a></li>
+<li><a href="http://www.qyer.com/u/1754807/footprint">http://www.qyer.com/u/1754807/footprint</a></li>
+<li>整个高中的经历：
+
+<ol>
+<li> <a href="https://www.byvoid.com/zhs/blog/my-highschool-1">https://www.byvoid.com/zhs/blog/my-highschool-1</a></li>
+<li> <a href="https://www.byvoid.com/blog/my-highschool-2">https://www.byvoid.com/blog/my-highschool-2</a></li>
+<li> <a href="https://www.byvoid.com/blog/my-highschool-3">https://www.byvoid.com/blog/my-highschool-3</a></li>
+<li> <a href="https://www.byvoid.com/blog/my-highschool-4">https://www.byvoid.com/blog/my-highschool-4</a></li>
+<li> <a href="https://www.byvoid.com/blog/my-highschool-5">https://www.byvoid.com/blog/my-highschool-5</a></li>
+</ol>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[明日迷的一天]]></title>
-    <link href="http://liuyix.github.io/blog/2014/work-review/"/>
+    <link href="http://liuyix.org/blog/2014/work-review/"/>
     <updated>2014-09-13T13:09:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2014/work-review</id>
+    <id>http://liuyix.org/blog/2014/work-review</id>
     <content type="html"><![CDATA[<p>上一篇博客还是在1月份，转眼已经大半年过去了。大概曾经有兴趣关注本人的也都没什么兴致了吧，呵呵。 <br/>
 不禁有些感慨。 <br/>
 对一个人的真正了解，无论是了解他人还是认识自己，从行动上看的最真实的。我以为自己爱写字、爱表现。可是从博客的更新频度和质量上来看，这些只是内心的美好想法，说的不好听就是“幻觉”。能真正认识自己很难。而且与这相比，更难的是认识了之后接受这样的自己。</p>
@@ -93,9 +526,9 @@
   
   <entry>
     <title type="html"><![CDATA[SMP L1 Cache MESI Coherence Protocol Internal]]></title>
-    <link href="http://liuyix.github.io/blog/2014/cache-internal-professional/"/>
+    <link href="http://liuyix.org/blog/2014/cache-internal-professional/"/>
     <updated>2014-01-07T15:02:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2014/cache-internal-professional</id>
+    <id>http://liuyix.org/blog/2014/cache-internal-professional</id>
     <content type="html"><![CDATA[<h2>Gem5 Simulator Ruby Memory System</h2>
 
 <p>Ruby Memory</p>
@@ -106,11 +539,11 @@
 <strong>SMP</strong> :
 <strong>L1</strong> :</p>
 
-<p><img src="http://liuyix.github.io/images/Diagrama_MESI.gif" alt="/images/Diagrama_MESI.gif" /></p>
+<p><img src="http://liuyix.org/images/Diagrama_MESI.gif" alt="/images/Diagrama_MESI.gif" /></p>
 
 <p>而实际上<strong>SMP架构</strong>中的MESI具有多个<em>瞬时状态</em> ,在研究Gem5模拟器中集成的<em>Ruby Memory System Simulator</em>的实现，根据协议实现代码，我得到了以下添加了瞬时状态后的有限状态机图示（ <strong>该图依然为简化后的图，其中省略了自旋状态转换</strong> ，这样看起来更清晰些）</p>
 
-<p><img src="http://liuyix.github.io/images/MESI-orig.png" alt="MESI" /></p>
+<p><img src="http://liuyix.org/images/MESI-orig.png" alt="MESI" /></p>
 
 <p>当然这依然不是最终实现的结构，该图并没有考虑目前已经广泛应用在各种处理器上的 <em>Prefetcher</em>
 本文之后会介绍这些 <em>State</em> 以及对应的 <em>Event</em> 。</p>
@@ -119,9 +552,9 @@
   
   <entry>
     <title type="html"><![CDATA[我在BIT的这几年]]></title>
-    <link href="http://liuyix.github.io/blog/2014/my-work-in-bit/"/>
+    <link href="http://liuyix.org/blog/2014/my-work-in-bit/"/>
     <updated>2014-01-03T19:39:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2014/my-work-in-bit</id>
+    <id>http://liuyix.org/blog/2014/my-work-in-bit</id>
     <content type="html"><![CDATA[<h3>Changelog</h3>
 
 <table>
@@ -304,9 +737,9 @@
   
   <entry>
     <title type="html"><![CDATA[Linux Kernel概览]]></title>
-    <link href="http://liuyix.github.io/blog/2013/linux-kernel-overview/"/>
+    <link href="http://liuyix.org/blog/2013/linux-kernel-overview/"/>
     <updated>2013-10-22T20:19:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/linux-kernel-overview</id>
+    <id>http://liuyix.org/blog/2013/linux-kernel-overview</id>
     <content type="html"><![CDATA[<blockquote><p>总结下读过的有关Kernel的书籍，主要是<a href="http://book.douban.com/subject/2287506/">&lt;Understanding the Linux Kernel></a>>、<a href="http://book.douban.com/subject/6097773/">&lt;Linux Kernel Development></a>、<a href="http://book.douban.com/subject/1723151/">&lt;Linux Device Drivers></a></p></blockquote>
 
 <h3>终极目标</h3>
@@ -447,15 +880,15 @@
 
 <h3>设备驱动程序</h3>
 
-<p><img src="http://liuyix.github.io/images/device-driver-interface.bmp" alt="/images/device-driver-interface.bmp" /></p>
+<p><img src="http://liuyix.org/images/device-driver-interface.bmp" alt="/images/device-driver-interface.bmp" /></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[百度校招-系统研发工程师-笔试题]]></title>
-    <link href="http://liuyix.github.io/blog/2013/baidu-exam-review/"/>
+    <link href="http://liuyix.org/blog/2013/baidu-exam-review/"/>
     <updated>2013-10-15T01:36:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/baidu-exam-review</id>
+    <id>http://liuyix.org/blog/2013/baidu-exam-review</id>
     <content type="html"><![CDATA[<p>几道编程算法题：</p>
 
 <ul>
@@ -571,9 +1004,9 @@
   
   <entry>
     <title type="html"><![CDATA[小米面试内核驱动工程师总结]]></title>
-    <link href="http://liuyix.github.io/blog/2013/xiaomi-onsite/"/>
+    <link href="http://liuyix.org/blog/2013/xiaomi-onsite/"/>
     <updated>2013-10-11T19:54:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/xiaomi-onsite</id>
+    <id>http://liuyix.org/blog/2013/xiaomi-onsite</id>
     <content type="html"><![CDATA[<blockquote><p>此为吐槽贴，略涉及技术。</p></blockquote>
 
 <p>之前网申投的是<em>内核驱动工程师</em>，这个职位是凭着自己对Linux Internal还保持非常浓厚的兴趣，虽然实践不多，还有就是一看到这个title就有种高端大气上档次的赶脚。之后前几天打来电话去面试，这才知道这次是小米的bsp团队招人。</p>
@@ -639,9 +1072,9 @@
   
   <entry>
     <title type="html"><![CDATA[mac上安装octopress]]></title>
-    <link href="http://liuyix.github.io/blog/2013/mac-install-octopress/"/>
+    <link href="http://liuyix.org/blog/2013/mac-install-octopress/"/>
     <updated>2013-10-06T12:31:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/mac-install-octopress</id>
+    <id>http://liuyix.org/blog/2013/mac-install-octopress</id>
     <content type="html"><![CDATA[<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
 <del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
 
@@ -752,9 +1185,9 @@
   
   <entry>
     <title type="html"><![CDATA[#吐槽# Octopress：想说爱你不容易...]]></title>
-    <link href="http://liuyix.github.io/blog/2013/octopress-fails/"/>
+    <link href="http://liuyix.org/blog/2013/octopress-fails/"/>
     <updated>2013-09-27T23:09:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/octopress-fails</id>
+    <id>http://liuyix.org/blog/2013/octopress-fails</id>
     <content type="html"><![CDATA[<p>几个月时间，博客转到了github pages上的Octopress，结果是输出的文章比之前更少。（之前的几十篇文章也不见了踪影&hellip;）</p>
 
 <p>我似乎不属于个例——一直以来都特意关注了我所能遇到的Octopress搭建的独立博客，<em>大部分Octopress我所遇到中文博客都很少更新，其中大多迁移到Octopress后几个月内就不再更新了</em>。
@@ -802,9 +1235,9 @@
   
   <entry>
     <title type="html"><![CDATA[翻墙下载附带字幕的youtube视频]]></title>
-    <link href="http://liuyix.github.io/blog/2013/youtube-download-with-subtitle/"/>
+    <link href="http://liuyix.org/blog/2013/youtube-download-with-subtitle/"/>
     <updated>2013-08-09T23:59:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/youtube-download-with-subtitle</id>
+    <id>http://liuyix.org/blog/2013/youtube-download-with-subtitle</id>
     <content type="html"><![CDATA[<blockquote><p>许久没写了，上一篇水文教程。</p></blockquote>
 
 <p>需要的工具：</p>
@@ -839,9 +1272,9 @@
   
   <entry>
     <title type="html"><![CDATA[Android 4.3新特性——SElinux简介 ]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-4-dot-3-selinux/"/>
+    <link href="http://liuyix.org/blog/2013/android-4-dot-3-selinux/"/>
     <updated>2013-07-28T00:32:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-4-dot-3-selinux</id>
+    <id>http://liuyix.org/blog/2013/android-4-dot-3-selinux</id>
     <content type="html"><![CDATA[<p>New Jelly Bean &mdash; Android 4.3于7月底发布，这次整体上变化不是很大，所以还是叫Jelly Bean。不过在底层，Android在安全上实际增强了不少，Android 4.3开始集成SELinux, 系统的安全性(<em>潜力</em>)提高了一个档次。</p>
 
 <p>New Jelly Bean, New JB，Android 4.3指的都是Google新发布的Android 4.3系统，代号依旧是Jelly Bean</p>
@@ -964,14 +1397,14 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
   
   <entry>
     <title type="html"><![CDATA[Android平台上的JNI技术介绍]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction/"/>
+    <link href="http://liuyix.org/blog/2013/android-ndk-and-jni-introduction/"/>
     <updated>2013-07-15T06:00:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction</id>
+    <id>http://liuyix.org/blog/2013/android-ndk-and-jni-introduction</id>
     <content type="html"><![CDATA[<h2>NDK简介</h2>
 
 <p>Android是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。</p>
 
-<p><img src="http://liuyix.github.io/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
+<p><img src="http://liuyix.org/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
 
 <center>图0-1 Android系统架构图</center>
 
@@ -1002,7 +1435,7 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 
 <p>JNI（Java Native Interface）是Java SDK 1.1时正式推出的，目的是为不同JVM实现间提供一个标准接口，从而使Java应用可以使用本地二进制共享库，扩充了原有JVM的能力，同时Java程序仍然无需再次编译就可以运行在其他平台上，即保持了平台独立性又能使用平台相关的本地共享库提升性能。在Java开发中的位置如下图所示。JNI作为连接平台独立的Java层(以下简称Java层)与与平台相关的本地环境(以下简称Native层)之间的桥梁。</p>
 
-<p><img src="http://liuyix.github.io/images/role-of-jni-intro.gif" alt="/images/role-of-jni-intro.gif" /></p>
+<p><img src="http://liuyix.org/images/role-of-jni-intro.gif" alt="/images/role-of-jni-intro.gif" /></p>
 
 <p>图1-1 JNI在Java开发中的位置</p>
 
@@ -1799,7 +2232,7 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
 
 <p>下图是 <code>JNIEnv</code> 的一个简单图示<sup id="fnref:7"><a href="#fn:7" rel="footnote">7</a></sup></p>
 
-<p><img src="http://liuyix.github.io/images/jnienv.gif" alt="/images/jnienv.gif" /></p>
+<p><img src="http://liuyix.org/images/jnienv.gif" alt="/images/jnienv.gif" /></p>
 
 <p>JNIEnv能提供的功能非常多，大体可以分为以下几类5：</p>
 
@@ -2103,9 +2536,9 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
   
   <entry>
     <title type="html"><![CDATA[Android Root 那些事]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-root/"/>
+    <link href="http://liuyix.org/blog/2013/android-root/"/>
     <updated>2013-07-14T19:14:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-root</id>
+    <id>http://liuyix.org/blog/2013/android-root</id>
     <content type="html"><![CDATA[<h2>Root</h2>
 
 <p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
@@ -2141,9 +2574,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[《程序员的自我修养》小结]]></title>
-    <link href="http://liuyix.github.io/blog/2013/advanced-linkers-and-loaders/"/>
+    <link href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders/"/>
     <updated>2013-04-09T21:05:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/advanced-linkers-and-loaders</id>
+    <id>http://liuyix.org/blog/2013/advanced-linkers-and-loaders</id>
     <content type="html"><![CDATA[<p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
 应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
 
@@ -2153,610 +2586,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
 其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
 参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
 
-<p><img src="http://liuyix.github.io/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
+<p><img src="http://liuyix.org/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
 
 <p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress修改记录]]></title>
-    <link href="http://liuyix.github.io/blog/2013/my-customize-octopress/"/>
-    <updated>2013-03-08T22:27:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/my-customize-octopress</id>
-    <content type="html"><![CDATA[<p>&lt;&mdash;more&mdash;></p>
-
-<h3>Octopress</h3>
-
-<p>Reference: <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></p>
-
-<p><code>$octopress</code> 代表的是 <code>git clone -b source git@github.com:username/username.github.com.git octopress</code></p>
-
-<p>octopress有2个branch—— <code>source</code> 和 <code>master</code></p>
-
-<p><code>master</code> 是jekyll生成后的静态网站源码，<strong>位置在_deploy目录</strong><br/>
-<code>source</code> 是 octopress源码，是<em>octopress</em>根目录</p>
-
-<h4>Blog流程</h4>
-
-<p><code>cd $octopress &amp;&amp; rake generate</code></p>
-
-<ol>
-<li>更新octopress源码(目的是要保存markdown源文件)
-
-<ul>
-<li><code>git add &lt;modified file&gt;</code></li>
-<li><code>git commit -am 'some comment'</code></li>
-<li>git push origin <strong>source</strong></li>
-</ul>
-</li>
-<li>生成后的网站源码部署
-
-<ul>
-<li><code>rake deploy</code></li>
-</ul>
-</li>
-</ol>
-
-
-<h3>多个电脑上编写octopress博客</h3>
-
-<p>可能很多人会像我一样有这样的需求：工作地点和家里都想要更新下自己的blog，还有有时会在自己的台式机和笔记本上更新blog，这时你就会遇到我现在的问题： <em>怎么在多个电脑上部署octopress环境</em></p>
-
-<h3>表格boarder的修复</h3>
-
-<p>参考: <a href="" title="http://programus.github.com/blog/2012/03/07/add-table-data-css-for-octopress/">链接</a><br/>
-只是作者修改的有点麻烦，我只是把data-table.css粘贴到了 <code>sass/custom/_styles.scss</code> 里面了就出效果了。</p>
-
-<h3>markdown interpreter换成了kramdown</h3>
-
-<p>因为默认的不支持footnote，所以直接换成了<a href="http://kramdown.rubyforge.org">kramdown</a></p>
-
-<h4>Update 2013-07-14</h4>
-
-<p>octopress升级到了2.0, 新的<code>rdiscount</code>支持了footnote特性，因此又换回了<code>rdiscount</code></p>
-
-<h3>404 page</h3>
-
-<p>在source下面建立404.html</p>
-
-<h3>自定义sidebar</h3>
-
-<p>这个教程里就有</p>
-
-<h3>category-list</h3>
-
-<p>TODO</p>
-
-<h3>stylesheet小幅改动</h3>
-
-<h4>awkward ul ol</h4>
-
-<p><a href="https://github.com/imathis/octopress/issues/417">issue417</a>
-在 <code>sass/custom/_styles.scss</code> 里修改</p>
-
-<h4>footnote</h4>
-
-<p>一个插件<a href="https://github.com/fmcypriano/footnote-octopress">octopress-footnote</a>,只是个人试用效果不好，遂将js部分去掉了，配合  <a href="http://kramdown.rubyforge.org">kramdown</a> 正好适合</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[期待 Octopress 2.1]]></title>
-    <link href="http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1/"/>
-    <updated>2013-03-08T00:11:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/expecting-octopress-2-dot-1</id>
-    <content type="html"><![CDATA[<p>想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。</p>
-
-<p>搜索了一番，发现有现成的解决方案，不过稍微显得繁琐，原因之一是要手动集成jQuery，许多有趣的功能都依赖于这个强大的js库，纳闷为什么作者没有支持，搜索之后发现很早之前就有人提出这个<a href="https://github.com/imathis/octopress/issues/637#issuecomment-6565847">疑问</a>了，作者给予了回答，大意是太臃肿没必要，然社区群众们呼声很高，Octopress计划在2.1版本中支持jQuery!</p>
-
-<blockquote><p>&#8230;Eventually I decided to add jQuery because that is what the community wants and it makes it easier for folks to work with javascript on Octopress. &#8230;</p><footer><strong>imathis, author of Octopress</strong> <cite><a href='https://github.com/imathis/octopress/issues/637#issuecomment-6565847'>github.com/imathis/octopress/&hellip;</a></cite></footer></blockquote>
-
-
-<p>很期待新版本的Octopress!!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello Octopress!]]></title>
-    <link href="http://liuyix.github.io/blog/2013/hello-octopress/"/>
-    <updated>2013-03-07T18:45:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/hello-octopress</id>
-    <content type="html"><![CDATA[<p><img src="http://liuyix.github.io/images/octopress-logo.png" title="" ></p>
-
-<h2>初识Octopress</h2>
-
-<p>忙里偷闲，折腾下Octopress～</p>
-
-<blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages.</p><footer><strong>http://octopress.org</strong></footer></blockquote>
-
-
-<p>Octopress说白了就是一个可以使用markdown<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>写博客的静态网页生成后端。而且还可以利用<a href="http://pages.github.com/" title="github pages">github pages</a>做自己的博客。<br/>
-使用了一段时间的Wordpress写博客，然后写着写着就没有然后了。没有坚持下来的原因很大一部分是因为自己，当然(很喜欢这个“当然”)Wordpress不爽体验也是一个原因。这促使我考虑Wordpress的替代方案。</p>
-
-<h3>[吐槽]从Wordpress转移到Octopress的原因</h3>
-
-<p>吐槽Wordpress各种不爽之前，先声明这不是技术上的比较，也不是产品上的优劣比较，我只是从个人需求的角度说一下Wordpress不适合写技术博客，也可以说不能快速的书写有质量的文章。
-简单的说Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。</p>
-
-<!--more-->
-
-
-<h4>不能很方便的(在emacs里)写博客</h4>
-
-<p><span class='pullquote-right' data-pullquote='Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。'>
-程序员优点之一就是 <em>“懒”</em> ，自然写博客也懒得离开编辑器在网页上码字，而且网页上码字体验远不如顺手的编辑器，还必须要联网，最让人受不了的就是手要离开键盘，用 <em>鼠标</em> 来进行各种操作！（Windows用户你不会理解的&hellip;）。<br/>
-Wordpress写博客，需要离开编辑器，操作不便，还要操心其他不相关的事。
-使用Wordpress的这段时间里，我一直在不停的探索如何更高效更舒服的：从最初的网页上的编辑器插件，到搜索各种Linux,Windows客户端( <a href="http://sns.juziyue.com" title="菊子曰的网站">菊子曰</a>是这一时期的终点，使用上很适合非程序员，但不幸的是只有Windows版本), 最终遇到了org2blog——使用emacs org-mode来写博客。经过我持续不懈的折腾，Wordpress这个诟病基本被我解决掉了。<br/>
-</span></p>
-
-<h5>Octopress Side</h5>
-
-<p>Octopress前端支持markdown类的语法，和org-mode相比，同样适合编写格式化的文档，语法相似，更加精简。更欢乐的是markdown文本非常具有可读性（这也是markdown的设计哲学）。<br/>
-不仅如此，依托于github，博客文章还具有云端 <em>增量备份</em> 的功能。这点和Wordpress不同，Wordpress上写好的内容用以HTML方式存入MySQL数据库，虽然也有备份的功能，可本地化特点的缺失，<em>需要离开编辑器操作</em> 实在是个鸡肋。
-写作之后的同步操作也无需离开编辑器，几条命令就搞定网站！</p>
-
-<h4>需要购买主机</h4>
-
-<p>这是使用Wordpress写博客首先需要操心的事。搭建需要花钱买主机停放你的站点，虽然成本不高，但也不是无成本的。我目前的消费水平还不足以为了一个每天只有不到100IP的小站点购买VPS，需要精打细算——不仅要选择哪家主机划算，还要花折腾主机，还时不时地担心自己或者服务商或者同IP的莫个站点被GFW墙掉。总之一个字“累”！</p>
-
-<h5>Octopress Side</h5>
-
-<p>首先是免费，其次还不如管访问延时等主机相关的问题了。还记得曾有一段时间为了优化访问，花了很多精力在减少插件、优化插件、压缩网页上。虽然建站的很多东西，again, 和写博客是无关的。相比之下，Octopress实际最后就是静态的网页而非动态网站，所以不需要进行优化。</p>
-
-<h4>博客的配置相对复杂</h4>
-
-<p>玩过Wordpress的人都明白平时最常折腾的就是插件和主题，还有Wordpress的升级。<br/>
-对于只想简简单单写技术博客，写日记，发牢骚的人来说，这些也是额外需要费心思的地方，而且没点时间和技术，博客还会显得丑陋不堪，缺乏美感。</p>
-
-<h5>Octopress Side</h5>
-
-<p>认识Octopress就是在一次搜索时看到一个技术博客，那个博客让我眼前一亮——简洁、大方，没有大多数Wordpress博客给人的花哨之感，很对程序员的胃口，仔细读了那个博客，才知道除了Wordpress还有一个叫Octopress的东东。<br/>
-Octopress在界面上完成度很高，可以说不需要任何修改，其简约之美也足以媲美大多数的Wordpress主题。于是可以更加专注于内容。</p>
-
-<p>第一次写Octopress，各种不熟练，花了好久。就先写到这里，有时间再写下自己的配置过程。</p>
-
-<hr />
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn:1">
-<p>[http://en.wikipedia.org/wiki/Markdown]<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
-</ol>
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[转]失败的高雅——李欧梵在香港中文大学的演讲]]></title>
-    <link href="http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li/"/>
-    <updated>2012-11-24T04:40:58+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/nobility-of-failure-by-oufan-li</id>
-    <content type="html"><![CDATA[<p><em>前几日在李开复的微信公共平台上看到的文章，还是有些价值的。</em></p>
-
-<blockquote><p>你可能不知道，有一种“高雅的失败”，可以历练你的人生。“人年轻时一定要认同危机，这段时间是一个缓冲期。在人成熟前，要经过认同溷乱的阶段。爱尔兰剧作 家、现代主义荒谬剧大师萨缪尔•贝克特说过：‘再试一次，再失败一次，失败得好一点。’ 当你发现越失败越好的时候，你就成功了。”</p></blockquote>
-
-<p>李欧梵，国际知名文化学者。现代文学及文化研究、现代小说乃至中国电影，都是他学术研究的范围。1961年毕业于台湾大学外文系，此后赴美留学，获得哈佛大 学硕士和博士学位。他曾先后任教于香港中文大学以及美国的普林斯顿大学、印第安那大学、芝加哥大学、哈佛大学等知名高校。这位在世人看来十分成功的学者， 求学和任教路上其实磨难重重。学会和失败相处，方能挫而弥坚。</p>
-
-<p>不久前，李欧梵应邀赴香港中文大学作了一场题为《失败的高雅》（“The Nobility of Failure”）的演讲。常言道，“失败乃成功之母”，可失败的价值是什麽——这正是李欧梵要和大家分享的人生经验。<!-- more --></p>
-
-<p>1、任何时代都有一窝蜂——都有一种时髦，有一种社会压力，有一种当时的社会价值。可每个人的生命裡不可能只有一样东西。你总有不同的兴趣，不同的价值，要应对不同的压力。<strong>你要问自己，到底喜欢什麽。</strong>这应该是中学以上、大学教育最重要的一部分。</p>
-
-<p>小学六年级时，我成绩非常好。那时，小学新换了一个刚从美国回来的校长。用现在的话讲，他在小学裡就实施博雅教育。男生女生都要跳舞，每个学生都要学音乐、 体育。虽然当时的台湾和现在一样，六年级要恶补、补习，因为要参加联考考初中。我们已经忙得那样了，可校长说，不行，你们要去运动、要去玩。</p>
-
-<p>也许我不用功，也许我太自信，当我考新竹中学时，突然失常了：晚上太紧张，没有睡好，第二天考数学的时候，我只得了40分。要进入当时的台湾名校，数学一定 要60分才行。我生平第一次感到耻辱。我父母都在新竹中学做老师。中学的老师和校长都是我父母的朋友。我马上想，父母怎麽办，他们没面子了。</p>
-
-<p>我跟我父亲说，这次考试考太差了。父亲没骂我，说40分就40分吧，咱们想想办法。父亲带我去见学校的教务长，教务长看着我，对父亲摇摇头说：“你的儿子我恐怕救不了了。”</p>
-
-<p>没想到放榜的时候，新竹中学多了一项叫“备取”。从前是没有备取的，那一年设了“备取”，有人说，就是专门为我开的。备取一共12个学生，最后一名就是我。 我那时大概10岁多，感觉自己抬不起头来。好在年纪小，过了不久成绩就跟上去了，一帆风顺到了高中三年级，又面临人生的第二个考验。</p>
-
-<p>我的总成绩当时是全校第四名，而全校前五名还是前六名就可以保送大学。我觉得自己太幸运了，但社会压力马上就来了。</p>
-
-<p>当时在台湾，最好的保送生一定是上医学院或是理工科，商科没有人要念。可是我的兴趣很明显，不在理工科。我高一的时候就开始参加各种活动，把班级学生组织起 来，组成一个合唱团，比赛的时候我做指挥，最后得了全校第一名。我那时就知道，自己的兴趣是音乐、艺术、文学之类的东西，可是，到抉择的时候，我该怎麽 办？</p>
-
-<p>我记得我和父母亲第一次开诚佈公地说这个问题。 我的姨丈建议我学法律。可是法律没有我想要感受的艺术的气息。我想念的是文学，又不敢选文学，因为那时的台湾，念文学出来最多当个中学老师。于是姨丈又 说，还有一个外文系可选。我想这好，不如先把英文念好，到时候可以去当外交官。</p>
-
-<p>现在回想起来，我对于当时的大学制度有一个批评。因为当时的台湾大学，文学院只有四个系，学生选的最多、最受欢迎的就是外文系，其他的是历史系、哲学系、考 古人类学系。其实，我和当时的潮流已经做了妥协。但是如果你现在问我，这四个系最喜欢什麽？我除了文学之外，最喜欢人类学，可那时选考古学的人非常少。</p>
-
-<p>2、当我回顾以前，回忆是跳跃式的，想到的都是片段。常常是老师讲过的一句话，看书看到的某一页，或者是哪裡得到的灵感。<strong>而这些使我一生受用无穷灵光片语、个人经验，大多都是在我失落的时候发生的。</strong></p>
-
-<p>我进台湾大学外文系时，一心要当外交官，所以认真练习演讲，死背英文。</p>
-
-<p>和我同时进台大的几位同学，现在都是台湾文学界真正有名的人物，其中就包括白先勇。大家知道白先勇是怎麽上台湾大学的吗？那一年白先勇原本考上了，可是由于 种种压力，他跑到台湾南部的工学院去念水利。念了一年后，他觉得自己实在不喜欢水利，喜欢的是文学，于是第二年又考了台大。所以，白先勇是一进大学就决定 要从事文学的。到大二时，白先勇说要办一个杂志，这个杂志就是《现代文学》。当时没有钱，他问家裡亲戚朋友借钱，全部投在这个杂志上，还把我们都拉了进 去。现在大家把我说成《现代文学》的开创者之一，我有点汗颜，因为我当时只是做了一两篇翻译而已。</p>
-
-<p>我常和白先勇常开玩笑说，就是因为你们太厉害，所以我走了另一条路。不过回想起来，我中学开始兴趣就在文学，特别是西洋文学。</p>
-
-<p>我现在把《现代文学》第一年的几期拿出来看，发现有我几篇文章在裡面，那时我的笔名叫“李欧”，翻译的主要是一些论文。比如汤玛斯•曼的论文。时隔半个世 纪，我回到香港，在香港科技大学当客座教授的时候就讲汤玛斯•曼。可我翻译的时候，根本不知道这篇论文在说什麽，也没有看过汤玛斯•曼的小说。</p>
-
-<p>我们的《现代文学》杂志最后失败了。鲁迅第一次翻译《域外小说集》，也只卖了几十本。我们卖了一两百本，一半以上是白先勇的亲戚买的，还有几本是有些人在书摊上买去的。但是，有的人对于自己的理想真是有一种执着。<strong>明知道在世俗眼光裡不会成功，但又总觉得，就算是失败也有意义。</strong></p>
-
-<p>我不自觉地从同学的经验裡得到启示，但表面上还是很胆怯。毕业以后，当时一窝蜂地要到美国留学，我也跟着大家去申请。</p>
-
-<p>现在各位要申请去美国，会到电脑上找很多资料，我们那时候没有资料，美国大学在哪裡也搞不清楚。我问自己，我要申请什麽呢？我真正想要申请的是比较文学，可又不敢申请。于是我就乱申请，像钓鱼般地乱撒网。</p>
-
-<p>我 心裡想，我还喜欢看电影，不如申请去UCLA（加州大学洛杉矶分校）念电影系。大学四年级的时候，有个老师教西洋戏剧的课，我非常喜欢。听说美国最好的戏 剧在耶鲁，于是我写信申请念耶鲁的西洋戏剧。剩下就是选将来可以溷碗饭吃但又跟文学稍微有点关係的专业，比如传媒研究、大众媒体等等。最后我想，我念外文 系的目的就是当外交官，不能不申请一次，所以申请到芝加哥大学念国际关係。</p>
-
-<p>差不多都准备好了，我父亲问我，为什麽不试试哈佛。我想，没有希望何必试。父亲说，试试没关係。结果我就去了，然后发现申请的大学几乎全部落空，只有两个大学有回信。一个是芝加哥大学，一个是哈佛。</p>
-
-<p>哈佛给我的信写着“Alternate for a Scholarship”。我以为“Alternate”是指另一种奖学金，“for”那个字忘记看了。后来知道，原来又是备取！哈佛回信的意思是，如果别的获奖学金的学生不去，我可以被考虑。我们全家人都看错了。</p>
-
-<p>芝 加哥大学给我的回信，明明写了一个字叫“Scholarship”，结果上飞机前的几个月才知道，芝加哥大学的“Scholarship”只是免学费，没 有奖学金。当时，以我们这样在台湾的中产阶级家庭，买一张飞机票是我父母全年的薪水。父母辛辛苦苦把钱凑足，买了一张单程飞机票，送我到美国去。</p>
-
-<p>我迷迷煳煳到美国，完全是失落的。芝加哥在哪裡、怎麽走都不太清楚。所以我就买最便宜的灰狗大巴的票，一路玩到芝加哥。到了芝加哥就开始念书。美国天寒地冻，我没有衣服，就到西尔斯百货公司买一件最丑最便宜的外套。</p>
-
-<p>学校裡老师讲的完全是“天书”。国际关係当时是讲理论，于是，我陷入到各种危机，觉得自己到美国完全是荒谬的，可能几个月都支持不住。</p>
-
-<p>芝 加哥大学的制度和哈佛不一样，是Quarter制的，十个礼拜就是一个Quarter，学期很短。10个礼拜内要念几十本书，念完还要写一篇论文，这简直 是难以想像的。好在那位教授说，你是台湾来的，懂中文，那你试着写一个春秋战国时期的国际关係。我当时根本没有念过春秋战国的历史，只好去图书馆借书。我 记得，我看到一本现在被尊为大师的吕思勉教授写的关于春秋战国的书。我就从那本书开始接触中国历史的。</p>
-
-<p>这篇论文交给老师，竟蒙老师欣赏，甚至他后来还要留我。可我知道，我不能一辈子搞这个。我有两条路。其实我想的是再到洛杉矶去学电影，因为在美国最失望的时候，我都坐着火车去看电影。义大利片、法国片、新潮片……都是那种怪怪的失落的片子，所以有很多认同感。</p>
-
-<p>后来一个同学说，既然哈佛给过你一个“Alternate”，就再试试看吧。于是我就又试了一下。那个时候我在芝加哥大学远东图书馆工作，馆长钱存训先生是在美国汉学界非常有名的教授。他为我写了一封信，不知道写了什麽，竟蒙录取。</p>
-
-<p>3、大学的目标是什麽？这段时间就是一个缓冲期，你在大学裡可以随意选课，随意地找寻自己的兴趣。<strong>在人成熟前，要经过认同溷乱的阶段。</strong></p>
-
-<p>也许是因为我在很好的环境读书，从来没有想到，我拿到博士学位以后要做什麽。</p>
-
-<p>各 位可能不相信，当时的环境和现在不一样，现在念书，大概三年就要拿学位。可我们那时在哈佛念博士都是拖。有的人拖了十几年，我算快的了，拖了8年。在这8 年裡，我感受到以前教育的不足，拼命念书。我总是觉得自己是不足的，当你觉得自己在这个方面做得不错的时候，总发现，怎麽有的地方还是不知道。</p>
-
-<p>所 以，我这裡要说一点批评的话。在人文学科研究方面，如果你只是为了一个学位，为了一个专业，为了一个非常能触摸到的成功的过程或者成功的目标，你这个学者 绝对不是一流学者。可是，现在的制度往往使得一些非常有才气的年轻同事受制于这个“监牢”，不得不这麽做。所以我非常同情香港各大学人文学科的教授。<strong>人文学科是要晃荡晃荡慢慢积累的，从失落裡面汲取经验，最后慢慢发现，自己找寻的目标是什麽。</strong></p>
-
-<p>甚至大学也是如此。我反对在大一时就分专业。我很崇拜心理学家Erikson，“认同”这个词就是他发明的。大学的目标是什麽？按照他的看法，人年轻时一定 有认同危机，这段时间就是一个缓冲期，你在大学裡可以随意选课，随意地找寻自己的兴趣。你的一生裡，只有大学这个时期可以让你在教授的、环境的保护下，找 寻自己的认同。<strong>到了社会上，就没有时间了。</strong>也就是说，在人成熟前，要经过认同溷乱的阶段。</p>
-
-<p>我的认同溷乱，从大学一年级到博士班，至少10年。我的问题一直是，我是谁，我要做什麽？</p>
-
-<p>4、人在一个漫长的过程中，会开始反省，什麽是成功什麽是失败。有一样金科玉律免不了：<strong>没有一连串的挫折和失败，你的成功都是虚的。</strong></p>
-
-<p>我最宝贵的一次学术经验，不是在哈佛不是在芝加哥，是在普林斯顿。也可以说，那是我一生中犯的最大的一个错误。</p>
-
-<p>我在香港中文大学教了一年半后，突然收到一封电报，是普林斯顿大学请我去教课。</p>
-
-<p>我当时心中万般不想去，因为我非常喜欢香港，可是我所有的朋友都说，为了将来的前途，一定要去。于是我到了普林斯顿。</p>
-
-<p>我 在香港中文大学的时候，人是飘飘然的感觉；一到普林斯顿就发现，好像又回到我刚来美国时的感受，压力非常大。普林斯顿请我去教中国近代史，但是近代史裡没 有文学，只有经济史、外交史这些东西。我越教越没有兴趣。这个时候，普林斯顿东亚系知道我在香港教过比较文学课，他们就说，你不如试试教文学吧。我越教就 越有兴趣，我对现代文学的兴趣也是从无形中得来的。</p>
-
-<p>当我在普林斯顿教到第四年的时候，学校说要考虑永久职（tenure）了。当时历史系有名的教授开了一次集体讨论会，觉得李欧梵的学术还可以，可是不够普林斯顿要求的那麽好。为什麽呢？因为“他的心一半在文学”。</p>
-
-<p>我当时正好在写鲁迅，非常痛苦，不知道该怎麽着手。历史系教授看我写的鲁迅草稿，觉得写得太差了。而东亚系觉得我是搞历史的，不是搞文学的。最后历史系主任 说，你赶快打电话求职吧，普林斯顿留不住你了。我当时傻眼了。那时候我有个女朋友，本来准备结婚了。她第一个反应是，“天哪！怎麽办？”本来我们连傢俱都 买好了，房子都找到了，可她马上离开了我。</p>
-
-<p><strong>在这种最绝望的关头，我才知道，失败的滋味是什麽。失败的滋味，有几方面可以看得很清楚。当你在校园裡走的时候，有些跟你不熟的同事，见了面不打招呼了，因 为你是一个失败者。美国人的价值裡，LOSER（失败者）是很糟糕的。我后来反省，也许他们有道理，他们正好打中了我的弱点。我的心其实不在经济史，不在 制度史，我的心还是在文学。</strong></p>
-
-<p>最后，两个朋友救了我。一个朋友为我在当时的一个女校找了一个职位，说我教什麽都可以。另一个职位是在印第安那大学教中国古典文学。当时系主任临时找的一个 教授不去了，本来是让他教元杂剧。于是系主任问我，能不能教元杂剧。其实我只看过一本元杂剧，叫《窦娥冤》，其他都没有看过。不过我还是说，可以。</p>
-
-<p>当人受到极大挫折后，基本的感受就是要“生存”。我当时没有钱回去，无颜见江东父老。这麽多年在美国，怎麽能以失败收场呢？</p>
-
-<p><strong>置之死地而后生，</strong>我接受了这个职位。可没想到，我在印第安那大学如鱼得水，因为这个大学的音乐系是全美最大的。学校有四个交响乐团，一个歌剧院，有无数个免费音乐会。我一直喜欢音乐，觉得这裡真是天堂。音乐使得我在教学学术研究上精力百倍。</p>
-
-<p><strong>我精力百倍，只是为了争一口气。</strong>这口气不是为了我自己，这就是讲<strong>失败的价值——要为一个理想，一个有意义的而不是乱七八糟的目的。</strong>我当时觉得，美国汉学界不顾现代文学是没有道理的。他们认为，中国20世纪文学都是宣传都是政治，那我说，如果这样，鲁迅难道只是一个政客吗？</p>
-
-<p>我不服气。可是在美国，你要把一个学科带上来，不像在华人地区这麽容易，一切都要从头做起。于是我出版了二三十本中国现代文学翻译和研究系列。没有想到，我 写的教材还没有出，已经使我在美国现代文学研究界小有名气了。因为大家要找教科书，就是找印第安那大学出版社的那本，一看就有我的名字在上面。</p>
-
-<p>这麽多年失败的经验让我知道，我在中国现代文学研究上的成功，一方面是侥倖，一方面是所谓“天时地利人和”凑合在一起。</p>
-
-<p>人在一个漫长的过程中会开始反省，什麽是成功什麽是失败。有一样金科玉律免不了：没有一连串的挫折和失败，你的成功都是虚的。我没有看过一个马上成功的例子，即使有，那个成功的人到了晚年也会感到空虚的。</p>
-
-<p><strong>爱尔兰剧作家、现代主义荒谬剧大师萨缪尔•贝克说过一句话：再试一次，再失败一次，失败得好一点。</strong></p>
-
-<p><strong>当你发现越失败越好的时候，你就成功了，这是我得到的一个教训。</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[转载]程序员常见的健康问题]]></title>
-    <link href="http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version/"/>
-    <updated>2012-05-12T05:11:12+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/common-programmer-health-problem-chiness-version</id>
-    <content type="html"><![CDATA[<blockquote><p>再战隼的博客上看到的，正巧这几日正受颈椎病的困扰 :&ndash;( 真的还算及时，在此提醒下所有战斗在代码一线的斗士们，注意身体，养成锻炼的好习惯！</p></blockquote>
-
-<p><a href="http://www.read.org.cn/html/1926-cheng-xu-yuan-de-chang-jian-jian-kang-wen-ti.html">原文链接</a>via<a href="http://www.read.org.cn/">战隼的学习探索</a></p>
-
-<p>其实这些问题不仅见于程序员，其他长期经常坐在电脑前的职场人士（比如：网络编辑、站长等），都会有其中的某些健康问题。希望从事这些行业的朋友，对自己的健康问题，予以重视。以下是全文。</p>
-
-<p>我最近在写《Learn Python The Hard Way》的最后几节课，我还要加一课：关于程序员在其职业生涯中普遍的健康问题。我发现诸多代码人在敲代码的时候好像不在乎他们的身体状况， 很可能是太过于全神贯注。我希望人们可以通过知晓一些与程序员相关的健康问题而获益，并可以避免曾经发生在我身上，而且就我知道也发生在很多人身上的问题。</p>
-
-<p>我可能不会把这篇博文全部放进该书里，因为有点多。但我会写个缩减版。请您惠知喜好，或有我可以引用的附加资源。<!-- more --></p>
-
-<h3><strong>我的背景和资历</strong></h3>
-
-<p>我以前是一等合格美国士兵，并学习过多种武术。近年来我未像过去学武术一样奋力工作，而是专注于瑜伽、入定和一些简单的活动。我小时候是异常健康的，现在依然如故，这归功于我早已根深蒂固的锻炼习惯。</p>
-
-<p><img src="http://blog.jobbole.com/wp-content/uploads/vb/485-thumb_zed%20shaw.jpg" alt="zed shaw" /></p>
-
-<p>首先先列一下我学过的武术：忍术（Ninjitsu），合气道（Aikido），柔术（Judo），泰拳（Muay Thai），咏春（Wing Tsung），卡波耶拉（Capoeira），阿尼斯（Arnis），其排序不分先后。我要讲只有泰拳我是连贯学习的，大概有六年时间。其他的用了一到两年时间。我去了很多地方，因此学习之道就是那儿有什么便学什么。</p>
-
-<p>而且，在部队里我是体能测试优秀，几乎是连续两年满分通过的。如没记错，这其中有几乎每天两至四小时的训练，这在部队里不算什么。除此之外，别无他事可做。</p>
-
-<p>然后，不论我干不干活，我如今一直保持着同样的体重、灵敏及力量。所以我无法告诉你怎么减肥。我很可能先天基因就是如此。这意味着你要根据自身情况来调整我的建议。</p>
-
-<p>有着前述的体魄，当我渐老我更喜欢侵略性弱以及更灵活的一些运动。瑜伽是不错的，常被误认为很难。我同样把票投给普拉提（Pilates），游泳，舞蹈等一切对我身体无直接影响的运动。我尤其注意我的手，缘由我也会说到。</p>
-
-<p>好，写这么多是让你知道我还有点能耐，但是更重要的是，在干这些的同时，我是一个职业编程者。在退役后，我平均每天学习八到十六个小时。 我使用盲打而且玩吉他，我还避免了腕道综合征，以及重复性劳损问题。</p>
-
-<p>希望我保健的经验能帮你恢复或保持健康。</p>
-
-<h3><strong>程序员的常见健康问题</strong></h3>
-
-<p>编程乍一看是个耗人的领域，一方面似乎你没有做很多，另外和很多代码人对待其身体的态度有关。 你要一贯地保持健康，因为身体好时会减少对精神的摩擦损害，而将注意力集中到要事上，而不是你生理上的小毛病。</p>
-
-<p>显然建议就是大多人说的饮食，外出活动。我这里不会教你怎么吃或健身，或者哪种武术。如你对这些感兴趣，找一个职业的来帮助你锻炼。</p>
-
-<p>这里要说的程序员们平日的职业病。他们相当明显而且平常，由于某些原因他们并不在意这些本不该发生的事情：</p>
-
-<p>▲ 腕部疼痛（重复性劳损）</p>
-
-<p>▲ 盯着看移动的打印进度以及其后的句点造成的眼部问题</p>
-
-<p>▲ 姿势不当造成的背部不适，尤其是背下侧，肩上侧。</p>
-
-<p>▲ 肠道和尿道的问题（不能正常大小便）</p>
-
-<p>▲ 摄入太多咖啡因，而且喝水少造成的脱水</p>
-
-<p>▲ 坐姿保持太久，造成男性的痔疮或前列腺问题（我一会再细说）</p>
-
-<p>▲ 光照不足造成维生素D缺乏</p>
-
-<p>▲ 熬夜或者喝咖啡过多导致的睡眠失调</p>
-
-<p>▲ 缺乏伸展导致普遍的僵硬和疼痛</p>
-
-<p>我一直跟这些问题作抗争，因为编程，弹吉他，或者举重时误伤。每当我重获健康的时候，我就知道了此后怎样避免。只有一小部分问题是周期性的。你可能觉得这里的某些问题无关紧要，但请相信我，许多程序员都有这样那样的问题，且原因不一，即使你还没有。</p>
-
-<h3><strong>普遍原因</strong></h3>
-
-<p>一般来说，可以总结成嗜编程为命。你可能想成为个中翘楚，就像我一样，因此除了生活除了编程别无其他。你不去卫生间，你勇猛地进行10小时连续编程。而且你饮食不规，只神笃“真正的代码人”这一信条。</p>
-
-<p>事实是真正的编程者都是有点傻蛋。他们从来吃不到正点，ML也没有准。跑步从来都气喘吁吁，他们的内脏有一些严重问题，但不是疾病原因。真的，在你精通某件事之前，灭了自己可不是很值。</p>
-
-<p>所以，在你看到这些问题以及我怎么解决的时候，记住这都是为了有一个均衡的生活习惯，而不是沉溺于编码或者其他什么事。相信我你会实实在在地好起来，如果你给你自己减负并且保持健康。</p>
-
-<h3>腕部疼痛</h3>
-
-<p>这个可能是我用心最多的。因为频繁且长时间地编码、拨弦，我的腕部有着周期性的疼痛。那年我22岁，刚开始职业性地编码。但是我一直有一个合气道的功课，这样我的腕部就会恢复如初。</p>
-
-<p>你知道，合气道有着绝佳的腕部练习，从而让你的腕部变得结实又柔软。他们创造的这些练习可以避免伤害，原本的许多技巧就有扭、撕扯、手臂和肩关节的脱节。</p>
-
-<p>这些练习治好了我的所有关节错位和疼痛，并让我长时间编程且没有任何大问题。我唯一可能出现问题是因为我要把现在的键盘换成新的古怪布局的键盘，但如果我练习一周合气道我就有可以重返代码并依然强健。</p>
-
-<p>现在如果你有严重的腕道综合征或者其他类型的重复性劳损问题，先咨询你的医师再行尝试这里的技巧。如你要做的话，开始时要轻慢，不要让你感到疼。伸展应该不会疼，只会轻度有点不适。如果你感觉疼，是过度拉伸了。.</p>
-
-<p>你实际想每次伸展运动得到放松。这有点难解释，但不是强迫你的关节在某个固定位置，而是先到达一个位置，想一想放松而后再到更远的位置。</p>
-
-<p>记住这一点，怎么做练习则有很多视频：</p>
-
-<p>▲ 翻转手腕 （Youtube的视频，须翻墙）</p>
-
-<p>▲ 扭腕</p>
-
-<p>▲ 手腕外侧弯曲</p>
-
-<p>▲ 手腕内侧弯曲</p>
-
-<p>下面介绍当你坐下来打字的时候怎么去做锻炼（每次都要这样）：</p>
-
-<ol>
-<li><p>首先要热身，将手伸向前方在空中尽可能快速地抓20次。然后甩手，再做手腕单侧弯曲10次，然后换方向弯曲10次。</p></li>
-<li><p>用你最擅长的，以中速做5至10次。</p></li>
-<li><p>继续做各项动作，但甩手和甩胳膊，弯曲手腕后到要归位。这些动作会移动手腕中的骨头，甩的时候它们就会归位。</p></li>
-<li><p>千万不要做过头，让你手腕感到损伤。要适度恰好，并放松。那个“没有付出就没有收获”只会伤害你。</p></li>
-</ol>
-
-
-<p>每次敲代码前做这系列动作，每天要做，而且停下来的时候也做一次。用不了多长时间，一段时间的不适之后你的手腕就会开始适应并回到正常，并感到好许多。</p>
-
-<p>还有：在做这些之前先咨询一下医生。你做这些可是自己冒风险，所以自己不小心搞坏了手腕不要来起诉我。 这些是千年武术中的家常便饭，所以我知道它们不会有危险，但各人情况不同。如果你做法不对可能后果严重，如果感到疼痛立即停止并咨询医师。</p>
-
-<h3><strong>吉他手更糟糕</strong></h3>
-
-<p>在吉他手或贝司手跟前，程序员的重复性劳损可是小菜。这起因是诸多愚蠢的理由，许多著名的音乐家讲一天八小时或十六小时学习法。正因如此，吉他手们糟践自己，最后不能演奏。</p>
-
-<p>吉他对于手来讲是硬乐器，所以有一点点疼痛你就歇菜了。我在学校的时候，像个傻比一样轻信我的老师自己一天练八个小时的琴。我字面理解就是一下子就八个小时，我这样折磨自己一个月然后就崩了。</p>
-
-<p>我的拇指有了赘骨，其他的指头疼痛难止。我的手腕还耐得住，但指头已经不行了。 二逼呵呵的我没有听那句话，任何新的运动需要循序渐进。</p>
-
-<p>我解决这个的唯一办法，而且用了一年半，是做以下的事情：</p>
-
-<ol>
-<li><p>找把不伤手的吉他。说你啥样吉他都能玩是屁话。去找个最好的不伤你手的吉他。</p></li>
-<li><p>做上面的锻炼，我的指头做得更多。</p></li>
-<li><p>通过做练习，慢慢开始恢复指头的力度并注意放松。</p></li>
-<li><p>在弹的时候注意放松，拨弦的时候更轻巧。</p></li>
-<li><p>避免弯曲，这些曾导致我的手受伤。</p></li>
-<li><p>变换姿势和演奏风格，不抓紧吉他就能快速移动，舒服地把拇指压在琴颈背面。</p></li>
-<li><p>调整吉他高度，让我的肩和手都觉得舒服。</p></li>
-<li><p>站着，很少长时间坐下，长时间摆一个姿势是很别扭的。</p></li>
-</ol>
-
-
-<p>去年做完这些后我的手最终痊愈了，并且感觉良好。我还没有不让我弄伤自己的好习惯。我已经老大不小了，所以这些对我很重要，但这也意味着我不能做那些可能弄伤我手的活计。</p>
-
-<p>我的手现在是我的命根子，所以不能再打拳了，或者其他我还想学习的事情。因为打沙袋我手上已经有多处凹陷了。</p>
-
-<h3><strong>眼疲劳</strong></h3>
-
-<p>我觉得这对我不是问题，但你最好悠着点。我年轻的时候比20/20还要好，但用了几十年电脑有点偏了，曾经用过眼镜矫正，我用得着的时候一直戴着，没有它们看周围的世界真是恼人的模糊。</p>
-
-<p>在黑暗时期，我们天天还瞅的是CRT显示器，烦人的闪烁已经把一些人的眼睛整垮了。现在的问题是多数LCD屏幕对字体的糟糕渲染。 我想归功于苹果公司的专利，多数LCD屏都不能正常渲染字体。尽管有人认为苹果的字体看起来毛茸茸的，所以对于你的好处将很难说。</p>
-
-<p>我想每天两个小时不看电脑。要么我去玩吉他不用费眼力，要么去公园散步。我可能不是整整两个小时都去这样干，但是加起来要保持两个小时。</p>
-
-<p>这对于你可能有的头痛有助益。多数时候程序员可能会想玩电脑的时候开着灯导致了头痛，但其实是因为体位不对，还有糟糕的字体，饮水不足，而且是跟电脑打持久战。</p>
-
-<p>不是把你房间的灯都关掉，只需要合理的照明，选择适合你液晶屏和室内灯光的色彩方案。 即融合室内照明，液晶屏亮度和字体，以及让你感觉更舒服的色彩方案。</p>
-
-<p>但还是先休息一下吧。</p>
-
-<h3><strong>背部问题</strong></h3>
-
-<p>我挺走运的，背一直还可以。尽管如此，我相当多时间是坐办公室，并保持着灵活强健的脊背。</p>
-
-<p>我的问题是背的上半部分，脖子，肩部。我习惯猫在键盘上，所以必须强迫自己坐直。事实是，刚刚敲这段话的时候我就没坐直，才想起矫正一下。</p>
-
-<p>现在选择你的座椅很重要，我喜欢艾伦椅（Aeron），那种硬质小凳子或长凳。现在非常热衷我的40美元的钢琴凳，过去我坐着它弹钢琴的。因为没有后背，凳子会时时逼迫你坐端正 ，并调用我的核心肌肉（肚子和背部）。</p>
-
-<p>我的肩部完全处于压/迫状态。我习惯于在我全神贯注的时候收紧双肩，这样让我的整个背上部感到疼痛，一直蔓延到脖子和头部。当我长时间玩吉他的时候问题更糟。</p>
-
-<p>我发现最有效的解决办法是伸展上肢，做俯卧撑。伸展办法很简单，抓住门框，然后双臂同向或反向拉伸。你觉得身体有点僵硬的时候试试下面这些招数：</p>
-
-<ol>
-<li><p>用一只手抓紧门框，手心朝向你的身体，然后向前挺胸，越过肩位。</p></li>
-<li><p>用另一只手握紧门框，胳膊交叉在前，手心继续朝里，然后伸展肩部，使背部得到伸展。</p></li>
-<li><p>两只手都抓住门框，高举过头，稍向后站呈倾斜，然后来回拉伸。（就像站着做俯卧撑）</p></li>
-</ol>
-
-
-<p>如果你做了，同时做抡臂，摇摆，你就会觉得好一些。或许在你开始干活之前加一些腕部伸展。</p>
-
-<p>另外就是做真正的俯卧撑了。我工作的时候并不做这个，因为它会让你很累，难于工作。在睡前我做十次，这十下足以对付胸、背、肩、腕。 不要过快，要慢，注意在做的时候使身体平衡。</p>
-
-<h3><strong>脱水</strong></h3>
-
-<p>这个问题不大，我时常有点内疚。我发现我一天狂喝咖啡，正因为这样我想我也该喝点水。如果我没有头疼那倒有点不对。脱水的问题很难发觉，直到你发现的时候已经晚了。</p>
-
-<p>我的建议（我也要多做的）是，喝其他非纯净水的饮料时也喝一杯水。同样请勿喝苏打水。它们只是一堆伪糖，让你变胖导致糖尿病，还有它并没有给你产生水。喝纯黑咖啡吧，它们真他妈好，记着再喝些水。</p>
-
-<h3><strong>肠道及尿道问题</strong></h3>
-
-<p>好吧，接下来的两个问题确实不雅，所以就不提发生在我身上的事了，但我要说这句话：“<strong>上厕所的时候他妈赶紧去，别犹豫。</strong>”</p>
-
-<p>你不知道这条提示有多有用，我真希望我年轻的时候知道这句话。因为我是一个拼命汉从不间断，跳过上厕所，憋相当长时间。 肠道问题就是你的机体不再告诉你你该拉屎了，只是愈积愈多。</p>
-
-<p>这样的话最后会导致便秘，这将终结你的健康状态。对于尿道倒次要，但是你依然可能会有感染和其他令你惊奇的事情。</p>
-
-<p>如果你已经搞砸了，你去弄一些纤维片，待在家里然后吃掉，不要去外面，因为后果很囧的。</p>
-
-<p>然后，你觉得是时候了，拾起身去拥抱上帝吧。我告诉你，在你拉完屎之后你的伟大想法才会自然迸发。</p>
-
-<h3><strong>痔疮和前列腺问题</strong></h3>
-
-<p>另外一个不上厕所会导致的就是痔疮。我知道够恶心的，我保证只提这一次。但是，许多编程者有这个问题，并羞于启齿，他们并不知道为什么。下面听我一一道来，我做过下述所有事情，但是只得过一两次痔疮：</p>
-
-<ol>
-<li><p>长时间坐着。</p></li>
-<li><p>举重东西，不用辅助。</p></li>
-<li><p>该去解决内急的时候不去。</p></li>
-<li><p>强迫自己去拉屎，实际上不需要。</p></li>
-<li><p>最糟糕的：坐在厕所里看书。</p></li>
-</ol>
-
-
-<p>最后一条就是罪魁祸首。如果你不是必须要大C，可别老泡在那。这相当于将你整个身体和肠子的重量压进已经泻完的直肠上，并试图挤出来。恶心至极！这导致痔疮因为你的血管中的血压不自然地升高。</p>
-
-<p>确实臭哄哄的，但潜在危害很大。恩，危急情形是血流一地，这时候谁都知道去看大夫。你可能需要手术，但做无妨。我没有做但也差点：有一年我在举重，然后在库房工作，不间断编程，没有用过厕所。</p>
-
-<p>是，我是个大笨蛋。你可别学我。为了你的屁屁的健康，请做以下的事：</p>
-
-<ol>
-<li><p>多吃果蔬，至少吃点纤维片。</p></li>
-<li><p>该解决个人问题时赶紧的！</p></li>
-<li><p>任何情况下不要压/迫直肠。</p></li>
-</ol>
-
-
-<p>还有一个导致前列腺的问题，如果整天坐在屁股上的话。站起来转转就可以。如果尿血或者排尿困难，去看医生，否则会更危险。</p>
-
-<h3><strong>维生素D不足</strong></h3>
-
-<p>维生素D有点怪。的确只能通过晒太阳产生，但你并不必去专门为此去暴露在阳光下。5到30分钟就好，取决于光照的强度。还与你的钙水平和磷缺乏程度有关。但你要是饮食规律，并非只吃些薯片的话，就问题不大。</p>
-
-<p>还有一些事比如消沉，搞坏的牙齿，一些奇怪部位的疼痛比如臂肘的骨头，肌肉痉挛，总体来讲就是跟烂泥一样。同样，如果你觉得不行的话去看医生，正常情况下在日头正盛的时候，去外面溜达半个小时足矣。</p>
-
-<p>事实上，我觉得一个问题是硅谷里很多刚起步公司提供的餐饮。因为你要泡在办公室，经常吃残汤剩饭，而且照明也不好，太阳高照的时候你也不出去晒下。加上你的睡眠习惯你的维生素D状况就糟糕透了。</p>
-
-<p>不要吃盒饭，在中午去外面吃一顿。好处你自知，而且外面的食物好多了。</p>
-
-<p>我在温哥华和西雅图的时候有轻微的维生素D缺乏，那儿光照不足，对于我来说简直要我命。有人能搞定，但是像我这样青年时代在热带岛屿上度过的人，不足的光照确实就是杀手。</p>
-
-<p>所以，你趁有太阳的时候出去晒晒。</p>
-
-<h3><strong>睡眠失调</strong></h3>
-
-<p>我的睡眠时间一向很灵活，跟季节和地域有关。有时候我如猫头鹰附体，熬夜熬到很晚才睡。最近搬到旧金山后开始早睡，不再晚睡了，最近感觉很好。</p>
-
-<p>有时候，我不确定为何在夜里创作音乐或编程倒多产。我认为在一个疲惫的状态下我的大脑确是在休息的。我还觉得是因为夜里更安静，没有滋扰。</p>
-
-<p>不管怎样，早睡晚睡已经把我的睡眠机制搞砸了。当我渐长我更喜欢早起，我觉得白天更清醒更放松。熬夜后再睡往往觉得自己有遗留反应，而且头疼。</p>
-
-<p>如果你也有睡眠问题，我有一些简单的调适方法助你入睡。需要实践，但很有效。</p>
-
-<p>首先，花你的血本买个好床，2000+美元不算多。我买了2200块的Tempur-Pedic。 的确很值。</p>
-
-<p>有了床，开始练习助睡法，有点自我催眠的意味：</p>
-
-<ol>
-<li><p>关掉你房内的所有灯光和音响。</p></li>
-<li><p>躺下，让手放在让你舒服的位置。</p></li>
-<li><p>缓慢地深呼吸，并想象空气流进身体及逸散出体外的场景。</p></li>
-<li><p>当你能注意到你的呼吸之时，想象你在看窗外辽阔的太空，悬星满布。</p></li>
-<li><p>然后伴随呼吸幻想自己漂浮在空中，渐入巨幅的星系，一切星辰，皆伴随你左右。</p></li>
-<li><p>持续幻想，感觉你的床也在漂浮，直到皆不见。</p></li>
-</ol>
-
-
-<p>你或许在四五点睡觉，但不是要出去的话，就幻想自己漂浮直到你真感觉融化了。</p>
-
-<p>如果你有重度失眠，还请咨询医师。但还是试下这招，一天做一到两个小时。练习后绝对会让你入睡。</p>
-
-<h3><strong>刚柔并济</strong></h3>
-
-<p>如果浑身不适难于活动，这时就该做下伸展运动。当然最好莫过于去瑜伽馆每周做练习，并回家自己练习。如果没有时间，可以买书或在图书馆借N多教程。入门级就可以，你真的不需要太多。</p>
-
-<p>我想如果你晚上入睡前做5-6个大幅的伸展练习就够了。你会觉得相当放松，你的健康状况和自我感觉也会有提升。</p>
-
-<p>伸展身体的时候同样要放松大脑，增长创造性的一大妙法就是做瑜伽或半个小时的伸展运动，然后早晨冲澡。 伴随禅定你就会精神自适并发觉个中未曾体验之奥妙。</p>
-
-<p>我也不知为何，但是精神之松弛对于突发的灵感多有助益。</p>
-
-<h3><strong>迈出第一步</strong></h3>
-
-<p>上面的内容可能对于你有点多，我当然希望你不会都有这些问题缠身。然而我建议，尽管你可能没有那些毛病，但要避免它们的发生。如果你要开始编码，请采用“编前热身”。</p>
-
-<p>下面就是我在敲代码前要干的，或者玩吉他前，以及我变僵需要休息的时候。</p>
-
-<ol>
-<li><p>活动身体各关节，只需将腕、臂、颈、臀转摇几下。比如正向五次，然后反向五次。</p></li>
-<li><p>在各部分前做一些腕部练习，摇一下手腕。</p></li>
-<li><p>将臂举过头顶尽可能高，然后向后伸展尽可能远，然后伸到身体前面来。</p></li>
-<li><p>最后，小心地用手扶着头分别向右、左、前、后摇几下。</p></li>
-</ol>
-
-
-<p>如果你做这些的话，将避免一些编程会带来的伤害。因为编程并不会大伤体能，避免受伤还是很容易的，因此上述部分就够了。</p>
-
-<p>然而，如果有特殊问题的话，继续去咨询医疗师，如果得到他们允许可以试试我的这些方法。我这儿说的无过激或奇异的方法，只是些基本的练习和一些常识，因此是个医生都会许可的。我告诉你要咨询别人是只是因为我不想吃官司。</p>
-
-<p>真希望这些能让你变好，如果没有的话，记下建议，以防出现这些状况。如果你够好运，连一个问题都不会有，但我觉得是个程序员都有或多或少的问题。</p>
-
-<p>如果对上述的事情持有疑问，可以给我发邮件，我会给你一些建议。</p>
-
-<p>保重。</p>
-
-<p><strong>作者Zed Shaws</strong>是一位作家、软件开发人员、音乐人（下文中提到吉他手），于2010年发布《Learn Python The Hard Way》一书，他也是 Mongrel Web 服务器系统的作者之一。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[一个简单的python小程序——使用douban API通过ISBN查询书籍信息]]></title>
-    <link href="http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api/"/>
-    <updated>2012-03-11T07:52:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api</id>
-    <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
-
-<ul>
-<li>命令行的解析</li>
-<li>文件的读写</li>
-<li>XML解析</li>
-<li>http连接</li>
-<li>多线程</li>
-</ul>
-
-
-<p>短短不到200行的程序就可以做到这些，可以算是python的推广广告吧，哈哈</p>
-
-<script src="https://gist.github.com/liuyix/6738920.js"></script>
-
-
-
 ]]></content>
   </entry>
   

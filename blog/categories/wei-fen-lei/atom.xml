@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 未分类 | Liuyix]]></title>
-  <link href="http://liuyix.github.io/blog/categories/wei-fen-lei/atom.xml" rel="self"/>
-  <link href="http://liuyix.github.io/"/>
-  <updated>2015-08-24T23:57:12+08:00</updated>
-  <id>http://liuyix.github.io/</id>
+  <link href="http://liuyix.org/blog/categories/wei-fen-lei/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2015-08-25T23:18:05+08:00</updated>
+  <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[snipMate(snipMate.vim)与AutoComplPop(acp.vim)冲突的解决方法]]></title>
-    <link href="http://liuyix.github.io/blog/2011/solve-collasion-between-snipmate-and-acp/"/>
+    <link href="http://liuyix.org/blog/2011/solve-collasion-between-snipmate-and-acp/"/>
     <updated>2011-05-02T20:29:13+08:00</updated>
-    <id>http://liuyix.github.io/blog/2011/solve-collasion-between-snipmate-and-acp</id>
+    <id>http://liuyix.org/blog/2011/solve-collasion-between-snipmate-and-acp</id>
     <content type="html"><![CDATA[<p>今天开始熟悉vim上的开发，没想到一下子就遇到了一个问题——snipMate与AutoComplPop(以下简称acp)的冲突问题，具体症状为输入while或者for等关键词时会自动跳出补全窗口，按在菜单中来回选择而不是snippets。
 解决办法：<!-- more --></p>
 
@@ -48,9 +48,9 @@ endf
   
   <entry>
     <title type="html"><![CDATA[VIM学习资料总结]]></title>
-    <link href="http://liuyix.github.io/blog/2011/vim-tutorial-1/"/>
+    <link href="http://liuyix.org/blog/2011/vim-tutorial-1/"/>
     <updated>2011-04-28T21:25:37+08:00</updated>
-    <id>http://liuyix.github.io/blog/2011/vim-tutorial-1</id>
+    <id>http://liuyix.org/blog/2011/vim-tutorial-1</id>
     <content type="html"><![CDATA[<blockquote><p>一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。</p></blockquote>
 
 <p>Q：为什么要学习这么古老的编辑工具，是否真的有意义？<br/>

@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="vim的强大之处就在于可扩展性，换句话说就是“禁得起折腾”，不同于IDE的相对固定的快捷键等等设置。如果把IDE比作是豪华住宅，那么vim就是一个空荡荡的一座房屋，你必须要自己动手装潢，工具就是你对装潢的了解以及你的创造力，你的想象力。 &hellip;">
+  <meta name="description" content="在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。 导言 make程序可以算得上是一个domain specific language， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,17 +18,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.github.io/blog/page/4">
+  <link rel="canonical" href="http://liuyix.org/blog/page/4">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <script src="/javascripts/footnote.js" type="text/javascript"></script>-->
 
@@ -64,7 +64,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:liuyix.github.io" />
+    <input type="hidden" name="q" value="site:liuyix.org" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -81,6 +81,327 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/write-simple-makefile/">Makefile简单入门</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-20T04:02:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>在linux上混了这么久，真成混的了，连makefile都没有学习过，惭愧啊～作为makefile的快速入门指南，本文是我个人学习makefile时做的笔，此为第一篇。后续会有更加详细深入的学习总结。</p></blockquote>
+
+<h2>导言</h2>
+
+<p>make程序可以算得上是一个domain specific language，完全是一个完整的脚本语言，make是linux,unix上编译 <strong>等</strong> 工作的标准工具，对于复杂的程序来说，可以智能的、自动化完成复杂的程序编译工作。而需要就是编写一个directive的脚本——makefile告诉编译器和其他工具应该如何编译project。 本篇是陈皓写的“跟我一起写makefile”的第一部分的总结，比较凌乱…</p>
+
+<h2>学习资料</h2>
+
+<ul>
+<li>陈皓——“跟我一起写makefile”</li>
+<li>how to write a simple makefile</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/write-simple-makefile/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/opinions-about-opensource-and-free-software-vs-closed-software/">开放与开源，自由与封闭</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-31T08:08:28+08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>前几天偶然间看到了一个淘宝又一个非常不错的网站——Taocode（<a href="http://code.taobao.org/">http://code.taobao.org/</a>），是淘宝为国内开源社区做的又一个贡献吧。（越来越喜欢淘宝了）</p>
+
+<p>大致的逛了一逛，发现了我浏览的大部分项目都是“死”项目或者是一个人的表演。这不是开源，而是源码开放而已。</p>
+
+<h1>什么是开源？</h1>
+
+<p>在我看来，开源不是单单的源代码开放，更本质的来说一个革命性的软件开发方式——任何人都可以参与到软件的开发当中。在我看来一个好的开源项目绝不是一个人的项目，而是多个人甚至是由许多人组成的社区共同进行开发，可以说开源是hacker的coding party。一个人玩着没意思，大家协作着一起玩才是开源的内涵。</p>
+
+<p>在国内的开源社区，可能因为我的了解太少，很成功的开源项目我知道的真不多。国内的开源还需努力啊。</p>
+
+<p>android在我看来不是严格来说不是一个开源的操作系统，它更像是一个开放的操作系统，因为android是google内部封闭开发，之后再公布源代码，也就是说任何人都可以查看代码，但是你不能提交修改的代码，也不能决定android的发展方向。</p>
+
+<p>相比较来看，linux kernel才是最典型的开源。</p>
+
+<h1>什么是自由软件？</h1>
+
+<p>自由软件和开源不是一回事。自由软件强调的是使用者的权利（例如使用者应该有修改权利、重新分发的权利等等），具体来说就是五花八门的协议，其中最有名的当属GPL协议、BSD协议等等。</p>
+
+<h1>封闭软件是魔鬼吗？</h1>
+
+<p>答：是，也不是。读完《乔布斯传》之后，对于开放与封闭、自由软件与封闭软件的认识不再如Richard Stallman那样的偏激了。</p>
+
+<p>在大众消费领域，对消费者、普通用户来说，其实他们在乎的是用户体验，是产品是否好用，是否拥有产品的修改、分发权利对他们来说毫无意义。因此封闭的还是自由的对消费者来说都一样，在这个领域封闭软件不是什么妖魔鬼怪，不是魔鬼。正所谓黑猫白猫，抓到耗子的就是好猫。苹果公司是IT业界最出名的封闭王国，它的产品从硬件到软件都是最封闭的，但可以说也是最优秀的，最好的。因此它的产品最畅销。</p>
+
+<p>然而从一个行业角度来看，从一个企业的角度来看，开放比封闭具有更多的优势，也是更受欢迎的。依旧是苹果公司的例子，个人电脑市场上微软战胜苹果公司，成为业界的PC霸主，一大原因就是它采用的是开放策略（不是开源哦）——微软负责操作系统，硬件归硬件厂商、配件厂商生产，这个策略在现在看来似乎是理所当然，但在当时来说是一个非常巨大的创新。而苹果公司依旧是走硬件到软件的一体化封闭策略。（不是原创思想，吴军的<a href="http://book.douban.com/subject/6709783/">浪潮之巅</a>中有精辟的介绍，极品好书，力荐！）</p>
+
+<p>封闭也会导致垄断的出现，最终使用者还是会受到伤害。因为垄断会扼杀创新，抑制进步。</p>
+
+<p>当然开放也有它的弱点：你无法掌控每个环节的品质，木桶理论告诉我们，你讲一个环节做的再完美，也未必会是整个产品完美。乔帮主的封闭策略恰恰没有这个顾虑，因此你会发现虽然Windows PC占据了绝大份额，可不得不承认Mac是最美的。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/howto-config-font-in-emacs23-2/">Emacs23 字体配置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-16T21:22:00+08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Update 2013-3-16</h2>
+
+<h3>字体设置没有可移植性</h3>
+
+<p>在多个机子上迁移emacs时需要将字体设置部分注释掉，不然会出现 <em>emacs正常启动，但是配色显示不正常</em>的现象。</p>
+
+<h3>更傻瓜的设置方式</h3>
+
+<p>全部用界面菜单操作更方便。</p>
+
+<ol>
+<li><code>Options</code> &mdash;> <code>Set Default Font</code></li>
+<li>选择满意的字体之后，保存设置 <code>Options</code> &mdash;> <code>Save options</code></li>
+</ol>
+
+
+<hr />
+
+<blockquote><p>前几天使用org2blog出了一些莫名的问题，经过一系列的折腾（编译安装emacs,源码安装org-mode），还是没有搞清楚问题出在哪儿了，但是现在org2blog又不明原因的恢复正常了！（对emacs不了解的人伤不起啊，有时间一定要仔细研究下）</p></blockquote>
+
+<p>emacs23中默认的字体很小,此文告诉你如何用最&#8221;业余&#8221;也是很简便的方式添加修改emacs配置～</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/howto-config-font-in-emacs23-2/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/building-lfs-summary-a/">LFS的构建过程&#8212;LFS实践总结(一)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-28T18:02:44+08:00" pubdate data-updated="true">Jul 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://www.linuxfromscratch.org/images/lfs-logo.png" alt="" /></p>
+
+<p>LFS是&#8221;Linux From Scratch&#8221;的简写，&#8221;from scratch&#8221;的本义是“从头开始”，这里应该是引申义,&ldquo;从源代码构建&#8221;。</p>
+
+<p>LFS的主页上介绍为&#8221;Linux From Scratch (LFS) is a project that provides you with step-by-step instructions for building your own customized Linux system entirely from source.&ldquo;更多详细的介绍可以移步到<a href="http://www.linuxfromscratch.org/lfs/">LFS Project Homepage</a>看看。</p>
+
+<p>LFS主要的意义在于&#8221;教学&#8221;上，通过自己动手构建能更深入的认识linux，了解linux的运行原理。通过自己动手，还可以增强Linux上的操作水平。对于Linux的新手，LFS可能是一项比较“痛苦”的学习过程，因为你要使用大量的命令;对于使用过Linux一段时间的用户来说，构建LFS可以将Linux的零散的认识串起来，增强Linux的整体认识。</p>
+
+<p>构建LFS的主要困难，我觉得对一看到E文就头大的童鞋来说，的确是nightmare。但我想喜爱折腾的，尤其是喜欢Linux的，E文都不会是大问题。除了语言的问题之外，得益于LFS文档的详尽和完美，我在构建的过程中没有遇到什么问题，很顺利。所以我觉得还是要认真读文档理解好就没什么问题。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/building-lfs-summary-a/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/pkm-tools-on-linux-recommendation/">我的PKM——Linux下的个人知识管理(PKM)之工具推荐</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-19T18:58:49+08:00" pubdate data-updated="true">May 19<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Update: 2013-09-28</h2>
+
+<blockquote><p>这篇文章是在2011年写就，目前来说已经过时。这篇文章只作为存档保留。</p><footer><strong>liuyix</strong></footer></blockquote>
+
+
+<hr />
+
+<p>个人知识管理（以下简称pkm）内容上，国内有影响力的博客以及一些国产的软件都集中于windows平台，很少有关注linux平台。对于linux控来说，有些小遗憾。</p>
+
+<p>Linux玩家是不会被这点小困难难倒的。 :-D本文的主要目的就是分享一下我在Linux上实践pkm的一点心得。介绍我目前使用的工具和一些平时收集的策略。由于自己也是刚刚接触实践pkm，因此不免会有内容不全面、不到位的情况，请各看家轻拍转。</p>
+
+<p>我理解的pkm的大致的几个过程：收集、积累、检索应用与分享。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/pkm-tools-on-linux-recommendation/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/install-mysql-on-ubuntu-10-04-from-source/">Ubuntu 10.04.2上编译安装MySQL 5.5.11</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T05:45:02+08:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Update: 2013-09-28</h2>
+
+<blockquote><p>这篇文章是在2011年，目前已经过时。这篇文章只作为存档保留。</p><footer><strong>liuyix</strong></footer></blockquote>
+
+
+<hr />
+
+<p>由于我之前安装其他的软件时，已经安装了mysql的开发相关的lib，因此编译安装MySQL不是很顺利。具体的错误神马的，就不提了（也没记住多少……）应该都是个例。总结起来一句话就是——尽量在你安装Mysql前电脑尽量保持clean(一些mysql的开发包一类的最好先卸载)。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/install-mysql-on-ubuntu-10-04-from-source/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -104,8 +425,6 @@
 
 
 <time datetime="2011-05-03T05:10:50+08:00" pubdate data-updated="true">May 3<span>rd</span>, 2011</time>
-        
-         | <a href="/blog/2011/vim-stl-auto-complete/#disqus_thread">Comments</a>
         
       </p>
     
@@ -148,8 +467,6 @@
 
 <time datetime="2011-05-02T20:29:13+08:00" pubdate data-updated="true">May 2<span>nd</span>, 2011</time>
         
-         | <a href="/blog/2011/solve-collasion-between-snipmate-and-acp/#disqus_thread">Comments</a>
-        
       </p>
     
   </header>
@@ -189,8 +506,6 @@
 
 
 <time datetime="2011-04-29T03:16:18+08:00" pubdate data-updated="true">Apr 29<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/my-vimrc/#disqus_thread">Comments</a>
         
       </p>
     
@@ -250,8 +565,6 @@
 
 <time datetime="2011-04-28T21:25:37+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
         
-         | <a href="/blog/2011/vim-tutorial-1/#disqus_thread">Comments</a>
-        
       </p>
     
   </header>
@@ -274,225 +587,9 @@ A:关于二者究竟哪个更胜一筹的争论已经长达几十年，到目前
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/handle-vim-e492/">解决VIM插件/colorscheme出现E492不是编辑器命令 ^M</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-22T16:55:03+08:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2011</time>
-        
-         | <a href="/blog/2011/handle-vim-e492/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近2天在学习使用“编辑器之神”vim，应用下载的colorscheme时，出现<strong>E492不是编辑器命令 ^M</strong><br/>
-google之发现原来问题处在了file format上，我用的linux，而vim的colorscheme则是windows模式，因此换行符不同造成的。<br/>
-解决方法也很简单：使用vim打开有问题的插件或者主题，输入<code>:set ff=unix</code>之后保存即可</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/wordpress-modification/">Wordpress排版——中文首行缩进和行间距修改的实现</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-21T17:46:24+08:00" pubdate data-updated="true">Apr 21<span>st</span>, 2011</time>
-        
-         | <a href="/blog/2011/wordpress-modification/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wordpress没有考虑到中文书写的首行缩进的习惯，因此要实现这个功能可以采用修改主题style.css来实现，如果你的主题不常更改的化，这一方法应该说可以一劳永逸。
-总体思路：进入Appearance&mdash;>Editor&mdash;>选择style.css
-找到类似</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nx">p</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.5</span><span class="nx">em</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="o">:</span><span class="mf">1.5</span><span class="nx">em</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">text</span><span class="o">-</span><span class="nx">indent</span><span class="o">:</span> <span class="mi">2</span><span class="nx">em</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>注意</strong>：不一定是一模一样的，根据主题的不同，一定会有所变化的，但目的都是一样就是找到的<p>的style模板。
-找到之后，在大括号(&ldquo;{&#8220;和&rdquo;}&ldquo;之间)加入<code>text-indent: 2em;</code>就可以实现首行缩进的功能。要修改行间距就修改<code>line-height</code>的属性值，1em代表一个字的大小，1.5em表示是1.5倍的行距，修改之后保存即可！</p>
-
-<p>其他的修改排版类的修改同样是这个原理，都是修改style.css中的相关部分。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/migration-from-windows-to-linux/">Windows迁移到Ubuntu的软件替代方案</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-21T07:14:00+08:00" pubdate data-updated="true">Apr 21<span>st</span>, 2011</time>
-        
-         | <a href="/blog/2011/migration-from-windows-to-linux/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Update 2013-09-28</h2>
-
-<p><strong>金山WPS for Linux 出来啦~</strong> 小伙伴们用后都为他的表现惊呆了~~非常棒！ <br/>
-地址猛戳：<a href="http://linux.wps.cn/">http://linux.wps.cn/</a></p>
-
-<hr />
-
-<p>一年多的考研生活结束了，终于有时间将电脑环境完整的迁移到Ubuntu平台了。</p>
-
-<p><strong>迁移到Ubuntu Linux平台的困难</strong></p>
-
-<ul>
-<li><p>使用习惯的改变——Windows上主要操作是在GUI界面下完成，重度使用鼠标;Linux平台则主要使用功能异常强悍的终端命令行，对键盘的使用比较多,很少使用鼠标。（我个人还是很喜欢用terminal解决问题，感觉很简洁，很准确，很cool  :&ndash;)）。</p></li>
-<li><p>一些常用软件的替代方案——这个应该是目前最大的困难，Windows平台下的日常软件需要找到替代品或者解决办法，例如IE、iTunes、Office套件、影音播放器、QQ等聊天工具……，不过目前幸运的是，大部分的软件还是可以找到替代的。</p></li>
-<li><p>操作上的不熟练——各种linux命令以及各个应用程序的配置等等，这方面都需要一定时间的“磨合”才会逐渐适应新的环境，这也是需要很大的决心和耐心的。</p></li>
-</ul>
-
-
-<p>本文的重点应该是在常用软件的替代方案上——分享一下我个人的这几天折腾的成果！</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/migration-from-windows-to-linux/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/eclipse-cdt-installation-on-ubuntu/">Ubuntu下手动安装Eclipse CDT</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-11T21:06:09+08:00" pubdate data-updated="true">Apr 11<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/eclipse-cdt-installation-on-ubuntu/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Update: 2013-09-28</h2>
-
-<blockquote><p>这篇文章是在2011年写就，目前来说已经过时。这篇文章只作为存档保留。</p><footer><strong>liuyix</strong></footer></blockquote>
-
-
-<hr />
-
-<h2>这篇文章期望的读者是谁？</h2>
-
-<p>Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写</p>
-
-<h2>希望达到的目标？</h2>
-
-<ul>
-<li><p>增加一点linux基础知识的认识（严格说是ubuntu的目录结构）</p></li>
-<li><p>练习常用的linux命令（在本文中使用到了解压缩、文件夹的移动、创建符号连接）</p></li>
-<li><p>初步了解Linux Desktop Entry的写法</p></li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/eclipse-cdt-installation-on-ubuntu/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/5/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -503,11 +600,10 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
 <aside class="sidebar">
   
     <section>
-  <h1>About Me</h1>
-  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>CS Master Candidate, BIT</br>Insterest: CSArch, Linux, Android </p>
-  <h3><strong>Do something to prove yourself!</strong></h3>
-  
+  <h1>About</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>
   <center>
+  All articles licensed under
   <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
 <center>
 </section>
@@ -520,26 +616,26 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
       </li>
     
       <li class="post">
-        <a href="/blog/2014/work-review/">明日迷的一天</a>
+        <a href="/blog/2015/python-in-industry/">由互联网中的Python应用想到的网站架构的优化</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/cache-internal-professional/">SMP L1 Cache MESI Coherence Protocol Internal</a>
+        <a href="/blog/2015/git-workflow/">Git Workflow</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/my-work-in-bit/">我在BIT的这几年</a>
+        <a href="/blog/2014/mysql-gtid-introduction/">MySQL 5.6 GTID 学习笔记</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/linux-kernel-overview/">Linux Kernel概览</a>
+        <a href="/blog/2014/bash-tips/">Bash Tips</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (4)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/other'>Other (1)</a></li><li><a href='/blog/categories/research'>Research (2)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/coding'>Coding (2)</a></li><li><a href='/blog/categories/coding-'>Coding, (1)</a></li><li><a href='/blog/categories/database'>Database (1)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (6)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/other'>Other (1)</a></li><li><a href='/blog/categories/research'>Research (2)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
 </section>
 
 
@@ -559,19 +655,6 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
 
 </footer>
   
-
-<script type="text/javascript">
-      var disqus_shortname = 'liuyix';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 

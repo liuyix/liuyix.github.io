@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: android | Liuyix]]></title>
-  <link href="http://liuyix.github.io/blog/categories/android/atom.xml" rel="self"/>
-  <link href="http://liuyix.github.io/"/>
-  <updated>2015-08-24T23:57:12+08:00</updated>
-  <id>http://liuyix.github.io/</id>
+  <link href="http://liuyix.org/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2015-08-25T23:18:05+08:00</updated>
+  <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Android 4.3新特性——SElinux简介 ]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-4-dot-3-selinux/"/>
+    <link href="http://liuyix.org/blog/2013/android-4-dot-3-selinux/"/>
     <updated>2013-07-28T00:32:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-4-dot-3-selinux</id>
+    <id>http://liuyix.org/blog/2013/android-4-dot-3-selinux</id>
     <content type="html"><![CDATA[<p>New Jelly Bean &mdash; Android 4.3于7月底发布，这次整体上变化不是很大，所以还是叫Jelly Bean。不过在底层，Android在安全上实际增强了不少，Android 4.3开始集成SELinux, 系统的安全性(<em>潜力</em>)提高了一个档次。</p>
 
 <p>New Jelly Bean, New JB，Android 4.3指的都是Google新发布的Android 4.3系统，代号依旧是Jelly Bean</p>
@@ -139,9 +139,9 @@ SELinux模块包含了内核空间和用户空间两部分，配置SELinux需要
   
   <entry>
     <title type="html"><![CDATA[Android平台上的JNI技术介绍]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction/"/>
+    <link href="http://liuyix.org/blog/2013/android-ndk-and-jni-introduction/"/>
     <updated>2013-07-15T06:00:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-ndk-and-jni-introduction</id>
+    <id>http://liuyix.org/blog/2013/android-ndk-and-jni-introduction</id>
     <content type="html"><![CDATA[<h2>NDK简介</h2>
 
 <p>Android是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。</p>
@@ -1061,9 +1061,9 @@ jboolean IsSameObject(JNIEnv *env, jobject ref1,jobject ref2);
   
   <entry>
     <title type="html"><![CDATA[Android Root 那些事]]></title>
-    <link href="http://liuyix.github.io/blog/2013/android-root/"/>
+    <link href="http://liuyix.org/blog/2013/android-root/"/>
     <updated>2013-07-14T19:14:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2013/android-root</id>
+    <id>http://liuyix.org/blog/2013/android-root</id>
     <content type="html"><![CDATA[<h2>Root</h2>
 
 <p>所谓root就是在Android手机上获取最高权限，Android的底层就是Linux，因此Root过程就是普通Linux用户的提权过程。</p>
@@ -1099,9 +1099,9 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
   
   <entry>
     <title type="html"><![CDATA[Eclipse下配置NDK开发环境小结]]></title>
-    <link href="http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration/"/>
+    <link href="http://liuyix.org/blog/2012/android-ndk-eclipse-configuration/"/>
     <updated>2012-03-11T06:11:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration</id>
+    <id>http://liuyix.org/blog/2012/android-ndk-eclipse-configuration</id>
     <content type="html"><![CDATA[<p>分享下最近几周我的一些NDK开发经验和心得。</p>
 
 <p>Eclipse配置NDK环境，主要完成的功能使能调用Android NDK提供的工具链编译用C/C++源代码写好的共享库或者可执行的应用程序。由于我的工作需要的基本是完全native程序的编写，因此这里介绍的方法 <strong>更适合编译Android下的本地应用程序或者共享库</strong></p>

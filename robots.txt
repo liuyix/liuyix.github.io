@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://liuyix.github.io/sitemap.xml 
+Sitemap: http://liuyix.org/sitemap.xml 

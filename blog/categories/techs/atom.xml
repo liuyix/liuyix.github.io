@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Techs | Liuyix]]></title>
-  <link href="http://liuyix.github.io/blog/categories/techs/atom.xml" rel="self"/>
-  <link href="http://liuyix.github.io/"/>
-  <updated>2015-08-24T23:57:12+08:00</updated>
-  <id>http://liuyix.github.io/</id>
+  <link href="http://liuyix.org/blog/categories/techs/atom.xml" rel="self"/>
+  <link href="http://liuyix.org/"/>
+  <updated>2015-08-25T23:18:05+08:00</updated>
+  <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[一个简单的python小程序——使用douban API通过ISBN查询书籍信息]]></title>
-    <link href="http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api/"/>
+    <link href="http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api/"/>
     <updated>2012-03-11T07:52:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/a-simple-python-prog-with-douban-api</id>
+    <id>http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api</id>
     <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
 
 <ul>
@@ -40,9 +40,9 @@
   
   <entry>
     <title type="html"><![CDATA[Eclipse下配置NDK开发环境小结]]></title>
-    <link href="http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration/"/>
+    <link href="http://liuyix.org/blog/2012/android-ndk-eclipse-configuration/"/>
     <updated>2012-03-11T06:11:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/android-ndk-eclipse-configuration</id>
+    <id>http://liuyix.org/blog/2012/android-ndk-eclipse-configuration</id>
     <content type="html"><![CDATA[<p>分享下最近几周我的一些NDK开发经验和心得。</p>
 
 <p>Eclipse配置NDK环境，主要完成的功能使能调用Android NDK提供的工具链编译用C/C++源代码写好的共享库或者可执行的应用程序。由于我的工作需要的基本是完全native程序的编写，因此这里介绍的方法 <strong>更适合编译Android下的本地应用程序或者共享库</strong></p>
@@ -94,9 +94,9 @@
   
   <entry>
     <title type="html"><![CDATA[[译]初次参与开源软件项目的六个忠告]]></title>
-    <link href="http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/"/>
+    <link href="http://liuyix.org/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/"/>
     <updated>2012-03-11T06:00:00+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn</id>
+    <id>http://liuyix.org/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn</id>
     <content type="html"><![CDATA[<p>原文链接：<a href="http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source">http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source</a></p>
 
 <p>开源项目是一种好的释放自己的热情(&ldquo;geek out&rdquo;?)和做自己喜爱的事情的方式。有一个自己参与的开源项目可以使你的工作做起来更加快乐和满足，也会使你保持良好的编程水平，也会经常给你带来其他机遇。许多人不知道从何出入手向开源项目贡献自己的力量。以下是接触参与开源项目的六个简单的忠告。</p>
@@ -131,9 +131,9 @@
   
   <entry>
     <title type="html"><![CDATA[域名邮件不再被spam——SPF记录设置]]></title>
-    <link href="http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain/"/>
+    <link href="http://liuyix.org/blog/2012/howto-add-spf-record-for-domain/"/>
     <updated>2012-02-26T00:26:17+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/howto-add-spf-record-for-domain</id>
+    <id>http://liuyix.org/blog/2012/howto-add-spf-record-for-domain</id>
     <content type="html"><![CDATA[<p>一直使用的是QQ提供的<a href="http://domain.mail.qq.com/">域名邮箱</a>功能，很不错。本文旨在教你如何设置SPF记录防止自己域名的邮件被标记为spam。</p>
 
 <h2>什么是SPF记录</h2>
@@ -161,9 +161,9 @@
   
   <entry>
     <title type="html"><![CDATA[教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南]]></title>
-    <link href="http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/"/>
+    <link href="http://liuyix.org/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet/"/>
     <updated>2012-02-25T23:40:12+08:00</updated>
-    <id>http://liuyix.github.io/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet</id>
+    <id>http://liuyix.org/blog/2012/visit-all-sites-free-of-charge-by-ipv6-in-cernet</id>
     <content type="html"><![CDATA[<p>感谢强大的ipv6!</p>
 
 <blockquote><p>使用纯IPv6网络的用户如果需要访问IPv4的网络资源时，一般需要通过第三方软件来实现，而现在大家可直接通过支持<strong>NAT64/DNS64</strong>的服务器，来实现IPv6与IPv4之间的NAT,从而实现IPv6网络访问IPv4资源。</p></blockquote>
