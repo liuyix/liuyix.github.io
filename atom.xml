@@ -4,7 +4,7 @@
   <title><![CDATA[Liuyix]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-08-25T23:41:39+08:00</updated>
+  <updated>2015-10-22T08:26:53+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[docopt -- Python必备的命令行接口模块]]></title>
+    <link href="http://liuyix.org/blog/2015/python-docopt/"/>
+    <updated>2015-10-21T00:02:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/python-docopt</id>
+    <content type="html"><![CDATA[<p>docopt很适合经常需要用python写命令行工具的同学使用。</p>
+
+<h2>docopt之前</h2>
+
+<p>工作需要，经常会用大块的代码来定(ren)义(rou)命令行界面的工具。代码经常是如下的样子：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">optparse</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">parser</span> <span class="o">=</span> <span class="n">optparse</span><span class="o">.</span><span class="n">OptionParser</span><span class="p">()</span>
+</span><span class='line'><span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&#39;--foo&#39;</span><span class="p">,</span> <span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&#39;int&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&#39;--bar&#39;</span><span class="p">,</span> <span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="c"># 类似以上的代码大概几十行</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>每一个python脚本都需要提供类似的接口。因此每一次都需要写类似的代码。在写过几次后为了保持DRY原则，我将初始化parser封装为一个method放在util部分。可是依旧是逃不过重复的写<code>parser.add_option</code>。不止一次地我考虑干脆自己写个模板类，以后命令行的定义直接以配置文件的形式写出来，然后每次都通过读取这个配置文件自动化的去生成parser。我相信这个问题我一定不是第一个遇到，应该会有已知的模块解决这个laber intensive的工作。</p>
+
+<p>正在这个时候，偶然看到Python weekly发现了docopt</p>
+
+<h2>docopt</h2>
+
+<p>docopt官网地址：<a href="http://docopt.org/">http://docopt.org/</a></p>
+
+<p>docopt的作者有一个30分钟的视频很好的介绍了docopt这个moudule。推荐大家看一下，自备梯子~ <a href="https://youtu.be/pXhcPJK5cMc">https://youtu.be/pXhcPJK5cMc</a></p>
+
+<p>更令懒人们惊喜的是作者还制作了一个js版本的docopt，可以让你在浏览器中把玩docopt： <a href="http://try.docopt.org/">http://try.docopt.org/</a></p>
+
+<p>使用docopt后，代码上会更加Pythonic，具有很高的可读性，命令行接口的定义所见即所得的样式：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#docopt example</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">mydoc</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Naval Fate.</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">Usage:</span>
+</span><span class='line'><span class="s">  naval_fate.py ship new &lt;name&gt;...</span>
+</span><span class='line'><span class="s">  naval_fate.py ship &lt;name&gt; move &lt;x&gt; &lt;y&gt; [--speed=&lt;kn&gt;]</span>
+</span><span class='line'><span class="s">  naval_fate.py ship shoot &lt;x&gt; &lt;y&gt;</span>
+</span><span class='line'><span class="s">  naval_fate.py mine (set|remove) &lt;x&gt; &lt;y&gt; [--moored|--drifting]</span>
+</span><span class='line'><span class="s">  naval_fate.py -h | --help</span>
+</span><span class='line'><span class="s">  naval_fate.py --version</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">Options:</span>
+</span><span class='line'><span class="s">  -h --help     Show this screen.</span>
+</span><span class='line'><span class="s">  --version     Show version.</span>
+</span><span class='line'><span class="s">  --speed=&lt;kn&gt;  Speed in knots [default: 10].</span>
+</span><span class='line'><span class="s">  --moored      Moored (anchored) mine.</span>
+</span><span class='line'><span class="s">  --drifting    Drifting mine.</span>
+</span><span class='line'><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">mydoc</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">&#39;0.1&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">arguments</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样就定义了一个丰富的命令行接口。命令行接口提供了<code>--help</code>和<code>--version</code>两个基础功能。其中<code>--help</code>输出<code>mydoc</code>，<code>--version</code>输出指定的<code>version</code>信息。</p>
+
+<p>接口还提供了2个参数（ship, mine），每种参数还提供了不同的几种参数的组合。其中<code>[...]</code>内是可选参数，<code>(...|...)</code>是互斥参数。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress迁移到新主机]]></title>
@@ -2586,26 +2689,6 @@ Koush的Superuser由于Cyanogenmod的一部分，因此是开源的。地址：<
 阅读代码我们就可以了解Android的Root管理应用以及su原理以及如何实现的。</p>
 
 <p>未完待续&hellip;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[《程序员的自我修养》小结]]></title>
-    <link href="http://liuyix.org/blog/2013/advanced-linkers-and-loaders/"/>
-    <updated>2013-04-09T21:05:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/advanced-linkers-and-loaders</id>
-    <content type="html"><![CDATA[<p>应用开发程序员面向的是软件用户;系统程序员面向的是程序员。<br/>
-应用程序使用OS提供的“抽象”的硬件——应用程序接口使用实际的硬件——用来计算的CPU，用来计时的计时器，用来输入的键盘、触摸屏、鼠标、麦克风，用来显示屏幕，用来发声的扬声器,用来保存数据的硬盘，用来和他人通信的网络等等。如果没有操作系统、没有开发工具链，那么应用的开发将回归到“原始社会”。</p>
-
-<h2>OS存在于每一个程序之中</h2>
-
-<p>也许你和我一样，都有一个疑问：自己编写的程序编译之后就能运行了，完全没有感觉到操作系统的存在，告诉自己操作系统只是提供了应用程序运行的平台，如同自己制作的蛋糕拿到市场售卖一般。<br/>
-其实，你错了。<strong>操作系统存在于每一个程序之中。</strong><br/>
-参考 <a href="http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory">Anatomy of a Program in Memory</a> 的图示</p>
-
-<p><img src="http://liuyix.org/images/kernelUserMemorySplit.png" alt="虚拟空间的分布" /></p>
-
-<p>每一个操作系统上运行的原生程序，在它的虚拟内存中都有1G~2G是不属于自己的，即所谓的“kernel space”</p>
 ]]></content>
   </entry>
   

@@ -5,11 +5,19 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>mac上安装octopress - Liuyix</title>
+  <title>docopt -- Python必备的命令行接口模块 - Liuyix</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：http://ruby.taobao.org/ 可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。 安装homebrew &hellip;">
+  <meta name="description" content="docopt很适合经常需要用python写命令行工具的同学使用。 docopt之前 工作需要，经常会用大块的代码来定(ren)义(rou)命令行界面的工具。代码经常是如下的样子： 1
+2
+3
+4
+5
+6
+7
+8
+import optparse parser = optparse. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.org/blog/2013/mac-install-octopress">
+  <link rel="canonical" href="http://liuyix.org/blog/2015/python-docopt">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Liuyix" type="application/atom+xml">
@@ -84,7 +92,7 @@
   
   <header>
     
-      <h1 class="entry-title">Mac上安装octopress</h1>
+      <h1 class="entry-title">Docopt -- Python必备的命令行接口模块</h1>
     
     
       <p class="meta">
@@ -100,37 +108,51 @@
   
 
 
-<time datetime="2013-10-06T12:31:00+08:00" pubdate data-updated="true">Oct 6<span>th</span>, 2013</time>
+<time datetime="2015-10-21T00:02:00+08:00" pubdate data-updated="true">Oct 21<span>st</span>, 2015</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
-<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
+<div class="entry-content"><p>docopt很适合经常需要用python写命令行工具的同学使用。</p>
 
-<ol>
-<li>安装homebrew</li>
-<li>安装rbenv以及ruby-build</li>
-<li><code>rbenv install 1.9.3-p448</code></li>
-<li><code>official install octopress</code></li>
-<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
-</ol>
+<h2>docopt之前</h2>
+
+<p>工作需要，经常会用大块的代码来定(ren)义(rou)命令行界面的工具。代码经常是如下的样子：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">optparse</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">parser</span> <span class="o">=</span> <span class="n">optparse</span><span class="o">.</span><span class="n">OptionParser</span><span class="p">()</span>
+</span><span class='line'><span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&#39;--foo&#39;</span><span class="p">,</span> <span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&#39;int&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&#39;--bar&#39;</span><span class="p">,</span> <span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="c"># 类似以上的代码大概几十行</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<!--more-->
+<p>每一个python脚本都需要提供类似的接口。因此每一次都需要写类似的代码。在写过几次后为了保持DRY原则，我将初始化parser封装为一个method放在util部分。可是依旧是逃不过重复的写<code>parser.add_option</code>。不止一次地我考虑干脆自己写个模板类，以后命令行的定义直接以配置文件的形式写出来，然后每次都通过读取这个配置文件自动化的去生成parser。我相信这个问题我一定不是第一个遇到，应该会有已知的模块解决这个laber intensive的工作。</p>
 
+<p>正在这个时候，偶然看到Python weekly发现了docopt</p>
 
-<h3>原有的octopress迁移到mac</h3>
+<h2>docopt</h2>
 
-<p>如果之前在其他地方已经使用了octopress，那么在mac上的稍有不同。具体为：</p>
+<p>docopt官网地址：<a href="http://docopt.org/">http://docopt.org/</a></p>
 
-<ul>
-<li>clone <em>yourname.github.com</em>的source分支：<code>git clone git clone -b source git@github.com:yourname/yourname.github.com.git octopress</code></li>
-<li>在clone<em>yourname.github.com</em>的master分支到<code>$your_octopress/_deploy</code>目录: <code>git clone git clone git@github.com:yourname/yourname.github.com.git _deploy</code></li>
-</ul>
+<p>docopt的作者有一个30分钟的视频很好的介绍了docopt这个moudule。推荐大家看一下，自备梯子~ <a href="https://youtu.be/pXhcPJK5cMc">https://youtu.be/pXhcPJK5cMc</a></p>
 
+<p>更令懒人们惊喜的是作者还制作了一个js版本的docopt，可以让你在浏览器中把玩docopt： <a href="http://try.docopt.org/">http://try.docopt.org/</a></p>
+
+<p>使用docopt后，代码上会更加Pythonic，具有很高的可读性，命令行接口的定义所见即所得的样式：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -157,61 +179,37 @@
 <span class='line-number'>23</span>
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 如果之前就已经在使用octopress，迁移到mac的话，不要clone octopress源，而是要clone你自己的repo源的source分支</span>
-</span><span class='line'>git clone -b <span class="nb">source </span>git@github.com:yourname/yourname.github.com.git octopress
-</span><span class='line'>git clone git@github.com:yourname/yourname.github.com.git octopress/_deploy
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#docopt example</span>
 </span><span class='line'>
-</span><span class='line'><span class="c">###### 安装octopress ######</span>
-</span><span class='line'><span class="c"># install homebrew</span>
-</span><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</span>
+</span><span class='line'><span class="n">mydoc</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Naval Fate.</span>
 </span><span class='line'>
-</span><span class='line'><span class="c"># 使用brew安装rbenv</span>
-</span><span class='line'>brew install rbenv ruby-build
+</span><span class='line'><span class="s">Usage:</span>
+</span><span class='line'><span class="s">  naval_fate.py ship new &lt;name&gt;...</span>
+</span><span class='line'><span class="s">  naval_fate.py ship &lt;name&gt; move &lt;x&gt; &lt;y&gt; [--speed=&lt;kn&gt;]</span>
+</span><span class='line'><span class="s">  naval_fate.py ship shoot &lt;x&gt; &lt;y&gt;</span>
+</span><span class='line'><span class="s">  naval_fate.py mine (set|remove) &lt;x&gt; &lt;y&gt; [--moored|--drifting]</span>
+</span><span class='line'><span class="s">  naval_fate.py -h | --help</span>
+</span><span class='line'><span class="s">  naval_fate.py --version</span>
 </span><span class='line'>
-</span><span class='line'><span class="c"># 修改.bash_profile</span>
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=/usr/local/var/rbenv&#39;</span> &gt;&gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'><span class="s">Options:</span>
+</span><span class='line'><span class="s">  -h --help     Show this screen.</span>
+</span><span class='line'><span class="s">  --version     Show version.</span>
+</span><span class='line'><span class="s">  --speed=&lt;kn&gt;  Speed in knots [default: 10].</span>
+</span><span class='line'><span class="s">  --moored      Moored (anchored) mine.</span>
+</span><span class='line'><span class="s">  --drifting    Drifting mine.</span>
+</span><span class='line'><span class="s">&quot;&quot;&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="c"># 关闭terminal，再重新开启</span>
-</span><span class='line'>rbenv install ruby-1.9.3-p448
-</span><span class='line'>rbenv versions <span class="c">#应该显示的是system和1.9.3-p448</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
 </span><span class='line'>
-</span><span class='line'><span class="c"># 进入到你的octopress</span>
-</span><span class='line'><span class="nb">cd</span> <span class="nv">$your</span>-octopress
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;1.9.3-p448&#39;</span> &gt; .ruby-version
+</span><span class='line'><span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">mydoc</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">&#39;0.1&#39;</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'><span class="c"># 再次关闭终端，重新打开进入到你的ocotpress目录</span>
-</span><span class='line'>ruby --version <span class="c"># 应该显示的是ruby 1.9.3p448</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 推荐可选操作：更改rubygems源至国内淘宝源，下载更稳定,参考链接：ruby.taobao.org</span>
-</span><span class='line'>gem sources -l <span class="c"># 看一下默认的rubygems源的url</span>
-</span><span class='line'>gem sources --remove https://rubygems.org/ <span class="c">#此处的url以上一条命令为准，有时可能是http而不是https</span>
-</span><span class='line'>gem sources -a http://ruby.taobao.org
-</span><span class='line'>gem sources -l <span class="c"># 此处应该只显示的是淘宝的rubygems源</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 现在就可以参考官方的安装说明安装了</span>
-</span><span class='line'>gem install bundler
-</span><span class='line'>rbenv rehash    <span class="c"># If you use rbenv, rehash to be able to run the bundle command</span>
-</span><span class='line'>bundle install
-</span><span class='line'>
-</span><span class='line'><span class="c"># 如果是第一次安装octopress，还需要安装默认的theme</span>
-</span><span class='line'>rake install
+</span><span class='line'><span class="k">print</span> <span class="n">arguments</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>这样就定义了一个丰富的命令行接口。命令行接口提供了<code>--help</code>和<code>--version</code>两个基础功能。其中<code>--help</code>输出<code>mydoc</code>，<code>--version</code>输出指定的<code>version</code>信息。</p>
+
+<p>接口还提供了2个参数（ship, mine），每种参数还提供了不同的几种参数的组合。其中<code>[...]</code>内是可选参数，<code>(...|...)</code>是互斥参数。</p>
 </div>
 
 
@@ -234,12 +232,12 @@
   
 
 
-<time datetime="2013-10-06T12:31:00+08:00" pubdate data-updated="true">Oct 6<span>th</span>, 2013</time>
+<time datetime="2015-10-21T00:02:00+08:00" pubdate data-updated="true">Oct 21<span>st</span>, 2015</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/mac/'>mac</a>
+    <a class='category' href='/blog/categories/develop/'>Develop</a>, <a class='category' href='/blog/categories/python/'>Python,</a>
   
 </span>
 
@@ -255,10 +253,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/octopress-fails/" title="Previous Post: #吐槽# Octopress：想说爱你不容易...">&laquo; #吐槽# Octopress：想说爱你不容易...</a>
+        <a class="basic-alignment left" href="/blog/2015/new-mac-test/" title="Previous Post: Octopress迁移到新主机">&laquo; Octopress迁移到新主机</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/xiaomi-onsite/" title="Next Post: 小米面试内核驱动工程师总结">小米面试内核驱动工程师总结 &raquo;</a>
       
     </p>
   </footer>
@@ -266,7 +262,7 @@
 
   <section>
    <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="/blog/2013/mac-install-octopress" data-title="mac上安装octopress" data-url="http://liuyix.org/blog/2013/mac-install-octopress/"></div>
+<div class="ds-thread" data-thread-key="/blog/2015/python-docopt" data-title="docopt -- Python必备的命令行接口模块" data-url="http://liuyix.org/blog/2015/python-docopt/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
