@@ -163,59 +163,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/cache-internal-professional/">SMP L1 Cache MESI Coherence Protocol Internal</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-07T15:02:00+08:00" pubdate data-updated="true">Jan 7<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Gem5 Simulator Ruby Memory System</h2>
-
-<p>Ruby Memory</p>
-
-<h2>基于Directory的SMP L1 Cache MESI协议的内部实现</h2>
-
-<p><strong>Directory</strong> :
-<strong>SMP</strong> :
-<strong>L1</strong> :</p>
-
-<p><img src="/images/Diagrama_MESI.gif" alt="/images/Diagrama_MESI.gif" /></p>
-
-<p>而实际上<strong>SMP架构</strong>中的MESI具有多个<em>瞬时状态</em> ,在研究Gem5模拟器中集成的<em>Ruby Memory System Simulator</em>的实现，根据协议实现代码，我得到了以下添加了瞬时状态后的有限状态机图示（ <strong>该图依然为简化后的图，其中省略了自旋状态转换</strong> ，这样看起来更清晰些）</p>
-
-<p><img src="/images/MESI-orig.png" alt="MESI" /></p>
-
-<p>当然这依然不是最终实现的结构，该图并没有考虑目前已经广泛应用在各种处理器上的 <em>Prefetcher</em>
-本文之后会介绍这些 <em>State</em> 以及对应的 <em>Event</em> 。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2014/my-work-in-bit/">我在BIT的这几年</a></h1>
     
     
@@ -658,6 +605,56 @@
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/android-ndk-and-jni-introduction/">Android平台上的JNI技术介绍</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-15T06:00:00+08:00" pubdate data-updated="true">Jul 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>NDK简介</h2>
+
+<p>Android是由Google领导开发的操作系统，Android依靠其开放性，迅速普及，成为目前最流行的智能手机操作系统。</p>
+
+<p><img src="/images/android-system-architecture.jpg" alt="/images/android-system-architecture.jpg" /></p>
+
+<center>图0-1 Android系统架构图</center>
+
+
+<p>图0-1是Android系统架构图。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/android-ndk-and-jni-introduction/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -706,7 +703,7 @@
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/coding'>Coding (2)</a></li><li><a href='/blog/categories/coding-'>Coding, (1)</a></li><li><a href='/blog/categories/database'>Database (1)</a></li><li><a href='/blog/categories/develop'>Develop (1)</a></li><li><a href='/blog/categories/interview'>interview (2)</a></li><li><a href='/blog/categories/life'>Life (6)</a></li><li><a href='/blog/categories/linux'>Linux (9)</a></li><li><a href='/blog/categories/mac'>mac (1)</a></li><li><a href='/blog/categories/octopress'>octopress (3)</a></li><li><a href='/blog/categories/other'>Other (1)</a></li><li><a href='/blog/categories/python-'>Python, (1)</a></li><li><a href='/blog/categories/research'>Research (2)</a></li><li><a href='/blog/categories/techs'>Techs (9)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li><li><a href='/blog/categories/未分类'>未分类 (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/general'>General (10)</a></li><li><a href='/blog/categories/life'>Life (8)</a></li><li><a href='/blog/categories/linux'>Linux (12)</a></li><li><a href='/blog/categories/mac'>Mac (1)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (3)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li></ul>
 </section>
 
 

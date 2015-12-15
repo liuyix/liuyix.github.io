@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Database | 刘毅同学]]></title>
-  <link href="http://liuyix.org/blog/categories/database/atom.xml" rel="self"/>
+  <title><![CDATA[Category: MySQL | 刘毅同学]]></title>
+  <link href="http://liuyix.org/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-15T23:41:15+08:00</updated>
+  <updated>2015-12-16T07:30:17+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-15T23:41:15+08:00</updated>
+  <updated>2015-12-16T07:30:17+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bash Tips]]></title>
+    <link href="http://liuyix.org/blog/2014/bash-tips/"/>
+    <updated>2014-09-14T16:59:00+08:00</updated>
+    <id>http://liuyix.org/blog/2014/bash-tips</id>
+    <content type="html"><![CDATA[<h3>Bash 遇到错误就退出</h3>
+
+<p><a href="http://stackoverflow.com/a/4382179">http://stackoverflow.com/a/4382179</a></p>
+
+<p><code>set -e</code></p>
+
+<blockquote><p>If you put set -e in a script, the script will terminate as soon as any command inside it fails (i.e. as soon as any command returns a nonzero status). This doesn&rsquo;t let you write your own message, but often the failing command&rsquo;s own messages are enough.</p>
+
+<p>The advantage of this approach is that it&rsquo;s automatic: you don&rsquo;t run the risk of forgetting to deal with an error case.</p>
+
+<p>Commands whose status is tested by a conditional (such as if, &amp;&amp; or ||) do not terminate the script (otherwise the conditional would be pointless). An idiom for the occasional command whose failure doesn&rsquo;t matter is command-that-may-fail || true. You can also turn set -e off for a part of the script with set +e.</p></blockquote>
+
+<h2>Bash使用数组</h2>
+
+<h3>快速入门</h3>
+
+<p>(Bash For Loop Array: Iterate Through Array Values)[<a href="http://www.cyberciti.biz/faq/bash-for-loop-array/">http://www.cyberciti.biz/faq/bash-for-loop-array/</a>]</p>
+
+<ul>
+<li>用括号指定，空格指定就好</li>
+<li>遍历： <code>for i in "${var[@]}"</code></li>
+</ul>
+
+
+<h3>深入</h3>
+
+<p>```</p>
+
+<h1>!/bin/bash</h1>
+
+<h1>array-ops.sh: More fun with arrays.</h1>
+
+<p>array=( zero one two three four five )</p>
+
+<h1>Element 0   1   2    3     4    5</h1>
+
+<p>echo ${array[0]}       #  zero
+echo ${array:0}        #  zero</p>
+
+<pre><code>                   #  Parameter expansion of first element,
+                   #+ starting at position # 0 (1st character).
+</code></pre>
+
+<p>echo ${array:1}        #  ero</p>
+
+<pre><code>                   #  Parameter expansion of first element,
+                   #+ starting at position # 1 (2nd character).
+</code></pre>
+
+<p>echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&rdquo;</p>
+
+<p>echo ${#array[0]}      #  4</p>
+
+<pre><code>                   #  Length of first element of array.
+</code></pre>
+
+<p>echo ${#array}         #  4</p>
+
+<pre><code>                   #  Length of first element of array.
+                   #  (Alternate notation)
+</code></pre>
+
+<p>echo ${#array[1]}      #  3</p>
+
+<pre><code>                   #  Length of second element of array.
+                   #  Arrays in Bash have zero-based indexing.
+</code></pre>
+
+<p>echo ${#array[*]}      #  6</p>
+
+<pre><code>                   #  Number of elements in array.
+</code></pre>
+
+<p>echo ${#array[@]}      #  6</p>
+
+<pre><code>                   #  Number of elements in array.
+</code></pre>
+
+<p>echo &ldquo;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&rdquo;</p>
+
+<p>array2=( [0]=&ldquo;first element&rdquo; [1]=&ldquo;second element&rdquo; [3]=&ldquo;fourth element&rdquo; )</p>
+
+<h1>^     ^       ^     ^      ^       ^     ^      ^       ^</h1>
+
+<h1>Quoting permits embedding whitespace within individual array elements.</h1>
+
+<p>echo ${array2[0]}      # first element
+echo ${array2[1]}      # second element
+echo ${array2[2]}      #</p>
+
+<pre><code>                   # Skipped in initialization, and therefore null.
+</code></pre>
+
+<p>echo ${array2[3]}      # fourth element
+echo ${#array2[0]}     # 13    (length of first element)
+echo ${#array2[*]}     # 3     (number of elements in array)</p>
+
+<p>exit
+```</p>
+
+<p>(Arrays)[<a href="http://www.tldp.org/LDP/abs/html/arrays.html">http://www.tldp.org/LDP/abs/html/arrays.html</a>]</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[makefile简单入门]]></title>
@@ -417,33 +526,6 @@ user=mysql
 <li><p><a href="http://dev.mysql.com/doc/refman/5.5/en/automatic-start.html">Starting and Stopping MySQL Automatically</a></p></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[实现vim下的STL自动补全]]></title>
-    <link href="http://liuyix.org/blog/2011/vim-stl-auto-complete/"/>
-    <updated>2011-05-03T05:10:50+08:00</updated>
-    <id>http://liuyix.org/blog/2011/vim-stl-auto-complete</id>
-    <content type="html"><![CDATA[<p>vim的强大之处就在于可扩展性，换句话说就是“禁得起折腾”，不同于IDE的相对固定的快捷键等等设置。如果把IDE比作是豪华住宅，那么vim就是一个空荡荡的一座房屋，你必须要自己动手装潢，工具就是你对装潢的了解以及你的创造力，你的想象力。所以最后这个住宅能不能比上豪华住宅或者能否让你住的舒服完全要看你的动手能力了，呵呵，很激动人心的挑战啊（很适合喜欢DIY的coder  :-D ）</p>
-
-<p>进入正题：vim中有一个非常有名的plugin——<a href="http://www.vim.org/scripts/script.php?script_id=1520">omniCppComplete</a>（以下简称omni）,加上这个插件就可以实现自动补全struct,namespace的成员（实际也是应用强大的ctags），不过郁闷的是omni不支持STL的自动补全。这难不倒众多喜爱DIY的coder。<!-- more --><strong>仔细阅读omn的帮助文档，</strong>你会发现实际上作者已经给出了如何让其自动不全STL（在FAQ中有提到），不过该方法还是很繁琐。幸运的是，已经有热心的coder为我们制作了相应的“插件补丁”——<strong><a href="http://www.vim.org/scripts/script.php?script_id=2358">tags for std c++ (STL, streams, &hellip;)</a></strong>，按照说明步骤一步一步操作就可以完成了。</p>
-
-<p>具体方法：</p>
-
-<ol>
-<li><p> 将下载的压缩包cpp_src.tar.bz2解压，比如解压到 <em>~/src</em> <code>tar -jxf cpp_src.tar.bz2 -d ~/src</code></p></li>
-<li><p> 打开终端，将work directory定位到~/src,然后运行以下命令<code>ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ cpp_src</code></p></li>
-<li><p> 将生成的tags重命名：<code>mv tags a-new-name-tags</code></p></li>
-<li><p> 在vim的环境中执行<code>:set tags+=/my/path/to/tags/cpp</code></p></li>
-</ol>
-
-
-<p>这样就可以在代码中自动补全STL代码了！Good Luck!</p>
-
-<p>参考链接：<a href="http://www.vim.org/scripts/script.php?script_id=2358">http://www.vim.org/scripts/script.php?script_id=2358</a></p>
-
-<p>尚未解决的问题：目前此插件只能实现对".&ldquo;&rdquo;&ndash;>&ldquo;等的补全，但是不能补全&rdquo;::&ldquo; :&ndash;(</p>
 ]]></content>
   </entry>
   

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: octopress | 刘毅同学]]></title>
+  <title><![CDATA[Category: Octopress | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-15T23:41:15+08:00</updated>
+  <updated>2015-12-16T07:30:17+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress迁移到新主机]]></title>
+    <link href="http://liuyix.org/blog/2015/new-mac-test/"/>
+    <updated>2015-08-24T00:04:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/new-mac-test</id>
+    <content type="html"><![CDATA[<ul>
+<li>新机器上首先是把ssh key加入到github的setting，然后配置好基本的git信息（email, name），此处步骤略过。可以参考：<a href="https://help.github.com/articles/set-up-git/">https://help.github.com/articles/set-up-git/</a></li>
+<li><code>git clone -b source git@github.com:username/username.github.com.git octopress</code>
+
+<ul>
+<li>操作完这一步后就相当于把当前octopress的source文档拉到了本地了。</li>
+<li><strong>这一步操作前一定要确保在其他机器上的markdown文件以及其他配置文件的修改都已经push到source分支了，否则这一步会导致博客文章丢失！！！</strong></li>
+</ul>
+</li>
+<li>进入到octopress, 然后<code>git clone git@github.com:username/username.github.com.git _deploy</code>
+
+<ul>
+<li>这一步是在<code>_deploy</code>建立好指向master分支的git仓库，方便之后发布文章时使用</li>
+</ul>
+</li>
+<li>安装octopress相关的ruby依赖等
+
+<ul>
+<li>建议修改rubygems的安装源到国内的taobao源，详细操作步骤：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a>，默认的rubygems.org源已经被墙，速度很慢。</li>
+</ul>
+</li>
+</ul>
+
+
+<p>完成上面几步后，就可以尝试调用<code>rake generate</code>生成一次网站，然后<code>rake deploy</code>看下是否成功~</p>
+
+<h3>在不同主机上使用Octopress上发布文章</h3>
+
+<p>每次发布新的文章或者修改现有文章时，需要把<code>source</code>分支的修改（即octopress目录所指向的git仓库分支）commit并且push到github上，之后在另外的主机上首先进入到octopress目录，在编辑文章前首先<code>git pull</code>下拉取修改。这样的编辑才能连贯，不然会发生文章丢失的情况。</p>
+
+<p>Reference:</p>
+
+<ul>
+<li><a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></li>
+</ul>
+
+
+<p>-EOF-</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress修改记录]]></title>
