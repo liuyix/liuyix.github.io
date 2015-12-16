@@ -4,7 +4,7 @@ title: "play with git &amp; github"
 date: 2013-08-10 16:10
 comments: true
 published: false
-categories: git
+categories: General
 ---
 
 ## Play with git & github

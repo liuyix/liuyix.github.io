@@ -3,7 +3,7 @@ layout: post
 title: "Bash Tips"
 date: 2014-09-14 16:59
 comments: true
-categories: Coding
+categories: General Linux
 ---
 
 ### Bash 遇到错误就退出

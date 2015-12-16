@@ -7,7 +7,7 @@ slug: modify-hosts-to-use-google
 title: '[2012-2-5-更新]修改hosts访问google的各种服务(groups,docs...)'
 wordpress_id: 188
 categories:
-- Techs
+- General
 tags:
 - gfw
 - google

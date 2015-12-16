@@ -7,7 +7,7 @@ slug: python-gui-comparison
 title: python GUI工具分析及选择–PyQT/PyGTK/wxPython比较
 wordpress_id: 598
 categories:
-- Techs
+- Python
 tags:
 - gui
 - python

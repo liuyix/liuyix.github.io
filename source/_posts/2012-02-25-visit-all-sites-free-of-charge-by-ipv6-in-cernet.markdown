@@ -7,7 +7,7 @@ slug: visit-all-sites-free-of-charge-by-ipv6-in-cernet
 title: 教育网中使用ipv6免流量访问*所有*网站（包括所有被QIANG网站）——NAT64/DNS64设置指南
 wordpress_id: 548
 categories:
-- Techs
+- General
 tags:
 - gfw
 - howto

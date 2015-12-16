@@ -5,15 +5,7 @@ date: 2011-04-28 13:25:37
 layout: post
 slug: vim-tutorial-1
 title: VIM学习资料总结
-wordpress_id: 217
-categories:
-- Techs
-- 未分类
-tags:
-- easy
-- vim
-- 教程
-- 资料
+categories: General Linux
 ---
 
 > 一个coder，无论他是哪个平台的开发者，倾向于哪个平台，都应该掌握或者至少会用一种“神器”——VIM/Emacs。

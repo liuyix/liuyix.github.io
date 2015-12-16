@@ -3,7 +3,7 @@ layout: post
 title: "期待 Octopress 2.1"
 date: 2013-03-08 00:11
 comments: true
-categories: [octopress]
+categories: Octopress
 ---
 想给Octopress添加几个新功能,想目录的自动生成和点击图片的弹出效果。
 

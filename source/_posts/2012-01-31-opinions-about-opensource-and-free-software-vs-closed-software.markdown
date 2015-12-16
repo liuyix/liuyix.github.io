@@ -7,7 +7,7 @@ slug: opinions-about-opensource-and-free-software-vs-closed-software
 title: 开放与开源，自由与封闭
 wordpress_id: 519
 categories:
-- Techs
+- General
 tags:
 - other
 ---

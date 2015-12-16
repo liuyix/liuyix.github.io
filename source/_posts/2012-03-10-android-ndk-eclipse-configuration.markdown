@@ -8,7 +8,6 @@ title: Eclipse下配置NDK开发环境小结
 wordpress_id: 643
 categories:
 - android
-- Techs
 tags:
 - ndk
 - tips

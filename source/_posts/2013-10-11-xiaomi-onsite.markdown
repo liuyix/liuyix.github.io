@@ -3,7 +3,7 @@ layout: post
 title: "小米面试内核驱动工程师总结"
 date: 2013-10-11 19:54
 comments: true
-categories: interview
+categories: General Life
 ---
 
 > 此为吐槽贴，略涉及技术。

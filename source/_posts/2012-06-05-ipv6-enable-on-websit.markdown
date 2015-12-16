@@ -6,8 +6,8 @@ layout: post
 slug: ipv6-enable-on-websit
 title: 内牛满面啊，本博客终于可以ipv6访问了!（ipv6.liuyix.com）
 wordpress_id: 661
-categories:
-- 未分类
+categories: General
+
 ---
 
 博主身在教育网中，登录非大陆的网站是流量计费的，而且每月就是固定的1G流量。（当然BIT是这样的，其他学校可能不是）

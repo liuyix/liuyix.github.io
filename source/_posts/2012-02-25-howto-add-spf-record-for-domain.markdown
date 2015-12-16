@@ -7,7 +7,7 @@ slug: howto-add-spf-record-for-domain
 title: 域名邮件不再被spam——SPF记录设置
 wordpress_id: 360
 categories:
-- Techs
+- General
 tags:
 - howto
 ---

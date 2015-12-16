@@ -7,7 +7,7 @@ slug: open-book-recommandation
 title: Open Book推荐
 wordpress_id: 483
 categories:
-- Techs
+- General
 tags:
 - book
 - opensource

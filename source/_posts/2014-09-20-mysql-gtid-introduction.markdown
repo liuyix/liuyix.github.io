@@ -3,7 +3,7 @@ layout: post
 title: "MySQL 5.6 GTID 学习笔记"
 date: 2014-09-20 18:45
 comments: true
-categories: Database
+categories: MySQL
 ---
 
 ### Reading List

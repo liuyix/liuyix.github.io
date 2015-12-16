@@ -2,9 +2,9 @@
 layout: post
 title: "SMP L1 Cache MESI Coherence Protocol Internal"
 date: 2014-01-07 15:02
-published: true
+published: false
 comments: true
-categories: Research
+categories: General
 ---
 
 ## Gem5 Simulator Ruby Memory System

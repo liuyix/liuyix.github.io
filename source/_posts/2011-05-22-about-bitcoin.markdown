@@ -6,9 +6,7 @@ layout: post
 slug: about-bitcoin
 title: 也谈Bitcoin
 wordpress_id: 290
-categories:
-- Techs
-- 未分类
+categories: General
 ---
 
 本周最引人注目的IT新闻，我觉得就要属Bitcoin了。

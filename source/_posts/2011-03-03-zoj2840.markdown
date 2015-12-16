@@ -7,7 +7,7 @@ slug: zoj2840
 title: ZOJ2840——File Searching 解题总结
 wordpress_id: 48
 categories:
-- Techs
+- General
 tags:
 - string
 - zoj
@@ -70,7 +70,7 @@ tags:
 
 <!-- more -->
 
-[cpp]
+```c
 #include <iostream>
 #include <string>
 #include <vector>
@@ -158,4 +158,4 @@ int main(){
 	}
 	return 0;
 }
-[/cpp] 
+```

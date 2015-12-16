@@ -7,7 +7,7 @@ slug: eclipse-cdt-templates-proposals-config
 title: Eclipse中使用代码模版攻略
 wordpress_id: 604
 categories:
-- Techs
+- General
 tags:
 - eclipse
 ---

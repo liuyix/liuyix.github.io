@@ -3,7 +3,7 @@ layout: post
 title: "python logging模块"
 date: 2015-04-05 23:46
 comments: true
-categories: Python, Coding
+categories: Python
 published: false
 ---
 

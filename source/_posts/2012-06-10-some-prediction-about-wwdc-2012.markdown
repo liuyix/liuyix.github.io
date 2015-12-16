@@ -7,7 +7,7 @@ slug: some-prediction-about-wwdc-2012
 title: 写在WWDC2012之前——苹果靠谱新品猜测小结
 wordpress_id: 684
 categories:
-- Techs
+- Life
 post_format:
 - Standard
 tags:

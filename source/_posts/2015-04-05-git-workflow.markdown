@@ -3,7 +3,7 @@ layout: post
 title: "git workflow"
 date: 2015-04-05 23:30
 comments: true
-categories: Coding
+categories: General
 ---
 
 Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘[^1]。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github--[gitlab](https://gitlab.com/)。知道怎么玩git是大势所趋。

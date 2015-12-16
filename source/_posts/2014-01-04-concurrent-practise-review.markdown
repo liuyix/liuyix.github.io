@@ -3,7 +3,7 @@ layout: post
 title: "并发编程理论与实践"
 date: 2014-01-04 14:42
 comments: true
-categories: Concurrent
+categories: General
 published: false
 ---
 

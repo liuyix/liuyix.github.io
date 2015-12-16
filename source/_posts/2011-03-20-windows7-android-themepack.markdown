@@ -7,7 +7,7 @@ slug: windows7-android-themepack
 title: Android Fans必备——Windows7 Android主题包
 wordpress_id: 133
 categories:
-- Techs
+- General
 tags:
 - android
 - 下载

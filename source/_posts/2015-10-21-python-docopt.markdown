@@ -3,7 +3,7 @@ layout: post
 title: "docopt -- Python必备的命令行接口模块"
 date: 2015-10-21 00:02
 comments: true
-categories: Python, Develop
+categories: Python
 ---
 
 

@@ -3,7 +3,7 @@ layout: post
 title: "由互联网中的Python应用想到的网站架构的优化"
 date: 2015-04-08 22:56
 comments: true
-categories: Coding,
+categories: Python
 ---
 
 - 国内[^1]

@@ -7,7 +7,7 @@ slug: visual-sorting-process
 title: 排序过程可视化
 wordpress_id: 117
 categories:
-- Techs
+- General
 tags:
 - 排序
 - 算法

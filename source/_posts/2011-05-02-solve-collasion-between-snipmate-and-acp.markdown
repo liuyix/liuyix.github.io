@@ -6,9 +6,7 @@ layout: post
 slug: solve-collasion-between-snipmate-and-acp
 title: snipMate(snipMate.vim)与AutoComplPop(acp.vim)冲突的解决方法
 wordpress_id: 248
-categories:
-- Techs
-- 未分类
+categories: General Linux
 tags:
 - vim
 - 解决方法

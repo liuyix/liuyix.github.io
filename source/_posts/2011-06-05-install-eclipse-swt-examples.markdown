@@ -5,10 +5,7 @@ date: 2011-06-05 18:42:16
 layout: post
 slug: install-eclipse-swt-examples
 title: Java SWT学习之Eclipse SWT Example(SWT示例)安装
-wordpress_id: 293
-categories:
-- Techs
-- 未分类
+categories: Java
 tags:
 - java
 - swt

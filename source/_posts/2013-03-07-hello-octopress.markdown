@@ -5,7 +5,7 @@ date: 2013-03-07 18:45
 comments: true
 published: true
 external-url: 
-categories: [octopress]
+categories: Octopress
 ---
 
 {% img /images/octopress-logo.png  %}

@@ -3,7 +3,7 @@ layout: post
 title: "Octopress迁移到新主机"
 date: 2015-08-24 00:04
 comments: true
-categories: Other
+categories: Octopress
 ---
 
 - 新机器上首先是把ssh key加入到github的setting，然后配置好基本的git信息（email, name），此处步骤略过。可以参考：[https://help.github.com/articles/set-up-git/](https://help.github.com/articles/set-up-git/)

@@ -7,7 +7,7 @@ slug: 6-easy-ways-to-get-started-programming-open-source-chn
 title: '[译]初次参与开源软件项目的六个忠告'
 wordpress_id: 640
 categories:
-- Techs
+- General
 tags:
 - opensource
 - translation

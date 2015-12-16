@@ -7,7 +7,7 @@ slug: tips-for-android-newbie
 title: Android初学者最易遇到的麻烦——Android开发环境相关问题集锦
 wordpress_id: 102
 categories:
-- Techs
+- android
 tags:
 - android
 ---

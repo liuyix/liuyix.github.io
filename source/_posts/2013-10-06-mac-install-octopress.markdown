@@ -3,7 +3,7 @@ layout: post
 title: "mac上安装octopress"
 date: 2013-10-06 12:31
 comments: true
-categories: mac
+categories: Mac
 ---
 
 > Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：http://ruby.taobao.org/   

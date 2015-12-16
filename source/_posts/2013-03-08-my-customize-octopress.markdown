@@ -3,7 +3,7 @@ layout: post
 title: "Octopress修改记录"
 date: 2013-03-08 22:27
 comments: false
-categories: [octopress]
+categories: [Octopress]
 published: true
 ---
 

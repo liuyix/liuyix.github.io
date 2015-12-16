@@ -8,7 +8,6 @@ title: 有趣的fork()
 wordpress_id: 608
 categories:
 - Linux
-- Techs
 tags:
 - libc
 ---

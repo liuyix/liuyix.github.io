@@ -7,7 +7,7 @@ slug: introduce-the-architecture-of-open-source-applications
 title: '[图书推荐]The Architecture of Open Source Applications 开源应用程序架构'
 wordpress_id: 707
 categories:
-- Techs
+- General
 tags:
 - book
 ---

@@ -1,0 +1,44 @@
+---
+layout: post
+title: "Quora每周摘选(第1期)"
+date: 2015-12-15 23:13
+comments: true
+categories: Quora
+---
+
+> 因为订阅了Quora Digest，发现推送的邮件里面好多不错的文章。这里每周会从我读到的Quora里面翻译部分精选。
+
+## How do I become a morning person?
+## 如何成为早起者？
+
+<span class="quora-content-embed" data-name="How-do-I-become-a-morning-person-1/answer/Ariel-Banayan">Read <a class="quora-content-link" data-width="559" load-full-answer="False" data-key="3765fad42a9dad28891463f98e35b93a" data-id="17118396" data-embed="qjccazo" href="https://www.quora.com/How-do-I-become-a-morning-person-1/answer/Ariel-Banayan" data-type="answer" data-height="250"><a href="https://www.quora.com/Ariel-Banayan">Ariel Banayan</a>&#039;s <a href="/How-do-I-become-a-morning-person-1#ans17118396">answer</a> to <a href="/How-do-I-become-a-morning-person-1" ref="canonical"><span class="rendered_qtext">How do I become a morning person?</span></a></a> on <a href="https://www.__nousername__.main.quora.com">Quora</a><script type="text/javascript" src="https://www.quora.com/widgets/content"></script></span>
+
+如何成为一个牛逼的Morning Person,也困扰了我很久。虽然现在依旧没有成功（捂脸）。成为Moring Person后就可以每天早上5点起来在无人打扰的环境里做自己喜欢的或者和梦想有关的事情，当然也可以给自己做一份丰盛的早餐，或者起来加班....
+
+成为Morning Person的几个步骤：
+
+### **Step 1** 睡前做好准备。
+
+睡前就把第二天早上的计划想好，减少你通常在早上需要做的决定，能尽早决定的就晚上确定下来。比如第二天要早期读书，那么就确定好要读哪本书，具体从哪一章节开始，要读多久等等。做决策会消耗精力导致疲劳，所以不要把早上的充沛的精力花费在考虑今天开穿什么衣服，想吃什么早餐这样的决定上。
+
+所以在睡前你要做好：
+
+- 装好包随时可以出门上班
+- 准备好早上要穿的衣服
+- 准备好早餐
+- 确定好早上计划要搞定的几件事
+
+### **Step 2** 睡你麻痹起来嗨！
+
+早上一睁开眼睛关了闹钟，忽略身体上的不适感，立马从床上跳下来，做十个立定跳远！
+就这么简单！！！10个立定跳远，让身体的血液流动起来，激活能量，人也就精神起来了。
+
+### Step 3（最重要的一点）<red>给自己找一个充分的早起理由——让早起富有意义</red>
+
+这个步骤并不是说在醒来之后告诉自己一些上纲上线的理由，什么生活有多美好啦，或者多么幸运啦（除非这是你早上时间主要的活动，我完全支持）。
+你需要有一些你想在清晨做的事情，比如完成繁忙的一天中最该尽早完成的任务（a task you want to accomplish early on before the madness of the day starts to slow you down），你需要参加的会议、活动（有大清早开的会吗....我个人理解是需要早起赴约，比如比赛或者赶车），或者锻炼等等。总之，你要有一个无法拒绝的早起的理由。要不大清早起来后，发现老子清晨五六点起来毫无意义，你很可能就又回去睡回笼觉了。**你必须要有一些『只是想一想都有些小激动呢』放在早上来做**，或者**有一些可以让你充满正能量，让你感觉非常开心的，能让一整天达到最佳状态的事情**，这样早起才充满动力。
+
+举几个栗子，这个步骤很好懂，因为要事要早起——赶火车，飞机，外出集合，或者有非常让你小激动的事情——你要陪女神早上跑步，仅仅这些充满诱惑力的理由，即使没有任何准备你也会早起，不是吗？
+
+
+

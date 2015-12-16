@@ -8,7 +8,6 @@ title: makefile简单入门
 wordpress_id: 551
 categories:
 - Linux
-- Techs
 tags:
 - makefile
 ---
