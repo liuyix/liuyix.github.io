@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>使用emacs org-mode写博客——org2blog配置指南 - 刘毅同学</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="博客好久没有更新了，原因很多，最主要的应该是没有养成写文章的习惯，&hellip;还有一个很重要的原因就是从前写blog都是在线写的，虽然说不是很方便，但是在家的时候还可以忍受。可是到了教育网时，网速就完全无法忍受了，其次是在网页上撰写需要不停的使用鼠标，实在是很低效。因此博客长期没有更新。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.org/blog/2011/first-post-with-org2blog">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="刘毅同学" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">刘毅同学</a></h1>
+  
+    <h2>About Python, MySQL & Life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">使用emacs Org-mode写博客——org2blog配置指南</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-09T16:00:00+08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><blockquote><p>博客好久没有更新了，原因很多，最主要的应该是没有养成写文章的习惯，&hellip;还有一个很重要的原因就是从前写blog都是在线写的，虽然说不是很方便，但是在家的时候还可以忍受。可是到了教育网时，网速就完全无法忍受了，其次是在网页上撰写需要不停的使用鼠标，实在是很低效。因此博客长期没有更新。
+现在情况有了不小的改观。在这几个月里我逐渐熟悉了emacs，同时必然会接触到emacs一大利器org-mode，使用org-mode可以非常方便的组织自己的工作，编写发布文章，十分强大。很自然的就想到如果使用org-mode来写博那该多好啊！
+org2blog自然是首选！</p></blockquote>
+
+<p>废话不多说，简单介绍下org2blog的安装、配置和使用。</p>
+
+<h3>org2blog的一些依赖</h3>
+
+<ul>
+<li><p>需要<a href="http://launchpad.net/xml-rpc-el">xml-rpc-el</a> 作为与wordpress通信</p></li>
+<li><p>需要高版本org-mode(我目前使用的org-mode是7.4版本，目前没有遇到什么问题)</p></li>
+<li><p>需要在你的wordpress中开启xml-rpc功能(<code>settings</code>–> <code>writing</code> –> <code>Remote Publishing</code> –> xml-rpc)</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>下载org2blog</h3>
+
+<ol>
+<li><p> org2blog托管在github上，下载地址在<a href="https://github.com/punchagan/org2blog">这里 </a>，如果在你有git工具那么可以很方便的使用 <code>git clone http://github.com/punchagan/org2blog.git</code> 将el文件下载到当前的目录中。</p></li>
+<li><p> 下载后将org2blog文件夹放到.emacs.d或者其他你保存emacs插件的地方</p></li>
+</ol>
+
+
+<h3>修改emacs配置文件 <code>.emacs</code></h3>
+
+<pre><code>;org2blog
+(setq load-path (cons "~/.emacs.d/org2blog/" load-path))
+(require 'org2blog-autoloads)
+(setq org2blog/wp-blog-alist
+      '(("wordpress"
+         :url "http://username.wordpress.com/xmlrpc.php"
+         :username "username"
+         :default-title "Hello World"
+         :default-categories ("org2blog" "emacs")
+         :tags-as-categories nil)
+        ("liuyix"
+         :url "http://liuyix.com/wordpress/xmlrpc.php"
+         :username "cnliuyix")))
+</code></pre>
+
+<p>上面是我的一个简单的修改，将第二个 <code>liuyix</code>, <code>url</code>, <code>username</code> 改成你自己的即可(可能是我没改好，也可能是有bug,我删除了第一个无效的wordpress配置后总是出现 <code>bad url</code> 的错误)</p>
+
+<h3>基本使用</h3>
+
+<h4>登录wordpress</h4>
+
+<p>[text] M-x org2blog/wp-login [/text]</p>
+
+<p>按照提示输入密码即可登录。（进阶使用可以保存密码，直接登录）</p>
+
+<h4>新建一个post/page</h4>
+
+<p>[text] M-x org2blog/wp-new-entry [/text]</p>
+
+<p>这样org2blog会调用template添加了TITLE,CATEGORY,TAGS填写的地方，供填写</p>
+
+<h4>保存为草稿/发布post/page</h4>
+
+<ul>
+<li>以草稿形式上传到wordpress</li>
+</ul>
+
+
+<p>[text] M-x org2blog/wp-post-buffer [/text]</p>
+
+<ul>
+<li>直接正式发布</li>
+</ul>
+
+
+<p>[text] M-x org2blog/wp-post-buffer-and-publish [/text]</p>
+
+<h4>现有文档的发布</h4>
+
+<p>org2blog还可以发布已经撰写好的org-mode编写的文档，实际上它和使用=org2blog/wp-new-entry=区别只在于没有模板生成的title,category,tags的信息，这些信息都是可选填写的，发布已有的org文档时，你可以手动加上诸如TITLE这样的属性。</p>
+
+<h4>删除post/page</h4>
+
+<ul>
+<li>如果在本buffer中已经有要删除的 <code>POSTID</code> ，那么删除post就是</li>
+</ul>
+
+
+<p>[text] M-x org2blog/wp-delete-entry [/text]</p>
+
+<p>同理已经删除page的操作是</p>
+
+<p>[text] M-x org2blog/wp-delete-page [/text]</p>
+
+<ul>
+<li>如果要删除指定的POSTID的文章，则需要输入：</li>
+</ul>
+
+
+<p>[text] C-u post-id M-x org2blog/wp-delete-entry [/text]</p>
+
+<h4>修改post</h4>
+
+<p>和上面的删除类似类似，只要buffer中有POSTID信息，修改就是重新进行发布的操作，没什么特殊的。</p>
+
+<h3>一些实用tips</h3>
+
+<h4>在文中嵌入代码</h4>
+
+<p>这个要视你的wordpress使用的是什么插件了。一般常用的是使用<em>SyntaxHighlighter</em> ,因此在插入代码时需要选择使用下面的方法1</p>
+
+<p>[text] @<pre lang=”lisp”>
+(end-of-line)
+@</pre> [/text]</p>
+
+<h3>总结</h3>
+
+<p>org2blog利用了wordpress的XMLRPC将org-mode变成了wordpress发文利器，只需要半小时时间就会熟练的掌握org-mode发博文。相信从此发博的效率会大增。</p>
+
+<h3>参考文献</h3>
+
+<ul>
+<li><p><a href="http://wdicc.com/about-org2blog/">http://wdicc.com/about-org2blog/</a></p></li>
+<li><p><a href="https://github.com/punchagan/org2blog">https://github.com/punchagan/org2blog</a></p></li>
+<li><p><a href="http://zhengdong.me/2011/01/13/hello-from-org2blog/">http://zhengdong.me/2011/01/13/hello-from-org2blog/</a></p></li>
+</ul>
+
+
+<h2>Footnotes:</h2>
+
+<p>1 <a href="http://zhengdong.me/2011/01/13/hello-from-org2blog/">Hello, From org2blog@http://zhengdong.me</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-09T16:00:00+08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/thoughts-about-orders-of-routine-stuff/" title="Previous Post: 对日常用品摆放问题的一些思考">&laquo; 对日常用品摆放问题的一些思考</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/ptrace-tutorial/" title="Next Post: ptrace(1)">ptrace(1) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+   <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="/blog/2011/first-post-with-org2blog" data-title="使用emacs org-mode写博客——org2blog配置指南" data-url="http://liuyix.org/blog/2011/first-post-with-org2blog/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuyix"};
+    (function() {
+
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+ </script>
+ <!-- 多说公共JS代码 end -->
+
+  </section>
+ 
+<!---->
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>
+  <center>
+  All articles licensed under
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/python-data-model/">Python Data Model</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (6)</a></li><li><a href='/blog/categories/general'>General (22)</a></li><li><a href='/blog/categories/java'>Java (1)</a></li><li><a href='/blog/categories/life'>Life (18)</a></li><li><a href='/blog/categories/linux'>Linux (21)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (7)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (2)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

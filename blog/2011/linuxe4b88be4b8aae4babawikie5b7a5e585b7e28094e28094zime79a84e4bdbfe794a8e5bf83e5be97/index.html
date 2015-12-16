@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Linux下个人Wiki工具——Zim的使用心得 - 刘毅同学</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="什么是个人wiki？ 个人知识管理中“信息存储”和“信息整理”的一种有效手段。 信息繁多的时代，个人知识整理的强大工具。构建一个属于自己的本地Wikipedia。 安装Zim 添加Zim源：[bash]sudo add-apt-repository ppa:jaap.karssenberg/zim &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.org/blog/2011/linuxe4b88be4b8aae4babawikie5b7a5e585b7e28094e28094zime79a84e4bdbfe794a8e5bf83e5be97">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="刘毅同学" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">刘毅同学</a></h1>
+  
+    <h2>About Python, MySQL & Life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Linux下个人Wiki工具——Zim的使用心得</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-19T22:55:33+08:00" pubdate data-updated="true">May 19<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>什么是个人wiki？</p>
+
+<p>个人知识管理中“信息存储”和“信息整理”的一种有效手段。</p>
+
+<p>信息繁多的时代，个人知识整理的强大工具。构建一个属于自己的本地Wikipedia。</p>
+
+<!-- more -->
+
+
+<h1>安装Zim</h1>
+
+<ol>
+<li><p> 添加Zim源：[bash]sudo add-apt-repository ppa:jaap.karssenberg/zim[/bash]</p></li>
+<li><p> [bash]sudo apt-get update[/bash]</p></li>
+<li><p> [bash]sudo apt-get install zim[/bash]</p></li>
+</ol>
+
+
+<p>Zim入门</p>
+
+<p>Zim的入门详细内容可以参考Zim的帮助，里面讲解的很不错。这里这做一个简单的介绍。可以参考<em>Usage:Getting Started</em></p>
+
+<h2>Zim相关元素：Notebook、Namespace</h2>
+
+<p>Notebook:一个notebook相当于一个特定wiki的根目录，是某一内容的集合。比如一个日记本算作一个notebook，一个读书笔记算作一个notebook，一个工作计划算作一个notebook，等等。</p>
+
+<p>Namespace:一个notebook都有一个首页。namespace相当于超链接，链接到另一个page。例如一个读书笔记的note，每本书一个二级页面，之后每章一个三级页面。页面之间可以通过namespace联系。</p>
+
+<h2>Zim文字编辑</h2>
+
+<p>建议掌握zim常用的快捷键和一些根据wiki语法而来的自动格式化方法。</p>
+
+<p>功能名称</p>
+
+<p>快捷键/格式化方法</p>
+
+<p>备注</p>
+
+<p>1级标题到5级标题</p>
+
+<p><Ctrl>1&hellip;<Ctrl>5</p>
+
+<p>可选中文字也可整行格式化</p>
+
+<p>加粗</p>
+
+<p><Ctrl>b</p>
+
+<p>b:bold</p>
+
+<p>斜体</p>
+
+<p><Ctrl>i</p>
+
+<p>i:italic</p>
+
+<p>高亮</p>
+
+<p><Ctrl>u</p>
+
+<p>u:underline</p>
+
+<p>删除线</p>
+
+<p><Ctrl>k</p>
+
+<p>k:kill</p>
+
+<p>撤销操作</p>
+
+<p><Ctrl>z</p>
+
+<p>redo(重做)</p>
+
+<p><Ctrl>y</p>
+
+<p>插入时间</p>
+
+<p><Ctrl>d</p>
+
+<p>d:date</p>
+
+<p>以当前日期创建页面</p>
+
+<p><Alt>d</p>
+
+<p>建立namespace</p>
+
+<p><Ctrl>l</p>
+
+<p>在提示栏中输入namespace名称以及显示的文本，可以使用多级namespace</p>
+
+<p>以冒号作为划分</p>
+
+<p>项目编号</p>
+
+<p>在行首键入*<space>(或者<tab>)</p>
+
+<p>项目编号缩进</p>
+
+<p>项目编号后面若干<tab></p>
+
+<p>添加tag</p>
+
+<p>@[tag名称]</p>
+
+<p>建立namespace</p>
+
+<p>:[namespace名]&mdash;绝对链接[上级namespace]:[namespace名]&mdash;相对链接</p>
+
+<p>此方法为文本自动格式化产生page的方法。也可以建立后使用<Ctrl>l修改</p>
+
+<h1>Zim扩展</h1>
+
+<p>Zim除了可以建立wiki页面之外，还可以通过扩展支持许多其他强大的功能。其中包括：</p>
+
+<ul>
+<li><p>日历：可以以当前的日期建立一个多级的页面，比如在2011-5-19使用<Alt>d建立了2011&mdash;>5月&mdash;>19日的三级页面</p></li>
+<li><p>图形编辑器：这是我最喜欢的一个功能，使用一种简单的脚本语言dot，生成图形。此功能实际使用的是开源的图形绘制工具Graphviz。（这也算是我的意外收获，以后再也不用鼠标艰难的画图了! :&ndash;)）下面是几个不错的例子。
+<img src="http://www.graphviz.org/Gallery/directed/cluster.png" alt="cluster" />
+<img src="http://www.graphviz.org/Gallery/directed/datastruct.png" alt="datastruct" />
+<img src="http://www.graphviz.org/Gallery/directed/traffic_lights.png" alt="graphviz-snapshot" /></p></li>
+<li><p>使用gnuplot绘制各种复杂的图表。以下是一例：
+<img src="http://gnuplot.sourceforge.net/demo_4.2/surface2.1.png" alt="gnuplot-snapshot-1" />
+<img src="http://gnuplot.sourceforge.net/demo_4.4/showcase_plot.3.png" alt="gnuplot-snapshot-1" /></p></li>
+<li><p>还有同样强大的LaTex公式编辑器</p></li>
+<li><p>图形化链接关系图</p></li>
+<li><p>本身集成了Bazzar版本控制系统，这是zim的核心功能之一，因此可以保存notebook的所有改动！:-D</p></li>
+<li><p>特殊符号编辑器：可以用来插入特殊符号</p></li>
+<li><p>more&hellip;</p></li>
+</ul>
+
+
+<p>从以上的介绍可以看出，借助扩展zim可以使用比其本身强大N倍的大型开源绘图工具（gnuplot,graphviz）绘制各种专业的图表图像。（也非常感谢这些扩展，让我知道了这么多的开源绘图工具！）</p>
+
+<p>关于扩展的安装</p>
+
+<p>扩展依赖于其他程序，比如gnuplot,graphviz，你可以在“首选项”的“插件”中启用，当然有些依赖程序没有的话，可以通过apt安装，再次不赘述了。</p>
+
+<h1>使用Zim写日记</h1>
+
+<p>zim本身集成了日历功能，因此在上面可以很轻松的写日记。使用<Alt>d轻松创建。</p>
+
+<h1>使用zim做pkm</h1>
+
+<p>刚刚接触zim，这部分经验较少，以后再完善。</p>
+
+<h1>使用zim做gtd</h1>
+
+<p>详细内容可以参考自带的manual，&#8221;Usage:Getting Things &ldquo;稍候补充中译版本。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-19T22:55:33+08:00" pubdate data-updated="true">May 19<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/pkm-tools-on-linux-recommendation/" title="Previous Post: 我的PKM——Linux下的个人知识管理(PKM)之工具推荐">&laquo; 我的PKM——Linux下的个人知识管理(PKM)之工具推荐</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/about-bitcoin/" title="Next Post: 也谈Bitcoin">也谈Bitcoin &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+   <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="/blog/2011/linuxe4b88be4b8aae4babawikie5b7a5e585b7e28094e28094zime79a84e4bdbfe794a8e5bf83e5be97" data-title="Linux下个人Wiki工具——Zim的使用心得" data-url="http://liuyix.org/blog/2011/linuxe4b88be4b8aae4babawikie5b7a5e585b7e28094e28094zime79a84e4bdbfe794a8e5bf83e5be97/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuyix"};
+    (function() {
+
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+ </script>
+ <!-- 多说公共JS代码 end -->
+
+  </section>
+ 
+<!---->
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>
+  <center>
+  All articles licensed under
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/python-data-model/">Python Data Model</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (6)</a></li><li><a href='/blog/categories/general'>General (22)</a></li><li><a href='/blog/categories/java'>Java (1)</a></li><li><a href='/blog/categories/life'>Life (18)</a></li><li><a href='/blog/categories/linux'>Linux (21)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (7)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (2)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

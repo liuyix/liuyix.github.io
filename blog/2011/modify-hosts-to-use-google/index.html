@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[2012-2-5-更新]修改hosts访问google的各种服务(groups,docs...) - 刘毅同学</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="================================================================================================================== 2012-2-5 更新 此次更新也许是最终更新了（别担心，亲， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.org/blog/2011/modify-hosts-to-use-google">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="刘毅同学" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">刘毅同学</a></h1>
+  
+    <h2>About Python, MySQL & Life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[2012-2-5-更新]修改hosts访问google的各种服务(groups,docs...)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-21T17:32:33+08:00" pubdate data-updated="true">Apr 21<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>==================================================================================================================</p>
+
+<h3>2012-2-5 更新</h3>
+
+<p>此次更新也许是最终更新了（别担心，亲，这是好消息，偶已经找到一劳永逸的方法喽~）</p>
+
+<h3>最省事的方法——使用免费VPN</h3>
+
+<p><a href="http://liuyix.com/wordpress/wp-content/uploads/2011/04/podvpn-logo.png"><img src="http://liuyix.com/wordpress/wp-content/uploads/2011/04/podvpn-logo-300x50.png" alt="" /></a></p>
+
+<p>穿越，我一直在使用的<strong><a href="http://www.podvpn4.info/">豆荚VPN</a></strong>，一直灰常稳定，给力！强烈推荐。该VPN免费账户，每月有800M的流量，对于平时浏览网站什么的足够用了。</p>
+
+<h4><strong>豆荚VPN的几个突出优势</strong></h4>
+
+<ul>
+<li><p>有良好的服务支持：豆荚VPN有QQ群支持以及新浪微博，VIP用户也有专属QQ群。而且服务快速、热情。</p></li>
+<li><p>给力的windows客户端：具有<strong>自动更新</strong>功能的windows客户端（有了自动更新功能，就不必再担心河蟹了）</p></li>
+</ul>
+
+
+<h4>使用VPN的一些缺憾</h4>
+
+<ul>
+<li>速度上不如修改hosts快</li>
+</ul>
+
+
+<h3>速度最快的方式——修改hosts</h3>
+
+<p>传统的穿越方法。使用VPN的一个缺憾就是速度的问题，使用此方法可以弥补该不足。</p>
+
+<p>推荐给只需要访问google及google的所有服务,facebook,twitter,wiki等国外主流网站的用户。</p>
+
+<p>之前文章里只给出了具体的hosts文件，可是hosts是需要与时俱进的。这点难不倒技术男！</p>
+
+<h4>请出主角——<a href="http://code.google.com/p/smarthosts/">smarthosts</a></h4>
+
+<p>这是google code上的一个开源项目，地址:<a href="http://code.google.com/p/smarthosts/">http://code.google.com/p/smarthosts/</a>。</p>
+
+<blockquote><p>SmartHosts是一个在Google Code上维护更新的Hosts文件。作者为了炒概念，不要脸地把它叫做了“云hosts”。</p></blockquote>
+
+<p>本项目还提供简单方便的一键更新程序，方便您更新您的hosts。[程序更新中]</p>
+
+<p>如果google code打不开，smarthosts上提供了一个镜像：<a href="https://smarthosts.sinaapp.com/">https://smarthosts.sinaapp.com/</a> （这个镜像相信很难被和*谐了）</p>
+
+<h4>使用Hosts文件的缺憾</h4>
+
+<ul>
+<li>可访问的站点有限</li>
+</ul>
+
+
+<h3>教育网的“尊贵特权”——使用ipv6实现穿越</h3>
+
+<p>曾有人戏称，我天-河蟹-朝教育网是全球最大的ipv6商业网。这点确实不假~教育网的用户有福了！</p>
+
+<p>由于目前天-河蟹-朝的G-F-W只监控ipv4网络，因此具有ipv6访问能力的用户——教育网用户以及部分省市的用户（主要是电信）可以通过<strong>ipv6+修改hosts</strong>实现穿越！</p>
+
+<p>那么关键就是hosts文件了.ipv6-hosts（<a href="http://code.google.com/p/ipv6-hosts/">http://code.google.com/p/ipv6-hosts/</a>）解决了这个问题。</p>
+
+<h4>ipv6+hosts的优势与不足</h4>
+
+<ul>
+<li><p>优势：速度给力！教育网里经常bt的童鞋都知道!</p></li>
+<li><p>不足：可浏览网站极为有限（毕竟现在支持ipv6的大网站十分有限）</p></li>
+</ul>
+
+
+<h3>结论</h3>
+
+<p>笔者是以上几种方法综合使用的~我相信通过以上几种方法都可以顺利的实现翻-河蟹-墙的功能~Good luck!</p>
+
+<p>=========================================================================================</p>
+
+<p>本人比较依赖google，但是由于一些大家都知道的原因，大部分google服务在tian朝无法访问。
+屏蔽原理是什么？
+这种无法访问可能是通过使DNS不解析域名达到的。
+该如何解决？
+方法一（简单、不稳定）：知道为何无法访问了，我们就可以通过修改本机上的IP hosts，“手动解析”各个google的域名即可访问。当然这只是临时性的办法，因为不知何时这些IP就会不可用。但至少目前是可用的。[注意此方法必须使用https访问]
+方法二（稳定，<del>比较复杂或需要资金购买</del>）：可以通过SSH等加密匿名方式访问，但是要确保已经设置好本机的SSH并且已经有了SSH帐号密码(免费的或者付费的)。该种方法的原理，这里就不详述了，学过网络原理的应该都有所了解，若不懂的，请google之。
+方法三（临时性）：可以通过在线代理或者寻找免费的代理服务器，代理上网。这种方法很临时，不是长久之计。
+你什么时候说关键的？</p>
+
+<p>好吧，不要急，我这就说最关键的部分！</p>
+
+<p>2011-4-26 更新
+感谢<a href="http://www.80ht.cn/">80在云</a>提供信息,<a href="http://www.80ht.cn/2011-04-09-zui-xin-google-docs-gu-ge-wen-dang-hosts.htm">原文地址</a></p>
+
+<p>[再次提示:]修改后一定要使用https方式访问</p>
+
+<p>[text]
+209.85.225.101 docs.google.com</p>
+
+<h1>209.85.225.102 groups.google.com</h1>
+
+<p>74.125.95.83 spreadsheets.google.com
+74.125.95.83 spreadsheets0.google.com
+74.125.95.83 spreadsheets1.google.com
+[/text]</p>
+
+<p>目前我使用的就是这两个，感谢<a href="http://tothink.net/">Tothink博客</a>提供
+原博客上还有很多，但是有些不可用，有需要可以去看看，<a href="http://tothink.net/?p=338">地址</a></p>
+
+<p>修改的位置：</p>
+
+<p>[text]
+Windows：C:\Windows\System32\drivers\etc\hosts
+Linux: /etc/hosts
+[/text]</p>
+
+<p>注意修改后要使设置生效需要重启网络
+Windows环境：运行中(Win+R键)启动cmd，输入如下命令即可</p>
+
+<p>[text]ipconfig /flushdns[/text]</p>
+
+<p>Linux上要重启一下网络，使设置生效</p>
+
+<p>[bash]sudo /etc/init.d/networking restart[/bash]</p>
+
+<p>Good Luck！</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-21T17:32:33+08:00" pubdate data-updated="true">Apr 21<span>st</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/general/'>General</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/migration-from-windows-to-linux/" title="Previous Post: Windows迁移到Ubuntu的软件替代方案">&laquo; Windows迁移到Ubuntu的软件替代方案</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/wordpress-modification/" title="Next Post: Wordpress排版——中文首行缩进和行间距修改的实现">Wordpress排版——中文首行缩进和行间距修改的实现 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+   <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="/blog/2011/modify-hosts-to-use-google" data-title="[2012-2-5-更新]修改hosts访问google的各种服务(groups,docs...)" data-url="http://liuyix.org/blog/2011/modify-hosts-to-use-google/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuyix"};
+    (function() {
+
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+ </script>
+ <!-- 多说公共JS代码 end -->
+
+  </section>
+ 
+<!---->
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>
+  <center>
+  All articles licensed under
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/python-data-model/">Python Data Model</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (6)</a></li><li><a href='/blog/categories/general'>General (22)</a></li><li><a href='/blog/categories/java'>Java (1)</a></li><li><a href='/blog/categories/life'>Life (18)</a></li><li><a href='/blog/categories/linux'>Linux (21)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (7)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (2)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

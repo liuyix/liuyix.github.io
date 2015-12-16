@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>无线破解总结 - 刘毅同学</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="暑假在家里，由于没有带无线路由器，所以只能是一台电脑上网，因此老妈用电脑时我就上不了。待了好多天，实在受不了，于是想到蹭网。 Ubuntu下蹭网工具我选择的是aircrack-ng，经过多番尝试终于以失败告终。现在就总结下我在这个过程中的收获吧。 失败原因之一：信号太弱 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.org/blog/2011/wireless-crack-summary">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="刘毅同学" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">刘毅同学</a></h1>
+  
+    <h2>About Python, MySQL & Life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">无线破解总结</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-28T16:32:45+08:00" pubdate data-updated="true">Jul 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>暑假在家里，由于没有带无线路由器，所以只能是一台电脑上网，因此老妈用电脑时我就上不了。待了好多天，实在受不了，于是想到蹭网。</p>
+
+<p>Ubuntu下蹭网工具我选择的是aircrack-ng，经过多番尝试终于以失败告终。现在就总结下我在这个过程中的收获吧。</p>
+
+<h2>失败原因之一：信号太弱</h2>
+
+<p>信号弱就不能保证你与AP的通信成功率，因此就不能很高的完成嗅探的步骤。</p>
+
+<h2>失败原因之二：加密方式为WPA/WPA2</h2>
+
+<p>802.11无线协议令人诟病的就是所谓的脆弱的加密方式。目前的加密方式主要有WEP以及WPA-PSK方式，最脆弱的是WEP，破解的方法就是嗅探足够多的包，而WPA-PSK则相对来说“难度很大”，大到足以让我这样的业余蹭网者放弃。但实话说如果碰上专业cracker或骇客组织的话，WPA的方式也相当于给人敞开了大门。</p>
+
+<ul>
+<li><p>首先WPA的方式必须要嗅探到其他电脑连接到AP的“握手过程”的数据包，这个需要长时间的嗅探才能得到。</p></li>
+<li><p>其次得到了上面嗅探到的数据包之后，破解的方式就是暴力字典破解，因此破解的成功依赖于字典做的如何，破解的时间长短也依赖于字典的大小还有你电脑的配置。</p></li>
+</ul>
+
+
+<p>作为一个业余蹭网者，首先就不能因为蹭网长时间的嗅探，其次现成的字典都是国外的，不适合中国国情，而且字典的制作比较麻烦，所以只好识时务的放弃。</p>
+
+<h2>经验总结</h2>
+
+<p>如果你的附近有WEP加密方式AP，同时信号强度很好的话，建议看看这篇文章:<a href="http://www.nenew.net/ubuntu-aircrack-ng.html">Ubuntu 无线密码破解利器aircrack-ng</a>，破解难度不大。</p>
+
+<p>如果你遇到的情况和我类似——AP的信号弱，同时又是WPA/WPA2的话，就斟酌一下是否值得蹭网。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-28T16:32:45+08:00" pubdate data-updated="true">Jul 28<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/install-eclipse-swt-examples/" title="Previous Post: Java SWT学习之Eclipse SWT Example(SWT示例)安装">&laquo; Java SWT学习之Eclipse SWT Example(SWT示例)安装</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/building-lfs-summary-a/" title="Next Post: LFS的构建过程---LFS实践总结(一)">LFS的构建过程---LFS实践总结(一) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+   <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="/blog/2011/wireless-crack-summary" data-title="无线破解总结" data-url="http://liuyix.org/blog/2011/wireless-crack-summary/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuyix"};
+    (function() {
+
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+ </script>
+ <!-- 多说公共JS代码 end -->
+
+  </section>
+ 
+<!---->
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>
+  <center>
+  All articles licensed under
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/python-data-model/">Python Data Model</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (6)</a></li><li><a href='/blog/categories/general'>General (22)</a></li><li><a href='/blog/categories/java'>Java (1)</a></li><li><a href='/blog/categories/life'>Life (18)</a></li><li><a href='/blog/categories/linux'>Linux (21)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (7)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (2)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

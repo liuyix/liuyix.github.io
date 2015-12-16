@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>内牛满面啊，本博客终于可以ipv6访问了!（ipv6.liuyix.com） - 刘毅同学</title>
+  <meta name="author" content="liuyix">
+
+  
+  <meta name="description" content="博主身在教育网中，登录非大陆的网站是流量计费的，而且每月就是固定的1G流量。（当然BIT是这样的，其他学校可能不是） 于是乎，为了能让本博客生存下去同时保证节省流量，博主不得以尝试了各种支持ipv6的凸墙方法，虽然已经有很多方法可以实现访问国际网站无需流量， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://liuyix.org/blog/2012/ipv6-enable-on-websit">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="刘毅同学" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="/javascripts/footnote.js" type="text/javascript"></script>-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39126484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">刘毅同学</a></h1>
+  
+    <h2>About Python, MySQL & Life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:liuyix.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">内牛满面啊，本博客终于可以ipv6访问了!（ipv6.liuyix.com）</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-06T03:32:50+08:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>博主身在教育网中，登录非大陆的网站是流量计费的，而且每月就是固定的1G流量。（当然BIT是这样的，其他学校可能不是）</p>
+
+<p>于是乎，为了能让本博客生存下去同时保证节省流量，博主不得以尝试了各种支持ipv6的凸墙方法，虽然已经有很多方法可以实现访问国际网站无需流量，但博主依然希望博客可以支持ipv6的直接访问。</p>
+
+<p>机缘巧合之下，知道了<a href="http://www.cloudflare.com/">cloudflare</a>，于是博主下意识的就搜索&#8221;<strong>cloudflare ipv6</strong>&ldquo;，没想到cloudflare果真已经开始支持ipv6啦！特发此帖以示喜悦之情。</p>
+
+<p>本博客的ipv6地址为：ipv6.liuyix.com 或者是 www.ipv6.liuyix.com</p>
+
+<p>如果你的DNS不支持AAAA信息的话，可以手动添加以下内容至你的hosts文件中</p>
+
+<p><code>2400:cb00:2048:1::6ca2:c1c9 ipv6.liuyix.com</code></p>
+
+<p>测试了下速度，延时在230ms上下，还算不错。</p>
+
+<p>在这里感谢<a href="http://www.cloudflare.com/">cloudflare</a>能提供免费的CDN加速以及ipv6的支持。推荐广大的国外主机的博客主使用<a href="http://www.cloudflare.com/">cloudflare</a>给网站提速。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liuyix</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-06T03:32:50+08:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/general/'>General</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/writing-blogs-in-english-as-much-as-possible/" title="Previous Post: Writing blogs in English as much as possible">&laquo; Writing blogs in English as much as possible</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/android-customize-exit-operation/" title="Next Post: Android界面退出的监听——实现“确认退出”对话框">Android界面退出的监听——实现“确认退出”对话框 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+   <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="/blog/2012/ipv6-enable-on-websit" data-title="内牛满面啊，本博客终于可以ipv6访问了!（ipv6.liuyix.com）" data-url="http://liuyix.org/blog/2012/ipv6-enable-on-websit/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuyix"};
+    (function() {
+
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+ </script>
+ <!-- 多说公共JS代码 end -->
+
+  </section>
+ 
+<!---->
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About</h1>
+  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>
+  <center>
+  All articles licensed under
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
+<center>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/python-data-model/">Python Data Model</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (6)</a></li><li><a href='/blog/categories/general'>General (22)</a></li><li><a href='/blog/categories/java'>Java (1)</a></li><li><a href='/blog/categories/life'>Life (18)</a></li><li><a href='/blog/categories/linux'>Linux (21)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (7)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (2)</a></li></ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

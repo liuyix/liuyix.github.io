@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Life | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-16T07:30:17+08:00</updated>
+  <updated>2015-12-17T07:11:19+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[成为早起者的几个步骤[Quora]]]></title>
+    <link href="http://liuyix.org/blog/2015/how-to-be-a-morning-man/"/>
+    <updated>2015-12-17T06:46:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/how-to-be-a-morning-man</id>
+    <content type="html"><![CDATA[<p>原文链接：<a href="https://www.quora.com/How-do-I-become-a-morning-person-1">How do I become a morning person?</a></p>
+
+<p>如何成为一个牛逼的Morning Person,也困扰了我很久。虽然现在依旧没有成功（捂脸）。成为Moring Person后就可以每天早上5点起来在无人打扰的环境里做自己喜欢的或者和梦想有关的事情，当然也可以给自己做一份丰盛的早餐，或者起来加班&hellip;.</p>
+
+<!--more-->
+
+
+<p>成为Morning Person的几个步骤：</p>
+
+<h3><strong>Step 1</strong> 睡前做好准备。</h3>
+
+<p>睡前就把第二天早上的计划想好，减少你通常在早上需要做的决定，能尽早决定的就晚上确定下来。比如第二天要早期读书，那么就确定好要读哪本书，具体从哪一章节开始，要读多久等等。做决策会消耗精力导致疲劳，所以不要把早上的充沛的精力花费在考虑今天开穿什么衣服，想吃什么早餐这样的决定上。</p>
+
+<p>所以在睡前你要做好：</p>
+
+<ul>
+<li>装好包随时可以出门上班</li>
+<li>准备好早上要穿的衣服</li>
+<li>准备好早餐</li>
+<li>确定好早上计划要搞定的几件事</li>
+</ul>
+
+
+<h3><strong>Step 2</strong> 睡你麻痹起来嗨！</h3>
+
+<p>早上一睁开眼睛关了闹钟，忽略身体上的不适感，立马从床上跳下来，做十个立定跳远！
+就这么简单！！！10个立定跳远，让身体的血液流动起来，激活能量，人也就精神起来了。</p>
+
+<h3>Step 3（最重要的一点）<red>给自己找一个充分的早起理由——让早起富有意义</red></h3>
+
+<p>这个步骤并不是说在醒来之后告诉自己一些上纲上线的理由，什么生活有多美好啦，或者多么幸运啦（除非这是你早上时间主要的活动，我完全支持）。
+你需要有一些你想在清晨做的事情，比如完成繁忙的一天中最该尽早完成的任务（a task you want to accomplish early on before the madness of the day starts to slow you down），你需要参加的会议、活动（有大清早开的会吗&hellip;.我个人理解是需要早起赴约，比如比赛或者赶车），或者锻炼等等。总之，你要有一个无法拒绝的早起的理由。要不大清早起来后，发现老子清晨五六点起来毫无意义，你很可能就又回去睡回笼觉了。<strong>你必须要有一些『只是想一想都有些小激动呢』放在早上来做</strong>，或者<strong>有一些可以让你充满正能量，让你感觉非常开心的，能让一整天达到最佳状态的事情</strong>，这样早起才充满动力。</p>
+
+<p>举几个栗子，这个步骤很好懂，因为要事要早起——赶火车，飞机，外出集合，或者有非常让你小激动的事情——你要陪女神早上跑步，仅仅这些充满诱惑力的理由，即使没有任何准备你也会早起，不是吗？</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[入职9月谈]]></title>
+    <link href="http://liuyix.org/blog/2015/career-nine-months-review/"/>
+    <updated>2015-02-13T23:37:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/career-nine-months-review</id>
+    <content type="html"><![CDATA[<p>2015年5月12日，由学生正式成为职场新人。至今已经刚满九月。适逢春节假期，可以静下来审视下自己这几个月来的生活。有很多话要说，但是又不知道从何说起。</p>
+
+<p>在阿里的这几个月中我经历了三淘单元化的实施，经历了大规模集群实例迁徙，经历了AIS组织架构调整，经历了全链路压测，经历了2014年的双十一。。。仿佛被汹涌的海浪一下子卷了进去一般。  从学生变成了IT民工，这种转变有点让人感觉措手不及。<br/>
+社会角色的转变后的迷惘、突入从没有来过的陌生城市后的紧张，（更让人悲喜交加的是）刚入职就“摊上大事”的我，这段时间以来以极快的速度感觉自己老了很多。</p>
+
+<h3>数据大迁徙</h3>
+
+<p>入职后不久机缘巧合之下就接了备份恢复的差事，第一次满怀崇拜和学习的心态揭开了基础系统程序的面纱，结果。。。卧槽！卧槽卧槽！以下省略一万字。。。<br/>
+没有看到想象中教科书般工整牛逼的代码反而是让人唏嘘不已无法直视的代码。本身自己对MySQL甚至对数据库就没有多少了解，本科和研究生时对数据库是毫无感觉的，只依稀记得考试时写了几个比较牛逼的SQL。现在却要接手MySQL备份恢复，心理觉得压力增加了不少。<br/>
+更加万万没想到的是更大的考验就在零零散散交接完成后的几天就纷至沓来。第一波是杭州单元化建设，第一次有了酸爽的感觉，这一次规模<em>相对</em>较小，本身又是刚刚交接，所以有一些棘手的问题还是找到了原来的同学帮忙处理解决掉了。<br/>
+真正的挑战是第二波上海异地双活。根据大部门总体进度时间表，分配给数据库的时间只有2周左右，更悲剧的是由于其他团队的工作延期，剩下的时间还比计划的时间更短。</p>
+
+<p>数据库异地双活项目中最重要的就是三部分内容，一部分是元数据梳理，一部分是实例迁移，一部分是TDDL切换。其中最耗时的一环就是通过备份恢复的方式进行实例迁移。简单讲就是几乎把所有的实例都要做一遍备份和恢复实现一个级联的门子结构。<br/>
+在工具还没有完善的时候就只有通过半自动半人工的方式来完成。团队专门成立了拆迁办小分队，每个人负责专门的一块——元数据梳理、资源分配调度、平台前端开发、平台后端任务还有备份恢复子任务，一环套着一环，分秒必争的赶进度，这一段时间是最苦逼的，但是无论何时，回想起来都会觉得特别牛逼，那种几个人为了同一个的目标争分夺秒玩命干活的感觉，很难忘。在这过程中一边熟悉并修补一边赶进度，生平第一次感觉到了焦虑崩溃的边缘，到了自己的极限，很想放弃。可是我放弃了，没有人可以backup起来，即使是之前的同学，因为从没有经历过如此大规模的迁徙任务————没有退路，那就只能勇往直前。
+奇迹般地，我在最后期限的那一天完成了几乎所有的实例迁移任务，没有拖团队的后腿。</p>
+
+<p>副作用是对技术产生了阴影，感觉心里有些抑郁了。到现在感觉潜意识里面还是把那段痛苦和备份恢复挂钩了。一直是心有余悸。</p>
+
+<p>让我有一些宽慰的是可能是因为这次为大部门立下了“大功”，在14年的部门年会上拿到了最佳新人奖和一个上海建站的团队奖。</p>
+
+<p>同时我也要感谢这一次大项目的洗礼，让我对一些本质任务我是否真的喜欢做技术？我现在有些怀疑了。可是不做技术，我还能做什么呢？</p>
+
+<h3>收获</h3>
+
+<p>2014年年会上拿到了一个最佳新人奖——“破茧成蝶”还有一个团体奖“众志成城”。七八月份的付出是得到了老大们的认可的。</p>
+
+<h3>数据库单元化搭建&mdash;两次</h3>
+
+<p>开始</p>
+
+<h3>上海建站</h3>
+
+<h3>双十一</h3>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[拖延的反思]]></title>
@@ -306,209 +389,6 @@
 毕业论文的预想和最终稿内容有许多不同，但是依然还是有三万多字的内容，很充实。也就是说没有完成之前预想的实验也达到了毕业的水平，而且内容充实。我的论文题目开的不怎么好，题目太大了，涵盖了许多方面的内容。起初论文的设想是把这几个方面完整的做出来，由于完成实验需要高出自己能力和精力的付出以及自己对毕业论文的期望（及格就行）远低于导师对论文水准的期望，所以我一直在拖延着。直到最后时刻，我只把已经做出的东西写进去才发现工作量已经足够毕业了——如果真的按照起初论文的设想完成的话，我不敢说那是一个博士生的工作量，但两三个硕士生毕业是没有问题的。<br/>
 不管怎样，事情已经过去，说什么都要算作是马后炮了。<br/>
 总结来说，这个学期让我认识到一个人习性的改变是多么的困难——现在的毕业答辩可以说和本科时准备毕业论文时的狼狈很相似。当时信誓旦旦的要改变自己，要改掉逃避压力的习性，几年过去了，起色不大。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[百度校招-系统研发工程师-笔试题]]></title>
-    <link href="http://liuyix.org/blog/2013/baidu-exam-review/"/>
-    <updated>2013-10-15T01:36:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/baidu-exam-review</id>
-    <content type="html"><![CDATA[<p>几道编程算法题：</p>
-
-<ul>
-<li>实现类似wget一样的进度条</li>
-<li>100亿个单词，每个单词长度小于30，输出去重后的所有单词。</li>
-</ul>
-
-
-<!--more-->
-
-
-<h3>实现类似wget进度条</h3>
-
-<blockquote><p>当时没有想出来，回来才搜索之后才知道考察的是对转义符的理解。</p></blockquote>
-
-<p>关于换行，话题看起来看似简单，但实际内容不少。</p>
-
-<p><strong>主流操作系统文本换行的差异</strong></p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th> OS </th>
-<th> 按下回车后插入的控制字符 </th>
-<th> 含义 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td> Windows </td>
-<td> <code>\r\n</code> </td>
-<td> 0x0D 0x0A <em>CR LF</em> </td>
-</tr>
-<tr>
-<td></td>
-<td> Linux </td>
-<td> <code>\n</code> </td>
-<td> 0x0D <em>LF</em> </td>
-</tr>
-<tr>
-<td></td>
-<td> Mac OSX </td>
-<td> <code>\r</code> </td>
-<td> 0x0D <em>CR</em> </td>
-</tr>
-</tbody>
-</table>
-
-
-<p>因此你经常会遇到Windows下用notepad看某些Linux编辑的文本，都没有换行。</p>
-
-<p>基本的内容就这么多，如何实现wget的进度条即是在Linux下用<code>\r</code>而不用<code>\n</code>，这样会不断的将新内容输出到同一行，从而达到“刷新”的效果。</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>demo.c </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">stdlib</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">unistd</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="c1">//类似wget的进度条的实现，实际就是转移符\r的使用，\r的作用是返回至行首而不换行</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kt">unsigned</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
-</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="n">bar</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">bar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;#&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;progress:[%s]%d%%</span><span class="se">\r</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bar</span><span class="o">+</span><span class="n">len</span><span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span><span class="c1">//一定要fflush，否则不会会因为缓冲无法定时输出。</span>
-</span><span class='line'>    <span class="n">usleep</span><span class="p">(</span><span class="mi">100000</span><span class="p">);</span><span class="c1">// 睡眠100ms</span>
-</span><span class='line'>    <span class="c1">//sleep(1);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h3>给定100亿个单词，每个单词长度小于30，输出去重后的所有单词序列。</h3>
-
-<p>面试准备不充分，这是trie树的最典型的题目了。
-更多的信息可以看July的文章。
-<a href="http://blog.csdn.net/v_july_v/article/details/6897097">http://blog.csdn.net/v_july_v/article/details/6897097</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小米面试内核驱动工程师总结]]></title>
-    <link href="http://liuyix.org/blog/2013/xiaomi-onsite/"/>
-    <updated>2013-10-11T19:54:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/xiaomi-onsite</id>
-    <content type="html"><![CDATA[<blockquote><p>此为吐槽贴，略涉及技术。</p></blockquote>
-
-<p>之前网申投的是<em>内核驱动工程师</em>，这个职位是凭着自己对Linux Internal还保持非常浓厚的兴趣，虽然实践不多，还有就是一看到这个title就有种高端大气上档次的赶脚。之后前几天打来电话去面试，这才知道这次是小米的bsp团队招人。</p>
-
-<p>怀着忐忑和兴奋的心情去小米参加bsp团队的面试。结果比较让人失望，一方面是自己还有很多不够深入的地方，一方面是bsp团队明显准备不足。</p>
-
-<!--more-->
-
-
-<h4>小米总部真够偏僻的&hellip;</h4>
-
-<p>地铁上地站下来之后，<strong>非上下班时间，没有公交车可以直达</strong>，只能打车。</p>
-
-<h4>面试原来可以这样</h4>
-
-<p>五彩城的环境还是蛮不错的，我直接到15层会议室，之后被告知面试官正忙，等一会儿。好吧，我就等等吧，<strong>这一等就20分钟</strong>。<br/>
-之后进来一位年纪轻轻的面试官哥哥。 <br/>
-面试原来可以被当做临时指派的任务。我有很大的把握说面试官是在看到我之前的几分钟才看我的简历。<br/>
-<em>#自我检讨#</em> 对自己的研究工作没有弄的足够深入，被面试官稍一刁难就被问倒。一直纠缠于cache和spm之间的性能和功耗上的比较问题，最后只好作罢。于是乎慢慢的气氛变成了质疑我们实验室的研究水平，当时有点气愤，不过在有效的说明了自己发表的关于单程序trace获取的论文时还算将气氛扳回来一些。<br/>
-聊了半个多小时面试官哥哥就又被叫出去开会，囧rz&hellip;大概10分钟后，另外一位面试官哥哥进来，然后由于不知道之前的面试官哥哥都<del>问过我什么问题</del>聊过什么话题，于是又有好多重复的问题出现&hellip;囧rz</p>
-
-<p>不过第二个面试官哥哥谈吐和问的问题上明显感觉很专业，对内核和存储乃至trace这块都有很深的见解，和他聊我的毕业设计时，我还取得了非常很有价值的反馈。很赞！</p>
-
-<p>由于自己在内核驱动这块知道的不多，第二位面试官哥哥几次试图问一些汇编语言、内核驱动的问题时，我都很无奈的回答懂得不多，<em>面试一大忌讳就是回答不了解，这样让双方都会有些挫败感，面试官可能会降低印象分</em>，但是对这几块确实连突击的时间都没有，只好这么回答了。<em>检讨：对简历上技术点挖掘的不够深，写了自己常玩github，就被问到了git的用法；写了自己爱玩新技术，就被问到了自己感兴趣的新技术有哪些，这些很可惜都能没有准备。</em> <br/>
-再聊了半个小时左右之后，就结束了。感觉应该是挂了。</p>
-
-<p>之前打听过bsp团队之前没有招过应届毕业生，所以我吐槽的这些还是可以理解的。但是没有为面试拿出足够的准备还是蛮失望的。</p>
-
-<p>最后询问时就聊了一些比较轻松的话题，让面试官哥哥介绍了一下目前bsp团队。现在获得的情报是：目前团队规模五六十人，负责了miui之下的大部分工作，包括驱动开发、底层系统优化等等，甚至包括Java层的问题调试，工作范围面很宽。 <br/>
-依旧是个创业团队的节奏——连续多年每周6x12hr的工作量。无愧于外界所说的高执行力的团队。</p>
-
-<p>校园招聘是一个双向选择的过程，既是企业挑选人才，也是真正的人才选择企业。在面试的方方面面都会体现出一个企业，一个团队对人才的重视程度，也是赢得口碑的机会。在认真程度上来说，这次面试的体验不如阿里巴巴。<br/>
-总体上这两位面试官哥哥给我的感受是非常实干的类型，对小米的这个创业团队强度的团队技术实力上的印象还是很好。祝愿你们能找到适合的人才。</p>
-
-<h4>自己这次面试的经验</h4>
-
-<ul>
-<li>简历上的内容还需要加强。
-
-<ul>
-<li>在简历的准备上功夫还不够，还是有被问倒的可能，需要加强和巩固。</li>
-<li>简历涉及的技术点还是挖掘的不够细致。</li>
-</ul>
-</li>
-<li>面试中还没有hold住场面的能力</li>
-<li>面试中需要事先准备一个可以让面试官眼前一亮的闪光点，可以是技术上的，也可以是表达或者其他方面</li>
-</ul>
-
-
-<h3>Update:问到的题目</h3>
-
-<p>昨天没写是因为自己当时没记起来多少&hellip;今天复习时才慢慢都想起来了，在此分享下。</p>
-
-<ul>
-<li>关于抢占的理解（何时抢占，怎样实现的抢占）</li>
-<li>kmalloc与vmalloc的区别</li>
-<li>kmalloc内核是如何实现存储管理的，比如申请了14B的空间</li>
-<li>A,B两个进程，运行顺序是A&mdash;B&mdash;A,有多少种可能导致的，比如阻塞，抢占等。</li>
-</ul>
-
 ]]></content>
   </entry>
   

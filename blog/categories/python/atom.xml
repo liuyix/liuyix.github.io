@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-16T07:30:17+08:00</updated>
+  <updated>2015-12-17T07:11:19+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python并发编程手册]]></title>
+    <link href="http://liuyix.org/blog/2015/python-concurrent-programming/"/>
+    <updated>2015-12-17T07:08:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/python-concurrent-programming</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[docopt -- Python必备的命令行接口模块]]></title>
@@ -169,27 +178,40 @@ parser.add_option(&lsquo;&mdash;bar&rsquo;, &lsquo;-b&rsquo;, action=&lsquo;stor
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[一个简单的python小程序——使用douban API通过ISBN查询书籍信息]]></title>
-    <link href="http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api/"/>
-    <updated>2012-03-11T07:52:00+08:00</updated>
-    <id>http://liuyix.org/blog/2012/a-simple-python-prog-with-douban-api</id>
-    <content type="html"><![CDATA[<p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
+    <title type="html"><![CDATA[python logging模块]]></title>
+    <link href="http://liuyix.org/blog/2015/python-logging/"/>
+    <updated>2015-04-05T23:46:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/python-logging</id>
+    <content type="html"><![CDATA[<h2>Python logging使用</h2>
 
-<ul>
-<li>命令行的解析</li>
-<li>文件的读写</li>
-<li>XML解析</li>
-<li>http连接</li>
-<li>多线程</li>
-</ul>
+<h3>多模块使用logging</h3>
 
+<p>不要在每个模块里面都创建新的logger，不然会导致重复的log日志输出。只需要在子模块开始：</p>
 
-<p>短短不到200行的程序就可以做到这些，可以算是python的推广广告吧，哈哈</p>
+<p>```
+import logging
+LOGGER = logging.getLogger(&lsquo;foo module&rsquo;)
+LOGGER.setLevel(logging.DEBUG)</p>
 
-<script src="https://gist.github.com/liuyix/6738920.js"></script>
+<p>&hellip;.</p>
 
+<p>LOGGER.info(&lsquo;info level logging mesg&rsquo;)
+LOGGER.debug(&lsquo;&hellip;.&rsquo;)
+```</p>
 
+<p>在主模块必须要初始化<code>root</code>层logging。
+python的logging层次化的，最上层的即root的logger初始化可以由<code>logging.getLogger('')</code>来拿到然后进行配置。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python Tips]]></title>
+    <link href="http://liuyix.org/blog/2014/python-tips/"/>
+    <updated>2014-09-22T14:15:00+08:00</updated>
+    <id>http://liuyix.org/blog/2014/python-tips</id>
+    <content type="html"><![CDATA[<h3>Python实现tail</h3>
 
+<p>credit: <a href="http://stackoverflow.com/q/136168">http://stackoverflow.com/q/136168</a></p>
 ]]></content>
   </entry>
   
