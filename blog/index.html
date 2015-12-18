@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Python并发编程常用的就是2个模块：threading和multiprocessing。其中threading因为著名的GIL，实际是伪多线程，每个thread并没有对应一个pthread；multiprocessing则是利用多进程的手段来绕过GIL达到并发的效果。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,7 +87,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册</a></h1>
     
     
       <p class="meta">
@@ -111,7 +110,9 @@
   </header>
 
 
-  <div class="entry-content">
+  <div class="entry-content"><p>Python并发编程常用的就是2个模块：<code>threading</code>和<code>multiprocessing</code>。其中<code>threading</code>因为著名的GIL，实际是<em>伪多线程</em>，每个thread并没有对应一个pthread；<code>multiprocessing</code>则是利用多进程的手段来绕过GIL达到并发的效果。</p>
+
+<p>如果你的任务并非是CPU密集型，而是IO密集型或者网络应用的话——单线程时CPU总是处于等待的状态时，用threading其实影响不大。</p>
 </div>
   
   
@@ -211,6 +212,12 @@
 <li>还是一篇在<em>Life Lessons</em>版过万的upvote的帖子，这周有时间翻译下。</li>
 </ul>
 </li>
+<li>(What are some &lsquo;unofficial mottos&rsquo; of programming languages?)[<a href="https://www.quora.com/What-are-some-unofficial-mottos-of-programming-languages">https://www.quora.com/What-are-some-unofficial-mottos-of-programming-languages</a>]
+
+<ul>
+<li>笑点低的我看到强力吐槽能量的帖子，笑个不停</li>
+</ul>
+</li>
 </ul>
 
 
@@ -256,48 +263,6 @@
   <div class="entry-content"><blockquote><p>本文介绍了『Python Data Model』官方的总结笔记，主要内容是Python对象的详细介绍</p></blockquote>
 
 <p>Original: <a href="https://docs.python.org/2/reference/datamodel.html#data-model">https://docs.python.org/2/reference/datamodel.html#data-model</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-10-22T08:30:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>本文介绍了在El Capitan上安装Octopress时遇到的几个问题及解决方案</p></blockquote>
-
-<h2>Rubygems安装源慢</h2>
-
-<h2>Errno::ENOENT: No such file or directory &ndash; Jekeyll</h2>
-
-<p><a href="http://schalkneethling.github.io/blog/2015/10/16/errno-enoent-no-such-file-or-directory-jekyll-octopress-el-capitan/">http://schalkneethling.github.io/blog/2015/10/16/errno-enoent-no-such-file-or-directory-jekyll-octopress-el-capitan/</a></p>
 </div>
   
   
@@ -621,67 +586,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/python-logging/">Python Logging模块</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-04-05T23:46:00+08:00" pubdate data-updated="true">Apr 5<span>th</span>, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Python logging使用</h2>
-
-<h3>多模块使用logging</h3>
-
-<p>不要在每个模块里面都创建新的logger，不然会导致重复的log日志输出。只需要在子模块开始：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import logging
-</span><span class='line'>LOGGER = logging.getLogger('foo module')
-</span><span class='line'>LOGGER.setLevel(logging.DEBUG)
-</span><span class='line'>
-</span><span class='line'>....
-</span><span class='line'>
-</span><span class='line'>LOGGER.info('info level logging mesg')
-</span><span class='line'>LOGGER.debug('....')</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在主模块必须要初始化<code>root</code>层logging。
-python的logging层次化的，最上层的即root的logger初始化可以由<code>logging.getLogger('')</code>来拿到然后进行配置。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2015/git-workflow/">Git Workflow</a></h1>
     
     
@@ -731,6 +635,212 @@ python的logging层次化的，最上层的即root的logger初始化可以由<co
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/mysql-gtid-introduction/">MySQL 5.6 GTID 学习笔记</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-20T18:45:00+08:00" pubdate data-updated="true">Sep 20<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Reading List</h3>
+
+<ul>
+<li>Facebook部署5.6 GTID的blog: <a href="https://www.facebook.com/notes/mysql-at-facebook/lessons-from-deploying-mysql-gtid-at-scale/10152252699590933">Lessons from Deploying MySQL GTID at Scale</a>(需要翻墙)
+
+<ul>
+<li>Facebook@Percona Live 2014 <a href="http://www.percona.com/live/mysql-conference-2014/sessions/global-transaction-id-facebook">GLOBAL TRANSACTION ID AT FACEBOOK</a></li>
+<li>MySQL Manual使用时GTID时的限制：<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html">17.1.3.4 Restrictions on Replication with GTIDs</a></li>
+</ul>
+</li>
+<li></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/bash-tips/">Bash Tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-14T16:59:00+08:00" pubdate data-updated="true">Sep 14<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Bash 遇到错误就退出</h3>
+
+<p><a href="http://stackoverflow.com/a/4382179">http://stackoverflow.com/a/4382179</a></p>
+
+<p><code>set -e</code></p>
+
+<blockquote><p>If you put set -e in a script, the script will terminate as soon as any command inside it fails (i.e. as soon as any command returns a nonzero status). This doesn&rsquo;t let you write your own message, but often the failing command&rsquo;s own messages are enough.</p>
+
+<p>The advantage of this approach is that it&rsquo;s automatic: you don&rsquo;t run the risk of forgetting to deal with an error case.</p>
+
+<p>Commands whose status is tested by a conditional (such as if, &amp;&amp; or ||) do not terminate the script (otherwise the conditional would be pointless). An idiom for the occasional command whose failure doesn&rsquo;t matter is command-that-may-fail || true. You can also turn set -e off for a part of the script with set +e.</p></blockquote>
+
+<h2>Bash使用数组</h2>
+
+<h3>快速入门</h3>
+
+<p>(Bash For Loop Array: Iterate Through Array Values)[<a href="http://www.cyberciti.biz/faq/bash-for-loop-array/">http://www.cyberciti.biz/faq/bash-for-loop-array/</a>]</p>
+
+<ul>
+<li>用括号指定，空格指定就好</li>
+<li>遍历： <code>for i in "${var[@]}"</code></li>
+</ul>
+
+
+<h3>深入</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/bin/bash
+</span><span class='line'># array-ops.sh: More fun with arrays.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>array=( zero one two three four five )
+</span><span class='line'># Element 0   1   2    3     4    5
+</span><span class='line'>
+</span><span class='line'>echo ${array[0]}       #  zero
+</span><span class='line'>echo ${array:0}        #  zero
+</span><span class='line'>                       #  Parameter expansion of first element,
+</span><span class='line'>                       #+ starting at position # 0 (1st character).
+</span><span class='line'>echo ${array:1}        #  ero
+</span><span class='line'>                       #  Parameter expansion of first element,
+</span><span class='line'>                       #+ starting at position # 1 (2nd character).
+</span><span class='line'>
+</span><span class='line'>echo "--------------"
+</span><span class='line'>
+</span><span class='line'>echo ${#array[0]}      #  4
+</span><span class='line'>                       #  Length of first element of array.
+</span><span class='line'>echo ${#array}         #  4
+</span><span class='line'>                       #  Length of first element of array.
+</span><span class='line'>                       #  (Alternate notation)
+</span><span class='line'>
+</span><span class='line'>echo ${#array[1]}      #  3
+</span><span class='line'>                       #  Length of second element of array.
+</span><span class='line'>                       #  Arrays in Bash have zero-based indexing.
+</span><span class='line'>
+</span><span class='line'>echo ${#array[*]}      #  6
+</span><span class='line'>                       #  Number of elements in array.
+</span><span class='line'>echo ${#array[@]}      #  6
+</span><span class='line'>                       #  Number of elements in array.
+</span><span class='line'>
+</span><span class='line'>echo "--------------"
+</span><span class='line'>
+</span><span class='line'>array2=( [0]="first element" [1]="second element" [3]="fourth element" )
+</span><span class='line'>#            ^     ^       ^     ^      ^       ^     ^      ^       ^
+</span><span class='line'># Quoting permits embedding whitespace within individual array elements.
+</span><span class='line'>
+</span><span class='line'>echo ${array2[0]}      # first element
+</span><span class='line'>echo ${array2[1]}      # second element
+</span><span class='line'>echo ${array2[2]}      #
+</span><span class='line'>                       # Skipped in initialization, and therefore null.
+</span><span class='line'>echo ${array2[3]}      # fourth element
+</span><span class='line'>echo ${#array2[0]}     # 13    (length of first element)
+</span><span class='line'>echo ${#array2[*]}     # 3     (number of elements in array)
+</span><span class='line'>
+</span><span class='line'>exit</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(Arrays)[<a href="http://www.tldp.org/LDP/abs/html/arrays.html">http://www.tldp.org/LDP/abs/html/arrays.html</a>]</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -754,7 +864,7 @@ python的logging层次化的，最上层的即root的logger初始化可以由<co
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a>
+        <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册</a>
       </li>
     
       <li class="post">
@@ -770,14 +880,14 @@ python的logging层次化的，最上层的即root的logger初始化可以由<co
       </li>
     
       <li class="post">
-        <a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a>
+        <a href="/blog/2015/python-docopt/">Docopt &#8211; Python必备的命令行接口模块</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (6)</a></li><li><a href='/blog/categories/general'>General (22)</a></li><li><a href='/blog/categories/java'>Java (1)</a></li><li><a href='/blog/categories/life'>Life (18)</a></li><li><a href='/blog/categories/linux'>Linux (21)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (7)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/general'>General (10)</a></li><li><a href='/blog/categories/life'>Life (9)</a></li><li><a href='/blog/categories/linux'>Linux (12)</a></li><li><a href='/blog/categories/mac'>Mac (1)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (4)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li></ul>
 </section>
 
 

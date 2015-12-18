@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python并发编程手册 - 刘毅同学</title>
+  <title>Python并发实用编程手册 - 刘毅同学</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Python并发编程常用的就是2个模块：threading和multiprocessing。其中threading因为著名的GIL，实际是伪多线程，每个thread并没有对应一个pthread；multiprocessing则是利用多进程的手段来绕过GIL达到并发的效果。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,7 +84,7 @@
   
   <header>
     
-      <h1 class="entry-title">Python并发编程手册</h1>
+      <h1 class="entry-title">Python并发实用编程手册</h1>
     
     
       <p class="meta">
@@ -108,7 +107,9 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><p>Python并发编程常用的就是2个模块：<code>threading</code>和<code>multiprocessing</code>。其中<code>threading</code>因为著名的GIL，实际是<em>伪多线程</em>，每个thread并没有对应一个pthread；<code>multiprocessing</code>则是利用多进程的手段来绕过GIL达到并发的效果。</p>
+
+<p>如果你的任务并非是CPU密集型，而是IO密集型或者网络应用的话——单线程时CPU总是处于等待的状态时，用threading其实影响不大。</p>
 </div>
 
 
@@ -161,7 +162,7 @@
 
   <section>
    <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="/blog/2015/python-concurrent-programming" data-title="Python并发编程手册" data-url="http://liuyix.org/blog/2015/python-concurrent-programming/"></div>
+<div class="ds-thread" data-thread-key="/blog/2015/python-concurrent-programming" data-title="Python并发实用编程手册" data-url="http://liuyix.org/blog/2015/python-concurrent-programming/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -198,7 +199,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a>
+        <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册</a>
       </li>
     
       <li class="post">
@@ -214,14 +215,14 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a>
+        <a href="/blog/2015/python-docopt/">Docopt -- Python必备的命令行接口模块</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (6)</a></li><li><a href='/blog/categories/general'>General (22)</a></li><li><a href='/blog/categories/java'>Java (1)</a></li><li><a href='/blog/categories/life'>Life (18)</a></li><li><a href='/blog/categories/linux'>Linux (21)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (7)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/general'>General (10)</a></li><li><a href='/blog/categories/life'>Life (9)</a></li><li><a href='/blog/categories/linux'>Linux (12)</a></li><li><a href='/blog/categories/mac'>Mac (1)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (4)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li></ul>
 </section>
 
 

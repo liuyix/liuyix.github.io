@@ -4,7 +4,7 @@
   <title><![CDATA[Category: General | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/general/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-17T07:11:19+08:00</updated>
+  <updated>2015-12-18T22:44:25+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -212,86 +212,6 @@ echo ${#array2[*]}     # 3     (number of elements in array)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[SMP L1 Cache MESI Coherence Protocol Internal]]></title>
-    <link href="http://liuyix.org/blog/2014/cache-internal-professional/"/>
-    <updated>2014-01-07T15:02:00+08:00</updated>
-    <id>http://liuyix.org/blog/2014/cache-internal-professional</id>
-    <content type="html"><![CDATA[<h2>Gem5 Simulator Ruby Memory System</h2>
-
-<p>Ruby Memory</p>
-
-<h2>基于Directory的SMP L1 Cache MESI协议的内部实现</h2>
-
-<p><strong>Directory</strong> :
-<strong>SMP</strong> :
-<strong>L1</strong> :</p>
-
-<p><img src="/images/Diagrama_MESI.gif" alt="/images/Diagrama_MESI.gif" /></p>
-
-<p>而实际上<strong>SMP架构</strong>中的MESI具有多个<em>瞬时状态</em> ,在研究Gem5模拟器中集成的<em>Ruby Memory System Simulator</em>的实现，根据协议实现代码，我得到了以下添加了瞬时状态后的有限状态机图示（ <strong>该图依然为简化后的图，其中省略了自旋状态转换</strong> ，这样看起来更清晰些）</p>
-
-<p><img src="/images/MESI-orig.png" alt="MESI" /></p>
-
-<p>当然这依然不是最终实现的结构，该图并没有考虑目前已经广泛应用在各种处理器上的 <em>Prefetcher</em>
-本文之后会介绍这些 <em>State</em> 以及对应的 <em>Event</em> 。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[并发编程理论与实践]]></title>
-    <link href="http://liuyix.org/blog/2014/concurrent-practise-review/"/>
-    <updated>2014-01-04T14:42:00+08:00</updated>
-    <id>http://liuyix.org/blog/2014/concurrent-practise-review</id>
-    <content type="html"><![CDATA[<blockquote><p>本文是<em><a href="http://developer.android.com/training/articles/smp.html">SMP Primer for Android</a></em>的阅读笔记，该篇文章是由<a href="http://weibo.com/2216172320/AoTosDEUo">@何_登成的一条微博</a>推荐的并发编程。</p></blockquote>
-
-<h4>Changelog</h4>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Version </th>
-<th>  Time </th>
-<th> Description </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td> 0.1 </td>
-<td> 2014-01-04 </td>
-<td> 笔记要点备忘，依旧施工中&hellip; </td>
-</tr>
-</tbody>
-</table>
-
-
-<!--more-->
-
-
-<h2>基本要点</h2>
-
-<ul>
-<li>x86的<em>Memory Consistency Model</em> 与 ARM的 <em>Memory Consistency Model</em> 是不同的</li>
-<li>ARM的 <em>Memory Consistency Model</em> 更加relax，因此需要更多的控制。</li>
-<li>关于 <em>Observer</em> 视角：什么是读一致，什么是写一致</li>
-<li>影响一致性的因素： <em>Cacheline</em> ,<em>Compiler reorder</em></li>
-<li><em>Memory barrier</em></li>
-<li><em>RMW</em> :<em>Read-Modify-Write</em> / <em>CAS</em> : <em>Compare And Set/Swap</em></li>
-<li><em>Spinlock</em> 和 <em>Release</em> &amp; <em>Acquire</em></li>
-<li><em>Atomic</em> &amp; <em>Non-atomic</em></li>
-<li>C++的 <em>volatile</em></li>
-<li><em>Java</em> 的 <em>volatile</em></li>
-</ul>
-
-
-<h2>并发问题</h2>
-
-<p>并发问题：真正的并发——SMP环境下同一时刻会有多条指令同时执行，共享变量——局部的和私有的变量不会出现并发问题，并发问题只有在 <strong>共享变量</strong> 上才会出现。因此无论在何种环境下一定要尽力减少 <strong>共享</strong> ，这是避免出现并发一致性问题的最好方法。</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[百度校招-系统研发工程师-笔试题]]></title>
     <link href="http://liuyix.org/blog/2013/baidu-exam-review/"/>
     <updated>2013-10-15T01:36:00+08:00</updated>
@@ -423,6 +343,111 @@ echo ${#array2[*]}     # 3     (number of elements in array)</p>
 <p>面试准备不充分，这是trie树的最典型的题目了。
 更多的信息可以看July的文章。
 <a href="http://blog.csdn.net/v_july_v/article/details/6897097">http://blog.csdn.net/v_july_v/article/details/6897097</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小米面试内核驱动工程师总结]]></title>
+    <link href="http://liuyix.org/blog/2013/xiaomi-onsite/"/>
+    <updated>2013-10-11T19:54:00+08:00</updated>
+    <id>http://liuyix.org/blog/2013/xiaomi-onsite</id>
+    <content type="html"><![CDATA[<blockquote><p>此为吐槽贴，略涉及技术。</p></blockquote>
+
+<p>之前网申投的是<em>内核驱动工程师</em>，这个职位是凭着自己对Linux Internal还保持非常浓厚的兴趣，虽然实践不多，还有就是一看到这个title就有种高端大气上档次的赶脚。之后前几天打来电话去面试，这才知道这次是小米的bsp团队招人。</p>
+
+<p>怀着忐忑和兴奋的心情去小米参加bsp团队的面试。结果比较让人失望，一方面是自己还有很多不够深入的地方，一方面是bsp团队明显准备不足。</p>
+
+<!--more-->
+
+
+<h4>小米总部真够偏僻的&hellip;</h4>
+
+<p>地铁上地站下来之后，<strong>非上下班时间，没有公交车可以直达</strong>，只能打车。</p>
+
+<h4>面试原来可以这样</h4>
+
+<p>五彩城的环境还是蛮不错的，我直接到15层会议室，之后被告知面试官正忙，等一会儿。好吧，我就等等吧，<strong>这一等就20分钟</strong>。<br/>
+之后进来一位年纪轻轻的面试官哥哥。 <br/>
+面试原来可以被当做临时指派的任务。我有很大的把握说面试官是在看到我之前的几分钟才看我的简历。<br/>
+<em>#自我检讨#</em> 对自己的研究工作没有弄的足够深入，被面试官稍一刁难就被问倒。一直纠缠于cache和spm之间的性能和功耗上的比较问题，最后只好作罢。于是乎慢慢的气氛变成了质疑我们实验室的研究水平，当时有点气愤，不过在有效的说明了自己发表的关于单程序trace获取的论文时还算将气氛扳回来一些。<br/>
+聊了半个多小时面试官哥哥就又被叫出去开会，囧rz&hellip;大概10分钟后，另外一位面试官哥哥进来，然后由于不知道之前的面试官哥哥都<del>问过我什么问题</del>聊过什么话题，于是又有好多重复的问题出现&hellip;囧rz</p>
+
+<p>不过第二个面试官哥哥谈吐和问的问题上明显感觉很专业，对内核和存储乃至trace这块都有很深的见解，和他聊我的毕业设计时，我还取得了非常很有价值的反馈。很赞！</p>
+
+<p>由于自己在内核驱动这块知道的不多，第二位面试官哥哥几次试图问一些汇编语言、内核驱动的问题时，我都很无奈的回答懂得不多，<em>面试一大忌讳就是回答不了解，这样让双方都会有些挫败感，面试官可能会降低印象分</em>，但是对这几块确实连突击的时间都没有，只好这么回答了。<em>检讨：对简历上技术点挖掘的不够深，写了自己常玩github，就被问到了git的用法；写了自己爱玩新技术，就被问到了自己感兴趣的新技术有哪些，这些很可惜都能没有准备。</em> <br/>
+再聊了半个小时左右之后，就结束了。感觉应该是挂了。</p>
+
+<p>之前打听过bsp团队之前没有招过应届毕业生，所以我吐槽的这些还是可以理解的。但是没有为面试拿出足够的准备还是蛮失望的。</p>
+
+<p>最后询问时就聊了一些比较轻松的话题，让面试官哥哥介绍了一下目前bsp团队。现在获得的情报是：目前团队规模五六十人，负责了miui之下的大部分工作，包括驱动开发、底层系统优化等等，甚至包括Java层的问题调试，工作范围面很宽。 <br/>
+依旧是个创业团队的节奏——连续多年每周6x12hr的工作量。无愧于外界所说的高执行力的团队。</p>
+
+<p>校园招聘是一个双向选择的过程，既是企业挑选人才，也是真正的人才选择企业。在面试的方方面面都会体现出一个企业，一个团队对人才的重视程度，也是赢得口碑的机会。在认真程度上来说，这次面试的体验不如阿里巴巴。<br/>
+总体上这两位面试官哥哥给我的感受是非常实干的类型，对小米的这个创业团队强度的团队技术实力上的印象还是很好。祝愿你们能找到适合的人才。</p>
+
+<h4>自己这次面试的经验</h4>
+
+<ul>
+<li>简历上的内容还需要加强。
+
+<ul>
+<li>在简历的准备上功夫还不够，还是有被问倒的可能，需要加强和巩固。</li>
+<li>简历涉及的技术点还是挖掘的不够细致。</li>
+</ul>
+</li>
+<li>面试中还没有hold住场面的能力</li>
+<li>面试中需要事先准备一个可以让面试官眼前一亮的闪光点，可以是技术上的，也可以是表达或者其他方面</li>
+</ul>
+
+
+<h3>Update:问到的题目</h3>
+
+<p>昨天没写是因为自己当时没记起来多少&hellip;今天复习时才慢慢都想起来了，在此分享下。</p>
+
+<ul>
+<li>关于抢占的理解（何时抢占，怎样实现的抢占）</li>
+<li>kmalloc与vmalloc的区别</li>
+<li>kmalloc内核是如何实现存储管理的，比如申请了14B的空间</li>
+<li>A,B两个进程，运行顺序是A&mdash;B&mdash;A,有多少种可能导致的，比如阻塞，抢占等。</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[译]初次参与开源软件项目的六个忠告]]></title>
+    <link href="http://liuyix.org/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn/"/>
+    <updated>2012-03-11T06:00:00+08:00</updated>
+    <id>http://liuyix.org/blog/2012/6-easy-ways-to-get-started-programming-open-source-chn</id>
+    <content type="html"><![CDATA[<p>原文链接：<a href="http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source">http://grokcode.com/108/6-easy-ways-to-get-started-programming-open-source</a></p>
+
+<p>开源项目是一种好的释放自己的热情(&ldquo;geek out&rdquo;?)和做自己喜爱的事情的方式。有一个自己参与的开源项目可以使你的工作做起来更加快乐和满足，也会使你保持良好的编程水平，也会经常给你带来其他机遇。许多人不知道从何出入手向开源项目贡献自己的力量。以下是接触参与开源项目的六个简单的忠告。</p>
+
+<h2>参与到平时使用的开源软件的项目之中(言外之意是不要鲁莽的参与到你不使用或者不了解的开源项目中)</h2>
+
+<p>这一条很明显，但是记得不要尝试参与到你不使用或者你一无所知的项目中去。给你平时使用的，你也许愿意投入贡献的开源软件列一张清单。别忘了还有你使用的开源类库、开源模块也可以考虑投入贡献，记得参与到一个有许多开发者使用的开源项目有更多的益处。你使用框架吗、文件转换工具、图形类库或者一般开源软件需要使用的构建工具吗，或者一个新功能？以上这些都是你第一次参与开源项目的首选。</p>
+
+<h2>Do What You Love 做你真正感兴趣的部分</h2>
+
+<p>记得要找一个你 <strong>真正</strong> 感兴趣的部分做出你的贡献。比如说你对解析器情有独钟，那么一个编译器项目就不是第一次参与的项目首选。也许可以考虑一个webserver项目或者构建工具项目中的解析配置文件模块。</p>
+
+<h2>掌握开源软件中常用的工具</h2>
+
+<p>对于每个开源项目，版本控制系统、bug追踪系统、patch提交系统，有自己的代码规范，feature request，问题排查系统(user troubleshooting issues)以及构建工具和开发者讨论社区，这些都会有所差异。因此你应该花些时间学习熟悉这个项目使用的工具。一些常识，例如不该在开发者邮件列表里询问如何使用SVN;不该在用户论坛里提交bug，这些都该知道。认真阅读开发文档，学习使用上述的工具不仅可以节省大家的时间也会提高你所做的贡献被接受的可能。</p>
+
+<h2>观察了解项目的人际圈子</h2>
+
+<p>除了认真考虑技术，了解项目中的社交圈子也很重要。你该知道哪些人是核心开发人员(core maintainer)，这些核心开发者是如何与他人交流的，在开发社区中哪些人更活跃，他们为项目制定了那些规则。对于新的贡献者，有些项目会很开放和热心帮助，而有些项目则不大友好。记得要多在邮件列表、IRC或者其他开发者交流渠道上花时间观察，熟悉项目开发的交流氛围。 也许你认为开发者社区的交流互动不很重要，但是这却是成为一个成功的贡献者还是沮丧的离开的差异所在。回忆器我第一次尝试贡献开源项目时，我想改善一个音乐播放器程序的播放列表格式，因为这个音乐播放器程序在命令行下指定播放列表时，它不支持所有可用的格式。由于我的歌曲文件名字超出了Linux内核支持的命令行参数的字符上限，因此我没有办法将所有的音乐放入播放列表中。于是我在邮件列表中发了封邮件询问开发组他们是否考虑支持新的播放列表格式。于是立即引起了一场争论。当我第二天查看邮件列表时，我看到了上百个回复，一些人表示支持，一些人说现在的已有格式已经很好，还有些人问道这是哪来的新人。于是整个事情由回应问题变成了争论。 我当时犯的错误就是没有足够了解项目的社交圈。查看下邮件列表的存档，你才会发现有些项目只对一小撮核心贡献者开放，而对大多数人尤其是那些连一个bugfix都没提交过的人一点都不理会的。因此这就引出了我要谈到的下一条也是最重要的一条忠告——从小处入手</p>
+
+<h2>从小处入手</h2>
+
+<p>从小处入手有两方面含义，一是小的贡献，二是规模小的项目。提交一些小的bugfix或者实现一个简单的feature可以帮助你提高社区中的声望，同时也会使你熟悉项目中的提交流程。这两个方面都灰是你的补丁被接受的可能性大大提高。 一个规模小的项目中，你的贡献会更富有成效，因为熟悉提交流程和工具链会更快，你还能和核心开发者有更好的沟通。一个只有一个维护者的项目，提交一个bugfix补丁通常和邮寄一封附有diff文件和问题描述信息的邮件给维护者一样简单。</p>
+
+<h2>开始自己的开源项目</h2>
+
+<p>开始接触开源项目的一个最简单的方法就是建立自己的开源项目。写一个firefox插件、一个wordpress插件或者一个emacs mode都是不错的想法，既可以快速写就，通常还会赢得不少用户的肯定。 不过在你创建自己的项目之前，记得一定要好好查查，确保你的工作没有人在做。你也许会惊喜的发现有许多项目只需要一点点关注就会使这些项目变得更有价值。</p>
+
+<p>以上就是6条初次参与开源软件项目的忠告。</p>
 ]]></content>
   </entry>
   

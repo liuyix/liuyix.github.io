@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="2015年5月12日，由学生正式成为职场新人。至今已经刚满九月。适逢春节假期，可以静下来审视下自己这几个月来的生活。有很多话要说，但是又不知道从何说起。 在阿里的这几个月中我经历了三淘单元化的实施，经历了大规模集群实例迁徙，经历了AIS组织架构调整，经历了全链路压测，经历了2014年的双十一。。。 &hellip;">
+  <meta name="description" content="昨天在多看阅读中看到的一篇关于拖延症的文章&mdash;《“被绑架”了的拖延症患者 &mdash; 爱上拖延症的八个理由》。原始出处已无法考据，感谢原作者的分享。在网上找到了一个引用链接。 之前也正好看到了李松蔚在微信公众账号里面发表的拖延症系列文章中的《框架中的拖延者（3）：和解，无关明日》， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,354 +81,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/career-nine-months-review/">入职9月谈</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-13T23:37:00+08:00" pubdate data-updated="true">Feb 13<span>th</span>, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>2015年5月12日，由学生正式成为职场新人。至今已经刚满九月。适逢春节假期，可以静下来审视下自己这几个月来的生活。有很多话要说，但是又不知道从何说起。</p>
-
-<p>在阿里的这几个月中我经历了三淘单元化的实施，经历了大规模集群实例迁徙，经历了AIS组织架构调整，经历了全链路压测，经历了2014年的双十一。。。仿佛被汹涌的海浪一下子卷了进去一般。  从学生变成了IT民工，这种转变有点让人感觉措手不及。<br/>
-社会角色的转变后的迷惘、突入从没有来过的陌生城市后的紧张，（更让人悲喜交加的是）刚入职就“摊上大事”的我，这段时间以来以极快的速度感觉自己老了很多。</p>
-
-<h3>数据大迁徙</h3>
-
-<p>入职后不久机缘巧合之下就接了备份恢复的差事，第一次满怀崇拜和学习的心态揭开了基础系统程序的面纱，结果。。。卧槽！卧槽卧槽！以下省略一万字。。。<br/>
-没有看到想象中教科书般工整牛逼的代码反而是让人唏嘘不已无法直视的代码。本身自己对MySQL甚至对数据库就没有多少了解，本科和研究生时对数据库是毫无感觉的，只依稀记得考试时写了几个比较牛逼的SQL。现在却要接手MySQL备份恢复，心理觉得压力增加了不少。<br/>
-更加万万没想到的是更大的考验就在零零散散交接完成后的几天就纷至沓来。第一波是杭州单元化建设，第一次有了酸爽的感觉，这一次规模<em>相对</em>较小，本身又是刚刚交接，所以有一些棘手的问题还是找到了原来的同学帮忙处理解决掉了。<br/>
-真正的挑战是第二波上海异地双活。根据大部门总体进度时间表，分配给数据库的时间只有2周左右，更悲剧的是由于其他团队的工作延期，剩下的时间还比计划的时间更短。</p>
-
-<p>数据库异地双活项目中最重要的就是三部分内容，一部分是元数据梳理，一部分是实例迁移，一部分是TDDL切换。其中最耗时的一环就是通过备份恢复的方式进行实例迁移。简单讲就是几乎把所有的实例都要做一遍备份和恢复实现一个级联的门子结构。<br/>
-在工具还没有完善的时候就只有通过半自动半人工的方式来完成。团队专门成立了拆迁办小分队，每个人负责专门的一块——元数据梳理、资源分配调度、平台前端开发、平台后端任务还有备份恢复子任务，一环套着一环，分秒必争的赶进度，这一段时间是最苦逼的，但是无论何时，回想起来都会觉得特别牛逼，那种几个人为了同一个的目标争分夺秒玩命干活的感觉，很难忘。在这过程中一边熟悉并修补一边赶进度，生平第一次感觉到了焦虑崩溃的边缘，到了自己的极限，很想放弃。可是我放弃了，没有人可以backup起来，即使是之前的同学，因为从没有经历过如此大规模的迁徙任务————没有退路，那就只能勇往直前。
-奇迹般地，我在最后期限的那一天完成了几乎所有的实例迁移任务，没有拖团队的后腿。</p>
-
-<p>副作用是对技术产生了阴影，感觉心里有些抑郁了。到现在感觉潜意识里面还是把那段痛苦和备份恢复挂钩了。一直是心有余悸。</p>
-
-<p>让我有一些宽慰的是可能是因为这次为大部门立下了“大功”，在14年的部门年会上拿到了最佳新人奖和一个上海建站的团队奖。</p>
-
-<p>同时我也要感谢这一次大项目的洗礼，让我对一些本质任务我是否真的喜欢做技术？我现在有些怀疑了。可是不做技术，我还能做什么呢？</p>
-
-<h3>收获</h3>
-
-<p>2014年年会上拿到了一个最佳新人奖——“破茧成蝶”还有一个团体奖“众志成城”。七八月份的付出是得到了老大们的认可的。</p>
-
-<h3>数据库单元化搭建&mdash;两次</h3>
-
-<p>开始</p>
-
-<h3>上海建站</h3>
-
-<h3>双十一</h3>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/python-tips/">Python Tips</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-22T14:15:00+08:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Python实现tail</h3>
-
-<p>credit: <a href="http://stackoverflow.com/q/136168">http://stackoverflow.com/q/136168</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/mysql-gtid-introduction/">MySQL 5.6 GTID 学习笔记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-20T18:45:00+08:00" pubdate data-updated="true">Sep 20<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Reading List</h3>
-
-<ul>
-<li>Facebook部署5.6 GTID的blog: <a href="https://www.facebook.com/notes/mysql-at-facebook/lessons-from-deploying-mysql-gtid-at-scale/10152252699590933">Lessons from Deploying MySQL GTID at Scale</a>(需要翻墙)
-
-<ul>
-<li>Facebook@Percona Live 2014 <a href="http://www.percona.com/live/mysql-conference-2014/sessions/global-transaction-id-facebook">GLOBAL TRANSACTION ID AT FACEBOOK</a></li>
-<li>MySQL Manual使用时GTID时的限制：<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html">17.1.3.4 Restrictions on Replication with GTIDs</a></li>
-</ul>
-</li>
-<li></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/ability-review/">Ability_review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-20T18:43:00+08:00" pubdate data-updated="true">Sep 20<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/bash-tips/">Bash Tips</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-14T16:59:00+08:00" pubdate data-updated="true">Sep 14<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Bash 遇到错误就退出</h3>
-
-<p><a href="http://stackoverflow.com/a/4382179">http://stackoverflow.com/a/4382179</a></p>
-
-<p><code>set -e</code></p>
-
-<blockquote><p>If you put set -e in a script, the script will terminate as soon as any command inside it fails (i.e. as soon as any command returns a nonzero status). This doesn&rsquo;t let you write your own message, but often the failing command&rsquo;s own messages are enough.</p>
-
-<p>The advantage of this approach is that it&rsquo;s automatic: you don&rsquo;t run the risk of forgetting to deal with an error case.</p>
-
-<p>Commands whose status is tested by a conditional (such as if, &amp;&amp; or ||) do not terminate the script (otherwise the conditional would be pointless). An idiom for the occasional command whose failure doesn&rsquo;t matter is command-that-may-fail || true. You can also turn set -e off for a part of the script with set +e.</p></blockquote>
-
-<h2>Bash使用数组</h2>
-
-<h3>快速入门</h3>
-
-<p>(Bash For Loop Array: Iterate Through Array Values)[<a href="http://www.cyberciti.biz/faq/bash-for-loop-array/">http://www.cyberciti.biz/faq/bash-for-loop-array/</a>]</p>
-
-<ul>
-<li>用括号指定，空格指定就好</li>
-<li>遍历： <code>for i in "${var[@]}"</code></li>
-</ul>
-
-
-<h3>深入</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#!/bin/bash
-</span><span class='line'># array-ops.sh: More fun with arrays.
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>array=( zero one two three four five )
-</span><span class='line'># Element 0   1   2    3     4    5
-</span><span class='line'>
-</span><span class='line'>echo ${array[0]}       #  zero
-</span><span class='line'>echo ${array:0}        #  zero
-</span><span class='line'>                       #  Parameter expansion of first element,
-</span><span class='line'>                       #+ starting at position # 0 (1st character).
-</span><span class='line'>echo ${array:1}        #  ero
-</span><span class='line'>                       #  Parameter expansion of first element,
-</span><span class='line'>                       #+ starting at position # 1 (2nd character).
-</span><span class='line'>
-</span><span class='line'>echo "--------------"
-</span><span class='line'>
-</span><span class='line'>echo ${#array[0]}      #  4
-</span><span class='line'>                       #  Length of first element of array.
-</span><span class='line'>echo ${#array}         #  4
-</span><span class='line'>                       #  Length of first element of array.
-</span><span class='line'>                       #  (Alternate notation)
-</span><span class='line'>
-</span><span class='line'>echo ${#array[1]}      #  3
-</span><span class='line'>                       #  Length of second element of array.
-</span><span class='line'>                       #  Arrays in Bash have zero-based indexing.
-</span><span class='line'>
-</span><span class='line'>echo ${#array[*]}      #  6
-</span><span class='line'>                       #  Number of elements in array.
-</span><span class='line'>echo ${#array[@]}      #  6
-</span><span class='line'>                       #  Number of elements in array.
-</span><span class='line'>
-</span><span class='line'>echo "--------------"
-</span><span class='line'>
-</span><span class='line'>array2=( [0]="first element" [1]="second element" [3]="fourth element" )
-</span><span class='line'>#            ^     ^       ^     ^      ^       ^     ^      ^       ^
-</span><span class='line'># Quoting permits embedding whitespace within individual array elements.
-</span><span class='line'>
-</span><span class='line'>echo ${array2[0]}      # first element
-</span><span class='line'>echo ${array2[1]}      # second element
-</span><span class='line'>echo ${array2[2]}      #
-</span><span class='line'>                       # Skipped in initialization, and therefore null.
-</span><span class='line'>echo ${array2[3]}      # fourth element
-</span><span class='line'>echo ${#array2[0]}     # 13    (length of first element)
-</span><span class='line'>echo ${#array2[*]}     # 3     (number of elements in array)
-</span><span class='line'>
-</span><span class='line'>exit</span></code></pre></td></tr></table></div></figure>
-
-
-<p>(Arrays)[<a href="http://www.tldp.org/LDP/abs/html/arrays.html">http://www.tldp.org/LDP/abs/html/arrays.html</a>]</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -676,7 +328,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/xtrabackup/">Xtrabackup</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/my-work-in-bit/">我在BIT的这几年</a></h1>
     
     
       <p class="meta">
@@ -692,16 +344,65 @@
   
 
 
-<time datetime="2014-08-16T09:43:00+08:00" pubdate data-updated="true">Aug 16<span>th</span>, 2014</time>
+<time datetime="2014-01-03T19:39:00+08:00" pubdate data-updated="true">Jan 3<span>rd</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content">
+  <div class="entry-content"><h3>Changelog</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Version </th>
+<th>  Time </th>
+<th> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> 0.3 </td>
+<td> 2014-3-1 </td>
+<td> 毕业设计的总结</td>
+</tr>
+<tr>
+<td></td>
+<td> 0.21 </td>
+<td> 2014-1-5 </td>
+<td> 最后一学年的小结</td>
+</tr>
+<tr>
+<td></td>
+<td> 0.2 </td>
+<td>  2014-1-4 </td>
+<td> 研究生第二年</td>
+</tr>
+<tr>
+<td></td>
+<td> 0.1 </td>
+<td>  2014-1-3 </td>
+<td> 研究生第一年</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>我在BIT的这几年</h2>
+
+<p>2年半的研究生即将结束，聊以此文做一下这几年的回顾吧。</p>
+
+<p>2011年我考入了BIT，之后机缘之下来到了现在的实验室，正式成为了现在的导师的<em>第一任</em>弟子。实话说如果当时选择导师的时候能了解到更多的信息，可能就不会是这个选择了。幸运的是误打误撞的还碰到了不错的导师，与其说是导师，现在感觉倒更像是朋友和师兄，他给予了充分的自由和平等，我很感激。不过自己的散漫之气也因此耽误了不少事情，实感愧疚。这个之后会有提到。</p>
+
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/my-work-in-bit/">继续阅读 &rarr;</a>
+    </footer>
   
 
 
@@ -712,7 +413,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/cache-internal-professional/">SMP L1 Cache MESI Coherence Protocol Internal</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/linux-kernel-overview/">Linux Kernel概览</a></h1>
     
     
       <p class="meta">
@@ -728,31 +429,282 @@
   
 
 
-<time datetime="2014-01-07T15:02:00+08:00" pubdate data-updated="true">Jan 7<span>th</span>, 2014</time>
+<time datetime="2013-10-22T20:19:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h2>Gem5 Simulator Ruby Memory System</h2>
+  <div class="entry-content"><blockquote><p>总结下读过的有关Kernel的书籍，主要是<a href="http://book.douban.com/subject/2287506/">&lt;Understanding the Linux Kernel></a>>、<a href="http://book.douban.com/subject/6097773/">&lt;Linux Kernel Development></a>、<a href="http://book.douban.com/subject/1723151/">&lt;Linux Device Drivers></a></p></blockquote>
 
-<p>Ruby Memory</p>
+<h3>终极目标</h3>
 
-<h2>基于Directory的SMP L1 Cache MESI协议的内部实现</h2>
+<p>完整的回答以下问题：</p>
 
-<p><strong>Directory</strong> :
-<strong>SMP</strong> :
-<strong>L1</strong> :</p>
+<ul>
+<li>从开机上电到进入命令提示行，Linux完整的启动过程</li>
+<li>Linux终端下敲入<code>ls</code>的完整过程。(从接收键盘设备中断到显示到结果显示到屏幕)</li>
+<li>Linux终端下输入<code>cat foo.txt</code>的完整过程。(同上，其中包含了读写磁盘的操作)</li>
+<li><em>to be continued&hellip;</em></li>
+</ul>
 
-<p><img src="/images/Diagrama_MESI.gif" alt="/images/Diagrama_MESI.gif" /></p>
 
-<p>而实际上<strong>SMP架构</strong>中的MESI具有多个<em>瞬时状态</em> ,在研究Gem5模拟器中集成的<em>Ruby Memory System Simulator</em>的实现，根据协议实现代码，我得到了以下添加了瞬时状态后的有限状态机图示（ <strong>该图依然为简化后的图，其中省略了自旋状态转换</strong> ，这样看起来更清晰些）</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/linux-kernel-overview/">继续阅读 &rarr;</a>
+    </footer>
+  
 
-<p><img src="/images/MESI-orig.png" alt="MESI" /></p>
 
-<p>当然这依然不是最终实现的结构，该图并没有考虑目前已经广泛应用在各种处理器上的 <em>Prefetcher</em>
-本文之后会介绍这些 <em>State</em> 以及对应的 <em>Event</em> 。</p>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/baidu-exam-review/">百度校招-系统研发工程师-笔试题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-15T01:36:00+08:00" pubdate data-updated="true">Oct 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>几道编程算法题：</p>
+
+<ul>
+<li>实现类似wget一样的进度条</li>
+<li>100亿个单词，每个单词长度小于30，输出去重后的所有单词。</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/baidu-exam-review/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/xiaomi-onsite/">小米面试内核驱动工程师总结</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-11T19:54:00+08:00" pubdate data-updated="true">Oct 11<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>此为吐槽贴，略涉及技术。</p></blockquote>
+
+<p>之前网申投的是<em>内核驱动工程师</em>，这个职位是凭着自己对Linux Internal还保持非常浓厚的兴趣，虽然实践不多，还有就是一看到这个title就有种高端大气上档次的赶脚。之后前几天打来电话去面试，这才知道这次是小米的bsp团队招人。</p>
+
+<p>怀着忐忑和兴奋的心情去小米参加bsp团队的面试。结果比较让人失望，一方面是自己还有很多不够深入的地方，一方面是bsp团队明显准备不足。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/xiaomi-onsite/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-06T12:31:00+08:00" pubdate data-updated="true">Oct 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
+<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
+
+<ol>
+<li>安装homebrew</li>
+<li>安装rbenv以及ruby-build</li>
+<li><code>rbenv install 1.9.3-p448</code></li>
+<li><code>official install octopress</code></li>
+<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/mac-install-octopress/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/octopress-fails/">#吐槽# Octopress：想说爱你不容易&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-27T23:09:00+08:00" pubdate data-updated="true">Sep 27<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>几个月时间，博客转到了github pages上的Octopress，结果是输出的文章比之前更少。（之前的几十篇文章也不见了踪影&hellip;）</p>
+
+<p>我似乎不属于个例——一直以来都特意关注了我所能遇到的Octopress搭建的独立博客，<em>大部分Octopress我所遇到中文博客都很少更新，其中大多迁移到Octopress后几个月内就不再更新了</em>。
+结合这几个月为数不多的使用，说一下Octopress的使用感受。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/octopress-fails/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-09T23:59:00+08:00" pubdate data-updated="true">Aug 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>许久没写了，上一篇水文教程。</p></blockquote>
+
+<p>需要的工具：</p>
+
+<ul>
+<li><a href="https://code.google.com/p/goagent/">goagent</a></li>
+<li><a href="http://rg3.github.io/youtube-dl/download.html">youtube-dl</a></li>
+</ul>
+
+
+<p>goagent教程就不上了，这个是翻墙的基本知识。:-P</p>
+
+<h3>使用youtube-dl下载youtube视频</h3>
+
+<p>事先声明, Windows平台的我没有试过。按照说明需要安装python 2.6以上的版本才能运行。<br/>
+然后先用浏览器翻墙看一下复制你要下载的youtube的链接，比如 <a href="http://www.youtube.com/watch?v=9bZkp7q19f0">http://www.youtube.com/watch?v=9bZkp7q19f0</a><br/>
+然后进入命令行，输入</p>
+
+<ol>
+<li>此步骤可选，若想选择下载的格式和大小，则可以先列出可下载的格式列表，使用命令： <code>./youtube-dl --write-sub --proxy 'http://127.0.0.1:8087' --list-formats http://www.youtube.com/watch?v=OPethpwuYEk</code></li>
+<li>若执行了(1)则此步骤中可以指定<code>--format 22</code>, 即<code>./youtube-dl --write-sub --proxy 'http://127.0.0.1:8087' --format 22 http://www.youtube.com/watch?v=OPethpwuYEk</code></li>
+</ol>
+
+
+<p>几分钟之后就会下载好选择的视频(文件名称默认为解析出的视频名称)</p>
+
+<hr />
+
+<p>让我的感觉印象深刻的是这个项目是由python编写，但是项目的部署非常不错，只有一个可执行文件，没有任何其他依赖。这个之后研究下 :&ndash;)</p>
 </div>
   
   
@@ -785,7 +737,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/python-concurrent-programming/">Python并发编程手册</a>
+        <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册</a>
       </li>
     
       <li class="post">
@@ -801,14 +753,14 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2015/octopress-on-el-capitan/">Mac 10.12 El Capitan上octopress的安装</a>
+        <a href="/blog/2015/python-docopt/">Docopt &#8211; Python必备的命令行接口模块</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (6)</a></li><li><a href='/blog/categories/general'>General (22)</a></li><li><a href='/blog/categories/java'>Java (1)</a></li><li><a href='/blog/categories/life'>Life (18)</a></li><li><a href='/blog/categories/linux'>Linux (21)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (7)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (2)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/general'>General (10)</a></li><li><a href='/blog/categories/life'>Life (9)</a></li><li><a href='/blog/categories/linux'>Linux (12)</a></li><li><a href='/blog/categories/mac'>Mac (1)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (4)</a></li><li><a href='/blog/categories/quora'>Quora (1)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li></ul>
 </section>
 
 

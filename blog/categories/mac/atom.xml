@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-17T07:11:19+08:00</updated>
+  <updated>2015-12-18T22:44:25+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,21 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Mac 10.12 El Capitan上octopress的安装]]></title>
-    <link href="http://liuyix.org/blog/2015/octopress-on-el-capitan/"/>
-    <updated>2015-10-22T08:30:00+08:00</updated>
-    <id>http://liuyix.org/blog/2015/octopress-on-el-capitan</id>
-    <content type="html"><![CDATA[<blockquote><p>本文介绍了在El Capitan上安装Octopress时遇到的几个问题及解决方案</p></blockquote>
-
-<h2>Rubygems安装源慢</h2>
-
-<h2>Errno::ENOENT: No such file or directory &ndash; Jekeyll</h2>
-
-<p><a href="http://schalkneethling.github.io/blog/2015/10/16/errno-enoent-no-such-file-or-directory-jekyll-octopress-el-capitan/">http://schalkneethling.github.io/blog/2015/10/16/errno-enoent-no-such-file-or-directory-jekyll-octopress-el-capitan/</a></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[mac上安装octopress]]></title>
