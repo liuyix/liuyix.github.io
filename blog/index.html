@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Python并发编程常用的就是2个模块：threading和multiprocessing。其中threading因为著名的GIL，实际是伪多线程，每个thread并没有对应一个pthread；multiprocessing则是利用多进程的手段来绕过GIL达到并发的效果。 &hellip;">
+  <meta name="description" content="Python并发编程常用的builtin就是2个模块：threading和multiprocessing。其中threading因为著名的GIL，实际是伪多线程，每个thread并没有对应一个pthread；multiprocessing则是利用多进程的手段来绕过GIL达到并发的效果。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,7 +87,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册[Draft]</a></h1>
     
     
       <p class="meta">
@@ -110,11 +110,16 @@
   </header>
 
 
-  <div class="entry-content"><p>Python并发编程常用的就是2个模块：<code>threading</code>和<code>multiprocessing</code>。其中<code>threading</code>因为著名的GIL，实际是<em>伪多线程</em>，每个thread并没有对应一个pthread；<code>multiprocessing</code>则是利用多进程的手段来绕过GIL达到并发的效果。</p>
+  <div class="entry-content"><p>Python并发编程<del>常用的</del>builtin就是2个模块：<code>threading</code>和<code>multiprocessing</code>。其中<code>threading</code>因为著名的GIL，实际是<em>伪多线程</em>，每个thread并没有对应一个pthread；<code>multiprocessing</code>则是利用多进程的手段来绕过GIL达到并发的效果。</p>
 
 <p>如果你的任务并非是CPU密集型，而是IO密集型或者网络应用的话——单线程时CPU总是处于等待的状态时，用threading其实影响不大。</p>
+
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/python-concurrent-programming/">继续阅读 &rarr;</a>
+    </footer>
   
 
 
@@ -870,7 +875,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册</a>
+        <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册[Draft]</a>
       </li>
     
       <li class="post">

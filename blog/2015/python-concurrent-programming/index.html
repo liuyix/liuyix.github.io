@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python并发实用编程手册 - 刘毅同学</title>
+  <title>Python并发实用编程手册[Draft] - 刘毅同学</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Python并发编程常用的就是2个模块：threading和multiprocessing。其中threading因为著名的GIL，实际是伪多线程，每个thread并没有对应一个pthread；multiprocessing则是利用多进程的手段来绕过GIL达到并发的效果。 &hellip;">
+  <meta name="description" content="Python并发编程常用的builtin就是2个模块：threading和multiprocessing。其中threading因为著名的GIL，实际是伪多线程，每个thread并没有对应一个pthread；multiprocessing则是利用多进程的手段来绕过GIL达到并发的效果。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,7 +84,7 @@
   
   <header>
     
-      <h1 class="entry-title">Python并发实用编程手册</h1>
+      <h1 class="entry-title">Python并发实用编程手册[Draft]</h1>
     
     
       <p class="meta">
@@ -107,9 +107,66 @@
   </header>
 
 
-<div class="entry-content"><p>Python并发编程常用的就是2个模块：<code>threading</code>和<code>multiprocessing</code>。其中<code>threading</code>因为著名的GIL，实际是<em>伪多线程</em>，每个thread并没有对应一个pthread；<code>multiprocessing</code>则是利用多进程的手段来绕过GIL达到并发的效果。</p>
+<div class="entry-content"><p>Python并发编程<del>常用的</del>builtin就是2个模块：<code>threading</code>和<code>multiprocessing</code>。其中<code>threading</code>因为著名的GIL，实际是<em>伪多线程</em>，每个thread并没有对应一个pthread；<code>multiprocessing</code>则是利用多进程的手段来绕过GIL达到并发的效果。</p>
 
 <p>如果你的任务并非是CPU密集型，而是IO密集型或者网络应用的话——单线程时CPU总是处于等待的状态时，用threading其实影响不大。</p>
+
+<!--more-->
+
+
+<h2>threading</h2>
+
+<p>Doc: <a href="https://docs.python.org/2/library/threading.html">https://docs.python.org/2/library/threading.html</a></p>
+
+<h3>Thread</h3>
+
+<p>和其他语言的线程创建类似，有两种方式创建线程的方式，一种是创建thread时传入要执行的工作方法，另外一种是创建<code>Thread</code>的子类。</p>
+
+<h4>join</h4>
+
+<p><code>join()</code> 方法提供了不同线程间的协同功能。通常的用法是主线程在创建完所有的工作线程后，循坏调用没有工作线程的<code>join()</code>方法来等待所有线程的结束。<code>join()</code>方法还可以增加<code>timeout</code>参数设置超时时间，可以用来避免一个工作线程出问题使得整个程序死等的情况。</p>
+
+<h4>daemon</h4>
+
+<p><code>daemon</code>是Thread的一个属性，程序退出不关心设置了<code>daemon</code>线程的『死活』。即只要所有非<code>daemon</code>线程都结束了，那么程序就可以结束掉了。
+<code>daemon</code>线程类似于程序内部的『后台服务』，提供了程序运行时的『基础设施』，而不是程序工作流程链路中的部分。</p>
+
+<h3>Lock, RLock</h3>
+
+<p>并发编程中，锁是基本原语。当有共享资源需要『互斥』访问时就要用锁来对这些资源进行保护。<del>然而Python语言中由于GIL问题，实际上builtin的数据类型都是thread-safe的，使用时无需上锁</del>对于mutable类型的变量在多线程共享使用时应该用Lock来控制并发，不能依赖Python的具体实现。</p>
+
+<p>在Python 2.6以上，可以使用<code>with</code>简化获取和释放锁的过程，让代码更加简洁。</p>
+
+<h3>Condition</h3>
+
+<p>是对Lock的一层封装。提供了<code>acquire()</code>, <code>release()</code>这两个Lock原语，还提供了<code>wait()</code>, <code>notify()</code>, <code>notifyAll()</code>这三个接口。</p>
+
+<ul>
+<li><code>wait()</code> 是获得锁的线程主动释放锁，转入等待过程。</li>
+<li><code>notify()</code> 是获得锁的一方不释放锁，但是会唤醒等待这把锁的其中一个线程。</li>
+<li><code>notifyAll()</code> 类似<code>notify()</code>，不同的是不是唤醒一个，而是唤醒所有等待锁的线程。</li>
+</ul>
+
+
+<p>典型的使用场景是生产者消费者模式。一个生产者，若干个消费者用一个队列来交互，这时候每个工作线程要想工作首先都需要尝试获得队列的锁。当一个消费者拿到了锁可以访问队列时发现队列时空的，这时候就要使用<code>wait()</code>来主动释放这把锁，然后将自己放到等待线程列表中等待；当一个生产者获得了队列的锁时，将数据放入到队列中，同时在释放锁之前调用<code>notify()</code>来通知其他等待这把锁的线程：『达令，有你快递儿~』，然后在释放锁。如果生产了多个数据，那么就可以使用<code>notifyAll()</code>通知所有的等待线程。</p>
+
+<h3>Event</h3>
+
+<p>TODO</p>
+
+<h3>如何优雅的中断其他线程的任务</h3>
+
+<p>TODO</p>
+
+<h3>Signal的处理</h3>
+
+<p>TODO</p>
+
+<h2>multiprocessing &ndash; Process-based “threading” interface.</h2>
+
+<p>用多进程的方式来『模拟』threading的接口实现真正的并发程序。</p>
+
+<p>TODO</p>
 </div>
 
 
@@ -162,7 +219,7 @@
 
   <section>
    <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="/blog/2015/python-concurrent-programming" data-title="Python并发实用编程手册" data-url="http://liuyix.org/blog/2015/python-concurrent-programming/"></div>
+<div class="ds-thread" data-thread-key="/blog/2015/python-concurrent-programming" data-title="Python并发实用编程手册[Draft]" data-url="http://liuyix.org/blog/2015/python-concurrent-programming/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -199,7 +256,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册</a>
+        <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册[Draft]</a>
       </li>
     
       <li class="post">
