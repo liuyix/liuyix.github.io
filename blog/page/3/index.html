@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="许久没写了，上一篇水文教程。 需要的工具： goagent
-youtube-dl goagent教程就不上了，这个是翻墙的基本知识。:-P 使用youtube-dl下载youtube视频 事先声明, Windows平台的我没有试过。按照说明需要安装python 2.6以上的版本才能运行。 &hellip;">
+  <meta name="description" content="New Jelly Bean &mdash; Android 4.3于7月底发布，这次整体上变化不是很大，所以还是叫Jelly Bean。不过在底层，Android在安全上实际增强了不少，Android 4.3开始集成SELinux, 系统的安全性(潜力)提高了一个档次。 New Jelly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,70 +81,6 @@ youtube-dl goagent教程就不上了，这个是翻墙的基本知识。:-P 使�
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/youtube-download-with-subtitle/">翻墙下载附带字幕的youtube视频</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-09T23:59:00+08:00" pubdate data-updated="true">Aug 9<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>许久没写了，上一篇水文教程。</p></blockquote>
-
-<p>需要的工具：</p>
-
-<ul>
-<li><a href="https://code.google.com/p/goagent/">goagent</a></li>
-<li><a href="http://rg3.github.io/youtube-dl/download.html">youtube-dl</a></li>
-</ul>
-
-
-<p>goagent教程就不上了，这个是翻墙的基本知识。:-P</p>
-
-<h3>使用youtube-dl下载youtube视频</h3>
-
-<p>事先声明, Windows平台的我没有试过。按照说明需要安装python 2.6以上的版本才能运行。<br/>
-然后先用浏览器翻墙看一下复制你要下载的youtube的链接，比如 <a href="http://www.youtube.com/watch?v=9bZkp7q19f0">http://www.youtube.com/watch?v=9bZkp7q19f0</a><br/>
-然后进入命令行，输入</p>
-
-<ol>
-<li>此步骤可选，若想选择下载的格式和大小，则可以先列出可下载的格式列表，使用命令： <code>./youtube-dl --write-sub --proxy 'http://127.0.0.1:8087' --list-formats http://www.youtube.com/watch?v=OPethpwuYEk</code></li>
-<li>若执行了(1)则此步骤中可以指定<code>--format 22</code>, 即<code>./youtube-dl --write-sub --proxy 'http://127.0.0.1:8087' --format 22 http://www.youtube.com/watch?v=OPethpwuYEk</code></li>
-</ol>
-
-
-<p>几分钟之后就会下载好选择的视频(文件名称默认为解析出的视频名称)</p>
-
-<hr />
-
-<p>让我的感觉印象深刻的是这个项目是由python编写，但是项目的部署非常不错，只有一个可执行文件，没有任何其他依赖。这个之后研究下 :&ndash;)</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -645,6 +580,58 @@ youtube-dl goagent教程就不上了，这个是翻墙的基本知识。:-P 使�
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/a-simple-python-prog-with-douban-api/">一个简单的python小程序——使用douban API通过ISBN查询书籍信息</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-11T07:52:00+08:00" pubdate data-updated="true">Mar 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>刚学python时做的一个小程序，虽然小，但是也用到了不少内容。具体有以下几个方面：</p>
+
+<ul>
+<li>命令行的解析</li>
+<li>文件的读写</li>
+<li>XML解析</li>
+<li>http连接</li>
+<li>多线程</li>
+</ul>
+
+
+<p>短短不到200行的程序就可以做到这些，可以算是python的推广广告吧，哈哈</p>
+
+<script src="https://gist.github.com/liuyix/6738920.js"></script>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -670,10 +657,6 @@ youtube-dl goagent教程就不上了，这个是翻墙的基本知识。:-P 使�
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/python-encoding/">Python-encoding</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册[Draft]</a>
       </li>
     
@@ -687,6 +670,10 @@ youtube-dl goagent教程就不上了，这个是翻墙的基本知识。:-P 使�
     
       <li class="post">
         <a href="/blog/2015/python-data-model/">Python Data Model</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/python-docopt/">Docopt &#8211; Python必备的命令行接口模块</a>
       </li>
     
   </ul>

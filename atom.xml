@@ -4,7 +4,7 @@
   <title><![CDATA[刘毅同学]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-21T23:13:38+08:00</updated>
+  <updated>2015-12-21T23:16:56+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[python-encoding]]></title>
-    <link href="http://liuyix.org/blog/2015/python-encoding/"/>
-    <updated>2015-12-20T15:45:00+08:00</updated>
-    <id>http://liuyix.org/blog/2015/python-encoding</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python并发实用编程手册[Draft]]]></title>
@@ -1566,6 +1557,43 @@
 <p>吐槽到此结束，没有坚持写博客，上述都是次要原因，主要的原因应该还是自己比较懒&hellip;（Octopress又让写博客变得略微的艰难，于是更加的懒）</p>
 
 <p>嗯&hellip;你没猜错，这是又要搬家的节奏&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[翻墙下载附带字幕的youtube视频]]></title>
+    <link href="http://liuyix.org/blog/2013/youtube-download-with-subtitle/"/>
+    <updated>2013-08-09T23:59:00+08:00</updated>
+    <id>http://liuyix.org/blog/2013/youtube-download-with-subtitle</id>
+    <content type="html"><![CDATA[<blockquote><p>许久没写了，上一篇水文教程。</p></blockquote>
+
+<p>需要的工具：</p>
+
+<ul>
+<li><a href="https://code.google.com/p/goagent/">goagent</a></li>
+<li><a href="http://rg3.github.io/youtube-dl/download.html">youtube-dl</a></li>
+</ul>
+
+
+<p>goagent教程就不上了，这个是翻墙的基本知识。:-P</p>
+
+<h3>使用youtube-dl下载youtube视频</h3>
+
+<p>事先声明, Windows平台的我没有试过。按照说明需要安装python 2.6以上的版本才能运行。<br/>
+然后先用浏览器翻墙看一下复制你要下载的youtube的链接，比如 <a href="http://www.youtube.com/watch?v=9bZkp7q19f0">http://www.youtube.com/watch?v=9bZkp7q19f0</a><br/>
+然后进入命令行，输入</p>
+
+<ol>
+<li>此步骤可选，若想选择下载的格式和大小，则可以先列出可下载的格式列表，使用命令： <code>./youtube-dl --write-sub --proxy 'http://127.0.0.1:8087' --list-formats http://www.youtube.com/watch?v=OPethpwuYEk</code></li>
+<li>若执行了(1)则此步骤中可以指定<code>--format 22</code>, 即<code>./youtube-dl --write-sub --proxy 'http://127.0.0.1:8087' --format 22 http://www.youtube.com/watch?v=OPethpwuYEk</code></li>
+</ol>
+
+
+<p>几分钟之后就会下载好选择的视频(文件名称默认为解析出的视频名称)</p>
+
+<hr />
+
+<p>让我的感觉印象深刻的是这个项目是由python编写，但是项目的部署非常不错，只有一个可执行文件，没有任何其他依赖。这个之后研究下 :&ndash;)</p>
 ]]></content>
   </entry>
   
