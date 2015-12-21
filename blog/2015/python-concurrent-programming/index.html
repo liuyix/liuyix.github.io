@@ -131,13 +131,13 @@
 <p><code>daemon</code>是Thread的一个属性，程序退出不关心设置了<code>daemon</code>线程的『死活』。即只要所有非<code>daemon</code>线程都结束了，那么程序就可以结束掉了。
 <code>daemon</code>线程类似于程序内部的『后台服务』，提供了程序运行时的『基础设施』，而不是程序工作流程链路中的部分。</p>
 
-<h3>Lock, RLock</h3>
+<h2>Lock, RLock</h2>
 
 <p>并发编程中，锁是基本原语。当有共享资源需要『互斥』访问时就要用锁来对这些资源进行保护。<del>然而Python语言中由于GIL问题，实际上builtin的数据类型都是thread-safe的，使用时无需上锁</del>对于mutable类型的变量在多线程共享使用时应该用Lock来控制并发，不能依赖Python的具体实现。</p>
 
 <p>在Python 2.6以上，可以使用<code>with</code>简化获取和释放锁的过程，让代码更加简洁。</p>
 
-<h3>Condition</h3>
+<h2>Condition</h2>
 
 <p>是对Lock的一层封装。提供了<code>acquire()</code>, <code>release()</code>这两个Lock原语，还提供了<code>wait()</code>, <code>notify()</code>, <code>notifyAll()</code>这三个接口。</p>
 
@@ -150,17 +150,83 @@
 
 <p>典型的使用场景是生产者消费者模式。一个生产者，若干个消费者用一个队列来交互，这时候每个工作线程要想工作首先都需要尝试获得队列的锁。当一个消费者拿到了锁可以访问队列时发现队列时空的，这时候就要使用<code>wait()</code>来主动释放这把锁，然后将自己放到等待线程列表中等待；当一个生产者获得了队列的锁时，将数据放入到队列中，同时在释放锁之前调用<code>notify()</code>来通知其他等待这把锁的线程：『达令，有你快递儿~』，然后在释放锁。如果生产了多个数据，那么就可以使用<code>notifyAll()</code>通知所有的等待线程。</p>
 
-<h3>Event</h3>
+<h2>Event</h2>
 
-<p>TODO</p>
+<p>Event接口非常简单，就是<code>is_set()</code>和<code>set()</code>, Event用于在多线程间共享某一事件是否发生。我经常用来创建一个<code>stop_event</code>传给所有的worker线程，这样如果程序遇到异常或者其他需要终止的条件时，只要<code>stop_event.set()</code>，其他工作线程会循环的检查<code>stop_event.is_set()</code>。</p>
 
-<h3>如何优雅的中断其他线程的任务</h3>
+<h2>Semphore</h2>
 
-<p>TODO</p>
+<p>上过操作系统课程的同学对『信号量』都有过接触，信号量和对应的<code>p</code>, <code>v</code>操作是并发程序的『操作原语』，即用这两个操作就可以表示所有的并发程序的设计和实现了。上述的Lock, Condition都可以看做是信号量的特定形式。</p>
 
-<h3>Signal的处理</h3>
+<p>信号量由一个内部计数器和两个接口构成，内部的计数是非负数，对计数的操作：<code>release()</code>用于增加计数，<code>acquire()</code>用于减计数器。当计数器减到0时，<code>release()</code>操作就会阻塞直至其他工作线程完成<code>acquire()</code>。</p>
 
-<p>TODO</p>
+<p>Python的<code>acquire()</code>还支持可选参数<code>blocking</code>，当设置为True且计数器为0时，则会阻塞等待。</p>
+
+<blockquote><p>前面的叙述都算是对基本内容的解读，干货现在开始。</p></blockquote>
+
+<h2>如何优雅的中断其他线程的任务</h2>
+
+<h3>使用Event</h3>
+
+<p>在每个线程创建时传入<code>stop_event</code>,遇到异常或者到程序需要结束的时候，则<code>stop_event.set()</code>就可以了。
+缺点：只有在线程完成一次工作后才会检查stop_event一次。因此如果线程工作比较久时会设置了<code>stop_event</code>也不会立刻结束。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># worker</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">do_some_job</span><span class="p">(</span><span class="n">job_q</span><span class="p">,</span> <span class="n">stop_event</span><span class="p">):</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">while</span> <span class="ow">not</span> <span class="n">stop_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+</span><span class='line'>      <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>          <span class="n">do_foo</span><span class="p">()</span>
+</span><span class='line'>      <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>          <span class="n">stop_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c"># manager</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">Queue</span>
+</span><span class='line'><span class="n">thread_count</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span class='line'><span class="n">stop_event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+</span><span class='line'><span class="n">job_queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">do_some_job</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">job_queue</span><span class="p">,</span> <span class="n">stop_event</span><span class="p">,))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">thread_count</span><span class="p">)]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">thr</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+</span><span class='line'>  <span class="n">thr</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">thr</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+</span><span class='line'>  <span class="n">thr</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Signal的处理</h2>
+
+<p>TODO 多线程中Signal只能由<strong>主线程</strong>处理Signal。</p>
 
 <h2>multiprocessing &ndash; Process-based “threading” interface.</h2>
 
@@ -213,6 +279,8 @@
         <a class="basic-alignment left" href="/blog/2015/how-to-be-a-morning-man/" title="Previous Post: 成为早起者的几个步骤[Quora]">&laquo; 成为早起者的几个步骤[Quora]</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/python-encoding/" title="Next Post: python-encoding">python-encoding &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -256,6 +324,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/python-encoding/">Python-encoding</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册[Draft]</a>
       </li>
     
@@ -269,10 +341,6 @@
     
       <li class="post">
         <a href="/blog/2015/python-data-model/">Python Data Model</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/python-docopt/">Docopt -- Python必备的命令行接口模块</a>
       </li>
     
   </ul>
