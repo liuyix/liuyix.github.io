@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-22T23:00:31+08:00</updated>
+  <updated>2015-12-23T23:12:42+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[总结subprocess与pipe]]></title>
+    <link href="http://liuyix.org/blog/2015/python-subprocess-pitfalls/"/>
+    <updated>2015-12-23T21:31:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/python-subprocess-pitfalls</id>
+    <content type="html"><![CDATA[<h2>一、纠结的困境</h2>
+
+<p>Python在多进程上不是很令人满意，尤其是<code>subprocess</code>模块。当用Python实现一个shell脚本中的管道时就出现了比较尴尬的局面。</p>
+
+<h3>大数据量的管道问题</h3>
+
+<p>subprocess模块有两种方式来和生成的子进程交互：<code>wait</code>和<code>communicate</code>。
+关于<code>wait</code>文档中有以下说明：</p>
+
+<blockquote><p>Warning This will deadlock when using stdout=PIPE and/or stderr=PIPE and the child process generates enough output to a pipe such that it blocks waiting for the OS pipe buffer to accept more data. Use communicate() to avoid that.</p></blockquote>
+
+<p>即当stdout/stdin设置为PIPE时，使用<code>wait()</code>可能会导致死锁。因而建议使用<code>communicate</code></p>
+
+<p>而对于<code>communicate</code>，文档又给出：</p>
+
+<blockquote><p>Note The data read is buffered in memory, so do not use this method if the data size is large or unlimited.</p></blockquote>
+
+<p><code>communicate</code>会把数据读入内存缓存下来，所以当数据很大或者是无限的数据时不要使用。</p>
+
+<p>那么问题来了：当你要使用Python的<code>subprocess.Popen</code>实现命令行之间的管道传输，同时数据源又非常大（比如读取上GB的文本或者无尽的网络流）时，官方文档不建议用<code>wait</code>，同时<code>communicate</code>还可能把内存撑爆&hellip; <img src="/images/1.jpg" alt="/images/1.jpg" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python并发实用编程手册[Draft]]]></title>

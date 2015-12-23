@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="C++名字的由来
-Web Developers: If you had to start your whole career over again, what would you do knowing what you know now? Web开发当你必须重新开始时，以你现在的经验你会做什么 &hellip;">
+  <meta name="description" content="一、纠结的困境 Python在多进程上不是很令人满意，尤其是subprocess模块。当用Python实现一个shell脚本中的管道时就出现了比较尴尬的局面。 大数据量的管道问题 subprocess模块有两种方式来和生成的子进程交互：wait和communicate。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,61 @@ Web Developers: If you had to start your whole career over again, what would you
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/python-subprocess-pitfalls/">总结subprocess与pipe</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-12-23T21:31:00+08:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>一、纠结的困境</h2>
+
+<p>Python在多进程上不是很令人满意，尤其是<code>subprocess</code>模块。当用Python实现一个shell脚本中的管道时就出现了比较尴尬的局面。</p>
+
+<h3>大数据量的管道问题</h3>
+
+<p>subprocess模块有两种方式来和生成的子进程交互：<code>wait</code>和<code>communicate</code>。
+关于<code>wait</code>文档中有以下说明：</p>
+
+<blockquote><p>Warning This will deadlock when using stdout=PIPE and/or stderr=PIPE and the child process generates enough output to a pipe such that it blocks waiting for the OS pipe buffer to accept more data. Use communicate() to avoid that.</p></blockquote>
+
+<p>即当stdout/stdin设置为PIPE时，使用<code>wait()</code>可能会导致死锁。因而建议使用<code>communicate</code></p>
+
+<p>而对于<code>communicate</code>，文档又给出：</p>
+
+<blockquote><p>Note The data read is buffered in memory, so do not use this method if the data size is large or unlimited.</p></blockquote>
+
+<p><code>communicate</code>会把数据读入内存缓存下来，所以当数据很大或者是无限的数据时不要使用。</p>
+
+<p>那么问题来了：当你要使用Python的<code>subprocess.Popen</code>实现命令行之间的管道传输，同时数据源又非常大（比如读取上GB的文本或者无尽的网络流）时，官方文档不建议用<code>wait</code>，同时<code>communicate</code>还可能把内存撑爆&hellip; <img src="/images/1.jpg" alt="/images/1.jpg" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -693,54 +747,6 @@ Web Developers: If you had to start your whole career over again, what would you
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/mysql-gtid-introduction/">MySQL 5.6 GTID 学习笔记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-20T18:45:00+08:00" pubdate data-updated="true">Sep 20<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Reading List</h3>
-
-<ul>
-<li>Facebook部署5.6 GTID的blog: <a href="https://www.facebook.com/notes/mysql-at-facebook/lessons-from-deploying-mysql-gtid-at-scale/10152252699590933">Lessons from Deploying MySQL GTID at Scale</a>(需要翻墙)
-
-<ul>
-<li>Facebook@Percona Live 2014 <a href="http://www.percona.com/live/mysql-conference-2014/sessions/global-transaction-id-facebook">GLOBAL TRANSACTION ID AT FACEBOOK</a></li>
-<li>MySQL Manual使用时GTID时的限制：<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html">17.1.3.4 Restrictions on Replication with GTIDs</a></li>
-</ul>
-</li>
-<li></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -764,6 +770,10 @@ Web Developers: If you had to start your whole career over again, what would you
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/python-subprocess-pitfalls/">总结subprocess与pipe</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/my-quora-digest-issue-2/">Quora每周摘选（第2期）</a>
       </li>
     
@@ -779,15 +789,11 @@ Web Developers: If you had to start your whole career over again, what would you
         <a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2015/python-data-model/">Python Data Model</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/general'>General (10)</a></li><li><a href='/blog/categories/life'>Life (10)</a></li><li><a href='/blog/categories/linux'>Linux (12)</a></li><li><a href='/blog/categories/mac'>Mac (1)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (4)</a></li><li><a href='/blog/categories/quora'>Quora (2)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/general'>General (10)</a></li><li><a href='/blog/categories/life'>Life (10)</a></li><li><a href='/blog/categories/linux'>Linux (12)</a></li><li><a href='/blog/categories/mac'>Mac (1)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (5)</a></li><li><a href='/blog/categories/quora'>Quora (2)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li></ul>
 </section>
 
 
