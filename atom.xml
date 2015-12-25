@@ -4,7 +4,7 @@
   <title><![CDATA[刘毅同学]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-23T23:18:58+08:00</updated>
+  <updated>2015-12-26T00:25:05+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[linux-pipe]]></title>
+    <link href="http://liuyix.org/blog/2015/linux-pipe/"/>
+    <updated>2015-12-25T23:56:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/linux-pipe</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[总结subprocess与pipe]]></title>
@@ -184,7 +193,7 @@
 
 <h2>Signal的处理</h2>
 
-<p>TODO 多线程中Signal只能由<strong>主线程</strong>处理Signal。</p>
+<p>多线程中Signal只能由<strong>主线程</strong>处理Signal。这部分还没有搞过，暂时略过。</p>
 
 <ul>
 <li><a href="https://pymotw.com/2/signal/#signals-and-threads">https://pymotw.com/2/signal/#signals-and-threads</a></li>
@@ -195,7 +204,19 @@
 
 <h2>multiprocessing &ndash; Process-based “threading” interface.</h2>
 
-<p>用多进程的方式来『模拟』threading的接口实现真正的并发程序。</p>
+<p>多进程方式实现threading的接口，从而真正的达到并发。对于计算密集型的应用来说，利用<code>multiprocessing</code>模块可以用Python释放<em>真¤多核</em>性能。</p>
+
+<p>多线程的弊端：多进程相比单进程会有独立的内存地址空间，因此无法共享同父进程的资源，进程切换的系统开销会比多线程多。同时进程间的交互、资源共享也比较复杂和『耗能』。</p>
+
+<h2>Python并发常见编程模式 &mdash; 生产者消费者模式</h2>
+
+<ul>
+<li>使用<code>multiprocessing.Queue</code>来进行数据交互</li>
+<li>使用<code>multiprocessing.Event</code>来交互事件信号</li>
+</ul>
+
+
+<h2>Python并发常见编程模式 &mdash; Pool + map</h2>
 
 <p>TODO</p>
 ]]></content>
@@ -1447,119 +1468,6 @@
 <li>kmalloc内核是如何实现存储管理的，比如申请了14B的空间</li>
 <li>A,B两个进程，运行顺序是A&mdash;B&mdash;A,有多少种可能导致的，比如阻塞，抢占等。</li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mac上安装octopress]]></title>
-    <link href="http://liuyix.org/blog/2013/mac-install-octopress/"/>
-    <updated>2013-10-06T12:31:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/mac-install-octopress</id>
-    <content type="html"><![CDATA[<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
-<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
-
-<ol>
-<li>安装homebrew</li>
-<li>安装rbenv以及ruby-build</li>
-<li><code>rbenv install 1.9.3-p448</code></li>
-<li><code>official install octopress</code></li>
-<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
-</ol>
-
-
-<!--more-->
-
-
-<h3>原有的octopress迁移到mac</h3>
-
-<p>如果之前在其他地方已经使用了octopress，那么在mac上的稍有不同。具体为：</p>
-
-<ul>
-<li>clone <em>yourname.github.com</em>的source分支：<code>git clone git clone -b source git@github.com:yourname/yourname.github.com.git octopress</code></li>
-<li>在clone<em>yourname.github.com</em>的master分支到<code>$your_octopress/_deploy</code>目录: <code>git clone git clone git@github.com:yourname/yourname.github.com.git _deploy</code></li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 如果之前就已经在使用octopress，迁移到mac的话，不要clone octopress源，而是要clone你自己的repo源的source分支</span>
-</span><span class='line'>git clone -b <span class="nb">source </span>git@github.com:yourname/yourname.github.com.git octopress
-</span><span class='line'>git clone git@github.com:yourname/yourname.github.com.git octopress/_deploy
-</span><span class='line'>
-</span><span class='line'><span class="c">###### 安装octopress ######</span>
-</span><span class='line'><span class="c"># install homebrew</span>
-</span><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 使用brew安装rbenv</span>
-</span><span class='line'>brew install rbenv ruby-build
-</span><span class='line'>
-</span><span class='line'><span class="c"># 修改.bash_profile</span>
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=/usr/local/var/rbenv&#39;</span> &gt;&gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39;</span> &gt;&gt; ~/.bash_profile
-</span><span class='line'>
-</span><span class='line'><span class="c"># 关闭terminal，再重新开启</span>
-</span><span class='line'>rbenv install ruby-1.9.3-p448
-</span><span class='line'>rbenv versions <span class="c">#应该显示的是system和1.9.3-p448</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 进入到你的octopress</span>
-</span><span class='line'><span class="nb">cd</span> <span class="nv">$your</span>-octopress
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;1.9.3-p448&#39;</span> &gt; .ruby-version
-</span><span class='line'>
-</span><span class='line'><span class="c"># 再次关闭终端，重新打开进入到你的ocotpress目录</span>
-</span><span class='line'>ruby --version <span class="c"># 应该显示的是ruby 1.9.3p448</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 推荐可选操作：更改rubygems源至国内淘宝源，下载更稳定,参考链接：ruby.taobao.org</span>
-</span><span class='line'>gem sources -l <span class="c"># 看一下默认的rubygems源的url</span>
-</span><span class='line'>gem sources --remove https://rubygems.org/ <span class="c">#此处的url以上一条命令为准，有时可能是http而不是https</span>
-</span><span class='line'>gem sources -a http://ruby.taobao.org
-</span><span class='line'>gem sources -l <span class="c"># 此处应该只显示的是淘宝的rubygems源</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 现在就可以参考官方的安装说明安装了</span>
-</span><span class='line'>gem install bundler
-</span><span class='line'>rbenv rehash    <span class="c"># If you use rbenv, rehash to be able to run the bundle command</span>
-</span><span class='line'>bundle install
-</span><span class='line'>
-</span><span class='line'><span class="c"># 如果是第一次安装octopress，还需要安装默认的theme</span>
-</span><span class='line'>rake install
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

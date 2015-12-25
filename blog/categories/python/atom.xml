@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-23T23:18:58+08:00</updated>
+  <updated>2015-12-26T00:25:05+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -146,7 +146,7 @@ job_queue = Queue.Queue()</p>
 
 <h2>Signal的处理</h2>
 
-<p>TODO 多线程中Signal只能由<strong>主线程</strong>处理Signal。</p>
+<p>多线程中Signal只能由<strong>主线程</strong>处理Signal。这部分还没有搞过，暂时略过。</p>
 
 <ul>
 <li><a href="https://pymotw.com/2/signal/#signals-and-threads">https://pymotw.com/2/signal/#signals-and-threads</a></li>
@@ -157,7 +157,19 @@ job_queue = Queue.Queue()</p>
 
 <h2>multiprocessing &ndash; Process-based “threading” interface.</h2>
 
-<p>用多进程的方式来『模拟』threading的接口实现真正的并发程序。</p>
+<p>多进程方式实现threading的接口，从而真正的达到并发。对于计算密集型的应用来说，利用<code>multiprocessing</code>模块可以用Python释放<em>真¤多核</em>性能。</p>
+
+<p>多线程的弊端：多进程相比单进程会有独立的内存地址空间，因此无法共享同父进程的资源，进程切换的系统开销会比多线程多。同时进程间的交互、资源共享也比较复杂和『耗能』。</p>
+
+<h2>Python并发常见编程模式 &mdash; 生产者消费者模式</h2>
+
+<ul>
+<li>使用<code>multiprocessing.Queue</code>来进行数据交互</li>
+<li>使用<code>multiprocessing.Event</code>来交互事件信号</li>
+</ul>
+
+
+<h2>Python并发常见编程模式 &mdash; Pool + map</h2>
 
 <p>TODO</p>
 ]]></content>
