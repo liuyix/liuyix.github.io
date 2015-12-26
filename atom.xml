@@ -4,7 +4,7 @@
   <title><![CDATA[刘毅同学]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-26T00:27:12+08:00</updated>
+  <updated>2015-12-26T23:01:27+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python流式压缩和解压缩调研总结]]></title>
+    <link href="http://liuyix.org/blog/2015/python-compress-stream/"/>
+    <updated>2015-12-26T22:52:00+08:00</updated>
+    <id>http://liuyix.org/blog/2015/python-compress-stream</id>
+    <content type="html"><![CDATA[<p>最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。</p>
+
+<p>实现的效果是备份不在本地暂存，压缩内置到上传逻辑中，通过配置文件可以配置压缩细节，对上传使用者来讲是『无感知』的。利用压缩提高了上传效率和备份空间的使用率。</p>
+
+<h2>压缩率和压缩性能的比较</h2>
+
+<ul>
+<li>lz4</li>
+<li>gzip</li>
+<li>lzop</li>
+</ul>
+
+
+<p>结论：在兼顾压缩率和压缩占用CPU资源以及压缩效率几个方面，最终选择了lzop。</p>
+
+<p>lz4据说是压缩最快的算法，最终没有选择，有几个方面的原因：</p>
+
+<ul>
+<li>Python支持不完善，因为我的需求是<strong>流式</strong>的上传和下载，压缩源是一个tar stream，和压缩后的文件不会落在本地，而是直接上传到远端。</li>
+<li>可运维性不高：lzo文件没有找到和gzip, lzop这样的命令行工具可以一个命令来对一个完整的lz4文件管理。当调用<code>file a.lz4</code> 显示的文件是data，这样就无法确认这个文件到底是否正确了。</li>
+</ul>
+
+
+<p>gzip给力的地方：</p>
+
+<ul>
+<li>gzip是目前应用最为广泛的格式了，看过很多压缩率评测的文章，gzip压缩率十分给力，在compresslevel是7到9时，压缩比很给力。</li>
+<li>Python也是在standard library中支持gzip的压缩和解压缩。</li>
+</ul>
+
+
+<p>gzip不够给力的地方：</p>
+
+<ul>
+<li>压缩速度慢，在高压缩率上很慢。但是compress level在2~3时，gzip无论是压缩比还是压缩效率上都很有竞争优势</li>
+<li>Python标准库gzip压缩对stream支持不够，流式压缩期望的方法是：传入一个fileobj，返回一个fileobj。而Gzip模块直接用的话是不支持这种方式的。</li>
+</ul>
+
+
+<p>然而gzip不足点是可以弥补的。
+首先是压缩速度上，默认gzip是不支持并行化的压缩，最多只能有单核的性能，这是压缩性能的瓶颈。但是gzip是有其他工具支持<strong>并行压缩的</strong> —— <code>pigz</code>就是并行压缩版本的gzip，测试结果显示pigz可以充分利用多核并行化的性能，让压缩时间有明显的减少，当然代价就是load也会成倍的增长（24核机器上，我只测试了2~8个线程数）</p>
+
+<p>其次是流式压缩可以通过Python轻松实现数据分块并行压缩。这里很重要的一点是：<strong>可以将每个数据分块看做一个独立文件压缩最终可以合成一个符合Gzip格式的压缩文件</strong>
+简单的看了下的pigz的代码注释，发现pigz的原理也是这样子的。Python中使用生产者和消费者模式（生产者：一个线程专门来从数据源拉数据，数据存入Queue中，多个压缩进程负责压缩，把压缩后数据再放入到PriorityQueue按顺序组合成一个文件即可，当然也可以直接分块上传到远端服务器）。这也是我实现的第一个版本的流式压缩方案。这个方案主要的弱点在于内存资源占用比较大：无论是从数据源读取的原始数据块还是压缩后的压缩数据块，在最终写入/上传前都需要缓存在内存中。
+在流式压缩上传的场景下，压缩上传的输出端是REST上传接口，因此并行压缩的内存占用上一定程度上受上传接口的性能影响。极端的情况，当上传速度很慢时，为了不影响压缩效率则需要在内存中开辟更大的内存buffer来放入等待压缩的数据块，这时就会占用到比较大的内存资源。不过也可以通过限制上传队列大小，在队列满的情况，数据源的<code>write</code>会阻塞等待。</p>
+
+<p>我的第二个方案的是利用pigz外部工具在读取数据源前利用管道先接入到<code>pigz</code>，在从<code>pigz</code>直接读取到压缩后的数据流。这个方案算是最终方案的替代方案，之所以没有最终使用，原因在于和lzop相比，在压缩率相近的情况下，<code>pigz</code>消耗了更多的CPU资源。</p>
+
+<p>对比方案：<code>pigz -p 2 -2</code> vs <code>lzop -c</code> ，即通过2线程压缩等级2和默认的lzop对比，前者压缩比可以高出10%，但是Load比后者高出了2倍不止，同时速度上也慢了25%。</p>
+
+<p>lzop给力的地方：
+实际测试中，lzop兼顾性能和压缩比同时压缩占用的CPU上是最平衡的。压缩速度稍慢于lz4，压缩比上可以达到gzip等级2~3的水平，同时cpu占用率和内存上比gzip低。</p>
+
+<p>lzop不给力的地方：</p>
+
+<ul>
+<li>Python bindings 接口较少，不能直接用来流式压缩上传。
+
+<ul>
+<li>通过 <em>外挂</em> 方式也可以完成。（其实即使支持的好，也需要多进程来并行工作，和外挂差别不大）</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>总结</h2>
+
+<ul>
+<li>lzop和pigz这两个压缩方案上在实际应用上都很有竞争力，只是我涉及的项目需求是生产环境上尽量不占用过多CPU，MEM资源，可以在压缩比上做妥协。因此选择了lzop。如果你在意CPU资源，更在乎压缩数据大小，则pigz是不错的选择。</li>
+<li><em>外挂</em> 方式的数据压缩方案虽然集成上让Python程序有更多的外部依赖，但是考虑到Python本身并没有真正的线程的并行方案（你想要并行也要生成多个进程），其实资源占用区别不大。同时方案选型上也更加灵活。</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[总结subprocess与pipe]]></title>
@@ -1459,119 +1539,6 @@
 <li>kmalloc内核是如何实现存储管理的，比如申请了14B的空间</li>
 <li>A,B两个进程，运行顺序是A&mdash;B&mdash;A,有多少种可能导致的，比如阻塞，抢占等。</li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mac上安装octopress]]></title>
-    <link href="http://liuyix.org/blog/2013/mac-install-octopress/"/>
-    <updated>2013-10-06T12:31:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/mac-install-octopress</id>
-    <content type="html"><![CDATA[<blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
-<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
-
-<ol>
-<li>安装homebrew</li>
-<li>安装rbenv以及ruby-build</li>
-<li><code>rbenv install 1.9.3-p448</code></li>
-<li><code>official install octopress</code></li>
-<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
-</ol>
-
-
-<!--more-->
-
-
-<h3>原有的octopress迁移到mac</h3>
-
-<p>如果之前在其他地方已经使用了octopress，那么在mac上的稍有不同。具体为：</p>
-
-<ul>
-<li>clone <em>yourname.github.com</em>的source分支：<code>git clone git clone -b source git@github.com:yourname/yourname.github.com.git octopress</code></li>
-<li>在clone<em>yourname.github.com</em>的master分支到<code>$your_octopress/_deploy</code>目录: <code>git clone git clone git@github.com:yourname/yourname.github.com.git _deploy</code></li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 如果之前就已经在使用octopress，迁移到mac的话，不要clone octopress源，而是要clone你自己的repo源的source分支</span>
-</span><span class='line'>git clone -b <span class="nb">source </span>git@github.com:yourname/yourname.github.com.git octopress
-</span><span class='line'>git clone git@github.com:yourname/yourname.github.com.git octopress/_deploy
-</span><span class='line'>
-</span><span class='line'><span class="c">###### 安装octopress ######</span>
-</span><span class='line'><span class="c"># install homebrew</span>
-</span><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 使用brew安装rbenv</span>
-</span><span class='line'>brew install rbenv ruby-build
-</span><span class='line'>
-</span><span class='line'><span class="c"># 修改.bash_profile</span>
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=/usr/local/var/rbenv&#39;</span> &gt;&gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39;</span> &gt;&gt; ~/.bash_profile
-</span><span class='line'>
-</span><span class='line'><span class="c"># 关闭terminal，再重新开启</span>
-</span><span class='line'>rbenv install ruby-1.9.3-p448
-</span><span class='line'>rbenv versions <span class="c">#应该显示的是system和1.9.3-p448</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 进入到你的octopress</span>
-</span><span class='line'><span class="nb">cd</span> <span class="nv">$your</span>-octopress
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;1.9.3-p448&#39;</span> &gt; .ruby-version
-</span><span class='line'>
-</span><span class='line'><span class="c"># 再次关闭终端，重新打开进入到你的ocotpress目录</span>
-</span><span class='line'>ruby --version <span class="c"># 应该显示的是ruby 1.9.3p448</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 推荐可选操作：更改rubygems源至国内淘宝源，下载更稳定,参考链接：ruby.taobao.org</span>
-</span><span class='line'>gem sources -l <span class="c"># 看一下默认的rubygems源的url</span>
-</span><span class='line'>gem sources --remove https://rubygems.org/ <span class="c">#此处的url以上一条命令为准，有时可能是http而不是https</span>
-</span><span class='line'>gem sources -a http://ruby.taobao.org
-</span><span class='line'>gem sources -l <span class="c"># 此处应该只显示的是淘宝的rubygems源</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># 现在就可以参考官方的安装说明安装了</span>
-</span><span class='line'>gem install bundler
-</span><span class='line'>rbenv rehash    <span class="c"># If you use rbenv, rehash to be able to run the bundle command</span>
-</span><span class='line'>bundle install
-</span><span class='line'>
-</span><span class='line'><span class="c"># 如果是第一次安装octopress，还需要安装默认的theme</span>
-</span><span class='line'>rake install
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

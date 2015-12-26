@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Update: 2013-09-28 这篇文章是在2011年写就，目前来说已经过时。这篇文章只作为存档保留。liuyix 个人知识管理（以下简称pkm）内容上，国内有影响力的博客以及一些国产的软件都集中于windows平台，很少有关注linux平台。对于linux控来说，有些小遗憾。 &hellip;">
+  <meta name="description" content="LFS是&#8221;Linux From Scratch&#8221;的简写，&#8221;from scratch&#8221;的本义是“从头开始”，这里应该是引申义,&ldquo;从源代码构建&#8221;。 LFS的主页上介绍为&#8221;Linux From Scratch (LFS &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/building-lfs-summary-a/">LFS的构建过程&#8212;LFS实践总结(一)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-28T18:02:44+08:00" pubdate data-updated="true">Jul 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://www.linuxfromscratch.org/images/lfs-logo.png" alt="" /></p>
+
+<p>LFS是&#8221;Linux From Scratch&#8221;的简写，&#8221;from scratch&#8221;的本义是“从头开始”，这里应该是引申义,&ldquo;从源代码构建&#8221;。</p>
+
+<p>LFS的主页上介绍为&#8221;Linux From Scratch (LFS) is a project that provides you with step-by-step instructions for building your own customized Linux system entirely from source.&ldquo;更多详细的介绍可以移步到<a href="http://www.linuxfromscratch.org/lfs/">LFS Project Homepage</a>看看。</p>
+
+<p>LFS主要的意义在于&#8221;教学&#8221;上，通过自己动手构建能更深入的认识linux，了解linux的运行原理。通过自己动手，还可以增强Linux上的操作水平。对于Linux的新手，LFS可能是一项比较“痛苦”的学习过程，因为你要使用大量的命令;对于使用过Linux一段时间的用户来说，构建LFS可以将Linux的零散的认识串起来，增强Linux的整体认识。</p>
+
+<p>构建LFS的主要困难，我觉得对一看到E文就头大的童鞋来说，的确是nightmare。但我想喜爱折腾的，尤其是喜欢Linux的，E文都不会是大问题。除了语言的问题之外，得益于LFS文档的详尽和完美，我在构建的过程中没有遇到什么问题，很顺利。所以我觉得还是要认真读文档理解好就没什么问题。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/building-lfs-summary-a/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -515,66 +564,9 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/eclipse-cdt-installation-on-ubuntu/">Ubuntu下手动安装Eclipse CDT</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-11T21:06:09+08:00" pubdate data-updated="true">Apr 11<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Update: 2013-09-28</h2>
-
-<blockquote><p>这篇文章是在2011年写就，目前来说已经过时。这篇文章只作为存档保留。</p><footer><strong>liuyix</strong></footer></blockquote>
-
-
-<hr />
-
-<h2>这篇文章期望的读者是谁？</h2>
-
-<p>Linux新手，对基本命令不很熟悉以及目录结构不了解；有兴趣了解desktop文件的编写</p>
-
-<h2>希望达到的目标？</h2>
-
-<ul>
-<li><p>增加一点linux基础知识的认识（严格说是ubuntu的目录结构）</p></li>
-<li><p>练习常用的linux命令（在本文中使用到了解压缩、文件夹的移动、创建符号连接）</p></li>
-<li><p>初步了解Linux Desktop Entry的写法</p></li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/eclipse-cdt-installation-on-ubuntu/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/6/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -597,6 +589,10 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/python-compress-stream/">Python流式压缩和解压缩调研总结</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/python-subprocess-pitfalls/">总结subprocess与pipe</a>
       </li>
     
@@ -610,10 +606,6 @@ google之发现原来问题处在了file format上，我用的linux，而vim的c
     
       <li class="post">
         <a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a>
       </li>
     
   </ul>

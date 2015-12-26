@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="几个月时间，博客转到了github pages上的Octopress，结果是输出的文章比之前更少。（之前的几十篇文章也不见了踪影&hellip;） 我似乎不属于个例——一直以来都特意关注了我所能遇到的Octopress搭建的独立博客，大部分Octopress我所遇到中文博客都很少更新， &hellip;">
+  <meta name="description" content="Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：http://ruby.taobao.org/ 可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。 安装homebrew &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/mac-install-octopress/">Mac上安装octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-06T12:31:00+08:00" pubdate data-updated="true">Oct 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>Update: 经人提醒，可以改用国内淘宝的rubygems源下载，具体操作：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a> <br/>
+<del>可算折腾出来了。最大的障碍是渣一样的网络，rubygems想法不错，可到了国内情况就会变得很糟糕。最后不得已用goagent总算顺利的完成了。</del></p></blockquote>
+
+<ol>
+<li>安装homebrew</li>
+<li>安装rbenv以及ruby-build</li>
+<li><code>rbenv install 1.9.3-p448</code></li>
+<li><code>official install octopress</code></li>
+<li>在octopress目录下面新建配置文件<code>echo '1.9.3-p448' &gt; $your-octopress-path/.ruby-version</code></li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/mac-install-octopress/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -596,51 +647,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/nobility-of-failure-by-oufan-li/">[转]失败的高雅——李欧梵在香港中文大学的演讲</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-24T04:40:58+08:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>前几日在李开复的微信公共平台上看到的文章，还是有些价值的。</em></p>
-
-<blockquote><p>你可能不知道，有一种“高雅的失败”，可以历练你的人生。“人年轻时一定要认同危机，这段时间是一个缓冲期。在人成熟前，要经过认同溷乱的阶段。爱尔兰剧作 家、现代主义荒谬剧大师萨缪尔•贝克特说过：‘再试一次，再失败一次，失败得好一点。’ 当你发现越失败越好的时候，你就成功了。”</p></blockquote>
-
-<p>李欧梵，国际知名文化学者。现代文学及文化研究、现代小说乃至中国电影，都是他学术研究的范围。1961年毕业于台湾大学外文系，此后赴美留学，获得哈佛大 学硕士和博士学位。他曾先后任教于香港中文大学以及美国的普林斯顿大学、印第安那大学、芝加哥大学、哈佛大学等知名高校。这位在世人看来十分成功的学者， 求学和任教路上其实磨难重重。学会和失败相处，方能挫而弥坚。</p>
-
-<p>不久前，李欧梵应邀赴香港中文大学作了一场题为《失败的高雅》（“The Nobility of Failure”）的演讲。常言道，“失败乃成功之母”，可失败的价值是什麽——这正是李欧梵要和大家分享的人生经验。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/nobility-of-failure-by-oufan-li/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -666,6 +672,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/python-compress-stream/">Python流式压缩和解压缩调研总结</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/python-subprocess-pitfalls/">总结subprocess与pipe</a>
       </li>
     
@@ -679,10 +689,6 @@
     
       <li class="post">
         <a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a>
       </li>
     
   </ul>
