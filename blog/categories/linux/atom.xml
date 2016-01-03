@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-27T00:19:57+08:00</updated>
+  <updated>2016-01-04T07:25:55+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -123,7 +123,7 @@ echo ${#array2[*]}     # 3     (number of elements in array)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[makefile简单入门]]></title>
+    <title type="html"><![CDATA[Makefile简单入门]]></title>
     <link href="http://liuyix.org/blog/2012/write-simple-makefile/"/>
     <updated>2012-02-20T04:02:00+08:00</updated>
     <id>http://liuyix.org/blog/2012/write-simple-makefile</id>

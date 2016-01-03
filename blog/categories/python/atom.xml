@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2015-12-27T00:19:57+08:00</updated>
+  <updated>2016-01-04T07:25:55+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -256,7 +256,7 @@ job_queue = Queue.Queue()</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[docopt -- Python必备的命令行接口模块]]></title>
+    <title type="html"><![CDATA[Docopt -- Python必备的命令行接口模块]]></title>
     <link href="http://liuyix.org/blog/2015/python-docopt/"/>
     <updated>2015-10-21T00:02:00+08:00</updated>
     <id>http://liuyix.org/blog/2015/python-docopt</id>

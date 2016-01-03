@@ -9,8 +9,8 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="这里是刘毅同学写字吹牛逼的地方。 刘毅同学@liuyix, 东北银。平时最大的爱好就是看段子，是个典型的『适应不良的完美主义者』，至今仍未放弃治疗，病情时好时坏。
-现为某国内互联网公司半吊子MySQL DBA兼Python运维开发，做过XMPP Java client、Android &hellip;">
+  <meta name="description" content="最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。 实现的效果是备份不在本地暂存，压缩内置到上传逻辑中，通过配置文件可以配置压缩细节，对上传使用者来讲是『无感知』的。利用压缩提高了上传效率和备份空间的使用率。 压缩率和压缩性能的比较 lz4
+gzip &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,8 +24,8 @@
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="刘毅同学" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -34,22 +34,22 @@
 <script src="/javascripts/footnote.js" type="text/javascript"></script>-->
 
   
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-39126484-1']);
-    _gaq.push(['_trackPageview']);
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    ga('create', 'UA-39126484-1', 'auto');
+    ga('send', 'pageview');
+
   </script>
+
 
 
 </head>
 
-<body   >
+<body   class="collapse-sidebar sidebar-footer" >
   <header role="banner"><hgroup>
   <h1><a href="/">刘毅同学</a></h1>
   
@@ -58,103 +58,827 @@
 </hgroup>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
   
 </ul>
   
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:liuyix.org" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
+  
+  
+  
+  
+<ul class="subscribe">
+  <li><a href="https://github.com/liuyix" rel="subscribe-github" title="@liuyix on GitHub" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 50,0 C 22.385714,0 0,22.385714 0,50 0,77.614286 22.385714,100 50,100 77.614286,100 100,77.614286 100,50 100,22.385714 77.614286,0 50,0 z m 29.692858,79.692858 c -3.859184,3.859182 -8.351022,6.887754 -13.35,9.00306 -1.27041,0.536736 -2.560204,1.009184 -3.867348,1.415306 v -7.493878 c 0,-3.938774 -1.35102,-6.835714 -4.053062,-8.690816 1.692858,-0.163264 3.24694,-0.390816 4.663266,-0.683672 1.416326,-0.292858 2.913266,-0.716328 4.491838,-1.27041 1.57857,-0.55408 2.994896,-1.213264 4.247958,-1.97755 1.253062,-0.765306 2.458164,-1.758164 3.613266,-2.978572 1.155102,-1.220408 2.12449,-2.604082 2.905102,-4.15 0.780612,-1.545918 1.4,-3.40204 1.855102,-5.566326 0.455102,-2.164286 0.683674,-4.54898 0.683674,-7.153062 0,-5.045918 -1.643878,-9.341836 -4.931634,-12.890816 C 77.44796,33.35 77.285714,29.10204 75.463266,24.512244 l -1.22143,-0.145918 c -0.845918,-0.09796 -2.368366,0.260204 -4.565306,1.07449 -2.196938,0.814286 -4.663264,2.14796 -7.396938,4.004082 -3.87449,-1.07449 -7.893878,-1.611224 -12.061224,-1.611224 -4.19898,0 -8.203062,0.536734 -12.012246,1.611224 -1.72449,-1.17245 -3.361224,-2.139796 -4.907142,-2.905102 C 31.753062,25.77449 30.516326,25.254082 29.587756,24.97653 28.660204,24.7 27.79796,24.528572 27,24.463266 c -0.79796,-0.0653 -1.310204,-0.08062 -1.537756,-0.04898 -0.22755,0.03164 -0.390816,0.0653 -0.487754,0.09796 -1.82347,4.62245 -1.985714,8.87143 -0.487756,12.743878 -3.287754,3.54796 -4.931632,7.844898 -4.931632,12.890816 0,2.604082 0.227552,4.988776 0.683674,7.153062 0.456122,2.164286 1.07449,4.020408 1.855102,5.566326 0.780612,1.545918 1.75,2.929592 2.905102,4.15 1.155102,1.220408 2.360204,2.213266 3.613264,2.978572 1.253062,0.766326 2.669388,1.42449 4.24796,1.97755 1.578572,0.554082 3.07551,0.976532 4.491836,1.27041 1.416328,0.292856 2.970408,0.521428 4.663266,0.683672 -2.669388,1.82347 -4.004082,4.720408 -4.004082,8.690816 v 7.639796 C 36.536734,89.818368 35.083674,89.3 33.656122,88.695918 c -4.99898,-2.115306 -9.490816,-5.143878 -13.35,-9.00306 -3.859184,-3.859184 -6.887754,-8.351022 -9.00306,-13.35 C 9.1163263,61.171428 8.0071428,55.67347 8.0071428,50 c 0,-5.67347 1.1091835,-11.171428 3.2969392,-16.342858 2.115306,-4.998978 5.143878,-9.490816 9.00306,-13.35 3.859184,-3.859182 8.351022,-6.887754 13.35,-9.00306 C 38.828572,9.1163266 44.32653,8.0071428 50,8.0071428 c 5.67347,0 11.171428,1.1091838 16.342858,3.2969392 5,2.115306 9.490816,5.143878 13.35,9.00306 3.859182,3.859184 6.887754,8.351022 9.00306,13.35 2.186736,5.17245 3.295918,10.67041 3.295918,16.342858 0,5.672448 -1.109182,11.171428 -3.296938,16.342858 -2.115306,4.998978 -5.143878,9.490816 -9.00204,13.35 l 0,0 z"></path></svg></a></li>
+</ul>
+  
+  
+  
+  
+<ul class="subscribe">
+  <li><a href="https://linkedin.com/in/liuyix" rel="subscribe-linkedin" title="liuyix on LinkedIn" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 731 1000"><path class="social" d="M158.75 865l-156.25 0l0 -521.25l156.25 0l0 521.25zm393.75 -505q87.5 0 133.125 56.25t45.625 153.75l0 295l-156.25 0l0 -278.75q0 -108.75 -76.25 -108.75 -61.25 0 -80 61.25l0 326.25l-156.25 0q2.5 -468.75 0 -521.25l123.75 0l10 103.75l2.5 0q53.75 -87.5 153.75 -87.5zm-552.5 -146.25q0 -78.75 81.25 -78.75 80 0 80 78.75 0 77.5 -80 77.5 -81.25 0 -81.25 -77.5z"/></svg></a></li>
+</ul>
+  
+  
+<ul class="subscribe">
+  <li><a href="http://stackoverflow.com/users/668223" rel="subscribe-stackoverflow" title="liuyix on StackOverflow" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 64 64"><g
+     id="layer1" class="social">
+    <path
+       d="m 9.3049611,36.847632 4.4013079,0.04316 -0.153442,19.598393 29.291259,0 0,-19.527506 4.637782,0 0,24.287331 -38.2006795,0 0.023777,-24.401371 z"
+       id="path2830"
+       style="fill-opacity:1;stroke:none"/>
+    <rect
+       width="22.944817"
+       height="4.881876"
+       x="16.481951"
+       y="48.434078"
+       id="rect3604"
+       style="fill-opacity:1;stroke:none" />
+    <rect
+       width="23.066864"
+       height="5.0039229"
+       x="20.749949"
+       y="37.830307"
+       transform="matrix(0.9953749,0.09606666,-0.09606666,0.9953749,0,0)"
+       id="rect3606"
+       style="fill-opacity:1;stroke:none" />
+    <rect
+       width="23.066864"
+       height="5.0039229"
+       x="26.472515"
+       y="23.401554"
+       transform="matrix(0.96240291,0.27162592,-0.27162592,0.96240291,0,0)"
+       id="rect3606-1"
+       style="fill-opacity:1;stroke:none" />
+    <rect
+       width="23.066864"
+       height="5.0039229"
+       x="30.528769"
+       y="3.1535864"
+       transform="matrix(0.85597805,0.51701216,-0.51701216,0.85597805,0,0)"
+       id="rect3606-1-3"
+       style="fill-opacity:1;stroke:none" />
+    <rect
+       width="23.066864"
+       height="5.0039229"
+       x="27.191883"
+       y="-24.475019"
+       transform="matrix(0.58242689,0.81288309,-0.81288309,0.58242689,0,0)"
+       id="rect3606-1-3-7"
+       style="fill-opacity:1;stroke:none" />
+    <rect
+       width="23.066864"
+       height="5.0039229"
+       x="11.174569"
+       y="-50.183693"
+       transform="matrix(0.16480989,0.98632535,-0.98632535,0.16480989,0,0)"
+       id="rect3606-1-3-7-6"
+       style="fill-opacity:1;stroke:none" />
+  </g></svg></a></li>
+</ul>
+  
+  
+  
+  
+    
+      <form action="http://google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="liuyix.org" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
   
 <ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/blog">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>
+  <!--<li><a href="/categories">Categories</a></li>-->
+  <li><a href="/about">About</a></li>
+<!--  <li><a href="/splash2-benchmark">SPLASH-2 Benchmark</a></li>-->
 </ul>
 
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article role="article">
+      <div class="blog-index">
   
-  <p>这里是<em>刘毅同学</em>写字吹牛逼的地方。</p>
-
-<p>刘毅同学<a href="http://weibo.com/liuyix">@liuyix</a>, 东北银。平时最大的爱好就是看段子，是个典型的『适应不良的完美主义者』，至今仍未放弃治疗，病情时好时坏。<br>
-现为某国内互联网公司半吊子MySQL DBA兼Python运维开发，做过<em>XMPP Java client</em>、<em>Android Superuser</em>、<em>Python web crawler</em>、<em>ELF object runtime function hijack</em>、<em>Android Privacy Filter App</em>。</p>
-
-<p>My Email: hi#liuyix dot org</p>
-
   
-</article>
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/python-compress-stream/">Python流式压缩和解压缩调研总结</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/python-compress-stream/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。</p>
+
+<p>实现的效果是备份不在本地暂存，压缩内置到上传逻辑中，通过配置文件可以配置压缩细节，对上传使用者来讲是『无感知』的。利用压缩提高了上传效率和备份空间的使用率。</p>
+
+<h2>压缩率和压缩性能的比较</h2>
+
+<ul>
+<li>lz4</li>
+<li>gzip</li>
+<li>lzop</li>
+</ul>
+
+
+<p>结论：在兼顾压缩率和压缩占用CPU资源以及压缩效率几个方面，最终选择了lzop。</p>
+
+<p>lz4据说是压缩最快的算法，最终没有选择，有几个方面的原因：</p>
+
+<ul>
+<li>Python支持不完善，因为我的需求是<strong>流式</strong>的上传和下载，压缩源是一个tar stream，和压缩后的文件不会落在本地，而是直接上传到远端。</li>
+<li>可运维性不高：lzo文件没有找到和gzip, lzop这样的命令行工具可以一个命令来对一个完整的lz4文件管理。当调用<code>file a.lz4</code> 显示的文件是data，这样就无法确认这个文件到底是否正确了。</li>
+</ul>
+
+
+<p>gzip给力的地方：</p>
+
+<ul>
+<li>gzip是目前应用最为广泛的格式了，看过很多压缩率评测的文章，gzip压缩率十分给力，在compresslevel是7到9时，压缩比很给力。</li>
+<li>Python也是在standard library中支持gzip的压缩和解压缩。</li>
+</ul>
+
+
+<p>gzip不够给力的地方：</p>
+
+<ul>
+<li>压缩速度慢，在高压缩率上很慢。但是compress level在2~3时，gzip无论是压缩比还是压缩效率上都很有竞争优势</li>
+<li>Python标准库gzip压缩对stream支持不够，流式压缩期望的方法是：传入一个fileobj，返回一个fileobj。而Gzip模块直接用的话是不支持这种方式的。</li>
+</ul>
+
+
+<p>然而gzip不足点是可以弥补的。
+首先是压缩速度上，默认gzip是不支持并行化的压缩，最多只能有单核的性能，这是压缩性能的瓶颈。但是gzip是有其他工具支持<strong>并行压缩的</strong> —— <code>pigz</code>就是并行压缩版本的gzip，测试结果显示pigz可以充分利用多核并行化的性能，让压缩时间有明显的减少，当然代价就是load也会成倍的增长（24核机器上，我只测试了2~8个线程数）</p>
+
+<p>其次是流式压缩可以通过Python轻松实现数据分块并行压缩。这里很重要的一点是：<strong>可以将每个数据分块看做一个独立文件压缩最终可以合成一个符合Gzip格式的压缩文件</strong>
+简单的看了下的pigz的代码注释，发现pigz的原理也是这样子的。Python中使用生产者和消费者模式（生产者：一个线程专门来从数据源拉数据，数据存入Queue中，多个压缩进程负责压缩，把压缩后数据再放入到PriorityQueue按顺序组合成一个文件即可，当然也可以直接分块上传到远端服务器）。这也是我实现的第一个版本的流式压缩方案。这个方案主要的弱点在于内存资源占用比较大：无论是从数据源读取的原始数据块还是压缩后的压缩数据块，在最终写入/上传前都需要缓存在内存中。
+在流式压缩上传的场景下，压缩上传的输出端是REST上传接口，因此并行压缩的内存占用上一定程度上受上传接口的性能影响。极端的情况，当上传速度很慢时，为了不影响压缩效率则需要在内存中开辟更大的内存buffer来放入等待压缩的数据块，这时就会占用到比较大的内存资源。不过也可以通过限制上传队列大小，在队列满的情况，数据源的<code>write</code>会阻塞等待。</p>
+
+<p>我的第二个方案的是利用pigz外部工具在读取数据源前利用管道先接入到<code>pigz</code>，在从<code>pigz</code>直接读取到压缩后的数据流。这个方案算是最终方案的替代方案，之所以没有最终使用，原因在于和lzop相比，在压缩率相近的情况下，<code>pigz</code>消耗了更多的CPU资源。</p>
+
+<p>对比方案：<code>pigz -p 2 -2</code> vs <code>lzop -c</code> ，即通过2线程压缩等级2和默认的lzop对比，前者压缩比可以高出10%，但是Load比后者高出了2倍不止，同时速度上也慢了25%。</p>
+
+<p>lzop给力的地方：
+实际测试中，lzop兼顾性能和压缩比同时压缩占用的CPU上是最平衡的。压缩速度稍慢于lz4，压缩比上可以达到gzip等级2~3的水平，同时cpu占用率和内存上比gzip低。</p>
+
+<p>lzop不给力的地方：</p>
+
+<ul>
+<li>Python bindings 接口较少，不能直接用来流式压缩上传。
+
+<ul>
+<li>通过 <em>外挂</em> 方式也可以完成。（其实即使支持的好，也需要多进程来并行工作，和外挂差别不大）</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>总结</h2>
+
+<ul>
+<li>lzop和pigz这两个压缩方案上在实际应用上都很有竞争力，只是我涉及的项目需求是生产环境上尽量不占用过多CPU，MEM资源，可以在压缩比上做妥协。因此选择了lzop。如果你在意CPU资源，更在乎压缩数据大小，则pigz是不错的选择。</li>
+<li><em>外挂</em> 方式的数据压缩方案虽然集成上让Python程序有更多的外部依赖，但是考虑到Python本身并没有真正的线程的并行方案（你想要并行也要生成多个进程），其实资源占用区别不大。同时方案选型上也更加灵活。</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/python-subprocess-pitfalls/">总结subprocess与pipe</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/python-subprocess-pitfalls/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>一、纠结的困境</h2>
+
+<p>Python在多进程上不是很令人满意，尤其是<code>subprocess</code>模块。当用Python实现一个shell脚本中的管道时就出现了比较尴尬的局面。</p>
+
+<h3>大数据量的管道问题</h3>
+
+<p>subprocess模块有两种方式来和生成的子进程交互：<code>wait</code>和<code>communicate</code>。
+关于<code>wait</code>文档中有以下说明：</p>
+
+<blockquote><p>Warning This will deadlock when using stdout=PIPE and/or stderr=PIPE and the child process generates enough output to a pipe such that it blocks waiting for the OS pipe buffer to accept more data. Use communicate() to avoid that.</p></blockquote>
+
+<p>即当stdout/stdin设置为PIPE时，使用<code>wait()</code>可能会导致死锁。因而建议使用<code>communicate</code></p>
+
+<p>而对于<code>communicate</code>，文档又给出：</p>
+
+<blockquote><p>Note The data read is buffered in memory, so do not use this method if the data size is large or unlimited.</p></blockquote>
+
+<p><code>communicate</code>会把数据读入内存缓存下来，所以当数据很大或者是无限的数据时不要使用。</p>
+
+<p>那么问题来了：当你要使用Python的<code>subprocess.Popen</code>实现命令行之间的管道传输，同时数据源又非常大（比如读取上GB的文本或者无尽的网络流）时，官方文档不建议用<code>wait</code>，同时<code>communicate</code>还可能把内存撑爆&hellip; <img src="/images/1.jpg" alt="/images/1.jpg" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/my-quora-digest-issue-2/">Quora每周摘选（第2期）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/my-quora-digest-issue-2/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li><a href="https://www.quora.com/Why-is-there-C++-but-no-C+/answer/Derek-Ross-9" target="_blank">C++名字的由来</a></li>
+<li><a href="https://www.quora.com/Web-Developers/If-you-had-to-start-your-whole-career-over-again-what-would-you-do-knowing-what-you-know-now" target="_blank">Web Developers: If you had to start your whole career over again, what would you do knowing what you know now?</a> Web开发当你必须重新开始时，以你现在的经验你会做什么？</li>
+<li><a href="http://qr.ae/RbEliB" target="_blank">How can you make people like you in 90 seconds or less?</a>
+
+<ul>
+<li>一个社交相关的问答：如果在90秒之内使他人对你有好的印象？</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册[Draft]</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/python-concurrent-programming/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Python并发编程<del>常用的</del>builtin就是2个模块：<code>threading</code>和<code>multiprocessing</code>。其中<code>threading</code>因为著名的GIL，实际是<em>伪多线程</em>，每个thread并没有对应一个pthread；<code>multiprocessing</code>则是利用多进程的手段来绕过GIL达到并发的效果。</p>
+
+<p>如果你的任务并非是CPU密集型，而是IO密集型或者网络应用的话——单线程时CPU总是处于等待的状态时，用threading其实影响不大。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/python-concurrent-programming/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/how-to-be-a-morning-man/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>原文链接：<a href="https://www.quora.com/How-do-I-become-a-morning-person-1">How do I become a morning person?</a></p>
+
+<p>如何成为一个牛逼的Morning Person,也困扰了我很久。虽然现在依旧没有成功（捂脸）。成为Moring Person后就可以每天早上5点起来在无人打扰的环境里做自己喜欢的或者和梦想有关的事情，当然也可以给自己做一份丰盛的早餐，或者起来加班&hellip;.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/how-to-be-a-morning-man/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/my-quora-digest-issue-1/">Quora每周摘选(第1期)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/my-quora-digest-issue-1/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>因为订阅了Quora Digest，发现推送的邮件里面好多不错的文章。这里每周会从我读到的Quora里面翻译部分精选。</p></blockquote>
+
+<ul>
+<li><a href="https://www.quora.com/How-do-I-become-a-morning-person-1">How do I become a morning person?</a> ==> <a href="http://liuyix.org/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤</a>
+
+<ul>
+<li>这篇Post提供了几个比较有效的早起的技巧，最打动我的就是早起你要有一个让自己兴奋到必须要早起的理由。</li>
+</ul>
+</li>
+<li><a href="https://www.quora.com/Is-staying-a-software-engineer-your-whole-life-a-good-career-choice">Is staying a software engineer your whole life a good career choice?</a> ==> 选择做一辈子软件开发是否明智？
+
+<ul>
+<li>其实无论在国内还是国外，程序员的职业发展都差不多，要么转管理要么继续Coding</li>
+</ul>
+</li>
+<li><a href="http://qr.ae/RbVArL">What are some of the most important things that we should be informed about in life?</a> ==> 有哪些生活中我们应该知道的重要的事？
+
+<ul>
+<li>还是一篇在<em>Life Lessons</em>版过万的upvote的帖子，这周有时间翻译下。</li>
+</ul>
+</li>
+<li>(What are some &lsquo;unofficial mottos&rsquo; of programming languages?)[<a href="https://www.quora.com/What-are-some-unofficial-mottos-of-programming-languages">https://www.quora.com/What-are-some-unofficial-mottos-of-programming-languages</a>]
+
+<ul>
+<li>笑点低的我看到强力吐槽能量的帖子，笑个不停</li>
+</ul>
+</li>
+<li><a href="https://www.quora.com/What-programming-languages-should-all-programmers-know">What programming languages should all programmers know?</a> &mdash; 哪些编程语言每个程序员都应该知道
+
+<ul>
+<li>无论是知乎还是Quora，越是『简单的』问题就越是可以得到广泛的讨论，反而更容易出比较精华的回答。</li>
+</ul>
+</li>
+</ul>
 
 
 </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/my-quora-digest-issue-1/">继续阅读 &rarr;</a>
+    </footer>
+  
 
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/python-data-model/">Python Data Model</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/python-data-model/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>本文介绍了『Python Data Model』官方的总结笔记，主要内容是Python对象的详细介绍</p></blockquote>
+
+<p>Original: <a href="https://docs.python.org/2/reference/datamodel.html#data-model">https://docs.python.org/2/reference/datamodel.html#data-model</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/python-docopt/">Docopt &#8211; Python必备的命令行接口模块</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/python-docopt/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>docopt很适合经常需要用python写命令行工具的同学使用。</p>
+
+<h2>docopt之前</h2>
+
+<p>工作需要，经常会用大块的代码来定(ren)义(rou)命令行界面的工具。代码经常是如下的样子：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">optparse</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">parser</span> <span class="o">=</span> <span class="n">optparse</span><span class="o">.</span><span class="n">OptionParser</span><span class="p">()</span>
+</span><span class='line'><span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&#39;--foo&#39;</span><span class="p">,</span> <span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&#39;int&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&#39;--bar&#39;</span><span class="p">,</span> <span class="s">&#39;-b&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="c"># 类似以上的代码大概几十行</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>每一个python脚本都需要提供类似的接口。因此每一次都需要写类似的代码。在写过几次后为了保持DRY原则，我将初始化parser封装为一个method放在util部分。可是依旧是逃不过重复的写<code>parser.add_option</code>。不止一次地我考虑干脆自己写个模板类，以后命令行的定义直接以配置文件的形式写出来，然后每次都通过读取这个配置文件自动化的去生成parser。我相信这个问题我一定不是第一个遇到，应该会有已知的模块解决这个laber intensive的工作。</p>
+
+<p>正在这个时候，偶然看到Python weekly发现了docopt</p>
+
+<h2>docopt</h2>
+
+<p>docopt官网地址：<a href="http://docopt.org/">http://docopt.org/</a></p>
+
+<p>docopt的作者有一个30分钟的视频很好的介绍了docopt这个moudule。推荐大家看一下，自备梯子~ <a href="https://youtu.be/pXhcPJK5cMc">https://youtu.be/pXhcPJK5cMc</a></p>
+
+<p>更令懒人们惊喜的是作者还制作了一个js版本的docopt，可以让你在浏览器中把玩docopt： <a href="http://try.docopt.org/">http://try.docopt.org/</a></p>
+
+<p>使用docopt后，代码上会更加Pythonic，具有很高的可读性，命令行接口的定义所见即所得的样式：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#docopt example</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">mydoc</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Naval Fate.</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">Usage:</span>
+</span><span class='line'><span class="s">  naval_fate.py ship new &lt;name&gt;...</span>
+</span><span class='line'><span class="s">  naval_fate.py ship &lt;name&gt; move &lt;x&gt; &lt;y&gt; [--speed=&lt;kn&gt;]</span>
+</span><span class='line'><span class="s">  naval_fate.py ship shoot &lt;x&gt; &lt;y&gt;</span>
+</span><span class='line'><span class="s">  naval_fate.py mine (set|remove) &lt;x&gt; &lt;y&gt; [--moored|--drifting]</span>
+</span><span class='line'><span class="s">  naval_fate.py -h | --help</span>
+</span><span class='line'><span class="s">  naval_fate.py --version</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">Options:</span>
+</span><span class='line'><span class="s">  -h --help     Show this screen.</span>
+</span><span class='line'><span class="s">  --version     Show version.</span>
+</span><span class='line'><span class="s">  --speed=&lt;kn&gt;  Speed in knots [default: 10].</span>
+</span><span class='line'><span class="s">  --moored      Moored (anchored) mine.</span>
+</span><span class='line'><span class="s">  --drifting    Drifting mine.</span>
+</span><span class='line'><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">mydoc</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">&#39;0.1&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">arguments</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样就定义了一个丰富的命令行接口。命令行接口提供了<code>--help</code>和<code>--version</code>两个基础功能。其中<code>--help</code>输出<code>mydoc</code>，<code>--version</code>输出指定的<code>version</code>信息。</p>
+
+<p>接口还提供了2个参数（ship, mine），每种参数还提供了不同的几种参数的组合。其中<code>[...]</code>内是可选参数，<code>(...|...)</code>是互斥参数。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/new-mac-test/">Octopress迁移到新主机</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/new-mac-test/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>新机器上首先是把ssh key加入到github的setting，然后配置好基本的git信息（email, name），此处步骤略过。可以参考：<a href="https://help.github.com/articles/set-up-git/">https://help.github.com/articles/set-up-git/</a></li>
+<li><code>git clone -b source git@github.com:username/username.github.com.git octopress</code>
+
+<ul>
+<li>操作完这一步后就相当于把当前octopress的source文档拉到了本地了。</li>
+<li><strong>这一步操作前一定要确保在其他机器上的markdown文件以及其他配置文件的修改都已经push到source分支了，否则这一步会导致博客文章丢失！！！</strong></li>
+</ul>
+</li>
+<li>进入到octopress, 然后<code>git clone git@github.com:username/username.github.com.git _deploy</code>
+
+<ul>
+<li>这一步是在<code>_deploy</code>建立好指向master分支的git仓库，方便之后发布文章时使用</li>
+</ul>
+</li>
+<li>安装octopress相关的ruby依赖等
+
+<ul>
+<li>建议修改rubygems的安装源到国内的taobao源，详细操作步骤：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a>，默认的rubygems.org源已经被墙，速度很慢。</li>
+</ul>
+</li>
+</ul>
+
+
+<p>完成上面几步后，就可以尝试调用<code>rake generate</code>生成一次网站，然后<code>rake deploy</code>看下是否成功~</p>
+
+<h3>在不同主机上使用Octopress上发布文章</h3>
+
+<p>每次发布新的文章或者修改现有文章时，需要把<code>source</code>分支的修改（即octopress目录所指向的git仓库分支）commit并且push到github上，之后在另外的主机上首先进入到octopress目录，在编辑文章前首先<code>git pull</code>下拉取修改。这样的编辑才能连贯，不然会发生文章丢失的情况。</p>
+
+<p>Reference:</p>
+
+<ul>
+<li><a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></li>
+</ul>
+
+
+<p>-EOF-</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/python-in-industry/">由互联网中的Python应用想到的网站架构的优化</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/python-in-industry/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>国内<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
+
+<ul>
+<li>知乎</li>
+<li>豆瓣</li>
+<li>果壳网</li>
+</ul>
+</li>
+<li>国外，只列出我认识的比较出名的，还有好多<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>=。=
+
+<ul>
+<li>Quora 国外的知乎？</li>
+<li>Dropbox 国外的金山快盘？</li>
+<li>Disqus 国外的多说？</li>
+<li>Pinterest 国外的花瓣？</li>
+<li>Youtube 国外的优酷？</li>
+<li>Slideshare 国外的百度文库？</li>
+<li>reddit 国外的猫扑？</li>
+<li>Yelp 国外的大众点评</li>
+<li>&hellip;</li>
+</ul>
+</li>
+</ul>
+
+
+<p>更多的信息可以参考Python官网的<a href="https://www.python.org/about/success/">Python Success Stories</a>。</p>
+
+<h3>Quora</h3>
+
+<p>下面是QuorWhy did Quora choose Python for its development?a创始人在Quora上对<em>Why did Quora choose Python for its development?</em>的回答<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></p>
+
+<blockquote><p>We decided that Python was fast enough for most of what we need to do (since we push our performance-critical code to backend servers written in C++ whenever possible). As far as typechecking, we ended up writing very thorough unit tests which are worth writing anyway, and achieve most of the same goals.</p></blockquote>
+
+<p>可以看到对于Python的性能短板，Quora在performance-critical的地方尽可能换用了C++。对于Python没有静态类型，Quora用尽可能的单元测试来确保质量。之所以选择Python其实很大的原因是Founder对Python比较擅长。
+进一步google了下，他们的框架用的Pylon。</p>
+
+<h3>知乎的技术架构</h3>
+
+<p>知乎CTO在去年年底有过分享，目前在InfoQ上能找到整理稿。链接：<a href="http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution">http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution</a></p>
+
+<p>简而言之用的tornado，自己开发了日志系统Kids，消息传递系统Sink，还有页面渲染ZhihuNode。</p>
+
+<h3>网站架构及性能的思考</h3>
+
+<p>本周听了一次FB周海平在阿里内部的一次分享。无论是阿里、Facebook还是豆瓣，我发现了在网站架构上这几家有很多共同点的：</p>
+
+<ul>
+<li>MySQL作为存储后端</li>
+<li>MySQL上一定有memcache、tair这样的KV系统做缓存</li>
+<li>都各自开发了适合自己的消息分发系统，Notify, Thrift, Beanstalkd</li>
+<li>后端应该都具有实时日志数据分析： HBase、云梯2、Kids</li>
+<li>不同程度上用异步化来提高性能，并会一直以此来作为性能提升的方法。</li>
+<li>消息链路上的优化：一个网页的渲染上是树状结构的获取数据，因此可以在通过优化这棵树来达到优化整个过程的目的</li>
+</ul>
+
+
+<h3>其他</h3>
+
+<p>网站选型不单纯是比较语言优劣，还和社区的发展趋势活跃(谁都不想用过一门可能几年就无人问津的语言)、团队内普遍的好恶和掌控能力（C、C++最好，但是大家都不会）、整个行业的形势（团队内都用Lisp，但是招不到人）等等多种因素有关系。
+选择哪门语言确实重要，这决定了未来几年或者更远的时间内技术的发展路线，更重要的当规模扩大后需要在性能优化上要付出的代价。（这里面可以拿Facebook优化PHP作为反例，若是当初扎克用的是java或者c++，也许也不会因此如此兴师动众的重写了PHP生态系统里面的大部分东西。）</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p><a href="http://www.zhihu.com/question/19685768">知乎-国内使用 Python 作为主要开发语言的知名网站有哪些</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p><a href="http://www.quora.com/Which-Internet-companies-use-Python">Quora-Which Internet companies use Python?</a><a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p><a href="http://www.quora.com/Why-did-Quora-choose-Python-for-its-development">Quora-Why did Quora choose Python for its development?</a><a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
 <aside class="sidebar">
   
-    <section>
-  <h1>About</h1>
-  <p>id: @<a href="http://weibo.com/liuyix" target="_blank">liuyix</a></br>
-  <center>
-  All articles licensed under
-  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blank" title="Licensed under CC BY-SA 3.0"><img src="/images/cc.png"></a>
-<center>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
     
-      <li class="post">
-        <a href="/blog/2015/python-compress-stream/">Python流式压缩和解压缩调研总结</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/python-subprocess-pitfalls/">总结subprocess与pipe</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/my-quora-digest-issue-2/">Quora每周摘选（第2期）</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/python-concurrent-programming/">Python并发实用编程手册[Draft]</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/how-to-be-a-morning-man/">成为早起者的几个步骤[Quora]</a>
-      </li>
-    
-  </ul>
-</section>
-<section>
-  <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>android (4)</a></li><li><a href='/blog/categories/general'>General (10)</a></li><li><a href='/blog/categories/life'>Life (10)</a></li><li><a href='/blog/categories/linux'>Linux (12)</a></li><li><a href='/blog/categories/mac'>Mac (1)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/octopress'>Octopress (4)</a></li><li><a href='/blog/categories/python'>Python (6)</a></li><li><a href='/blog/categories/quora'>Quora (2)</a></li><li><a href='/blog/categories/wordpress'>Wordpress (1)</a></li></ul>
-</section>
-
-
-
-
-
-
   
 </aside>
-
 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - liuyix -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  Copyright &copy; 2016 - liuyix -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
 </p>
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'liuyix';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
 
 
 
