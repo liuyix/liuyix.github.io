@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 刘毅同学]]></title>
   <link href="http://liuyix.org/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2016-01-04T07:25:55+08:00</updated>
+  <updated>2016-01-05T07:36:45+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -94,7 +94,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[总结subprocess与pipe]]></title>
+    <title type="html"><![CDATA[Python中的subprocess与Pipe]]></title>
     <link href="http://liuyix.org/blog/2015/python-subprocess-pitfalls/"/>
     <updated>2015-12-23T21:31:00+08:00</updated>
     <id>http://liuyix.org/blog/2015/python-subprocess-pitfalls</id>
@@ -118,6 +118,50 @@
 <p><code>communicate</code>会把数据读入内存缓存下来，所以当数据很大或者是无限的数据时不要使用。</p>
 
 <p>那么问题来了：当你要使用Python的<code>subprocess.Popen</code>实现命令行之间的管道传输，同时数据源又非常大（比如读取上GB的文本或者无尽的网络流）时，官方文档不建议用<code>wait</code>，同时<code>communicate</code>还可能把内存撑爆&hellip; <img src="/images/1.jpg" alt="/images/1.jpg" /></p>
+
+<h2>探究实现</h2>
+
+<p>Python在系统编程领域可以理解为就是C语言的一种简写，因为无论是用C语言还是Python都是对系统Linux/Windows API的使用，只是相比于C，Python封装后由于是解释型语言而变得易于编写和调试。</p>
+
+<p>在Python中subprocess是用来创建新的进程，同时创建管道连接子进程的stdout, stderr, stdin（可选）。然后执行子进程，最后得到子进程的return code。</p>
+
+<blockquote><p>This module intends to replace several older modules and functions:
+os.system
+os.spawn<em>
+os.popen</em>
+popen2.<em>
+commands.</em></p></blockquote>
+
+<p>所以可以理解为Python意图用subprocess模块来统一之前若干生成子进程的方式。</p>
+
+<p>关于subprocess的基础用法再次暂时略过，网上相关的内容很多，有时间再赘述。这里重点说一下shell多管道流对应的python实现。</p>
+
+<h3>一个shell多管道脚本的改写</h3>
+
+<p>shell编程领域，将cli工具结合强大的pipe，可以一行代码就能完成相对复杂的工作，尤其是在文本编辑上。如以下的例子：</p>
+
+<p><code>
+ps aux | egrep 'xtrabackup|innobackupex' | grep -v grep | awk '{print $2}' | xargs kill
+</code></p>
+
+<p>这是（我比较常用的）杀掉备份进程的一行命令。大致流程如下图所示。</p>
+
+<p><img src="/images/0105-1.svg" alt="流程图" /></p>
+
+<p>那么如果如何将上述代码转换为python脚本表达呢？</p>
+
+<p>推荐的做法：分别生成subprocess子进程，同时用管道相连。</p>
+
+<p><code>
+import subprocess
+import shlex
+ps_proc = subprocess.Popen(shlex.split('ps aux'), stdout=subprocess.PIPE)
+grep_proc = subprocess.Popen(shlex.split("egrep 'xtrabackup|innobackupex'"), stdin=ps_proc.stdout, stdout=subprocess.PIPE)
+awk_proc = subprocess.Popen(shlex.split('awk "{print $2}"'), stdin=grep_proc.stdout, stdout=subprocess.PIPE)
+kill_proc = subprocess.Popen(shlex.split('xargs kill'), stdin=awk_proc.stdout)
+</code></p>
+
+<p>每一个子进程的<code>stdin</code>都是上一个子进程的<code>stdout</code>，除最后一个子进程外其余进程的stdout参数都是<code>subprocess.PIPE</code>即管道输出，这样就首先了首尾相连。</p>
 ]]></content>
   </entry>
   
