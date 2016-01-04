@@ -103,7 +103,7 @@ for thr in threads:
 
 ## Signal的处理
 
-TODO 多线程中Signal只能由**主线程**处理Signal。
+多线程中Signal只能由**主线程**处理Signal。这部分还没有搞过，暂时略过。
 
 - https://pymotw.com/2/signal/#signals-and-threads
 - http://stackoverflow.com/questions/25676835/signal-handling-in-multi-threaded-python
@@ -111,6 +111,16 @@ TODO 多线程中Signal只能由**主线程**处理Signal。
 
 ## multiprocessing - Process-based “threading” interface.
 
-用多进程的方式来『模拟』threading的接口实现真正的并发程序。
+多进程方式实现threading的接口，从而真正的达到并发。对于计算密集型的应用来说，利用`multiprocessing`模块可以用Python释放*真¤多核*性能。
+
+多线程的弊端：多进程相比单进程会有独立的内存地址空间，因此无法共享同父进程的资源，进程切换的系统开销会比多线程多。同时进程间的交互、资源共享也比较复杂和『耗能』。
+
+## Python并发常见编程模式 -- 生产者消费者模式
+
+- 使用`multiprocessing.Queue`来进行数据交互
+- 使用`multiprocessing.Event`来交互事件信号
+
+
+## Python并发常见编程模式 -- Pool + map
 
 TODO
