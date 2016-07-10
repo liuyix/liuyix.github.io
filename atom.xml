@@ -4,7 +4,7 @@
   <title><![CDATA[刘毅同学]]></title>
   <link href="http://liuyix.org/atom.xml" rel="self"/>
   <link href="http://liuyix.org/"/>
-  <updated>2016-01-05T07:36:45+08:00</updated>
+  <updated>2016-07-10T23:13:24+08:00</updated>
   <id>http://liuyix.org/</id>
   <author>
     <name><![CDATA[liuyix]]></name>
@@ -14,11 +14,166 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Python Yield小结]]></title>
+    <link href="http://liuyix.org/blog/2016/python-yield/"/>
+    <updated>2016-07-10T21:51:00+08:00</updated>
+    <id>http://liuyix.org/blog/2016/python-yield</id>
+    <content type="html"><![CDATA[<p><code>yield</code> 是用来简化以下场景：函数来生成序列，并且使用遍历的方式来访问序列中的元素。</p>
+
+<p><code>yield</code>的实现原理理解上来说在调用<code>yield</code>时Python会保留函数的<em>现场</em>，当再次遍历时函数的状态不丢失，可以继续生成。</p>
+
+<h3>经典的例子斐波那契数列</h3>
+
+<h4>问题描述</h4>
+
+<p>返回斐波那契数列前n个元素</p>
+
+<h4>Python解法</h4>
+
+<h5>第一个版本：朴素实现</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">fab_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</span><span class='line'>        <span class="n">fab_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">fab_list</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第一个版本是遍历并保存所有前n项斐波那契数列的元素。最大的问题是会占用非常多的内存，当调用fab(10000)时，在我的电脑中已经是无法完成的了。</p>
+
+<h5>第二个版本: 简单的迭代器实现</h5>
+
+<p>实现一个迭代器类</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Fab</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">r</span>
+</span><span class='line'>        <span class="k">raise</span> <span class="ne">StopIteration</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Fab</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第二个版本实现了迭代器，每次调用时再生成下一个元素，因此对内存的占用是恒定值。但缺点是代码很长，不够易读。</p>
+
+<h5>第三个版本：yield方法</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="n">a</span>
+</span><span class='line'>        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">fab</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="n">n</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">fab</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第三种yield方法兼具了第一种的简洁，第二种的高效。</p>
+
+<p><code>fab(5)</code>返回的是一个<a href="https://wiki.python.org/moin/Generators"><code>generator</code></a>对象——让一个函数像iterator那样工作，这样在遍历的场景下既可以保持代码简洁，又保持了内存使用的高效。</p>
+
+<h4>相关介绍链接</h4>
+
+<ol>
+<li><a href="http://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained">Improve Your Python: &lsquo;yield&rsquo; and Generators Explained</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/">Python yield 使用浅析</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Python流式压缩和解压缩调研总结]]></title>
     <link href="http://liuyix.org/blog/2015/python-compress-stream/"/>
     <updated>2015-12-26T22:52:00+08:00</updated>
     <id>http://liuyix.org/blog/2015/python-compress-stream</id>
-    <content type="html"><![CDATA[<p>最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。</p>
+    <content type="html"><![CDATA[<h3>Changelog</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>  Time </th>
+<th> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> 2016-01-05 </td>
+<td> 小幅修改</td>
+</tr>
+<tr>
+<td></td>
+<td> 2015-12-26 </td>
+<td> initial version</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。</p>
 
 <p>实现的效果是备份不在本地暂存，压缩内置到上传逻辑中，通过配置文件可以配置压缩细节，对上传使用者来讲是『无感知』的。利用压缩提高了上传效率和备份空间的使用率。</p>
 
@@ -26,8 +181,9 @@
 
 <ul>
 <li>lz4</li>
-<li>gzip</li>
+<li>gzip/pigz</li>
 <li>lzop</li>
+<li>qpress</li>
 </ul>
 
 
@@ -89,6 +245,46 @@
 <li>lzop和pigz这两个压缩方案上在实际应用上都很有竞争力，只是我涉及的项目需求是生产环境上尽量不占用过多CPU，MEM资源，可以在压缩比上做妥协。因此选择了lzop。如果你在意CPU资源，更在乎压缩数据大小，则pigz是不错的选择。</li>
 <li><em>外挂</em> 方式的数据压缩方案虽然集成上让Python程序有更多的外部依赖，但是考虑到Python本身并没有真正的线程的并行方案（你想要并行也要生成多个进程），其实资源占用区别不大。同时方案选型上也更加灵活。</li>
 </ul>
+
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> 压缩工具 </th>
+<th> 描述 </th>
+<th> 参数 </th>
+<th> 优势 </th>
+<th> 劣势 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> gzip </td>
+<td> 最常用的压缩工具 </td>
+<td> <code>-2</code> </td>
+<td> 压缩比在压缩参数大于2时很高，平台上通用很高，所有Linux发行版都会有预装，同时tar也集成了gzip压缩 </td>
+<td> 单线程，较慢</td>
+</tr>
+<tr>
+<td></td>
+<td> pigz </td>
+<td> 多线程版gzip，<a href="http://zlib.net/pigz/">主页</a>, <a href="https://github.com/madler/pigz">github</a> </td>
+<td> 多线程并行+gzip压缩算法，无论从性能上还是压缩输出上都很不错，是个很不错的选择 </td>
+<td> 压缩效率和系统资源占用成正比</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td> lzop </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 ]]></content>
   </entry>
@@ -1521,74 +1717,6 @@ commands.</em></p></blockquote>
 <p>面试准备不充分，这是trie树的最典型的题目了。
 更多的信息可以看July的文章。
 <a href="http://blog.csdn.net/v_july_v/article/details/6897097">http://blog.csdn.net/v_july_v/article/details/6897097</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小米面试内核驱动工程师总结]]></title>
-    <link href="http://liuyix.org/blog/2013/xiaomi-onsite/"/>
-    <updated>2013-10-11T19:54:00+08:00</updated>
-    <id>http://liuyix.org/blog/2013/xiaomi-onsite</id>
-    <content type="html"><![CDATA[<blockquote><p>此为吐槽贴，略涉及技术。</p></blockquote>
-
-<p>之前网申投的是<em>内核驱动工程师</em>，这个职位是凭着自己对Linux Internal还保持非常浓厚的兴趣，虽然实践不多，还有就是一看到这个title就有种高端大气上档次的赶脚。之后前几天打来电话去面试，这才知道这次是小米的bsp团队招人。</p>
-
-<p>怀着忐忑和兴奋的心情去小米参加bsp团队的面试。结果比较让人失望，一方面是自己还有很多不够深入的地方，一方面是bsp团队明显准备不足。</p>
-
-<!--more-->
-
-
-<h4>小米总部真够偏僻的&hellip;</h4>
-
-<p>地铁上地站下来之后，<strong>非上下班时间，没有公交车可以直达</strong>，只能打车。</p>
-
-<h4>面试原来可以这样</h4>
-
-<p>五彩城的环境还是蛮不错的，我直接到15层会议室，之后被告知面试官正忙，等一会儿。好吧，我就等等吧，<strong>这一等就20分钟</strong>。<br/>
-之后进来一位年纪轻轻的面试官哥哥。 <br/>
-面试原来可以被当做临时指派的任务。我有很大的把握说面试官是在看到我之前的几分钟才看我的简历。<br/>
-<em>#自我检讨#</em> 对自己的研究工作没有弄的足够深入，被面试官稍一刁难就被问倒。一直纠缠于cache和spm之间的性能和功耗上的比较问题，最后只好作罢。于是乎慢慢的气氛变成了质疑我们实验室的研究水平，当时有点气愤，不过在有效的说明了自己发表的关于单程序trace获取的论文时还算将气氛扳回来一些。<br/>
-聊了半个多小时面试官哥哥就又被叫出去开会，囧rz&hellip;大概10分钟后，另外一位面试官哥哥进来，然后由于不知道之前的面试官哥哥都<del>问过我什么问题</del>聊过什么话题，于是又有好多重复的问题出现&hellip;囧rz</p>
-
-<p>不过第二个面试官哥哥谈吐和问的问题上明显感觉很专业，对内核和存储乃至trace这块都有很深的见解，和他聊我的毕业设计时，我还取得了非常很有价值的反馈。很赞！</p>
-
-<p>由于自己在内核驱动这块知道的不多，第二位面试官哥哥几次试图问一些汇编语言、内核驱动的问题时，我都很无奈的回答懂得不多，<em>面试一大忌讳就是回答不了解，这样让双方都会有些挫败感，面试官可能会降低印象分</em>，但是对这几块确实连突击的时间都没有，只好这么回答了。<em>检讨：对简历上技术点挖掘的不够深，写了自己常玩github，就被问到了git的用法；写了自己爱玩新技术，就被问到了自己感兴趣的新技术有哪些，这些很可惜都能没有准备。</em> <br/>
-再聊了半个小时左右之后，就结束了。感觉应该是挂了。</p>
-
-<p>之前打听过bsp团队之前没有招过应届毕业生，所以我吐槽的这些还是可以理解的。但是没有为面试拿出足够的准备还是蛮失望的。</p>
-
-<p>最后询问时就聊了一些比较轻松的话题，让面试官哥哥介绍了一下目前bsp团队。现在获得的情报是：目前团队规模五六十人，负责了miui之下的大部分工作，包括驱动开发、底层系统优化等等，甚至包括Java层的问题调试，工作范围面很宽。 <br/>
-依旧是个创业团队的节奏——连续多年每周6x12hr的工作量。无愧于外界所说的高执行力的团队。</p>
-
-<p>校园招聘是一个双向选择的过程，既是企业挑选人才，也是真正的人才选择企业。在面试的方方面面都会体现出一个企业，一个团队对人才的重视程度，也是赢得口碑的机会。在认真程度上来说，这次面试的体验不如阿里巴巴。<br/>
-总体上这两位面试官哥哥给我的感受是非常实干的类型，对小米的这个创业团队强度的团队技术实力上的印象还是很好。祝愿你们能找到适合的人才。</p>
-
-<h4>自己这次面试的经验</h4>
-
-<ul>
-<li>简历上的内容还需要加强。
-
-<ul>
-<li>在简历的准备上功夫还不够，还是有被问倒的可能，需要加强和巩固。</li>
-<li>简历涉及的技术点还是挖掘的不够细致。</li>
-</ul>
-</li>
-<li>面试中还没有hold住场面的能力</li>
-<li>面试中需要事先准备一个可以让面试官眼前一亮的闪光点，可以是技术上的，也可以是表达或者其他方面</li>
-</ul>
-
-
-<h3>Update:问到的题目</h3>
-
-<p>昨天没写是因为自己当时没记起来多少&hellip;今天复习时才慢慢都想起来了，在此分享下。</p>
-
-<ul>
-<li>关于抢占的理解（何时抢占，怎样实现的抢占）</li>
-<li>kmalloc与vmalloc的区别</li>
-<li>kmalloc内核是如何实现存储管理的，比如申请了14B的空间</li>
-<li>A,B两个进程，运行顺序是A&mdash;B&mdash;A,有多少种可能导致的，比如阻塞，抢占等。</li>
-</ul>
-
 ]]></content>
   </entry>
   

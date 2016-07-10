@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。 实现的效果是备份不在本地暂存，压缩内置到上传逻辑中，通过配置文件可以配置压缩细节，对上传使用者来讲是『无感知』的。利用压缩提高了上传效率和备份空间的使用率。 压缩率和压缩性能的比较 lz4
-gzip &hellip;">
+  <meta name="description" content="Changelog Time Description 2016-01-05 小幅修改 2015-12-26 initial version 最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。 实现的效果是备份不在本地暂存，压缩内置到上传逻辑中， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -185,7 +184,32 @@ gzip &hellip;">
   </header>
 
 
-<div class="entry-content"><p>最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。</p>
+<div class="entry-content"><h3>Changelog</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>  Time </th>
+<th> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> 2016-01-05 </td>
+<td> 小幅修改</td>
+</tr>
+<tr>
+<td></td>
+<td> 2015-12-26 </td>
+<td> initial version</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。</p>
 
 <p>实现的效果是备份不在本地暂存，压缩内置到上传逻辑中，通过配置文件可以配置压缩细节，对上传使用者来讲是『无感知』的。利用压缩提高了上传效率和备份空间的使用率。</p>
 
@@ -193,8 +217,9 @@ gzip &hellip;">
 
 <ul>
 <li>lz4</li>
-<li>gzip</li>
+<li>gzip/pigz</li>
 <li>lzop</li>
+<li>qpress</li>
 </ul>
 
 
@@ -257,6 +282,46 @@ gzip &hellip;">
 <li><em>外挂</em> 方式的数据压缩方案虽然集成上让Python程序有更多的外部依赖，但是考虑到Python本身并没有真正的线程的并行方案（你想要并行也要生成多个进程），其实资源占用区别不大。同时方案选型上也更加灵活。</li>
 </ul>
 
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> 压缩工具 </th>
+<th> 描述 </th>
+<th> 参数 </th>
+<th> 优势 </th>
+<th> 劣势 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> gzip </td>
+<td> 最常用的压缩工具 </td>
+<td> <code>-2</code> </td>
+<td> 压缩比在压缩参数大于2时很高，平台上通用很高，所有Linux发行版都会有预装，同时tar也集成了gzip压缩 </td>
+<td> 单线程，较慢</td>
+</tr>
+<tr>
+<td></td>
+<td> pigz </td>
+<td> 多线程版gzip，<a href="http://zlib.net/pigz/">主页</a>, <a href="https://github.com/madler/pigz">github</a> </td>
+<td> 多线程并行+gzip压缩算法，无论从性能上还是压缩输出上都很不错，是个很不错的选择 </td>
+<td> 压缩效率和系统资源占用成正比</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td> lzop </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -303,6 +368,8 @@ gzip &hellip;">
       
         <a class="basic-alignment left" href="/blog/2015/python-subprocess-pitfalls/" title="Previous Post: Python中的subprocess与Pipe">&laquo; Python中的subprocess与Pipe</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2016/python-yield/" title="Next Post: Python yield小结">Python yield小结 &raquo;</a>
       
     </p>
   </footer>

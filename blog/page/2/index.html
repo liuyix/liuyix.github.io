@@ -9,7 +9,15 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Git近几年有逐渐取代svn的趋势，一部分原因是github的风靡，google code也关门大吉，令人唏嘘1。很多公司开始逐渐从svn代码仓库迁移到企业私有版的github&mdash;gitlab。知道怎么玩git是大势所趋。 Git小白推荐读物：atlassian出版的Git &hellip;">
+  <meta name="description" content="国内1 知乎
+豆瓣
+果壳网 国外，只列出我认识的比较出名的，还有好多2=。= Quora 国外的知乎？
+Dropbox 国外的金山快盘？
+Disqus 国外的多说？
+Pinterest 国外的花瓣？
+Youtube 国外的优酷？
+Slideshare 国外的百度文库？
+reddit 国外的猫扑 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -160,6 +168,110 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/python-in-industry/">由互联网中的Python应用想到的网站架构的优化</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2015/python-in-industry/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>国内<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
+
+<ul>
+<li>知乎</li>
+<li>豆瓣</li>
+<li>果壳网</li>
+</ul>
+</li>
+<li>国外，只列出我认识的比较出名的，还有好多<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>=。=
+
+<ul>
+<li>Quora 国外的知乎？</li>
+<li>Dropbox 国外的金山快盘？</li>
+<li>Disqus 国外的多说？</li>
+<li>Pinterest 国外的花瓣？</li>
+<li>Youtube 国外的优酷？</li>
+<li>Slideshare 国外的百度文库？</li>
+<li>reddit 国外的猫扑？</li>
+<li>Yelp 国外的大众点评</li>
+<li>&hellip;</li>
+</ul>
+</li>
+</ul>
+
+
+<p>更多的信息可以参考Python官网的<a href="https://www.python.org/about/success/">Python Success Stories</a>。</p>
+
+<h3>Quora</h3>
+
+<p>下面是QuorWhy did Quora choose Python for its development?a创始人在Quora上对<em>Why did Quora choose Python for its development?</em>的回答<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></p>
+
+<blockquote><p>We decided that Python was fast enough for most of what we need to do (since we push our performance-critical code to backend servers written in C++ whenever possible). As far as typechecking, we ended up writing very thorough unit tests which are worth writing anyway, and achieve most of the same goals.</p></blockquote>
+
+<p>可以看到对于Python的性能短板，Quora在performance-critical的地方尽可能换用了C++。对于Python没有静态类型，Quora用尽可能的单元测试来确保质量。之所以选择Python其实很大的原因是Founder对Python比较擅长。
+进一步google了下，他们的框架用的Pylon。</p>
+
+<h3>知乎的技术架构</h3>
+
+<p>知乎CTO在去年年底有过分享，目前在InfoQ上能找到整理稿。链接：<a href="http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution">http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution</a></p>
+
+<p>简而言之用的tornado，自己开发了日志系统Kids，消息传递系统Sink，还有页面渲染ZhihuNode。</p>
+
+<h3>网站架构及性能的思考</h3>
+
+<p>本周听了一次FB周海平在阿里内部的一次分享。无论是阿里、Facebook还是豆瓣，我发现了在网站架构上这几家有很多共同点的：</p>
+
+<ul>
+<li>MySQL作为存储后端</li>
+<li>MySQL上一定有memcache、tair这样的KV系统做缓存</li>
+<li>都各自开发了适合自己的消息分发系统，Notify, Thrift, Beanstalkd</li>
+<li>后端应该都具有实时日志数据分析： HBase、云梯2、Kids</li>
+<li>不同程度上用异步化来提高性能，并会一直以此来作为性能提升的方法。</li>
+<li>消息链路上的优化：一个网页的渲染上是树状结构的获取数据，因此可以在通过优化这棵树来达到优化整个过程的目的</li>
+</ul>
+
+
+<h3>其他</h3>
+
+<p>网站选型不单纯是比较语言优劣，还和社区的发展趋势活跃(谁都不想用过一门可能几年就无人问津的语言)、团队内普遍的好恶和掌控能力（C、C++最好，但是大家都不会）、整个行业的形势（团队内都用Lisp，但是招不到人）等等多种因素有关系。
+选择哪门语言确实重要，这决定了未来几年或者更远的时间内技术的发展路线，更重要的当规模扩大后需要在性能优化上要付出的代价。（这里面可以拿Facebook优化PHP作为反例，若是当初扎克用的是java或者c++，也许也不会因此如此兴师动众的重写了PHP生态系统里面的大部分东西。）</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p><a href="http://www.zhihu.com/question/19685768">知乎-国内使用 Python 作为主要开发语言的知名网站有哪些</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p><a href="http://www.quora.com/Which-Internet-companies-use-Python">Quora-Which Internet companies use Python?</a><a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p><a href="http://www.quora.com/Why-did-Quora-choose-Python-for-its-development">Quora-Why did Quora choose Python for its development?</a><a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -805,47 +917,6 @@
   
     <footer>
       <a rel="full-article" href="/blog/2013/baidu-exam-review/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/xiaomi-onsite/">小米面试内核驱动工程师总结</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-         | <a href="/blog/2013/xiaomi-onsite/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>此为吐槽贴，略涉及技术。</p></blockquote>
-
-<p>之前网申投的是<em>内核驱动工程师</em>，这个职位是凭着自己对Linux Internal还保持非常浓厚的兴趣，虽然实践不多，还有就是一看到这个title就有种高端大气上档次的赶脚。之后前几天打来电话去面试，这才知道这次是小米的bsp团队招人。</p>
-
-<p>怀着忐忑和兴奋的心情去小米参加bsp团队的面试。结果比较让人失望，一方面是自己还有很多不够深入的地方，一方面是bsp团队明显准备不足。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/xiaomi-onsite/">继续阅读 &rarr;</a>
     </footer>
   
 

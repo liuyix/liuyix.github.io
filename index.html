@@ -9,8 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。 实现的效果是备份不在本地暂存，压缩内置到上传逻辑中，通过配置文件可以配置压缩细节，对上传使用者来讲是『无感知』的。利用压缩提高了上传效率和备份空间的使用率。 压缩率和压缩性能的比较 lz4
-gzip &hellip;">
+  <meta name="description" content="yield 是用来简化以下场景：函数来生成序列，并且使用遍历的方式来访问序列中的元素。 yield的实现原理理解上来说在调用yield时Python会保留函数的现场，当再次遍历时函数的状态不丢失，可以继续生成。 经典的例子斐波那契数列 问题描述 返回斐波那契数列前n个元素 Python解法 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -167,6 +166,159 @@ gzip &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2016/python-yield/">Python Yield小结</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2016/python-yield/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>yield</code> 是用来简化以下场景：函数来生成序列，并且使用遍历的方式来访问序列中的元素。</p>
+
+<p><code>yield</code>的实现原理理解上来说在调用<code>yield</code>时Python会保留函数的<em>现场</em>，当再次遍历时函数的状态不丢失，可以继续生成。</p>
+
+<h3>经典的例子斐波那契数列</h3>
+
+<h4>问题描述</h4>
+
+<p>返回斐波那契数列前n个元素</p>
+
+<h4>Python解法</h4>
+
+<h5>第一个版本：朴素实现</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">fab_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</span><span class='line'>        <span class="n">fab_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">fab_list</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第一个版本是遍历并保存所有前n项斐波那契数列的元素。最大的问题是会占用非常多的内存，当调用fab(10000)时，在我的电脑中已经是无法完成的了。</p>
+
+<h5>第二个版本: 简单的迭代器实现</h5>
+
+<p>实现一个迭代器类</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Fab</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">r</span>
+</span><span class='line'>        <span class="k">raise</span> <span class="ne">StopIteration</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Fab</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第二个版本实现了迭代器，每次调用时再生成下一个元素，因此对内存的占用是恒定值。但缺点是代码很长，不够易读。</p>
+
+<h5>第三个版本：yield方法</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="n">a</span>
+</span><span class='line'>        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">fab</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="n">n</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">fab</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第三种yield方法兼具了第一种的简洁，第二种的高效。</p>
+
+<p><code>fab(5)</code>返回的是一个<a href="https://wiki.python.org/moin/Generators"><code>generator</code></a>对象——让一个函数像iterator那样工作，这样在遍历的场景下既可以保持代码简洁，又保持了内存使用的高效。</p>
+
+<h4>相关介绍链接</h4>
+
+<ol>
+<li><a href="http://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained">Improve Your Python: &lsquo;yield&rsquo; and Generators Explained</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/">Python yield 使用浅析</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/python-compress-stream/">Python流式压缩和解压缩调研总结</a></h1>
     
     
@@ -186,7 +338,32 @@ gzip &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。</p>
+  <div class="entry-content"><h3>Changelog</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>  Time </th>
+<th> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> 2016-01-05 </td>
+<td> 小幅修改</td>
+</tr>
+<tr>
+<td></td>
+<td> 2015-12-26 </td>
+<td> initial version</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>最近两周在研究和实现了xtrabackup流式压缩上传&amp;下方案，这里做一下总结分享。</p>
 
 <p>实现的效果是备份不在本地暂存，压缩内置到上传逻辑中，通过配置文件可以配置压缩细节，对上传使用者来讲是『无感知』的。利用压缩提高了上传效率和备份空间的使用率。</p>
 
@@ -194,8 +371,9 @@ gzip &hellip;">
 
 <ul>
 <li>lz4</li>
-<li>gzip</li>
+<li>gzip/pigz</li>
 <li>lzop</li>
+<li>qpress</li>
 </ul>
 
 
@@ -257,6 +435,46 @@ gzip &hellip;">
 <li>lzop和pigz这两个压缩方案上在实际应用上都很有竞争力，只是我涉及的项目需求是生产环境上尽量不占用过多CPU，MEM资源，可以在压缩比上做妥协。因此选择了lzop。如果你在意CPU资源，更在乎压缩数据大小，则pigz是不错的选择。</li>
 <li><em>外挂</em> 方式的数据压缩方案虽然集成上让Python程序有更多的外部依赖，但是考虑到Python本身并没有真正的线程的并行方案（你想要并行也要生成多个进程），其实资源占用区别不大。同时方案选型上也更加灵活。</li>
 </ul>
+
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> 压缩工具 </th>
+<th> 描述 </th>
+<th> 参数 </th>
+<th> 优势 </th>
+<th> 劣势 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> gzip </td>
+<td> 最常用的压缩工具 </td>
+<td> <code>-2</code> </td>
+<td> 压缩比在压缩参数大于2时很高，平台上通用很高，所有Linux发行版都会有预装，同时tar也集成了gzip压缩 </td>
+<td> 单线程，较慢</td>
+</tr>
+<tr>
+<td></td>
+<td> pigz </td>
+<td> 多线程版gzip，<a href="http://zlib.net/pigz/">主页</a>, <a href="https://github.com/madler/pigz">github</a> </td>
+<td> 多线程并行+gzip压缩算法，无论从性能上还是压缩输出上都很不错，是个很不错的选择 </td>
+<td> 压缩效率和系统资源占用成正比</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td> lzop </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 </div>
   
@@ -778,110 +996,6 @@ commands.</em></p></blockquote>
 
 
 <p>-EOF-</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/python-in-industry/">由互联网中的Python应用想到的网站架构的优化</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-         | <a href="/blog/2015/python-in-industry/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>国内<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
-
-<ul>
-<li>知乎</li>
-<li>豆瓣</li>
-<li>果壳网</li>
-</ul>
-</li>
-<li>国外，只列出我认识的比较出名的，还有好多<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>=。=
-
-<ul>
-<li>Quora 国外的知乎？</li>
-<li>Dropbox 国外的金山快盘？</li>
-<li>Disqus 国外的多说？</li>
-<li>Pinterest 国外的花瓣？</li>
-<li>Youtube 国外的优酷？</li>
-<li>Slideshare 国外的百度文库？</li>
-<li>reddit 国外的猫扑？</li>
-<li>Yelp 国外的大众点评</li>
-<li>&hellip;</li>
-</ul>
-</li>
-</ul>
-
-
-<p>更多的信息可以参考Python官网的<a href="https://www.python.org/about/success/">Python Success Stories</a>。</p>
-
-<h3>Quora</h3>
-
-<p>下面是QuorWhy did Quora choose Python for its development?a创始人在Quora上对<em>Why did Quora choose Python for its development?</em>的回答<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></p>
-
-<blockquote><p>We decided that Python was fast enough for most of what we need to do (since we push our performance-critical code to backend servers written in C++ whenever possible). As far as typechecking, we ended up writing very thorough unit tests which are worth writing anyway, and achieve most of the same goals.</p></blockquote>
-
-<p>可以看到对于Python的性能短板，Quora在performance-critical的地方尽可能换用了C++。对于Python没有静态类型，Quora用尽可能的单元测试来确保质量。之所以选择Python其实很大的原因是Founder对Python比较擅长。
-进一步google了下，他们的框架用的Pylon。</p>
-
-<h3>知乎的技术架构</h3>
-
-<p>知乎CTO在去年年底有过分享，目前在InfoQ上能找到整理稿。链接：<a href="http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution">http://www.infoq.com/cn/news/2014/12/zhihu-architecture-evolution</a></p>
-
-<p>简而言之用的tornado，自己开发了日志系统Kids，消息传递系统Sink，还有页面渲染ZhihuNode。</p>
-
-<h3>网站架构及性能的思考</h3>
-
-<p>本周听了一次FB周海平在阿里内部的一次分享。无论是阿里、Facebook还是豆瓣，我发现了在网站架构上这几家有很多共同点的：</p>
-
-<ul>
-<li>MySQL作为存储后端</li>
-<li>MySQL上一定有memcache、tair这样的KV系统做缓存</li>
-<li>都各自开发了适合自己的消息分发系统，Notify, Thrift, Beanstalkd</li>
-<li>后端应该都具有实时日志数据分析： HBase、云梯2、Kids</li>
-<li>不同程度上用异步化来提高性能，并会一直以此来作为性能提升的方法。</li>
-<li>消息链路上的优化：一个网页的渲染上是树状结构的获取数据，因此可以在通过优化这棵树来达到优化整个过程的目的</li>
-</ul>
-
-
-<h3>其他</h3>
-
-<p>网站选型不单纯是比较语言优劣，还和社区的发展趋势活跃(谁都不想用过一门可能几年就无人问津的语言)、团队内普遍的好恶和掌控能力（C、C++最好，但是大家都不会）、整个行业的形势（团队内都用Lisp，但是招不到人）等等多种因素有关系。
-选择哪门语言确实重要，这决定了未来几年或者更远的时间内技术的发展路线，更重要的当规模扩大后需要在性能优化上要付出的代价。（这里面可以拿Facebook优化PHP作为反例，若是当初扎克用的是java或者c++，也许也不会因此如此兴师动众的重写了PHP生态系统里面的大部分东西。）</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn:1">
-<p><a href="http://www.zhihu.com/question/19685768">知乎-国内使用 Python 作为主要开发语言的知名网站有哪些</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
-<li id="fn:2">
-<p><a href="http://www.quora.com/Which-Internet-companies-use-Python">Quora-Which Internet companies use Python?</a><a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
-<li id="fn:3">
-<p><a href="http://www.quora.com/Why-did-Quora-choose-Python-for-its-development">Quora-Why did Quora choose Python for its development?</a><a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
-</ol>
-</div>
-
 </div>
   
   
