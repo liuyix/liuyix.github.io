@@ -9,7 +9,12 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Update 2013-09-28 金山WPS for Linux 出来啦~ 小伙伴们用后都为他的表现惊呆了~~非常棒！ 地址猛戳：http://linux.wps.cn/ 一年多的考研生活结束了，终于有时间将电脑环境完整的迁移到Ubuntu平台了。 迁移到Ubuntu Linux平台的困难 &hellip;">
+  <meta name="description" content="Wordpress没有考虑到中文书写的首行缩进的习惯，因此要实现这个功能可以采用修改主题style.css来实现，如果你的主题不常更改的化，这一方法应该说可以一劳永逸。
+总体思路：进入Appearance&mdash;>Editor&mdash;>选择style.css
+找到类似 1
+2
+3
+4 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -166,6 +171,58 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2011/wordpress-modification/">Wordpress排版——中文首行缩进和行间距修改的实现</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2011/wordpress-modification/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Wordpress没有考虑到中文书写的首行缩进的习惯，因此要实现这个功能可以采用修改主题style.css来实现，如果你的主题不常更改的化，这一方法应该说可以一劳永逸。
+总体思路：进入Appearance&mdash;>Editor&mdash;>选择style.css
+找到类似</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nx">p</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.5</span><span class="nx">em</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="o">:</span><span class="mf">1.5</span><span class="nx">em</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">text</span><span class="o">-</span><span class="nx">indent</span><span class="o">:</span> <span class="mi">2</span><span class="nx">em</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>注意</strong>：不一定是一模一样的，根据主题的不同，一定会有所变化的，但目的都是一样就是找到的<p>的style模板。
+找到之后，在大括号(&ldquo;{&#8220;和&rdquo;}&ldquo;之间)加入<code>text-indent: 2em;</code>就可以实现首行缩进的功能。要修改行间距就修改<code>line-height</code>的属性值，1em代表一个字的大小，1.5em表示是1.5倍的行距，修改之后保存即可！</p>
+
+<p>其他的修改排版类的修改同样是这个原理，都是修改style.css中的相关部分。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2011/migration-from-windows-to-linux/">Windows迁移到Ubuntu的软件替代方案</a></h1>
     
     
@@ -286,7 +343,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - liuyix -
+  Copyright &copy; 2017 - liuyix -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
 </p>
 

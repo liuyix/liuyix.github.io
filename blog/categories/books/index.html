@@ -5,16 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Wordpress排版——中文首行缩进和行间距修改的实现 - 刘毅同学</title>
+  <title>Category: Books - 刘毅同学</title>
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="Wordpress没有考虑到中文书写的首行缩进的习惯，因此要实现这个功能可以采用修改主题style.css来实现，如果你的主题不常更改的化，这一方法应该说可以一劳永逸。
-总体思路：进入Appearance&mdash;>Editor&mdash;>选择style.css
-找到类似 1
-2
-3
-4 &hellip;">
+  <meta name="description" content="Category: Books">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liuyix.org/blog/2011/wordpress-modification">
+  <link rel="canonical" href="http://liuyix.orgblog/categories/books">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="刘毅同学" type="application/atom+xml">
@@ -164,113 +159,46 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      
-        <h1 class="entry-title">Wordpress排版——中文首行缩进和行间距修改的实现</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-         | <a href="#disqus_thread">Comments</a>
-        
-        
-      </p>
+    <h1 class="entry-title">Category: Books</h1>
     
   </header>
-
-
-<div class="entry-content"><p>Wordpress没有考虑到中文书写的首行缩进的习惯，因此要实现这个功能可以采用修改主题style.css来实现，如果你的主题不常更改的化，这一方法应该说可以一劳永逸。
-总体思路：进入Appearance&mdash;>Editor&mdash;>选择style.css
-找到类似</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nx">p</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.5</span><span class="nx">em</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">line</span><span class="o">-</span><span class="nx">height</span><span class="o">:</span><span class="mf">1.5</span><span class="nx">em</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">text</span><span class="o">-</span><span class="nx">indent</span><span class="o">:</span> <span class="mi">2</span><span class="nx">em</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>注意</strong>：不一定是一模一样的，根据主题的不同，一定会有所变化的，但目的都是一样就是找到的<p>的style模板。
-找到之后，在大括号(&ldquo;{&#8220;和&rdquo;}&ldquo;之间)加入<code>text-indent: 2em;</code>就可以实现首行缩进的功能。要修改行间距就修改<code>line-height</code>的属性值，1em代表一个字的大小，1.5em表示是1.5倍的行距，修改之后保存即可！</p>
-
-<p>其他的修改排版类的修改同样是这个原理，都是修改style.css中的相关部分。</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
+  <div id="blog-archives" class="category">
 
 
 
-  <span class="byline author vcard">Authored by <span class="fn">
   
-    liuyix
+  <h2>2017</h2>
+
+<article>
   
-  </span></span>
+<h1><a href="/blog/2017/brief-history-of-mankind-note1/">《人类简史》笔记(1)</a></h1>
+<time datetime="2017-03-07T00:01:00+08:00" pubdate><span class='month'>Mar</span> <span class='day'>07</span> <span class='year'>2017</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/books/'>Books</a></span>
+</footer>
 
 
-      
-
-
-
-
-
-      
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/wordpress/'>Wordpress</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2011/migration-from-windows-to-linux/" title="Previous Post: Windows迁移到Ubuntu的软件替代方案">&laquo; Windows迁移到Ubuntu的软件替代方案</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2011/handle-vim-e492/" title="Next Post: 解决VIM插件/colorscheme出现E492不是编辑器命令 ^M">解决VIM插件/colorscheme出现E492不是编辑器命令 ^M &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  </section>
+
+  
+</article>
 
 
 </div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
 
     </div>
   </div>
@@ -286,10 +214,7 @@
       var disqus_shortname = 'liuyix';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://liuyix.org/blog/2011/wordpress-modification/';
-        var disqus_url = 'http://liuyix.org/blog/2011/wordpress-modification/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

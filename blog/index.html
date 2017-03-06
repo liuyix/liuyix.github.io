@@ -9,7 +9,7 @@
   <meta name="author" content="liuyix">
 
   
-  <meta name="description" content="yield 是用来简化以下场景：函数来生成序列，并且使用遍历的方式来访问序列中的元素。 yield的实现原理理解上来说在调用yield时Python会保留函数的现场，当再次遍历时函数的状态不丢失，可以继续生成。 经典的例子斐波那契数列 问题描述 返回斐波那契数列前n个元素 Python解法 &hellip;">
+  <meta name="description" content="发现 过年时在家看十三邀的采访罗胖的第一期节目。这才知道2015年（或者是2014年？）口碑爆棚的一本书——《人类简史》。人类简史以三十几万字的篇幅，生动的将人类这一种族的历史娓娓道来。 用400页的书去讲一个这么大的主题，它的精彩之处一定不在于文字有多么深刻。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -160,6 +160,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/brief-history-of-mankind-note1/">《人类简史》笔记(1)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+         | <a href="/blog/2017/brief-history-of-mankind-note1/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>发现</h3>
+
+<p>过年时在家看十三邀的采访罗胖的第一期节目。这才知道2015年（或者是2014年？）口碑爆棚的一本书——《人类简史》。人类简史以三十几万字的篇幅，生动的将人类这一种族的历史娓娓道来。</p>
+
+<p>用400页的书去讲一个这么大的主题，它的精彩之处一定不在于文字有多么深刻。那么它是因为什么原因而获得这么多赞誉的呢？</p>
+
+<h3>谨慎乐观，批判阅读</h3>
+
+<p>洋洋洒洒的已经读了四分之一，给我的感觉是这本书引人注目之处就在于观点新异，且能用自己广博的知识储备去阐述自己的观点。确实有种耳目一新的感觉。但是我也隐约的感觉到这里面很多内容不免会充满争议，有些观点初次听到甚至让人难以接受。但是因为自己学识尚浅，虽然有一些小小的犹疑，却又说不清楚到底是哪儿不对劲。</p>
+
+<p>有一点是可以肯定的，一本薄书将人类几万年的发展史穿针引线一样说了一遍，还能有满堂喝彩，其中多多少少都会有一些和『爆款公号文章』一样的味道。固然有很多人推荐阅读，但也务必谨记独立思考，批判吸收。避免出现人云亦云，拾人牙慧之嫌。</p>
+
+<h3>意外收获</h3>
+
+<p>在网上搜索了下《人类简史》读书笔记，竟发现作者尤瓦尔赫拉利在中文图书出版前就曾在Coursera上开过《人类简史》这门公开课！虽然比较遗憾的是，目前这个课程已经下架，但是还可以在B站看到。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -934,75 +980,6 @@ commands.</em></p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/new-mac-test/">Octopress迁移到新主机</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-         | <a href="/blog/2015/new-mac-test/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>新机器上首先是把ssh key加入到github的setting，然后配置好基本的git信息（email, name），此处步骤略过。可以参考：<a href="https://help.github.com/articles/set-up-git/">https://help.github.com/articles/set-up-git/</a></li>
-<li><code>git clone -b source git@github.com:username/username.github.com.git octopress</code>
-
-<ul>
-<li>操作完这一步后就相当于把当前octopress的source文档拉到了本地了。</li>
-<li><strong>这一步操作前一定要确保在其他机器上的markdown文件以及其他配置文件的修改都已经push到source分支了，否则这一步会导致博客文章丢失！！！</strong></li>
-</ul>
-</li>
-<li>进入到octopress, 然后<code>git clone git@github.com:username/username.github.com.git _deploy</code>
-
-<ul>
-<li>这一步是在<code>_deploy</code>建立好指向master分支的git仓库，方便之后发布文章时使用</li>
-</ul>
-</li>
-<li>安装octopress相关的ruby依赖等
-
-<ul>
-<li>建议修改rubygems的安装源到国内的taobao源，详细操作步骤：<a href="http://ruby.taobao.org/">http://ruby.taobao.org/</a>，默认的rubygems.org源已经被墙，速度很慢。</li>
-</ul>
-</li>
-</ul>
-
-
-<p>完成上面几步后，就可以尝试调用<code>rake generate</code>生成一次网站，然后<code>rake deploy</code>看下是否成功~</p>
-
-<h3>在不同主机上使用Octopress上发布文章</h3>
-
-<p>每次发布新的文章或者修改现有文章时，需要把<code>source</code>分支的修改（即octopress目录所指向的git仓库分支）commit并且push到github上，之后在另外的主机上首先进入到octopress目录，在编辑文章前首先<code>git pull</code>下拉取修改。这样的编辑才能连贯，不然会发生文章丢失的情况。</p>
-
-<p>Reference:</p>
-
-<ul>
-<li><a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Clone Your Octopress to Blog From Two Places</a></li>
-</ul>
-
-
-<p>-EOF-</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1020,7 +997,7 @@ commands.</em></p></blockquote>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - liuyix -
+  Copyright &copy; 2017 - liuyix -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
 </p>
 
